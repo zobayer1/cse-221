@@ -1,0 +1,54 @@
+{
+  "course": {
+    "code": "CSE 221",
+    "name": "Algorithms",
+    "dept": "Department of Computer Science and Engineering, BRAC University",
+    "term": "Fall 2026",
+    "section": "Section 19",
+    "instructor": "Zobayer Hasan",
+    "initials": "ZBYR",
+    "repo": "https://github.com/zobayer1/cse-221",
+    "hours": [
+      { "what": "Class", "days": "Saturday and Thursday", "time": "11:00 AM – 12:20 PM", "where": "Room 10A-05C" },
+      { "what": "Consultation", "days": "Saturday and Thursday", "time": "12:30 PM – 2:30 PM", "where": "Desk 4G29" }
+    ]
+  },
+
+  "lectures": [
+    { "dir": "Introduction", "released": true, "topics": "Course goals, schedule, prerequisites, textbooks, assessment; what an algorithm and a computational problem are; what makes an algorithm good" },
+    { "dir": "Lecture01", "released": true, "topics": "Input size, running time and memory, order of growth, best, worst and average case, upper bounds, the RAM model" },
+    { "dir": "Lecture02", "released": true, "topics": "Linear, binary and ternary search, iterative and recursive; off-by-one errors and duplicates; finding a peak", "simulators": ["linear_search", "binary_search", "ternary_search"] },
+    { "dir": "Lecture03", "released": true, "topics": "Comparison sorting; bubble, insertion and selection sort with best- and worst-case analysis", "simulators": ["basic_sorting"] },
+    { "dir": "Lecture04", "released": true, "topics": "Divide and conquer, merge sort, quicksort and pivot choice, stable and in-place sorting, the comparison-sorting lower bound", "simulators": ["merge_sort", "quicksort"] }
+  ],
+
+  "simulators": [
+    { "id": "linear_search", "released": true, "title": "Linear Search", "desc": "Checking each element from left to right; best, worst and not-present cases." },
+    { "id": "binary_search", "released": true, "title": "Binary Search", "desc": "Halving the range [lo, hi] on every comparison; leftmost match with duplicates, and a buggy lo = mid version." },
+    { "id": "ternary_search", "released": true, "title": "Ternary Search", "desc": "Two cuts m1 and m2 splitting a sorted array's range in three." },
+    { "id": "basic_sorting", "released": true, "title": "Bubble, Insertion and Selection Sort", "desc": "The three simple sorts, one comparison or move per step." },
+    { "id": "merge_sort", "released": true, "title": "Merge Sort", "desc": "The array splitting down, then merging back up." },
+    { "id": "quicksort", "released": true, "title": "Quicksort", "desc": "Each pivot partitioning its block; last-element and median-of-three pivots." }
+  ],
+
+  "quizzes": [
+    { "dir": "quiz1", "title": "Quiz 1", "topics": "Searching, growth of functions", "paper": "quiz1.html", "answers": "quiz1_answers.html", "released": true, "answersReleased": true }
+  ],
+
+  "assignments": [
+    { "dir": "assignment1", "title": "Assignment 1", "subtitle": "Distributed Merge Sort with a Round-Robin Thread Pool", "due": "30 November 2026, 11:59 PM", "paper": "assignment1.html", "released": true }
+  ],
+
+  "links": [
+    { "group": "Textbooks", "items": [
+      { "title": "Introduction to Algorithms (CLRS), 3rd edition", "by": "Cormen, Leiserson, Rivest and Stein · The MIT Press, 2009 · main textbook", "url": "https://www.amazon.com/dp/0262033844" },
+      { "title": "Algorithms, 4th edition", "by": "Robert Sedgewick and Kevin Wayne · Addison-Wesley, 2011", "url": "https://www.amazon.com/dp/032157351X" },
+      { "title": "Algorithms, 1st edition", "by": "Jeff Erickson · 2019 · free online", "url": "https://jeffe.cs.illinois.edu/teaching/algorithms/" },
+      { "title": "Algorithmic Thinking, 1st edition", "by": "Daniel Zingaro · No Starch Press, 2021", "url": "https://www.amazon.com/dp/1718500807" }
+    ] },
+    { "group": "Course", "items": [
+      { "title": "Course repository", "by": "Every slide, simulator and paper as source on GitHub", "url": "https://github.com/zobayer1/cse-221" },
+      { "title": "Assignment 1 support programs", "by": "Data generators and the validator (Java, MIT license)", "url": "https://github.com/zobayer1/cse-221/tree/main/assignments/assignment1/support" }
+    ] }
+  ]
+}

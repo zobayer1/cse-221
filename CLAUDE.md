@@ -13,9 +13,10 @@ Lecture slides are written as HTML first, and the PDF slides are made from those
 - `books/`: Algorithms textbooks as PDFs. **CLRS (*Introduction to Algorithms*) is the primary textbook**. Cite it when a reference is needed.
 - `lectures/<LectureNN>/slideNN.html`: one HTML file per slide (`Introduction/`, `Lecture01/`, …). The number in the file name is the slide order. `lectures/theme/` holds the shared theme, and `lectures/_archive/` holds pre-conversion backups (local only).
 - `assignments/assignmentN/`: assignment papers (HTML, built to PDF like quizzes). Each one's `instructor/` folder holds reference solutions and is git-ignored: never publish it. Each one's `support/` folder holds helper programs for students, licensed **MIT** (not CC BY-NC-SA like everything else): it needs its own `LICENSE` file, and each source file starts with `// SPDX-License-Identifier: MIT`.
-- `quizzes/quizN/`: quiz questions and answer scripts. Write these in HTML first, then convert them to PDF the same way as the slides.
+- `quizzes/quizN/`: quiz questions and answer scripts. Write these in HTML first, then convert them to PDF the same way as the slides. Until a quiz has taken place, keep its paper and answers in `quizzes/quizN/instructor/`, which is git-ignored (the repo is public, so anything committed is visible on GitHub). Move them up into `quizzes/quizN/` only when the instructor releases them, and then mark them released in `site/content.json`.
 - `simulations/<topic>_simulator.html`: interactive algorithm simulators, one file each.
-- `tools/`: `make_pdf.sh` (build PDFs), `check_slides.sh` (rule checks), `place_doodles.sh` (place stick-figure overlays), `convert_legacy.py` (old-format deck → theme).
+- `site/`: the course website's own pages (`index.html`, `slides.html` viewer, `glossary.html`, `assets/`) and its data: `content.json` (what gets published, including quiz-answer release flags) and `glossary.json`. `tools/build_site.py` assembles `_site/` (git-ignored) from it, and `.github/workflows/pages.yml` deploys it to GitHub Pages on every push to `main`.
+- `tools/`: `build_site.py` (build the website), `make_pdf.sh` (build PDFs), `check_slides.sh` (rule checks), `place_doodles.sh` (place stick-figure overlays), `convert_legacy.py` (old-format deck → theme), `sync_drive.sh` (mirror what `site/content.json` publishes into `_drive/`, git-ignored, with the Drive folder's names, and upload it to the course Google Drive folder via rclone; dry run unless `--apply`).
 
 ## Slide architecture
 
@@ -107,4 +108,9 @@ To make PDFs, use `tools/make_pdf.sh`, which runs headless Chrome and then `pdfu
 - `tools/make_pdf.sh Lecture02` turns every slide into one page, in `sort -V` order, and writes them all to `lectures/Lecture02/Lecture02.pdf`. A lecture takes about 30 seconds.
 - `tools/make_pdf.sh <dir> [out.pdf]` merges every `*.html` in any folder into one PDF.
 - `tools/make_pdf.sh a.html b.html` writes each file to a PDF next to it. Use this for quiz question and answer papers.
+### Website
+- `tools/build_site.py` copies into `_site/` only the `site/content.json` entries marked `"released": true` (lectures, simulators, quizzes, assignments). A quiz's answers also need `"answersReleased": true`, and `instructor/` folders are never copied. Lecture titles and slide counts come from `deck.js`, and slide titles (for the viewer's menu and the glossary) from each `.frametitle`. Add `--pdf` to build all the PDFs first (CI does this). Preview with `python3 -m http.server -d _site 8000`; the viewer needs http, not `file://`.
+- **Ask the instructor before publishing anything on the site.** A new lecture, simulator, quiz or assignment goes into `site/content.json` with `"released": false` (and quizzes with `"answersReleased": false`). Set either flag to `true`, or add a new entry as released, only once the instructor says so for that item: quiz papers and solutions in particular stay hidden until the quiz has taken place. Approval for one item doesn't cover the next. The build warns about lecture folders and simulators that aren't listed. Glossary entries link to slides by number, so check `site/glossary.json` when slides are renumbered.
+- The site keeps the slides' fonts and palette. Slides themselves are shown unchanged in an iframe, so nothing in a slide needs to know about the site.
+
 - `tools/check_slides.sh <Lecture>` checks a deck against these rules (layout, overlays, `deck.js` total, spelling, spacers, fonts). Run it after any change, alongside a look at the PDF.

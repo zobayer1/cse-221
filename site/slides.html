@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slides – CSE 221</title>
+<link rel="icon" href="lectures/theme/img/brac-logo.png">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-page="viewer" class="viewer">
+<div class="vbar">
+  <a class="btn" href="index.html#lectures" title="All lectures">☰ Lectures</a>
+  <div class="ttl" id="ttl"></div>
+  <button class="btn" data-go="-1" aria-label="Previous slide">←</button>
+  <select id="sel" aria-label="Go to slide"></select>
+  <span class="cnt" id="cnt"></span>
+  <button class="btn" data-go="1" aria-label="Next slide">→</button>
+  <a class="btn pri" id="nextlec" hidden></a>
+  <button class="btn" id="fs" title="Full screen (F)">⛶</button>
+  <button class="btn" id="open" title="Open this slide on its own">↗</button>
+  <a class="btn" id="pdf" download>PDF</a>
+</div>
+<div class="stage" id="stage">
+  <button class="nav prev" data-go="-1" aria-label="Previous slide">‹</button>
+  <iframe id="frame" title="Slide"></iframe>
+  <button class="nav next" data-go="1" aria-label="Next slide">›</button>
+</div>
+<script src="assets/data.js"></script><script src="assets/site.js"></script>
+</body></html>

@@ -24,7 +24,7 @@
 * { box-sizing:border-box; margin:0; padding:0; }
 html,body { background:#d9dbde; }
 body { display:flex; align-items:center; justify-content:center; min-height:100vh; font-family:var(--sans); color:var(--ink); }
-.slide { width:1280px; height:720px; background:#fff; position:relative; overflow:hidden; transform-origin:center; font-size:26px; line-height:1.35; }
+.slide { flex-shrink:0; width:1280px; height:720px; background:#fff; position:relative; overflow:hidden; transform-origin:center; font-size:26px; line-height:1.35; }
 @media print { html,body { background:#fff; } body { display:block; min-height:0; } .slide { transform:none !important; } }
 
 /* ---------- frame ---------- */

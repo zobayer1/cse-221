@@ -25,9 +25,10 @@ lectures/
   Lecture01/ …
   _archive/           pre-conversion copies of converted lectures (local only, not in git)
 assignments/          assignment papers (HTML, built to PDF; instructor/ folders are not in git)
-quizzes/quizN/        quiz papers and answer scripts (HTML, built to PDF)
+quizzes/quizN/        quiz papers and answer scripts (HTML, built to PDF; unreleased ones wait in instructor/, not in git)
 simulations/          standalone algorithm simulators
-tools/                PDF build, slide-checking and slide-conversion scripts
+site/                 the course website: pages, content.json (what to publish) and glossary.json
+tools/                website and PDF build, slide-checking and slide-conversion scripts
 books/                the textbooks as PDFs (not in git; see below)
 ```
 
@@ -102,6 +103,17 @@ It reports content that overflows its frame or runs into the footer, stick figur
 - **Starting a new slide:** copy an existing slide from the same lecture, then build and check it.
 - **Pseudocode:** CLRS syntax with 0-based arrays, e.g. `for i = 0 to n − 1`, `exchange A[i] with A[j]`, `NIL`.
 - **Full conventions:** the layout, style and pseudocode rules, and how to convert an old-format lecture, are in [CLAUDE.md](CLAUDE.md).
+
+## Website
+
+The course website, with the slide viewer (← / → between slides, F for full screen), simulators, quizzes, assignments and a glossary, is built from `site/` by `tools/build_site.py` and published to GitHub Pages by `.github/workflows/pages.yml` on every push to `main`.
+
+```sh
+tools/build_site.py                        # → _site/ (add --pdf to build all PDFs too)
+python3 -m http.server -d _site 8000       # preview at http://localhost:8000
+```
+
+What gets published is listed in `site/content.json`, and nothing appears until its entry is marked `"released": true`. Quiz solutions also need `"answersReleased": true`, so a quiz and its solutions can stay hidden until the quiz has taken place. `instructor/` folders are never published.
 
 ## License
 
