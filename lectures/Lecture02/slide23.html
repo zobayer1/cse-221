@@ -30,6 +30,7 @@
 .bwc b { display:block; font-family:var(--serif); font-size:22px; font-weight:700; }
 .bwc .g { background:#EEF6EF; box-shadow:inset 4px 0 0 #2E7D32; } .bwc .g b { color:#2E7D32; }
 .bwc .r { background:#FBEDEC; box-shadow:inset 4px 0 0 #C62828; } .bwc .r b { color:#C62828; }
+.der .res .nw { white-space:nowrap; } /* keep each formula on one line */
 </style></head>
 <body><div class="slide">
 <div class="frametitle">Ternary search: time complexity</div>
@@ -49,7 +50,7 @@
     <div class="eqs"><i>n</i> / 3<sup><i>k</i></sup> ≥ 1 <span>still something to search</span><br>
       <i>n</i> ≥ 3<sup><i>k</i></sup><br>
       <i>k</i> ≤ log<sub>3</sub> <i>n</i></div>
-    <div class="res">At most log<sub>3</sub> <i>n</i> + 1 steps of <i>c</i>′ work:<br><i>T</i>(<i>n</i>) = <i>c</i>′ (log<sub>3</sub> <i>n</i> + 1) = <b>O(log<sub>3</sub> <i>n</i>)</b></div></div>
+    <div class="res">At most log<sub>3</sub> <i>n</i> + 1 steps of <i>c</i>′ work:<br><span class="nw"><i>T</i>(<i>n</i>) = <i>c</i>′ (log<sub>3</sub> <i>n</i> + 1)</span><br><span class="nw">= <b>O(log<sub>3</sub> <i>n</i>)</b></span></div></div>
     <div class="bwc"><div class="g"><b>Best: O(1)</b>x is at m1 or m2 in the first step.</div><div class="r"><b>Worst: O(log <i>n</i>)</b>x is absent, or found in the last step.</div></div></div>
 </div>
 </div>

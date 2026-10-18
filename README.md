@@ -1,6 +1,6 @@
 # CSE 221: Algorithms
 
-Course materials for **CSE 221 – Algorithms**, an undergraduate course in the Department of Computer Science and Engineering at BRAC University. Taught by Zobayer Hasan (ZBYR), Fall 2026, Section 19.
+Course materials for **CSE 221 – Algorithms**, an undergraduate course in the Department of Computer Science and Engineering at BRAC University. Taught by Zobayer Hasan (ZBYR).
 
 The repository holds the lecture slides, quizzes, assignments and a set of interactive algorithm simulators. Everything is plain HTML that opens in a browser, with no build system and no server. The lecture PDFs are generated from the HTML with headless Chrome.
 
@@ -98,7 +98,7 @@ It reports content that overflows its frame or runs into the footer, stick figur
 
 ### Editing slides
 
-- **Course details:** the course name, instructor, term and section are set once, in `lectures/theme/theme.js`.
+- **Course details:** the course name, instructor and other details shown on the slides are set once, in `lectures/theme/theme.js`.
 - **Per-lecture settings:** each lecture's title and slide count are in its `deck.js`. Update `total` when you add or remove slides.
 - **Starting a new slide:** copy an existing slide from the same lecture, then build and check it.
 - **Pseudocode:** CLRS syntax with 0-based arrays, e.g. `for i = 0 to n − 1`, `exchange A[i] with A[j]`, `NIL`.
