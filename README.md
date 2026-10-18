@@ -106,14 +106,14 @@ It reports content that overflows its frame or runs into the footer, stick figur
 
 ## Website
 
-The course website, with the slide viewer (← / → between slides, F for full screen), simulators, quizzes, assignments and a glossary, is built from `site/` by `tools/build_site.py` and published to GitHub Pages by `.github/workflows/pages.yml` on every push to `main`.
+The course website, with the slide viewer (← / → between slides, F for full screen), the simulators and a glossary, is built from `site/` by `tools/build_site.py` and published to GitHub Pages by `.github/workflows/pages.yml` on every push to `main`.
 
 ```sh
 tools/build_site.py                        # → _site/ (add --pdf to build all PDFs too)
 python3 -m http.server -d _site 8000       # preview at http://localhost:8000
 ```
 
-What gets published is listed in `site/content.json`, and nothing appears until its entry is marked `"released": true`. Quiz solutions also need `"answersReleased": true`, so a quiz and its solutions can stay hidden until the quiz has taken place. `instructor/` folders are never published.
+What gets published is listed in `site/content.json`, and nothing appears until its entry is marked `"released": true`. Only lectures and simulators go on the website; quizzes and assignments stay in the repository (their `content.json` entries are used for the course Drive folder by `tools/sync_drive.sh`, where quiz solutions also need `"answersReleased": true`). `instructor/` folders are never published.
 
 ## License
 

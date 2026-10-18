@@ -3,15 +3,9 @@
     "code": "CSE 221",
     "name": "Algorithms",
     "dept": "Department of Computer Science and Engineering, BRAC University",
-    "term": "Fall 2026",
-    "section": "Section 19",
     "instructor": "Zobayer Hasan",
     "initials": "ZBYR",
-    "repo": "https://github.com/zobayer1/cse-221",
-    "hours": [
-      { "what": "Class", "days": "Saturday and Thursday", "time": "11:00 AM – 12:20 PM", "where": "Room 10A-05C" },
-      { "what": "Consultation", "days": "Saturday and Thursday", "time": "12:30 PM – 2:30 PM", "where": "Desk 4G29" }
-    ]
+    "repo": "https://github.com/zobayer1/cse-221"
   },
 
   "lectures": [
@@ -47,8 +41,7 @@
       { "title": "Algorithmic Thinking, 1st edition", "by": "Daniel Zingaro · No Starch Press, 2021", "url": "https://www.amazon.com/dp/1718500807" }
     ] },
     { "group": "Course", "items": [
-      { "title": "Course repository", "by": "Every slide, simulator and paper as source on GitHub", "url": "https://github.com/zobayer1/cse-221" },
-      { "title": "Assignment 1 support programs", "by": "Data generators and the validator (Java, MIT license)", "url": "https://github.com/zobayer1/cse-221/tree/main/assignments/assignment1/support" }
+      { "title": "Course repository", "by": "Every slide, simulator and paper as source on GitHub", "url": "https://github.com/zobayer1/cse-221" }
     ] }
   ]
 }

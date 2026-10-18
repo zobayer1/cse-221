@@ -38,20 +38,15 @@ code { font-family:var(--mono); }
 .top nav a:hover, .top nav a.on { opacity:1; text-decoration:underline; text-underline-offset:4px; }
 
 main { max-width:1080px; margin:0 auto; padding:0 16px 48px; }
-.hero { padding:40px 0 28px; display:grid; grid-template-columns:1fr auto; gap:24px; align-items:end; border-bottom:1px solid var(--rule); }
+.hero { padding:40px 0 28px; border-bottom:1px solid var(--rule); }
 .hero h1 { font-family:var(--serif); font-size:40px; line-height:1.1; }
 .hero p { color:var(--muted); margin-top:6px; }
-.hours { font-size:15px; border-collapse:collapse; }
-.hours td { padding:3px 0 3px 14px; vertical-align:top; }
-.hours td:first-child { padding-left:0; font-weight:700; }
-.hours td.m { color:var(--muted); }
 
 section { padding-top:36px; scroll-margin-top:12px; }
 h2 { font-family:var(--serif); font-size:28px; padding-bottom:6px; border-bottom:2px solid var(--ink); margin-bottom:16px; }
 h2 small { font-family:var(--sans); font-weight:400; font-size:15px; color:var(--muted); margin-left:10px; }
 
 .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:16px; }
-.grid.two { grid-template-columns:repeat(2, 1fr); }
 .card { background:var(--card); border:1px solid var(--rule); border-top:3px solid var(--blue); padding:16px 18px; display:flex; flex-direction:column; gap:8px; }
 .card .k { font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); }
 .card h3 { font-family:var(--serif); font-size:21px; line-height:1.2; }
@@ -98,18 +93,14 @@ dl.gl > div:target { background:var(--tint-2); }
 .links li span { display:block; font-size:14px; color:var(--muted); }
 
 @media (max-width: 720px) {
-  .hero { grid-template-columns:1fr; }
   .hero h1 { font-size:32px; }
   .brand { white-space:normal; }
   .brand small { display:block; margin-left:0; }
   .top nav { margin-left:0; }
   h2 small { display:block; margin-left:0; }
-  .hours td { display:block; padding:0; }
-  .hours tr { display:block; padding:4px 0; }
-  .lec .n:empty { display:none; }
+      .lec .n:empty { display:none; }
   .lec { grid-template-columns:1fr; }
-  .grid.two { grid-template-columns:1fr; }
-  .lec .acts { justify-content:flex-start; }
+    .lec .acts { justify-content:flex-start; }
   dl.gl > div { grid-template-columns:1fr; }
   .foot .in { grid-template-columns:1fr; }
   .foot .side { flex-direction:row; align-items:center; gap:14px; }

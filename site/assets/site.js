@@ -10,10 +10,8 @@
   // Header and footer.
   var top = document.createElement('header');
   top.className = 'top';
-  var nav = [['index.html#lectures', 'Lectures'], ['index.html#simulators', 'Simulators'], ['index.html#quizzes', 'Quizzes'],
-    ['index.html#assignments', 'Assignments'], ['glossary.html', 'Glossary']];
-  top.innerHTML = '<div class="in"><a class="brand" href="index.html">' + esc(C.code) + ' · ' + esc(C.name) +
-    '<small>' + esc(C.term) + ', ' + esc(C.section) + '</small></a><nav>' +
+  var nav = [['index.html#lectures', 'Lectures'], ['index.html#simulators', 'Simulators'], ['glossary.html', 'Glossary']];
+  top.innerHTML = '<div class="in"><a class="brand" href="index.html">' + esc(C.code) + ' · ' + esc(C.name) + '</a><nav>' +
     nav.map(function (n) { return '<a href="' + n[0] + '"' + (page === 'glossary' && n[1] === 'Glossary' ? ' class="on"' : '') + '>' + n[1] + '</a>'; }).join('') +
     '</nav></div>';
   if (page !== 'viewer') document.body.insertBefore(top, document.body.firstChild);
@@ -26,7 +24,7 @@
       '<p>© 2026 ' + esc(C.instructor) + '. The course materials on this site are licensed under the <a href="' + CC + '" rel="license">' +
       'Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>. ' +
       'You may share and adapt them for non-commercial purposes if you give credit and share your adaptations under the same license.</p>' +
-      '<p>The simulators and assignment support programs are under the <a href="simulations/LICENSE.txt">MIT License</a>. ' +
+      '<p>The simulators are under the <a href="simulations/LICENSE.txt">MIT License</a>. ' +
       'The BRAC University logo and the textbook cover images belong to their owners.</p></div></div>';
     document.body.appendChild(foot);
   } else {
@@ -46,10 +44,7 @@
     document.title = C.code + ' – ' + C.name;
     var q = function (sel) { return document.querySelector(sel); };
     q('#hero').innerHTML = '<div><h1>' + esc(C.code) + ' – ' + esc(C.name) + '</h1><p>' + esc(C.dept) + '<br>' +
-      esc(C.term) + ', ' + esc(C.section) + ' · ' + esc(C.instructor) + ' (' + esc(C.initials) + ')</p></div>' +
-      '<table class="hours">' + C.hours.map(function (h) {
-        return '<tr><td>' + esc(h.what) + '</td><td>' + esc(h.days) + ', ' + esc(h.time) + '</td><td class="m">' + esc(h.where) + '</td></tr>';
-      }).join('') + '</table>';
+      esc(C.instructor) + ' (' + esc(C.initials) + ')</p></div>';
 
     q('#lectures .lecs').innerHTML = S.lectures.map(function (l) {
       var sims = (l.simulators || []).map(sim).filter(Boolean);
@@ -66,20 +61,6 @@
         '<h3><a href="' + esc(s.file) + '">' + esc(s.title) + '</a></h3><p>' + esc(s.desc) + '</p>' +
         '<div class="acts"><a class="btn pri" href="' + esc(s.file) + '">Open</a><a class="btn" href="' + esc(s.file) + '" download>Download</a></div></div>';
     }).join('');
-
-    q('#quizzes .grid').innerHTML = S.quizzes.length ? S.quizzes.map(function (x) {
-      return '<div class="card"><div class="k">Quiz</div><h3>' + esc(x.title) + '</h3><p>' + esc(x.topics) + '</p><div class="acts">' +
-        '<a class="btn pri" href="' + esc(x.paper.html) + '">Question paper</a>' + pdfBtn(x.paper.pdf) +
-        (x.answers ? '<a class="btn" href="' + esc(x.answers.html) + '">Solutions</a>' + pdfBtn(x.answers.pdf) : '<span class="empty">Solutions after the quiz</span>') +
-        '</div></div>';
-    }).join('') : '<p class="empty">No quizzes yet.</p>';
-
-    q('#assignments .grid').innerHTML = S.assignments.length ? S.assignments.map(function (x) {
-      return '<div class="card"><div class="k">Due ' + esc(x.due) + '</div><h3>' + esc(x.title) + '</h3><p>' + esc(x.subtitle) + '</p>' +
-        (x.support ? '<p>Support programs: ' + x.support.map(function (f) { return '<a href="' + esc(f) + '"><code>' + esc(f.split('/').pop()) + '</code></a>'; }).join(', ') + '</p>' : '') +
-        '<div class="acts"><a class="btn pri" href="' + esc(x.paper.html) + '">Assignment</a>' + pdfBtn(x.paper.pdf) +
-        (x.zip ? '<a class="btn" href="' + esc(x.zip) + '" download>Support files (.zip)</a>' : '') + '</div></div>';
-    }).join('') : '<p class="empty">No assignments yet.</p>';
   };
 
   R.glossary = function () {
