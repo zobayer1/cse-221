@@ -1,0 +1,29 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A simple example: guess my number</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+table.tab td { padding:12px; font-size:24px; }
+table.tab th { font-size:20px; }
+td.b { color:var(--blue); font-weight:700; font-size:30px !important; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">A simple example: guess my number</div>
+<div class="frame">
+<div class="cols" style="--gap:56px;grid-template-columns:0.9fr 1.1fr">
+  <div>
+    <p>I am thinking of a number between <b>1 and 1,000</b>.</p>
+    <p class="mt">You guess, and I answer <b>higher</b>, <b>lower</b> or <b>correct</b>.</p>
+    <div class="block example mt-l"><div class="bt">Question</div><div class="bb">What is the fewest guesses that always works, however unlucky you are?</div></div>
+  </div>
+  <div>
+    <table class="tab">
+      <tr><th>Numbers</th><th class="r">One by one</th><th class="r">Guess the middle</th></tr>
+      <tr><td>1,000</td><td class="r">1,000</td><td class="r b">10</td></tr>
+      <tr><td>1,000,000</td><td class="r">1,000,000</td><td class="r b">20</td></tr>
+      <tr><td>1,000,000,000</td><td class="r">1,000,000,000</td><td class="r b">30</td></tr>
+    </table>
+    <p class="small muted mt">Worst-case number of guesses. Guessing the middle halves what is left each time: that is binary search, and it needs about <span class="rm">log<sub>2</sub></span> <var>n</var> guesses.</p>
+  </div>
+</div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

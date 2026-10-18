@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why exact complexity is hard to calculate</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.hw { margin-top:28px; display:grid; grid-template-columns:1fr 70px 1fr; gap:0; align-items:stretch; flex:1; min-height:0; }
+.hw .col h3 { font-size:22px; font-weight:700; padding-top:20px; padding-bottom:10px; border-bottom:2px solid var(--ink); }
+.hw ul { list-style:none; }
+.hw li { padding:12px 0; border-bottom:1px solid var(--grey); }
+.hw li b { display:block; font-family:var(--serif); font-weight:700; font-size:23px; }
+.hw li span { font-size:18px; color:var(--muted); line-height:1.4; }
+.hw .ar { display:flex; align-items:center; justify-content:center; font-size:44px; color:var(--blue); }
+.hw .col.w { background:var(--tint); padding:0 24px 16px; box-shadow:inset 0 6px 0 var(--blue); }
+.hw .col.w h3 { color:var(--blue); }
+.hw .col.l { display:flex; flex-direction:column; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Why exact complexity is hard to calculate</div>
+<div class="frame">
+
+<div class="hw">
+  <div class="col l"><h3>Finding the exact running time is hard</h3><ul>
+    <li><b>Exact counts get messy</b><span>Every operation, every line, every constant.</span></li>
+    <li><b>Best case depends on the input</b><span>It is often a lucky special case, and tells us little.</span></li>
+    <li><b>Average case is difficult to compute</b><span>We need to know how likely each input is.</span></li></ul></div>
+  <div class="ar">→</div>
+  <div class="col w"><h3>So we usually focus on the worst case</h3><ul>
+    <li><b>Easier to compute</b><span>Find the input that makes the algorithm work hardest.</span></li>
+    <li><b>Usually close to the actual running time</b><span>For many algorithms, bad inputs are common.</span></li>
+    <li><b>It is a guarantee</b><span>The algorithm never takes longer than this, on any input.</span></li></ul></div>
+</div>
+</div>
+<div class="doodle" style="left:230px;bottom:32px;width:216px"><svg viewBox="0 0 260 170" width="270" height="176" fill="none" stroke="#1a1a1a" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">
+<g stroke="none" fill="#8A8C90" font-style="italic" font-size="15"><text x="8" y="22">Σ p(x)·T(x)</text><text x="150" y="18">P(input)?</text><text x="20" y="62">E[T(n)]</text><text x="170" y="56">H<tspan font-size="10" dy="4">n</tspan></text><text x="98" y="40">∫ ?</text></g>
+<circle cx="130" cy="92" r="14"/><path d="M123 88 l4 2 M137 88 l-4 2 M124 99 q6 -4 12 0"/><path d="M146 80 q4 5 0 9 M114 78 q-4 5 0 9" stroke="#2B5BAA" stroke-width="1.8"/>
+<path d="M130 106 L130 140 M130 140 L120 168 M130 140 L140 168 M130 116 L114 104 L120 88 M130 116 L146 104 L140 88"/>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

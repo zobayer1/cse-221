@@ -1,0 +1,65 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Binary search, recursively</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:20px 24px; }
+.codebox pre { font-size:22px; line-height:1.7; }
+.codebox .fn { font-weight:700; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.onote { font-size:15px; color:var(--muted); }
+
+.rw3 { margin-top:12px; display:grid; grid-template-columns:650px 1fr; gap:32px; }
+.rw3 .codebox { padding:14px 18px; }
+.rw3 .codebox pre { font-size:17px; line-height:1.5; }
+.call0 { margin-top:10px; font-size:17px; color:var(--muted); }
+.call0 code { font-family:var(--mono); color:var(--ink); font-size:16px; }
+.tr2 { margin-top:10px; font-family:var(--mono); font-size:15px; line-height:1.4; }
+.tr2 .f { padding:6px 10px; border-left:3px solid var(--grey); margin-bottom:5px; }
+.tr2 .f b { font-weight:700; display:block; }
+.tr2 .f span { color:var(--muted); }
+.tr2 .f.hit { border-left-color:#2E7D32; background:#EEF6EF; } .tr2 .f.hit b, .tr2 .f.hit span { color:#2E7D32; }
+.cx { margin-top:36px; padding-top:14px; display:grid; grid-template-columns:1fr 1fr 300px; gap:20px; align-items:end; }
+.cx > div.c { padding:12px 18px; background:var(--tint); border-left:5px solid var(--blue); }
+.cx h3 { font-size:17px; font-weight:700; }
+.cx .o { font-family:var(--serif); font-weight:700; font-size:26px; color:var(--blue); }
+.cx p { font-size:15px; color:var(--muted); line-height:1.4; margin-top:2px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Binary search, recursively</div>
+<div class="frame">
+
+<div class="rw3">
+  <div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">BINARY-SEARCH-REC</span>(A, x, lo, hi)
+<span class="ln">2</span>    <span class="kw">if</span> lo &gt; hi
+<span class="ln">3</span>        <span class="kw">return</span> NIL
+<span class="ln">4</span>    mid = lo + ⌊(hi − lo) / 2⌋
+<span class="ln">5</span>    <span class="kw">if</span> A[mid] == x
+<span class="ln">6</span>        <span class="kw">return</span> mid
+<span class="ln">7</span>    <span class="kw">elseif</span> A[mid] &lt; x
+<span class="ln">8</span>        <span class="kw">return</span> BINARY-SEARCH-REC(A, x, mid + 1, hi)
+<span class="ln">9</span>    <span class="kw">else</span>
+<span class="ln">10</span>        <span class="kw">return</span> BINARY-SEARCH-REC(A, x, lo, mid − 1)</pre></div><p class="call0">Start with <code>BINARY-SEARCH-REC(A, x, 0, n − 1)</code>. Each call checks the middle, then searches one half.</p></div>
+  <div><div class="k3">Trace: find 42</div>
+    <div class="tr2">
+      <div class="f"><b>(lo 0, hi 7) mid 3</b><span>17 &lt; 42, search (4, 7)</span></div>
+      <div class="f" style="margin-left:20px"><b>(lo 4, hi 7) mid 5</b><span>31 &lt; 42, search (6, 7)</span></div>
+      <div class="f hit" style="margin-left:40px"><b>(lo 6, hi 7) mid 6</b><span>42 found, return 6</span></div>
+      <div class="f" style="border-left-color:transparent"><span>6 is passed back up to the first call</span></div>
+    </div></div>
+</div>
+<div class="cx">
+  <div class="c"><h3>Time</h3><div class="o">O(log <i>n</i>)</div><p>Constant work, then one call on half the range.<br><span style="white-space:nowrap"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i>/2) + <i>c</i></span></p></div>
+  <div class="c"><h3>Extra space</h3><div class="o">O(log <i>n</i>)</div><p>Up to log<sub>2</sub> <i>n</i> + 1 calls on the call stack.<br>The loop version needs only O(1).</p></div>
+  <svg viewBox="0 0 300 120" width="300" height="120" fill="none" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<rect x="8" y="70" width="64" height="30" rx="3" stroke="#2B5BAA" stroke-width="2.4"/><rect x="40" y="76" width="30" height="18" rx="2" stroke="#2B5BAA" stroke-width="1.8"/><rect x="56" y="80" width="13" height="10" rx="2" stroke="#2B5BAA" stroke-width="1.5"/>
+<circle cx="200" cy="34" r="12"/><path d="M194 31 l3 1 M206 31 l-3 1 M195 39 q5 4 10 0"/>
+<path d="M200 46 L200 80 M200 80 L190 114 M200 80 L210 114 M200 56 L150 70 L82 78 M200 56 L222 46"/>
+<text x="250" y="22" font-size="13" fill="#5B5E63" stroke="none" text-anchor="middle">half of a half</text><text x="250" y="38" font-size="13" fill="#5B5E63" stroke="none" text-anchor="middle">of a half…</text>
+</svg>
+</div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

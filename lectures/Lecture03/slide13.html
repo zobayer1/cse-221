@@ -1,0 +1,49 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Selection sort</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:20px 24px; }
+.codebox pre { font-size:22px; line-height:1.7; }
+.codebox .fn { font-weight:700; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.onote { font-size:15px; color:var(--muted); }
+
+.bw { margin-top:16px; display:grid; grid-template-columns:600px 1fr; gap:36px; flex:1; min-height:0; }
+.bw .codebox pre { font-size:18px; line-height:1.55; }
+.idea { font-size:19px; line-height:1.5; }
+.swp { margin-top:14px; }
+.swp svg { display:block; margin:2px auto 0; }
+.idea b { font-weight:700; }
+.idea li { list-style:none; padding:9px 0 9px 22px; border-bottom:1px solid var(--grey); position:relative; }
+.idea li::before { content:''; position:absolute; left:0; top:19px; width:8px; height:8px; background:var(--blue); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Selection sort</div>
+<div class="frame">
+
+<div class="bw">
+  <div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">SELECTION-SORT</span>(A, n)
+<span class="ln">2</span>    <span class="kw">for</span> i = 0 <span class="kw">to</span> n − 2
+<span class="ln">3</span>        min = i
+<span class="ln">4</span>        <span class="kw">for</span> j = i + 1 <span class="kw">to</span> n − 1
+<span class="ln">5</span>            <span class="kw">if</span> A[j] &lt; A[min]
+<span class="ln">6</span>                min = j
+<span class="ln">7</span>        <span class="kw">if</span> min ≠ i
+<span class="ln">8</span>            exchange A[i] with A[min]</pre></div></div>
+  <div style="display:flex;flex-direction:column"><div class="k3">Idea</div><ul class="idea">
+    <li>Scan the unsorted part A[i..n − 1] to find the <b>smallest</b> element.</li>
+    <li><b>Swap</b> it into position i. Now A[0..i] holds the <i>i</i> + 1 smallest, in their <b>final</b> places.</li>
+    <li>At most <b>one swap per pass</b>, however the input looks.</li></ul>
+    </div>
+</div>
+</div>
+<div class="doodle" style="left:936px;top:490px;width:234px"><svg viewBox="0 0 260 200" width="260" height="200" fill="none" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><rect x="10" y="140" width="30" height="30" rx="3" fill="#fff" stroke="#1a1a1a"/><text x="25" y="161" font-size="15" font-weight="700" text-anchor="middle" fill="#1a1a1a" stroke="none">5</text><rect x="44" y="140" width="30" height="30" rx="3" fill="#fff" stroke="#1a1a1a"/><text x="59" y="161" font-size="15" font-weight="700" text-anchor="middle" fill="#1a1a1a" stroke="none">2</text><rect x="78" y="140" width="30" height="30" rx="3" fill="#fff" stroke="#1a1a1a"/><text x="93" y="161" font-size="15" font-weight="700" text-anchor="middle" fill="#1a1a1a" stroke="none">9</text><rect x="112" y="140" width="30" height="30" rx="3" fill="#2B5BAA" stroke="#2B5BAA"/><text x="127" y="161" font-size="15" font-weight="700" text-anchor="middle" fill="#fff" stroke="none">1</text><rect x="146" y="140" width="30" height="30" rx="3" fill="#fff" stroke="#1a1a1a"/><text x="161" y="161" font-size="15" font-weight="700" text-anchor="middle" fill="#1a1a1a" stroke="none">7</text>
+<circle cx="200" cy="60" r="13"/><path d="M194 57 l3 1 M206 57 l-3 1 M195 66 q5 4 10 0"/>
+<path d="M200 73 L200 108 M200 108 L190 140 M200 108 L210 140 M200 83 L160 106 L127 134 M200 83 L222 70"/>
+<text x="126" y="30" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1" font-size="13" fill="#5B5E63" stroke="none" text-anchor="middle">you, the smallest. front!</text>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

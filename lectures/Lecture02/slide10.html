@@ -1,0 +1,56 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Binary search: use the order</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.arr { display:flex; }
+.arr .c { display:flex; flex-direction:column; align-items:center; }
+.arr .v { width:var(--w,92px); height:var(--h,78px); border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:var(--fs,34px); background:#fff; }
+.arr .c:first-child .v { margin-left:0; }
+.arr .i { font-family:var(--mono); font-size:var(--is,17px); color:var(--muted); margin-top:6px; }
+.arr .v.out { background:#EEF0F2; color:#B4B7BB; border-color:#B4B7BB; position:relative; z-index:0; }
+.arr .v.chk { background:var(--blue); color:#fff; border-color:var(--blue); position:relative; z-index:1; }
+.arr .v.hit { box-shadow:inset 0 0 0 3px #C62828; }
+
+.bi-l { margin-top:12px; font-family:var(--serif); font-weight:400; font-size:29px; line-height:1.3; max-width:1060px; }
+.bi-l b { color:var(--blue); font-weight:700; }
+.bia { margin-top:42px; display:flex; flex-direction:column; align-items:center; position:relative; }
+.brace { display:flex; width:100%; justify-content:center; }
+.brace .bl { width:calc(4 * 96px - 2px); margin-right:calc(4 * 96px - 6px); border:2px solid #C62828; border-bottom:none; height:14px; border-radius:6px 6px 0 0; position:relative; }
+.brace .bl span { position:absolute; left:50%; bottom:20px; transform:translateX(-50%); white-space:nowrap; font-size:18px; color:#C62828; font-weight:700; }
+.gm { margin-top:22px; font-size:19px; color:var(--muted); }
+.mid { font-family:var(--mono); font-size:15px; color:var(--blue); font-weight:700; margin-top:6px; }
+.cases3 { margin-top:36px; display:grid; grid-template-columns:repeat(3,1fr) 200px; gap:20px; align-items:start; }
+.c3 { border-top:2px solid var(--ink); padding-top:10px; }
+.c3 .t { font-family:var(--mono); font-size:19px; font-weight:700; }
+.c3 p { font-size:18px; color:var(--muted); margin-top:4px; }
+.c3 p b { color:var(--ink); font-weight:700; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Binary search: use the order</div>
+<div class="frame">
+
+<p class="bi-l">In a sorted array, one comparison with the <b>middle</b> element tells us which half <i>x</i> must be in.</p>
+<div class="bia">
+  <div class="brace"><div class="bl"><span>all ≤ 17 &lt; 42: x cannot be here</span></div></div>
+  <div class="arr" style="--w:96px;--h:74px;--fs:32px;--is:16px"><div class="c"><div class="v out">3</div><div class="i">0</div></div><div class="c"><div class="v out">8</div><div class="i">1</div></div><div class="c"><div class="v out">12</div><div class="i">2</div></div><div class="c"><div class="v chk">17</div><div class="i">3</div></div><div class="c"><div class="v">24</div><div class="i">4</div></div><div class="c"><div class="v">31</div><div class="i">5</div></div><div class="c"><div class="v">42</div><div class="i">6</div></div><div class="c"><div class="v">59</div><div class="i">7</div></div></div>
+  <div class="mid">find x = 42 · middle is index 3</div>
+  <p class="gm">Remember “guess my number”? 1 to 1,000 in at most 10 guesses. Same idea.</p>
+</div>
+<div class="cases3">
+  <div class="c3"><div class="t">A[mid] == x</div><p><b>Found.</b> Return mid.</p></div>
+  <div class="c3"><div class="t">A[mid] &lt; x</div><p>x can only be to the <b>right</b>. Drop the left half.</p></div>
+  <div class="c3"><div class="t">A[mid] &gt; x</div><p>x can only be to the <b>left</b>. Drop the right half.</p></div>
+  
+</div>
+</div>
+<div class="doodle" style="left:1009px;top:448px;width:220px"><svg viewBox="0 0 220 150" width="220" height="150" fill="none" stroke="#1a1a1a" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<circle cx="120" cy="52" r="14"/><path d="M114 49 q2 -3 4 0 M123 49 q2 -3 4 0 M113 58 q7 6 14 0"/>
+<path d="M120 66 L120 106 M120 106 L109 146 M120 106 L131 146 M120 76 L100 62 L94 44 M120 76 L146 90 L168 84"/>
+<g stroke="#C62828" stroke-width="2"><path d="M24 30 l26 26 M50 30 l-26 26"/></g>
+<text x="40" y="84" font-size="13" fill="#5B5E63" stroke="none" text-anchor="middle">half gone!</text>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

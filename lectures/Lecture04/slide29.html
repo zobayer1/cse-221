@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>But what are the chances?</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ch { flex:1; margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:44px; align-items:center; }
+.chl .eq { font-family:var(--serif); font-size:28px; line-height:1.6; }
+.chl .eq b { color:var(--blue); }
+.chl .lb { font-size:15px; font-weight:700; color:var(--muted); letter-spacing:0.06em; text-transform:uppercase; margin-top:12px; }
+.chl .sm { font-size:15px; color:var(--muted); margin-top:16px; line-height:1.45; }
+.cht table { width:100%; border-collapse:collapse; font-size:19px; }
+.cht th { text-align:left; font-size:15px; color:var(--muted); font-weight:700; padding:6px 8px; border-bottom:2px solid var(--ink); }
+.cht td { padding:10px 8px; border-bottom:1px solid var(--grey); font-family:var(--serif); font-size:24px; }
+.cht td.g { color:#2E7D32; font-family:var(--sans); font-size:17px; font-weight:700; }
+.cht .bl { margin-top:18px; font-size:19px; line-height:1.45; }
+.cht .bl b { color:#2E7D32; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">But what are the chances?</div>
+<div class="frame"><div class="ch"><div class="chl"><div class="lb">One pick is the largest</div><div class="eq"><b>1/<i>n</i></b></div><div class="lb">Every pick is the largest</div><div class="eq">1/<i>n</i> · 1/(<i>n</i>−1) · … · 1/1 = <b>1/<i>n</i>!</b></div><p class="sm">Counting “largest or smallest” at each step gives 2<sup><i>n</i>−1</sup>/<i>n</i>!, still tiny.</p></div><div class="cht"><table><tr><th><i>n</i></th><th>chance of the staircase</th><th></th></tr><tr><td>8</td><td>1 in 40,320</td><td class="g">rare</td></tr><tr><td>20</td><td>1 in 2.4 × 10<sup>18</sup></td><td class="g">never</td></tr><tr><td>100</td><td>1 in 10<sup>158</sup></td><td class="g">never, ever</td></tr></table><p class="bl">Expected time: <b>O(<i>n</i> log <i>n</i>)</b> on <b>every</b> input.</p></div></div></div>
+<div class="doodle" style="left:48px;top:490px;width:420px"><svg width="420" height="130" viewBox="0 0 420 130" fill="none" stroke="#1A1A1A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1" style="display:block;margin-top:14px">
+<rect x="90" y="4" width="320" height="46" rx="10" stroke-width="2"/><path d="M114 50 l-16 14 l30 -14" fill="#fff" stroke-width="2"/>
+<text x="250" y="24" font-size="13.5" fill="#1A1A1A" stroke="none" text-anchor="middle">For n = 20, winning the lottery twice</text>
+<text x="250" y="41" font-size="13.5" fill="#1A1A1A" stroke="none" text-anchor="middle">in a row is more likely. Buy a ticket!</text>
+<circle cx="70" cy="78" r="12"/><path d="M64 75 h3 M73 75 h3"/><path d="M64 83 q6 5 12 0"/>
+<path d="M70 90 v22"/><path d="M70 112 l-8 16"/><path d="M70 112 l8 16"/><path d="M70 98 l-16 -10"/><path d="M70 98 l20 4"/>
+<rect x="90" y="96" width="34" height="20" rx="3" stroke="#2B5BAA"/><path d="M98 102 h18 M98 108 h12" stroke="#2B5BAA"/>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

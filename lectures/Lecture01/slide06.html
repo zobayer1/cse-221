@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memory (space)</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.rdef { margin-top:26px; display:grid; grid-template-columns:1fr 200px; gap:28px; align-items:center; }
+.rdef p { font-family:var(--serif); font-weight:400; font-size:33px; line-height:1.3; }
+.rdef p b { color:var(--blue); font-weight:700; }
+.sp { margin-top:24px; display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+.sp > div { border-top:2px solid var(--ink); padding-top:12px; }
+.sp h3 { font-size:22px; font-weight:700; }
+.sp p { font-size:19px; color:var(--muted); margin-top:6px; line-height:1.45; }
+.sp .hi h3 { color:var(--blue); }
+.k2 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:4px; }
+.sx { margin-top:36px; display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+.sx > div { background:var(--tint); border-left:5px solid var(--blue); padding:14px 20px; font-size:19px; line-height:1.5; }
+.sx .code { font-size:18px; }
+.sx b { font-weight:700; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Memory (space)</div>
+<div class="frame">
+
+<div class="rdef"><p><b>Space</b> is the amount of memory an algorithm uses, counted in memory cells, as a function of input size&nbsp;<i>n</i>.</p></div>
+<div class="sp">
+  <div><h3>Input space</h3><p>Memory that holds the input itself. It is needed no matter which algorithm we use.</p></div>
+  <div class="hi"><h3>Extra space</h3><p>Memory the algorithm needs beyond the input: variables, copies, stacks. This is what we usually compare.</p></div>
+</div>
+<div class="sx">
+  <div><div class="k2">Fixed extra space</div><b>SUM(n)</b> needs only <span class="code">total</span> and <span class="code">i</span>: <b>2 cells</b>, whatever <i>n</i> is.</div>
+  <div><div class="k2">Growing extra space</div><b>Copying A[0..n − 1]</b> into a new array B needs <b><i>n</i> cells</b>.</div>
+</div>
+</div>
+<div class="doodle" style="left:1009px;top:131px;width:200px"><svg viewBox="0 0 200 170" width="200" height="170" fill="none" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">
+<circle cx="100" cy="58" r="15"/><path d="M93 55 q2 -3 4 0 M103 55 q2 -3 4 0 M94 63 q6 5 12 0"/>
+<path d="M100 73 L100 114 M100 114 L88 152 M100 114 L112 152 M100 84 L66 76 M100 84 L134 76"/>
+<rect x="24" y="52" width="44" height="30" rx="2" stroke="#2B5BAA"/><text x="46" y="72" font-size="12" fill="#2B5BAA" stroke="none" text-anchor="middle">total</text>
+<rect x="132" y="52" width="44" height="30" rx="2" stroke="#2B5BAA"/><text x="154" y="72" font-size="13" fill="#2B5BAA" stroke="none" text-anchor="middle">i</text>
+<path d="M60 24 q4 -10 12 -6 M128 18 q8 -4 12 6" stroke-width="1.8"/>
+<text x="100" y="22" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1" font-size="13" fill="#5B5E63" stroke="none" text-anchor="middle">that's it?</text>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

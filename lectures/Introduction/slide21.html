@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Example: summing 1 to n</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.sw { margin-top:30px; display:grid; grid-template-columns:1fr 380px; gap:56px; flex:1; min-height:0; }
+.spec { display:grid; grid-template-columns:110px 1fr; row-gap:8px; font-size:21px; padding-bottom:18px; border-bottom:2px solid var(--ink); }
+.spec .k { color:var(--muted); font-size:18px; padding-top:2px; }
+.codebox { margin-top:24px; background:var(--tint); border-left:5px solid var(--blue); padding:24px 28px; }
+.codebox pre { font-size:26px; line-height:1.65; }
+.codebox .fn { font-weight:700; }
+.trace .k { font-size:17px; color:var(--muted); padding-bottom:8px; border-bottom:2px solid var(--ink); }
+table.tr { width:100%; border-collapse:collapse; font-size:21px; }
+table.tr th { font-size:16px; font-weight:400; color:var(--muted); text-align:right; padding:10px 0 6px; border-bottom:1px solid var(--grey); }
+table.tr td { text-align:right; padding:8px 0; border-bottom:1px solid var(--grey); font-family:var(--serif); font-size:24px; }
+table.tr th:first-child, table.tr td:first-child { text-align:left; }
+table.tr tr.end td { font-weight:700; color:var(--blue); border-bottom:none; }
+.tnote { margin-top:18px; font-size:17px; color:var(--muted); line-height:1.45; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Example: summing 1 to <i>n</i></div>
+<div class="frame">
+
+<div class="sw">
+  <div>
+    <div class="spec"><div class="k">Input</div><div>A positive integer <i>n</i></div><div class="k">Output</div><div>The sum 1 + 2 + … + <i>n</i></div></div>
+    <div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">SUM</span>(n)
+<span class="ln">2</span>    total = 0
+<span class="ln">3</span>    <span class="kw">for</span> i = 1 <span class="kw">to</span> n
+<span class="ln">4</span>        total = total + i
+<span class="ln">5</span>    <span class="kw">return</span> total</pre></div>
+  </div>
+  <div class="trace">
+    <div class="k">Trace for <i>n</i> = 4</div>
+    <table class="tr"><tr><th>i</th><th>total</th></tr>
+      <tr><td>1</td><td>1</td></tr><tr><td>2</td><td>3</td></tr><tr><td>3</td><td>6</td></tr><tr><td>4</td><td>10</td></tr>
+      <tr class="end"><td>return</td><td>10</td></tr></table>
+    <p class="tnote">The loop body runs <i>n</i> times. Keep that in mind: counting such steps is what analysis is about.</p>
+  </div>
+</div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

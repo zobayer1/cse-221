@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Algorithm specification</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.props { margin-top:30px; border-top:2px solid var(--ink); }
+.pr { display:grid; grid-template-columns:56px 260px 1fr; gap:24px; align-items:baseline; padding:16px 0; border-bottom:1px solid var(--grey); }
+.pr .n { font-family:var(--serif); font-weight:700; font-size:28px; color:var(--blue); }
+.pr h3 { font-family:var(--serif); font-weight:700; font-size:30px; }
+.pr p { font-size:22px; line-height:1.4; }
+.pr p span { color:var(--muted); }
+.src { margin-top:36px; font-size:16px; color:var(--muted); }
+.pr p b { font-weight:700; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Algorithm specification</div>
+<div class="frame"><p class="lede">Every algorithm must have these five properties</p><div class="props"><div class="pr"><div class="n">1</div><h3>Input</h3><p>Takes <b>zero or more</b> inputs from outside the algorithm.</p></div><div class="pr"><div class="n">2</div><h3>Output</h3><p>Produces <b>at least one</b> output as its result.</p></div><div class="pr"><div class="n">3</div><h3>Definiteness</h3><p>Every step is clear and unambiguous. <span>It can be read only one way.</span></p></div><div class="pr"><div class="n">4</div><h3>Finiteness</h3><p>Stops after a finite number of steps, <b>for every</b> valid input.</p></div><div class="pr"><div class="n">5</div><h3>Effectiveness</h3><p>Every step is basic enough to actually carry out. <span>In principle, by hand with pen and paper.</span></p></div></div><p class="src">These five properties follow Donald Knuth, <i>The Art of Computer Programming</i>, Vol. 1.</p></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

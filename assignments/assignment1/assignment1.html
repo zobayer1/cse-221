@@ -1,0 +1,278 @@
+<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'><title>CSE 221 Assignment 1</title><style>
+@font-face{font-family:'IBM Plex Sans';src:url(assets/plex-sans.ttf) format('truetype');font-weight:100 700}
+@font-face{font-family:'Source Serif 4';src:url(assets/source-serif-4.ttf) format('truetype');font-weight:200 900}
+@font-face{font-family:'IBM Plex Mono';src:url(assets/plex-mono-400.ttf) format('truetype');font-weight:400}
+@font-face{font-family:'IBM Plex Mono';src:url(assets/plex-mono-600.ttf) format('truetype');font-weight:600}
+@page{size:A4;margin:12mm 14mm}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:#d9dbde}
+body{font-family:'IBM Plex Sans',Arial,sans-serif;color:#000;font-size:10.5pt;line-height:1.42}
+.sheet{width:210mm;min-height:297mm;margin:10mm auto;background:#fff;padding:12mm 14mm;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+@media print{html{background:#fff}.sheet{width:auto;min-height:0;margin:0;padding:0;box-shadow:none}}
+.hd{display:grid;grid-template-columns:auto 1fr auto;gap:4mm;align-items:center;padding-bottom:2mm;border-bottom:1.2pt solid #000}
+.hd img{height:10mm}
+.hd .t{font-family:'Source Serif 4',serif;font-weight:600;font-size:13pt;line-height:1.15}
+.hd .t span{font-family:'IBM Plex Sans';font-weight:400;font-size:9pt;display:block}
+.hd .m{text-align:right;font-size:9pt;line-height:1.35}
+.hd .m b{font-weight:600}
+h1{font-family:'Source Serif 4',serif;font-weight:700;font-size:15pt;text-align:center;margin:4mm 0 1mm}
+.sub1{text-align:center;font-size:9.5pt;color:#333}
+h2{font-family:'Source Serif 4',serif;font-weight:700;font-size:12pt;margin:5mm 0 1.5mm;break-after:avoid}
+h2 .n{display:inline-block;width:7mm}
+p{margin:1.5mm 0}
+code,pre{font-family:'IBM Plex Mono',monospace;font-size:9pt}
+pre{border-left:2pt solid #000;padding:1.2mm 4mm;margin:2mm 0;line-height:1.45;white-space:pre;break-inside:avoid}
+pre b{font-weight:600}
+pre .c{color:#666}
+ol,ul{margin:1.5mm 0 1.5mm 6mm}
+li{margin:.8mm 0;padding-left:1mm}
+li::marker{font-weight:600}
+b,strong{font-weight:600}
+table{border-collapse:collapse;width:100%;margin:2mm 0;font-size:9.5pt;break-inside:avoid}
+th,td{padding:1.1mm 2mm;vertical-align:top;text-align:left}
+thead th{border-top:1pt solid #000;border-bottom:.6pt solid #000;font-weight:600}
+tbody tr:last-child td{border-bottom:1pt solid #000}
+td.r,th.r{text-align:center;white-space:nowrap}
+tr.tot td{border-top:.6pt solid #000;font-weight:600}
+tr.grp td{font-weight:600;padding-top:2mm}
+.box{border:.8pt solid #000;padding:2mm 3.5mm;margin:2.5mm 0;break-inside:avoid}
+.box .bt{font-weight:600;margin-bottom:.5mm}
+.box.warn{border-width:1.4pt}
+figure{margin:3mm 0 1mm;break-inside:avoid}
+figure svg{display:block;width:100%;height:auto}
+figcaption{font-size:9pt;color:#333;text-align:center;margin-top:1mm}
+.math{font-family:'Source Serif 4',serif;font-style:italic}
+.steps td{white-space:nowrap;padding-top:.7mm;padding-bottom:.7mm}
+.steps td:first-child{font-weight:600;text-align:center}
+.mk td{padding-top:.45mm;padding-bottom:.45mm}
+.mk tr.grp td{padding-top:1.4mm}
+.keep{break-inside:avoid}
+</style></head><body><div class='sheet'>
+<div class="hd"><img src="assets/brac-logo.png" alt="BRAC University">
+  <div class="t">CSE 221 – Algorithms<span>Fall 2026, Section 19</span></div>
+  <div class="m"><b>Assignment 1</b><br>25 marks (+5 bonus)<br>Due: 30 November 2026, 11:59 PM</div></div>
+
+<h1>Distributed Merge Sort with a Round-Robin Thread Pool</h1>
+<div class="sub1">Individual assignment · Java · Submit your program and a report</div>
+
+<h2><span class="n">1.</span>The Task</h2>
+<p>You are given a large binary file of 64-bit integers. Sort it with a <b>distributed merge sort</b>: split the data into chunks, sort the chunks in parallel, then merge the sorted runs until one sorted output remains. All the work is done by a <b>fixed pool of <span class="math">N</span> worker threads</b>. Every piece of work (sorting a chunk, or a merge) is a <b>task</b>, and the tasks are handed to the workers in <b>round-robin</b> order.</p>
+<p>You will then measure how the running time, the memory use and the thread overhead change as <span class="math">N</span> grows from 1 to 32, and explain what you see in a short report.</p>
+
+<figure>
+<svg viewBox="0 0 680 236" xmlns="http://www.w3.org/2000/svg" font-family="IBM Plex Sans, Arial, sans-serif" font-size="11">
+  <defs>
+    <style>
+      .w0{fill:#dbe7f5}.w1{fill:#dcefd6}.w2{fill:#fbe3c8}.w3{fill:#e9def4}
+      rect{stroke:#000;stroke-width:.8}
+      .lab{font-size:10.5px;fill:#333}
+      .tk{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-anchor:middle}
+      .ar{stroke:#777;stroke-width:.8;fill:none}
+    </style>
+  </defs>
+  <text class="lab" x="0" y="20">input</text>
+  <rect x="80" y="6" width="560" height="22" fill="#f1f1f1"/>
+  <text class="tk" x="360" y="21">n unsorted 64-bit integers, split into 8 chunks</text>
+  <g class="ar"><path d="M115 28v10M185 28v10M255 28v10M325 28v10M395 28v10M465 28v10M535 28v10M605 28v10"/></g>
+
+  <text class="lab" x="0" y="57">sort chunks</text>
+  <rect class="w0" x="80" y="40" width="70" height="26"/><text class="tk" x="115" y="57">t0·W0</text>
+  <rect class="w1" x="150" y="40" width="70" height="26"/><text class="tk" x="185" y="57">t1·W1</text>
+  <rect class="w2" x="220" y="40" width="70" height="26"/><text class="tk" x="255" y="57">t2·W2</text>
+  <rect class="w3" x="290" y="40" width="70" height="26"/><text class="tk" x="325" y="57">t3·W3</text>
+  <rect class="w0" x="360" y="40" width="70" height="26"/><text class="tk" x="395" y="57">t4·W0</text>
+  <rect class="w1" x="430" y="40" width="70" height="26"/><text class="tk" x="465" y="57">t5·W1</text>
+  <rect class="w2" x="500" y="40" width="70" height="26"/><text class="tk" x="535" y="57">t6·W2</text>
+  <rect class="w3" x="570" y="40" width="70" height="26"/><text class="tk" x="605" y="57">t7·W3</text>
+  <g class="ar"><path d="M115 66l35 12M185 66l-35 12M255 66l35 12M325 66l-35 12M395 66l35 12M465 66l-35 12M535 66l35 12M605 66l-35 12"/></g>
+
+  <text class="lab" x="0" y="97">merge</text>
+  <rect class="w0" x="80" y="80" width="140" height="26"/><text class="tk" x="150" y="97">t8·W0</text>
+  <rect class="w1" x="220" y="80" width="140" height="26"/><text class="tk" x="290" y="97">t9·W1</text>
+  <rect class="w2" x="360" y="80" width="140" height="26"/><text class="tk" x="430" y="97">t10·W2</text>
+  <rect class="w3" x="500" y="80" width="140" height="26"/><text class="tk" x="570" y="97">t11·W3</text>
+  <g class="ar"><path d="M150 106l70 12M290 106l-70 12M430 106l70 12M570 106l-70 12"/></g>
+
+  <text class="lab" x="0" y="137">merge</text>
+  <rect class="w0" x="80" y="120" width="280" height="26"/><text class="tk" x="220" y="137">t12·W0</text>
+  <rect class="w1" x="360" y="120" width="280" height="26"/><text class="tk" x="500" y="137">t13·W1</text>
+  <g class="ar"><path d="M220 146l140 12M500 146l-140 12"/></g>
+
+  <text class="lab" x="0" y="177">merge</text>
+  <rect class="w2" x="80" y="160" width="560" height="26"/><text class="tk" x="360" y="177">t14·W2   (W0, W1, W3 are idle)</text>
+
+  <text class="lab" x="0" y="216">queues</text>
+  <g class="tk" style="text-anchor:start">
+    <rect class="w0" x="80" y="203" width="12" height="12"/><text x="98" y="213">W0: t0 t4 t8 t12</text>
+    <rect class="w1" x="225" y="203" width="12" height="12"/><text x="243" y="213">W1: t1 t5 t9 t13</text>
+    <rect class="w2" x="370" y="203" width="12" height="12"/><text x="388" y="213">W2: t2 t6 t10 t14</text>
+    <rect class="w3" x="520" y="203" width="12" height="12"/><text x="538" y="213">W3: t3 t7 t11</text>
+  </g>
+</svg>
+<figcaption>Example with 8 chunks and <span class="math">N</span> = 4 workers. The <span class="math">i</span>-th task <code>ti</code> goes to worker <code>W(i mod 4)</code>.<br>The last merge is done by one worker while the other three wait. Can you do better?</figcaption>
+</figure>
+
+<h2><span class="n">2.</span>Before You Start</h2>
+<p>This assignment combines several ideas. Learn them one at a time on small problems first; each exercise below takes an hour or less.</p>
+<table>
+<thead><tr><th style="width:26%">Learn</th><th>Practice on a simpler problem</th></tr></thead>
+<tbody>
+<tr><td><b>Merge sort</b><br><small>Lecture 4, CLRS §2.3</small></td><td>Write a sequential top-down merge sort for a <code>long[]</code>. Sort 1,000 random values and check the result against a brute-force check.</td></tr>
+<tr><td><b>Binary file I/O</b><br><small><code>java.nio</code></small></td><td>Read <code>data_1mb.bin</code> with a little-endian <code>ByteBuffer</code> and print the first five values, the minimum and the maximum. Sort it with your sequential merge sort, write it out, and check it with <code>Validate.java</code>.</td></tr>
+<tr><td><b>Threads</b><br><small><code>Thread</code>, <code>start</code>, <code>join</code></small></td><td>Sum a large array with <span class="math">k</span> threads, each summing its own slice, then add up the parts after <code>join()</code>. Then let all threads add to one shared variable without locking, and see the wrong answer (a race condition).</td></tr>
+<tr><td><b>Synchronization</b><br><small><code>synchronized</code>, <code>BlockingQueue</code>, <code>CountDownLatch</code></small></td><td>Write a producer–consumer program: one thread puts numbers into a bounded queue, two threads take them out and print them. Use a <code>CountDownLatch</code> so that <code>main</code> waits until every number has been printed.</td></tr>
+<tr><td><b>A simple thread pool</b></td><td>Build a pool of <span class="math">N</span> workers that share one queue. Submit 100 tasks that each print their number and <code>Thread.currentThread().getName()</code>, then stop the workers with a special “stop” task. Next, give each worker its own queue with round-robin dispatch, and check that task <span class="math">i</span> ran on worker <span class="math">i</span> mod <span class="math">N</span>.</td></tr>
+<tr><td><b>Deadlock in a fixed pool</b></td><td>With a pool of 1 worker, run a task that submits a second task and waits for its result. The program hangs. Explain why, then fix it by submitting the second task only from <code>main</code>.</td></tr>
+<tr><td><b>Timing Java programs</b></td><td>Time your sequential sort 5 times in a row with <code>System.nanoTime()</code>. The first run is slower: find out why (JIT compilation). Run once with <code>-Xmx64m</code> on the 1 GB file and read the error.</td></tr>
+<tr><td><b>Parallel algorithms</b><br><small>CLRS §27.1, §27.3</small></td><td>Read about work, span, speedup and parallel merge sort. Explain why <span class="math">p</span> workers can never give a speedup above <span class="math">p</span>.</td></tr>
+</tbody></table>
+
+<h2><span class="n">3.</span>Input and Output Files</h2>
+<ul>
+<li>A data file is a plain binary file with <b>no header</b>. It holds <span class="math">n</span> = (file size) / 8 values. Each value is a <b>signed 64-bit integer</b> (a Java <code>long</code>) stored in 8 bytes, <b>little-endian</b>.</li>
+<li>Your output file must have the same format and size, with the values in <b>non-decreasing</b> order.</li>
+<li>Read and write with <code>java.nio</code>: <code>ByteBuffer.order(ByteOrder.LITTLE_ENDIAN)</code> and a <code>FileChannel</code>. Be careful: <code>DataInputStream</code> and <code>DataOutputStream</code> are <i>big-endian</i>.</li>
+</ul>
+
+<h2><span class="n">4.</span>Support Programs</h2>
+<p>Download the three programs from <a href="https://github.com/zobayer1/cse-221/tree/main/assignments/assignment1/support" style="color:inherit"><code>github.com/zobayer1/cse-221/tree/main/assignments/assignment1/support</code></a>. They need JDK 17 or newer and run the same way on Windows, macOS and Linux. No compilation is needed: <code>java File.java</code> runs a single source file directly.</p>
+<table>
+<thead><tr><th style="width:34%">Command</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>java GenerateSmall.java</code></td><td>Writes <code>data_1mb.bin</code>: 131,072 random integers (1 MB).</td></tr>
+<tr><td><code>java GenerateLarge.java</code></td><td>Writes <code>data_1gb.bin</code>: 134,217,728 random integers (1 GB). Keep at least 3 GB of disk space free.</td></tr>
+<tr><td><code>java Validate.java&nbsp;in&nbsp;out</code></td><td>Checks that <code>out</code> has the same size as <code>in</code>, is sorted, and holds exactly the same values. Prints <code>PASS</code> or <code>FAIL</code> with the reason.</td></tr>
+</tbody></table>
+<p>Both generators take two optional arguments, <code>[output-file] [seed]</code>; the default seed is 221. Your program will be graded on files made with <b>other seeds</b>, and on small edge cases (an empty file, one value, all values equal, already sorted, reverse sorted). Do not assume anything about the values.</p>
+
+<h2><span class="n">5.</span>Your Program</h2>
+<p>Name the main class <code>DistributedMergeSort</code> (file <code>DistributedMergeSort.java</code>). You may add more classes, but keep every <code>.java</code> file in one folder with no <code>package</code> line. Use only the JDK standard library. It will be compiled and run like this:</p>
+<pre>javac *.java
+java -Xmx4g DistributedMergeSort &lt;input-file&gt; &lt;output-file&gt; &lt;N&gt;</pre>
+<div class="keep"><p>The last line your program prints must be one result line in exactly this form (all times in milliseconds):</p>
+<pre>RESULT threads=8 n=134217728 read_ms=1101 sort_ms=3673 write_ms=598 total_ms=5373 peak_heap_mb=2067 cpu_ms=35530</pre></div>
+
+<div class="box warn"><div class="bt">Rules (breaking one costs marks under Implementation)</div>
+<ol>
+<li><b>Fixed pool.</b> Start exactly <span class="math">N</span> worker threads (1 ≤ <span class="math">N</span> ≤ 32) once, reuse them for every task, and stop them at the end. Never start a thread per chunk or per merge. The main thread may read, write and coordinate, but it must not sort or merge.</li>
+<li><b>Round robin.</b> Each worker has its own task queue. The <span class="math">i</span>-th task submitted (counting from 0) goes to worker <span class="math">i</span> mod <span class="math">N</span>. Workers do not take tasks from other queues.</li>
+<li><b>Your own merge sort.</b> No <code>Arrays.sort</code>, <code>Arrays.parallelSort</code>, <code>Collections.sort</code>, <code>List.sort</code>, <code>sorted()</code> or any other library sort. Insertion sort is allowed for pieces of at most 64 values.</li>
+<li><b>No ready-made parallelism.</b> No <code>ExecutorService</code> / <code>Executors</code>, <code>ForkJoinPool</code>, <code>CompletableFuture</code> or parallel streams. You may use <code>Thread</code>, <code>synchronized</code>, <code>wait</code>/<code>notify</code>, locks, atomics, <code>BlockingQueue</code>, <code>CountDownLatch</code> and <code>CyclicBarrier</code>.</li>
+<li><b>Memory.</b> The 1 GB file must sort within a 4 GB heap (<code>-Xmx4g</code>).</li>
+<li><b>Time limit.</b> Every grading run must finish within <b>75 seconds</b> on the instructor's machine, for any <span class="math">N</span>. This is 3 times what a sample solution needs with one thread. A run that takes longer counts as failed.</li>
+</ol></div>
+
+<div class="box keep"><div class="bt">Hints</div>
+<ul>
+<li>A worker that waits for a task sitting in its own queue waits forever. Submit a merge only <i>after</i> both of its inputs are sorted (for example, one level at a time with a <code>CountDownLatch</code>).</li>
+<li>Near the top of the tree there are few merges but each is large, so most workers sit idle (see the figure). A large merge can be cut into independent pieces using binary search. See Lecture 4 and CLRS (3rd edition) §2.3 for merge sort and §27.3 for multithreaded merge sort.</li>
+</ul></div>
+
+<h2><span class="n">6.</span>Step by Step</h2>
+<p>Do not write the whole program at once. Build it in small steps, and check that each one works before you move on.</p>
+<table class="steps">
+<thead><tr><th style="width:5%">Step</th><th>Topic</th><th>Build</th><th>Done when</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><b>Threads</b></td><td>Start 4 threads that each print their name, then <code>join()</code> them.</td><td>All 4 names print before <code>main</code> prints “done”.</td></tr>
+<tr><td>2</td><td><b>Thread pool</b></td><td>Make <span class="math">N</span> workers that take <code>Runnable</code>s from one shared queue.</td><td>10 tasks run on 4 workers and the pool stops cleanly.</td></tr>
+<tr><td>3</td><td><b>More tasks than workers</b></td><td>Submit 100 tasks to a pool of 4 workers.</td><td>Every task runs exactly once.</td></tr>
+<tr><td>4</td><td><b>Round robin</b></td><td>Give each worker its own queue; send task <span class="math">i</span> to worker <span class="math">i</span> mod <span class="math">N</span>.</td><td>Your log shows task <span class="math">i</span> on worker <span class="math">i</span> mod <span class="math">N</span>.</td></tr>
+<tr><td>5</td><td><b>Shared data</b></td><td>Let tasks sum separate slices of one shared array.</td><td>The total equals a one-thread sum.</td></tr>
+<tr><td>6</td><td><b>Merge task</b></td><td>Write a task that merges two sorted runs into one.</td><td>The merged run is sorted and has every value.</td></tr>
+<tr><td>7</td><td><b>Two halves</b></td><td>Sort each half of the 1 MB file in a task, then merge them.</td><td><code>Validate.java</code> passes with <span class="math">N</span> = 2.</td></tr>
+<tr><td>8</td><td><b>Full sort</b></td><td>Split into many chunks, sort each, merge level by level.</td><td><code>Validate.java</code> passes for every <span class="math">N</span> and edge case.</td></tr>
+<tr><td>9</td><td><b>Metrics</b></td><td>Add timers, busy times, peak heap and CPU time.</td><td>Your program prints a correct <code>RESULT</code> line.</td></tr>
+<tr><td>10</td><td><b>Scale up</b></td><td>Run the 1 GB file at every <span class="math">N</span> on a lab machine.</td><td>Every run passes in under 75 seconds.</td></tr>
+</tbody></table>
+
+<h2><span class="n">7.</span>Measuring Performance</h2>
+<p><b>Setup.</b> Write down your CPU model, number of cores and hardware threads, RAM, operating system, disk type (SSD/HDD) and <code>java -version</code>. Plug in your laptop, and close other programs while measuring.</p>
+<p><b>Run the 1 GB experiments on a lab machine.</b> Sorting the 1 GB file needs over 2 GB of memory, which many laptops cannot spare, and the same machine for everyone makes your results easier to compare. The 1 MB experiments can run on your own computer.</p>
+<p><b>Runs.</b> For each file (1 MB and 1 GB) and each <span class="math">N</span> = 1, 2, 4, 8, 16 and 32, run your program <b>5 times</b>. Ignore the first run (the JVM is still warming up and the file is not yet cached) and report the <b>median</b> of the other four. Run <code>Validate.java</code> after every configuration and keep its output. The single-thread run on the 1 MB file is your <b>baseline</b>.</p>
+
+<table>
+<thead><tr><th style="width:21%">Metric</th><th>How to measure it</th></tr></thead>
+<tbody>
+<tr><td><b>Runtime</b></td><td>Wall-clock time of each phase (read, sort, write) and the total, with <code>System.nanoTime()</code>. From the sort times compute the speedup <span class="math">S<sub>N</sub></span> = <span class="math">T</span><sub>1</sub> / <span class="math">T<sub>N</sub></span> and the efficiency <span class="math">E<sub>N</sub></span> = <span class="math">S<sub>N</sub></span> / <span class="math">N</span>.</td></tr>
+<tr><td><b>Memory</b></td><td>Peak heap used, from the JVM (code below). Also the peak memory of the whole process, from the operating system (table below).</td></tr>
+<tr><td><b>Thread overhead</b></td><td>(a) Time to start and stop the pool. (b) For each worker: the number of tasks it ran and its busy time (<code>nanoTime</code> around each task). Idle time = sort time − busy time. (c) Total CPU time (code below). (d) The extra thread-time <span class="math">N</span>·<span class="math">T<sub>N</sub></span> − <span class="math">T</span><sub>1</sub>, which a perfect parallel program would keep at 0.</td></tr>
+<tr><td><b>Correctness</b></td><td><code>PASS</code> from <code>Validate.java</code> for every file and every <span class="math">N</span>, including your own edge-case files.</td></tr>
+</tbody></table>
+
+<p>The JVM can report peak heap and CPU time itself, which works the same on every operating system:</p>
+<pre><b>import</b> java.lang.management.*;
+
+<b>static double</b> peakHeapMb() {          <span class="c">// largest heap use so far, in MB</span>
+    <b>long</b> sum = 0;
+    <b>for</b> (MemoryPoolMXBean p : ManagementFactory.getMemoryPoolMXBeans())
+        <b>if</b> (p.getType() == MemoryType.HEAP) sum += p.getPeakUsage().getUsed();
+    <b>return</b> sum / (1024.0 * 1024.0);
+}
+
+<b>static double</b> cpuMs() {               <span class="c">// CPU time of all threads so far, in ms</span>
+    <b>var</b> os = (com.sun.management.OperatingSystemMXBean)
+             ManagementFactory.getOperatingSystemMXBean();
+    <b>return</b> os.getProcessCpuTime() / 1e6;
+}</pre>
+
+<p>To see the whole process from outside (the heap plus the JVM itself), use your operating system's tools:</p>
+<table>
+<thead><tr><th style="width:17%">OS</th><th>Command or tool</th><th style="width:30%">Read off</th></tr></thead>
+<tbody>
+<tr><td>Linux (Ubuntu)</td><td><code>/usr/bin/time -v java -Xmx4g DistributedMergeSort data_1gb.bin out.bin 8</code><br><small>If it is missing: <code>sudo apt install time</code></small></td><td>“Maximum resident set size” (KB) and “Elapsed (wall clock) time”</td></tr>
+<tr><td>macOS</td><td><code>/usr/bin/time -l java -Xmx4g DistributedMergeSort data_1gb.bin out.bin 8</code></td><td>“maximum resident set size” (bytes) and “real”</td></tr>
+<tr><td>Windows (PowerShell)</td><td><code>Measure-Command { java -Xmx4g DistributedMergeSort data_1gb.bin out.bin 8 | Out-Default }</code><br><small>For memory, watch Task Manager → Details while it runs; right-click a column header → Select columns → <i>Peak working set</i>.</small></td><td><code>TotalMilliseconds</code> and Peak working set</td></tr>
+</tbody></table>
+<p><b>Optional, any OS:</b> run with <code>java -XX:StartFlightRecording=filename=run.jfr …</code> and open <code>run.jfr</code> in JDK Mission Control to see a timeline of what each thread did. A screenshot of it makes a good figure for thread overhead.</p>
+
+<h2><span class="n">8.</span>The Report</h2>
+<p>Submit a PDF report, at most 8 pages plus appendices. Include:</p>
+<ol>
+<li><b>Algorithm.</b> How you split the data, which tasks you create, how a merge waits for its inputs, and how tasks reach the workers. Draw a diagram and give CLRS-style pseudocode.</li>
+<li><b>Analysis.</b> Running time and extra memory of your algorithm in terms of <span class="math">n</span> and <span class="math">N</span>. Which part cannot run in parallel?</li>
+<li><b>Setup.</b> Your machine and Java version.</li>
+<li><b>How to run.</b> Exact steps to compile and run your program on Linux. <b>If your program does not run on the instructor's machine by following these steps, you will get no marks.</b></li>
+<li><b>Results.</b> A table for each file with the median times, <span class="math">S<sub>N</sub></span>, <span class="math">E<sub>N</sub></span>, peak memory and overhead for every <span class="math">N</span>. Graphs of time vs. <span class="math">N</span> and speedup vs. <span class="math">N</span> (draw the ideal line <span class="math">S<sub>N</sub></span> = <span class="math">N</span> too), and of memory vs. <span class="math">N</span>.</li>
+<li><b>Discussion.</b> Why does the 1 MB file speed up so little, or even slow down? Where does the speedup flatten for 1 GB, and why (number of cores, memory bandwidth, the last merge)? What would you change?</li>
+<li><b>Appendix.</b> All <code>RESULT</code> lines and the <code>Validate.java</code> output for every run.</li>
+</ol>
+
+<h2><span class="n">9.</span>Marking</h2>
+<table class="mk">
+<thead><tr><th>Part</th><th class="r" style="width:16%">Marks</th></tr></thead>
+<tbody>
+<tr class="grp"><td>Implementation</td><td class="r">10</td></tr>
+<tr><td>Correct output on all test files and every <span class="math">N</span> (graded with <code>Validate.java</code>)</td><td class="r">4</td></tr>
+<tr><td>Fixed pool of <span class="math">N</span> threads with round-robin dispatch (rules 1 and 2)</td><td class="r">3</td></tr>
+<tr><td>Parallel chunk sorts and merges, no deadlock, follows rules 3–6</td><td class="r">2</td></tr>
+<tr><td>Readable code and the correct <code>RESULT</code> line</td><td class="r">1</td></tr>
+<tr class="grp"><td>Performance measurement</td><td class="r">10</td></tr>
+<tr><td>Runtime: 1 MB baseline and all <span class="math">N</span>, for both files</td><td class="r">3</td></tr>
+<tr><td>Speedup and efficiency tables and graphs</td><td class="r">2</td></tr>
+<tr><td>Memory profile</td><td class="r">2</td></tr>
+<tr><td>Thread overhead</td><td class="r">2</td></tr>
+<tr><td>Correctness evidence for every run</td><td class="r">1</td></tr>
+<tr class="grp"><td>Report</td><td class="r">5</td></tr>
+<tr><td>Algorithm description, diagram and pseudocode</td><td class="r">2</td></tr>
+<tr><td>Analysis of time and memory</td><td class="r">1</td></tr>
+<tr><td>Discussion of the results</td><td class="r">2</td></tr>
+<tr class="tot"><td>Total</td><td class="r">25</td></tr>
+</tbody></table>
+
+<div class="box keep"><div class="bt">Bonus: fastest 1 GB sort (+5 / +3 / +2)</div>
+<p>The three fastest correct programs on a new 1 GB file get +5, +3 and +2 marks. Each program is run 3 times on the instructor's Linux desktop (Intel Core i9-12900K, 16 cores / 24 hardware threads, 32 GB RAM, Samsung 980 PRO NVMe SSD, OpenJDK 25) with <code>-Xmx4g</code>. The score is the median <b>total</b> wall-clock time of the whole command, including reading and writing. State in your report the <span class="math">N</span> (at most 32) you want to be timed with. Only programs that pass <code>Validate.java</code> and follow all the rules qualify.</p>
+</div>
+
+<h2><span class="n">10.</span>Submission</h2>
+<ul>
+<li>Submit one file, <code>&lt;StudentID&gt;_A1.zip</code>, through this Google Form: <a href="https://forms.gle/3bRYJRKTrLCQiRSr5" style="color:inherit"><code>forms.gle/3bRYJRKTrLCQiRSr5</code></a>. It must contain a <code>src/</code> folder with all your <code>.java</code> files and <code>report.pdf</code>.</li>
+<li><b>Deadline:</b> 30 November 2026, 11:59 PM. You have 1 month and 10 days for this task, so <b>late submissions are not accepted</b>.</li>
+<li>Do not include the data files or any compiled <code>.class</code> files.</li>
+</ul>
+<div class="box keep"><div class="bt">Use of AI tools</div>
+<p>You may use AI tools. However, your results must be reproducible on the instructor's test machine, and your report must pass an AI-writing check (such as Turnitin).</p></div>
+<div class="box warn"><div class="bt">Academic honesty</div>
+<p>This is an individual assignment. Copying is <b>heavily penalized</b> for both students: the one who copied and the one who shared their work.</p></div>
+<h2><span class="n">11.</span>Questions and Help</h2>
+<p>If anything in this assignment is unclear, or you are stuck, come and talk to me (ZBYR) in class or during consultation hours. You can discuss your design, a bug you cannot find, or how to read your measurements. Show me your progress along the way (for example, once your thread pool works, or once your sequential merge sort passes <code>Validate.java</code>). It is much better to discuss intermediate progress with me than to push everything on the last day.</p>
+</div></body></html>

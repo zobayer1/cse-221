@@ -1,0 +1,66 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duplicates: which index do you want?</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.arr { display:flex; }
+.arr .c { display:flex; flex-direction:column; align-items:center; }
+.arr .v { width:var(--w,92px); height:var(--h,78px); border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:var(--fs,34px); background:#fff; }
+.arr .c:first-child .v { margin-left:0; }
+.arr .i { font-family:var(--mono); font-size:var(--is,17px); color:var(--muted); margin-top:6px; }
+.arr .v.out { background:#EEF0F2; color:#B4B7BB; border-color:#B4B7BB; position:relative; z-index:0; }
+.arr .v.chk { background:var(--blue); color:#fff; border-color:var(--blue); position:relative; z-index:1; }
+.arr .v.hit { box-shadow:inset 0 0 0 3px #C62828; }
+
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:20px 24px; }
+.codebox pre { font-size:22px; line-height:1.7; }
+.codebox .fn { font-weight:700; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.onote { font-size:15px; color:var(--muted); }
+
+.duw { margin-top:34px; display:grid; grid-template-columns:1fr 540px; gap:36px; }
+.dua { position:relative; padding:40px 0 64px; }
+.dua .br { position:absolute; top:6px; height:14px; border:2px solid var(--blue); border-bottom:none; border-radius:6px 6px 0 0; }
+.dua .br span { position:absolute; left:50%; bottom:18px; transform:translateX(-50%); white-space:nowrap; font-size:15px; color:var(--blue); font-weight:700; }
+.dua .mk { position:absolute; bottom:0; transform:translateX(-50%); text-align:center; font-family:var(--mono); font-size:15px; font-weight:700; }
+.dua .mk::before { content:''; display:block; width:0; height:0; margin:0 auto 3px; border-left:5px solid transparent; border-right:5px solid transparent; border-bottom:8px solid currentColor; } /* CSS triangle: no font needed */
+.dua .mk.lb { color:#2E7D32; } .dua .mk.ub { color:#C62828; }
+.dua .mk span { display:block; font-family:var(--sans); font-weight:400; font-size:13px; color:var(--muted); }
+.codebox.cpp pre { font-size:15.5px; line-height:1.65; }
+.codebox.cpp .cm { color:var(--muted); }
+.fns2 { margin-top:16px; border-top:2px solid var(--ink); }
+.fn2 { display:grid; grid-template-columns:170px 1fr; gap:14px; padding:9px 0; border-bottom:1px solid var(--grey); align-items:baseline; }
+.fn2 code { font-family:var(--mono); font-weight:700; font-size:16px; }
+.fn2 p { font-size:16px; color:var(--muted); line-height:1.4; }
+.fn2 p b { color:var(--ink); font-weight:700; }
+.dnote { margin-top:16px; font-size:16px; color:var(--muted); line-height:1.5; }
+.dnote b { color:var(--ink); font-weight:700; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Duplicates: which index do you want?</div>
+<div class="frame">
+
+<div class="duw">
+  <div><div class="dua"><div class="br" style="left:141px;width:208px"><span>3 copies of 17</span></div><div class="arr" style="--w:72px;--h:60px;--fs:26px;--is:14px"><div class="c"><div class="v">3</div><div class="i">0</div></div><div class="c"><div class="v">8</div><div class="i">1</div></div><div class="c"><div class="v">17</div><div class="i">2</div></div><div class="c"><div class="v">17</div><div class="i">3</div></div><div class="c"><div class="v">17</div><div class="i">4</div></div><div class="c"><div class="v">31</div><div class="i">5</div></div><div class="c"><div class="v">42</div><div class="i">6</div></div></div><div class="mk lb" style="left:176.0px">lower_bound<span>first ≥ 17</span></div><div class="mk ub" style="left:386.0px">upper_bound<span>first &gt; 17</span></div></div>
+    <div class="fns2">
+      <div class="fn2"><code>binary_search</code><p>Is x there? Returns only <b>true or false</b>.</p></div>
+      <div class="fn2"><code>lower_bound</code><p>Position of the <b>first element ≥ x</b>: the first copy, or where x would be inserted.</p></div>
+      <div class="fn2"><code>upper_bound</code><p>Position of the <b>first element &gt; x</b>: one past the last copy.</p></div>
+    </div></div>
+  <div style="display:flex;flex-direction:column"><div class="codebox cpp"><pre class="code">vector&lt;int&gt; a = {3, 8, 17, 17, 17, 31, 42};
+
+<span class="fn">binary_search</span>(a.begin(), a.end(), 17)  <span class="cm">// true</span>
+<span class="fn">lower_bound</span>(a.begin(), a.end(), 17) - a.begin()  <span class="cm">// 2</span>
+<span class="fn">upper_bound</span>(a.begin(), a.end(), 17) - a.begin()  <span class="cm">// 5</span>
+<span class="cm">// count of 17 = 5 − 2 = 3</span>
+
+<span class="fn">lower_bound</span>(a.begin(), a.end(), 20) - a.begin()  <span class="cm">// 5</span>
+<span class="cm">// 20 is absent: 5 is where it would go</span></pre></div>
+    <p class="dnote">Our binary search returns <b>some</b> matching index, which is not enough when there are copies. All three are O(log <i>n</i>) and need a sorted range. lower_bound and upper_bound return iterators, so subtract <code style="font-family:var(--mono)">a.begin()</code> to get an index.</p></div>
+</div>
+</div>
+<div class="doodle" style="left:942px;top:568px;width:260px"><svg viewBox="0 0 300 120" width="260" height="104" fill="none" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><circle cx="60" cy="46" r="11"/><path d="M55 44 l3 1 M65 44 l-3 1 M56 51 q4 3 8 0"/><path d="M60 57 L60 88 M60 88 L52 116 M60 88 L68 116 M60 66 L48 78 M60 66 L72 78"/><text x="60" y="26" font-size="14" font-weight="700" fill="#2B5BAA" stroke="none" text-anchor="middle">17</text><circle cx="130" cy="46" r="11"/><path d="M125 44 l3 1 M135 44 l-3 1 M126 51 q4 3 8 0"/><path d="M130 57 L130 88 M130 88 L122 116 M130 88 L138 116 M130 66 L118 78 M130 66 L142 78"/><text x="130" y="26" font-size="14" font-weight="700" fill="#2B5BAA" stroke="none" text-anchor="middle">17</text><circle cx="200" cy="46" r="11"/><path d="M195 44 l3 1 M205 44 l-3 1 M196 51 q4 3 8 0"/><path d="M200 57 L200 88 M200 88 L192 116 M200 88 L208 116 M200 66 L188 78 M200 66 L212 78"/><text x="200" y="26" font-size="14" font-weight="700" fill="#2B5BAA" stroke="none" text-anchor="middle">17</text><text x="262" y="60" font-size="13" fill="#5B5E63" stroke="none" text-anchor="middle">which</text><text x="262" y="76" font-size="13" fill="#5B5E63" stroke="none" text-anchor="middle">one?</text></svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

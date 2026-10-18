@@ -1,0 +1,63 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MERGE, as merge sort calls it</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:20px 24px; }
+.codebox pre { font-size:22px; line-height:1.7; }
+.codebox .fn { font-weight:700; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.onote { font-size:15px; color:var(--muted); }
+
+.mc { margin-top:14px; display:grid; grid-template-columns:560px 1fr; gap:40px; align-items:center; }
+.mc .codebox pre { font-size:16px; line-height:1.38; }
+.mc .codebox { padding:14px 22px; }
+.mcr { display:flex; flex-direction:column; align-items:center; gap:18px; }
+.vw { display:flex; flex-direction:column; align-items:center; gap:14px; }
+.vcol { display:flex; flex-direction:column; gap:16px; }
+.vg { display:flex; flex-direction:row; align-items:center; gap:12px; }
+.vg .nm { width:22px; text-align:right; }
+.vg .nm { font-family:var(--serif); font-weight:700; font-size:22px; }
+.va { display:flex; flex-direction:row; }
+.va .v { width:52px; height:44px; border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:21px; background:#fff; }
+.va .v:first-child { margin-left:0; }
+.va .v.sa { background:#E3EBF7; border-color:var(--blue); color:var(--blue); position:relative; z-index:1; }
+.va .v.sb { background:#FBEBDD; border-color:#D9822B; color:#B5651D; position:relative; z-index:1; }
+.ok2 { display:inline-block; font-size:15px; font-weight:700; color:#2E7D32; border:2px solid #2E7D32; border-radius:20px; padding:2px 10px; }
+.stab { font-size:16px; color:var(--muted); line-height:1.45; text-align:center; }
+.stab b { color:var(--ink); }
+.rng { display:flex; gap:0; margin:-8px 0 0 34px; font-family:var(--mono); font-size:14px; }
+.rng span { width:204px; text-align:center; padding-top:4px; }
+.rng .ra { color:var(--blue); border-top:2px solid var(--blue); margin-right:4px; }
+.rng .rb { color:#B5651D; border-top:2px solid #D9822B; }
+.same { font-size:16px; color:var(--muted); line-height:1.45; text-align:center; max-width:470px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">MERGE, as merge sort calls it</div>
+<div class="frame"><div class="mc"><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">MERGE</span>(A, lo, mid, hi)
+<span class="ln">2</span>    let C[0..hi − lo] be a new array
+<span class="ln">3</span>    i = lo
+<span class="ln">4</span>    j = mid + 1
+<span class="ln">5</span>    k = 0
+<span class="ln">6</span>    <span class="kw">while</span> i ≤ mid <span class="kw">and</span> j ≤ hi
+<span class="ln">7</span>        <span class="kw">if</span> A[i] ≤ A[j]
+<span class="ln">8</span>            C[k] = A[i]
+<span class="ln">9</span>            i = i + 1
+<span class="ln">10</span>        <span class="kw">else</span>
+<span class="ln">11</span>            C[k] = A[j]
+<span class="ln">12</span>            j = j + 1
+<span class="ln">13</span>        k = k + 1
+<span class="ln">14</span>    <span class="kw">while</span> i ≤ mid         <span style="color:var(--muted)">// left half</span>
+<span class="ln">15</span>        C[k] = A[i]
+<span class="ln">16</span>        i = i + 1
+<span class="ln">17</span>        k = k + 1
+<span class="ln">18</span>    <span class="kw">while</span> j ≤ hi          <span style="color:var(--muted)">// right half</span>
+<span class="ln">19</span>        C[k] = A[j]
+<span class="ln">20</span>        j = j + 1
+<span class="ln">21</span>        k = k + 1
+<span class="ln">22</span>    <span class="kw">for</span> k = 0 <span class="kw">to</span> hi − lo  <span style="color:var(--muted)">// copy C back</span>
+<span class="ln">23</span>        A[lo + k] = C[k]</pre></div><div class="mcr"><div class="vg"><span class="nm">A</span><div class="va"><div class="v sa">2</div><div class="v sa">5</div><div class="v sa">8</div><div class="v sa">9</div><div class="v sb">1</div><div class="v sb">3</div><div class="v sb">4</div><div class="v sb">7</div></div></div><div class="rng"><span class="ra">A[lo..mid]</span><span class="rb">A[mid+1..hi]</span></div><svg width="30" height="40" viewBox="0 0 30 40" fill="none" stroke="#1A1A1A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2v32"/><path d="M7 26l8 9 8-9"/></svg><div class="vg"><span class="nm">C</span><div class="va"><div class="v sb">1</div><div class="v sa">2</div><div class="v sb">3</div><div class="v sb">4</div><div class="v sa">5</div><div class="v sb">7</div><div class="v sa">8</div><div class="v sa">9</div></div></div><p class="stab">Then <b>copy C back</b> into A[lo..hi].</p><p class="same">Same idea as before: the left half plays A, the right half plays B. Merge sort keeps both halves in one array, so MERGE takes a range.</p></div></div></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

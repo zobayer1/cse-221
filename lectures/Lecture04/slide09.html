@@ -1,0 +1,44 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cost of the merge step</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.arr { display:flex; }
+.arr .c { display:flex; flex-direction:column; align-items:center; }
+.arr .v { width:var(--w,92px); height:var(--h,78px); border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:var(--fs,34px); background:#fff; }
+.arr .c:first-child .v { margin-left:0; }
+.arr .i { font-family:var(--mono); font-size:var(--is,17px); color:var(--muted); margin-top:6px; }
+.arr .v.out { background:#EEF0F2; color:#B4B7BB; border-color:#B4B7BB; position:relative; z-index:0; }
+.arr .v.chk { background:var(--blue); color:#fff; border-color:var(--blue); position:relative; z-index:1; }
+.arr .v.hit { box-shadow:inset 0 0 0 3px #C62828; }
+
+.mx { margin-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:stretch; }
+.mxc { border:2px solid var(--ink); border-radius:10px; padding:18px 24px 18px; display:flex; flex-direction:column; align-items:center; gap:10px; }
+.mxc .hd { width:100%; display:flex; justify-content:space-between; align-items:baseline; border-bottom:2px solid var(--ink); padding-bottom:8px; }
+.mxc h3 { font-family:var(--serif); font-weight:700; font-size:30px; }
+.mxc .big { font-family:var(--serif); font-weight:700; font-size:34px; color:var(--blue); }
+.mxc .arr { --w:46px; --h:44px; --fs:22px; }
+.mxc .arr .v.fill { background:#E3EBF7; border-color:var(--blue); color:var(--blue); position:relative; z-index:1; }
+.mxc .arr .v.xtra { background:#FBEBDD; border-color:#D9822B; color:#B5651D; position:relative; z-index:1; }
+.mxc .nt { font-size:19px; line-height:1.45; text-align:center; color:var(--ink); }
+.mxc .nt b { font-weight:700; }
+.mxc .sm { font-size:16px; color:var(--muted); text-align:center; }
+.lbl { font-size:15px; font-weight:700; color:var(--muted); align-self:flex-start; }
+.vs { margin-top:6px; display:flex; gap:26px; font-size:18px; align-items:center; }
+.vs .x { color:var(--muted); text-decoration:line-through; text-decoration-color:#C62828; text-decoration-thickness:2px; }
+.vs .y { color:var(--blue); font-weight:700; }
+.bline { margin-top:30px; text-align:center; font-size:22px; }
+.bline b { color:var(--blue); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Cost of the merge step</div>
+<div class="frame"><div class="mx"><div class="mxc"><div class="hd"><h3>Time</h3><span class="big">O(<i>n</i>)</span></div><span class="lbl">every step writes one element into C</span><svg width="420" height="40" viewBox="0 0 420 40" fill="none" stroke="#2B5BAA" stroke-width="2" stroke-linecap="round"><path d="M37 6 v24"/><path d="M31 23 l6 8 l6 -8"/><path d="M83 6 v24"/><path d="M77 23 l6 8 l6 -8"/><path d="M129 6 v24"/><path d="M123 23 l6 8 l6 -8"/><path d="M175 6 v24"/><path d="M169 23 l6 8 l6 -8"/><path d="M221 6 v24"/><path d="M215 23 l6 8 l6 -8"/><path d="M267 6 v24"/><path d="M261 23 l6 8 l6 -8"/><path d="M313 6 v24"/><path d="M307 23 l6 8 l6 -8"/><path d="M359 6 v24"/><path d="M353 23 l6 8 l6 -8"/></svg><div class="arr"><div class="c"><div class="v fill">1</div></div><div class="c"><div class="v fill">2</div></div><div class="c"><div class="v fill">3</div></div><div class="c"><div class="v fill">4</div></div><div class="c"><div class="v fill">5</div></div><div class="c"><div class="v fill">7</div></div><div class="c"><div class="v fill">8</div></div><div class="c"><div class="v fill">9</div></div></div><p class="nt"><i>n</i> = <i>p</i> + <i>q</i> elements, each written <b>once</b>, O(1) work each</p><p class="sm">at most <i>n</i> − 1 comparisons (here: 6)</p><div class="vs"><span class="x">glue + re-sort: O(<i>n</i><sup>2</sup>)</span><span class="y">merge: O(<i>n</i>)</span></div></div><div class="mxc"><div class="hd"><h3>Space</h3><span class="big">O(<i>n</i>)</span></div><span class="lbl">extra array, as big as the input</span><div class="arr"><div class="c"><div class="v xtra"></div></div><div class="c"><div class="v xtra"></div></div><div class="c"><div class="v xtra"></div></div><div class="c"><div class="v xtra"></div></div><div class="c"><div class="v xtra"></div></div><div class="c"><div class="v xtra"></div></div><div class="c"><div class="v xtra"></div></div><div class="c"><div class="v xtra"></div></div></div><p class="nt">C needs <b><i>n</i> extra cells</b>, one per element</p></div></div><p class="bline">Merging two sorted arrays of total size <i>n</i>: <b>O(<i>n</i>) time</b> and <b>O(<i>n</i>) extra space</b>.</p></div>
+<div class="doodle" style="left:1002px;top:538px;width:189px"><svg width="210" height="150" viewBox="0 0 210 150" fill="none" stroke="#1A1A1A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<circle cx="50" cy="44" r="13"/><path d="M45 41 l2 1 M55 41 l-2 1"/><path d="M45 50 q5 -3 10 0"/>
+<path d="M50 57 v40"/><path d="M50 97 l-12 34"/><path d="M50 97 l12 34"/><path d="M50 68 l-18 22"/><path d="M50 68 l40 14"/>
+<rect x="90" y="74" width="62" height="46" rx="6" stroke="#D9822B" fill="#FBEBDD"/><path d="M110 74 v-8 h22 v8" stroke="#D9822B"/>
+<text x="121" y="102" font-size="15" fill="#B5651D" stroke="none" text-anchor="middle" font-weight="600">C</text>
+<path d="M4 132 H206" stroke-width="2"/>
+<text x="140" y="34" font-size="14" fill="#1A1A1A" stroke="none" text-anchor="middle">always carrying</text>
+<text x="140" y="52" font-size="14" fill="#1A1A1A" stroke="none" text-anchor="middle">this extra bag…</text>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

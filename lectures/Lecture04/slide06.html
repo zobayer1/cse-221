@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stable? In-place?? Answers</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.tagq { display:inline-block; font-size:15px; font-weight:700; color:#fff; background:var(--blue); padding:4px 12px; letter-spacing:0.06em; text-transform:uppercase; }
+.eg { margin-top:36px; display:grid; grid-template-columns:repeat(3,1fr); gap:36px; }
+.ec { border:2px solid var(--ink); border-radius:10px; padding:16px 18px 18px; display:flex; flex-direction:column; align-items:center; }
+.ec h3 { font-family:var(--serif); font-weight:700; font-size:28px; margin-top:4px; }
+.ec svg { margin:6px 0 10px; }
+.ec .q { width:100%; display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--grey); padding:10px 4px; font-size:21px; }
+.ec .q i { font-style:normal; width:38px; height:38px; border:2.5px dashed var(--blue); border-radius:8px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:24px; color:var(--blue); }
+
+.ec .q i.ok { border:2.5px solid #2E7D32; background:#2E7D32; color:#fff; font-family:var(--sans); font-size:22px; }
+.ec .q i.no { border:2.5px solid #C62828; background:#C62828; color:#fff; font-family:var(--sans); font-size:22px; }
+.why2 { width:100%; border-top:1px solid var(--grey); padding-top:12px; display:flex; flex-direction:column; align-items:center; gap:6px; }
+.cr { display:flex; align-items:center; gap:0; }
+.c2 { width:46px; height:40px; border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:20px; background:#fff; }
+.cr .c2:first-child { margin-left:0; }
+.c2 sub { font-size:12px; font-family:var(--sans); font-weight:700; margin-left:1px; }
+.c2.ca { background:#DCE5F3; color:#1F4A8F; } .c2.cb { background:#FBE6D4; color:#9A4A10; }
+.c2.key { border-color:#2B5BAA; border-width:3px; }
+.cap2 { font-family:var(--mono); font-size:14px; color:var(--muted); }
+.cap2 b { color:#C62828; font-weight:700; } .cap2 .g { color:#2E7D32; font-weight:700; }
+.tk2 { margin-top:36px; font-size:18px; padding:10px 20px; background:var(--tint); border-left:5px solid var(--blue); }
+.tk2 b { font-weight:700; }
+.arrow2 { font-size:22px; color:var(--blue); line-height:1; margin:0 8px; }
+.hz { display:flex; align-items:center; }
+.hz .c2 { width:38px; height:36px; font-size:18px; }
+.ec svg { height:120px; width:auto; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Stable? In-place??</div>
+<div class="frame"><div class="eg" style="margin-top:16px;margin-bottom:14px;align-items:stretch"><div class="ec"><svg viewBox="0 0 200 150" width="200" height="150" fill="none" stroke-linecap="round"><path d="M50 20 L62 140 H138 L150 20" stroke="#1a1a1a" stroke-width="2.6" fill="#F3F6FB"/>
+<circle cx="100" cy="42" r="18" stroke="#2B5BAA" stroke-width="2.4" fill="#fff"/><circle cx="82" cy="82" r="11" stroke="#2B5BAA" stroke-width="2.2" fill="#fff"/><circle cx="114" cy="104" r="8" stroke="#2B5BAA" stroke-width="2" fill="#fff"/><circle cx="92" cy="124" r="5" stroke="#2B5BAA" stroke-width="2" fill="#fff"/></svg><h3>Bubble sort</h3><div class="q"><span>In-place</span><i class="ok"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></i></div><div class="q"><span>Stable</span><i class="ok"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></i></div><div class="why2"><div class="cr"><span class="c2 ca">2<sub>a</sub></span><span class="c2 cb">2<sub>b</sub></span></div><div class="cap2">2 &gt; 2? <span class="g">no swap</span></div></div></div><div class="ec"><svg viewBox="0 0 200 150" width="200" height="150" fill="none" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><rect x="30" y="70" width="34" height="50" rx="4" fill="#fff" stroke="#1a1a1a" stroke-width="2.2"/><text x="47" y="101" font-size="17" font-weight="700" text-anchor="middle" fill="#1a1a1a">2</text><rect x="70" y="70" width="34" height="50" rx="4" fill="#fff" stroke="#1a1a1a" stroke-width="2.2"/><text x="87" y="101" font-size="17" font-weight="700" text-anchor="middle" fill="#1a1a1a">5</text><rect x="110" y="70" width="34" height="50" rx="4" fill="#fff" stroke="#1a1a1a" stroke-width="2.2"/><text x="127" y="101" font-size="17" font-weight="700" text-anchor="middle" fill="#1a1a1a">8</text><rect x="86" y="8" width="34" height="50" rx="4" fill="#2B5BAA"/><text x="103" y="39" font-size="17" font-weight="700" text-anchor="middle" fill="#fff">6</text><path d="M103 60 v6" stroke="#2B5BAA" stroke-width="2.4"/></svg><h3>Insertion sort</h3><div class="q"><span>In-place</span><i class="ok"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></i></div><div class="q"><span>Stable</span><i class="ok"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></i></div><div class="why2"><div class="cr"><span class="c2 ca">2<sub>a</sub></span><span class="c2 cb key">2<sub>b</sub></span></div><div class="cap2">key 2<sub>b</sub>: 2 &gt; 2? <span class="g">stop</span></div></div></div><div class="ec"><svg viewBox="0 0 200 150" width="200" height="150" fill="none" stroke-linecap="round" stroke-linejoin="round"><g stroke="#1a1a1a" stroke-width="2.2"><circle cx="28" cy="99" r="8"/><path d="M28 107 L28 125.15 M28 125.15 L21 140 M28 125.15 L35 140 M28 116 L19 130 M28 116 L37 130"/></g><g stroke="#1a1a1a" stroke-width="2.2"><circle cx="64" cy="87" r="8"/><path d="M64 95 L64 119.75 M64 119.75 L57 140 M64 119.75 L71 140 M64 104 L55 118 M64 104 L73 118"/></g><g stroke="#1a1a1a" stroke-width="2.2"><circle cx="100" cy="53" r="8"/><path d="M100 61 L100 104.45 M100 104.45 L93 140 M100 104.45 L107 140 M100 70 L91 84 M100 70 L109 84"/></g><g stroke="#2B5BAA" stroke-width="2.2"><circle cx="136" cy="77" r="8"/><path d="M136 85 L136 115.25 M136 115.25 L129 140 M136 115.25 L143 140 M136 94 L127 108 M136 94 L145 108"/></g><g stroke="#1a1a1a" stroke-width="2.2"><circle cx="172" cy="45" r="8"/><path d="M172 53 L172 100.85 M172 100.85 L165 140 M172 100.85 L179 140 M172 62 L163 76 M172 62 L181 76"/></g><path d="M136 64 C 120 30, 100 30, 92 50" stroke="#2B5BAA" stroke-width="2" stroke-dasharray="4 4"/><path d="M14 142 H186" stroke="#1a1a1a" stroke-width="1.8"/></svg><h3>Selection sort</h3><div class="q"><span>In-place</span><i class="ok"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></i></div><div class="q"><span>Stable</span><i class="no"><svg class="cross" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></i></div><div class="why2"><div class="hz"><div class="cr"><span class="c2 ca">2<sub>a</sub></span><span class="c2 cb">2<sub>b</sub></span><span class="c2 ">1</span></div><span class="arrow2">→</span><div class="cr"><span class="c2 ">1</span><span class="c2 cb">2<sub>b</sub></span><span class="c2 ca">2<sub>a</sub></span></div></div><div class="cap2">long swap: <b>2<sub>b</sub> jumps ahead of 2<sub>a</sub></b></div></div></div></div><p class="tk2">Bubble and insertion move elements <b>one step at a time</b> and never past an equal one. Selection’s <b>long swap</b> can jump over equals.</p></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

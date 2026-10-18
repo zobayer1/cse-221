@@ -1,0 +1,59 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ternary search: summary</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:20px 24px; }
+.codebox pre { font-size:22px; line-height:1.7; }
+.codebox .fn { font-weight:700; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.onote { font-size:15px; color:var(--muted); }
+
+.bsw { margin-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:44px; flex:1; min-height:0; }
+.bsw table { width:100%; border-collapse:collapse; margin-top:2px; }
+.bsw td { padding:9px 0; border-bottom:1px solid var(--grey); font-size:18px; vertical-align:baseline; }
+.bsw td.o { font-family:var(--serif); font-weight:700; font-size:24px; text-align:right; white-space:nowrap; }
+.bsw td.n { font-size:15px; color:var(--muted); padding-left:14px; }
+.need { margin-top:16px; }
+.need li { list-style:none; padding:8px 0 8px 22px; position:relative; font-size:17px; line-height:1.4; border-bottom:1px solid var(--grey); }
+.need li::before { content:''; position:absolute; left:0; top:16px; width:8px; height:8px; background:var(--blue); }
+.need li b { font-weight:700; }
+.need li span { color:var(--muted); }
+.pit li { list-style:none; display:grid; grid-template-columns:170px 1fr; gap:14px; padding:10px 0; border-bottom:1px solid var(--grey); align-items:baseline; }
+.pit li b { font-family:var(--serif); font-weight:700; font-size:20px; color:#C62828; }
+.pit li span { font-size:16px; color:var(--muted); line-height:1.4; }
+.pitw { display:flex; flex-direction:column; }
+.pitw svg { margin-top:36px; align-self:flex-end; }
+
+.tu li { list-style:none; display:grid; grid-template-columns:160px 1fr; gap:12px; padding:9px 0; border-bottom:1px solid var(--grey); align-items:baseline; }
+.tu li b { font-family:var(--serif); font-weight:700; font-size:19px; color:var(--blue); }
+.tu li span { font-size:16px; color:var(--muted); line-height:1.4; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Ternary search: summary</div>
+<div class="frame">
+
+<div class="bsw">
+  <div><div class="k3">Cost on a sorted array</div><table>
+    <tr><td>Best case</td><td class="n">x at m1 or m2</td><td class="o" style="color:#2E7D32">O(1)</td></tr>
+    <tr><td>Worst case</td><td class="n">x absent, or found last</td><td class="o" style="color:#C62828">O(log <i>n</i>)</td></tr>
+    <tr><td>Extra space</td><td class="n">loop / recursion</td><td class="o">O(1) / O(log <i>n</i>)</td></tr></table>
+    <div class="k3" style="margin-top:22px">Two uses</div><ul class="tu">
+      <li><b>Sorted array</b><span>Keeps 1/3, about log<sub>3</sub> <i>n</i> steps. More comparisons than binary search, so binary is preferred.</span></li>
+      <li><b>Unimodal peak</b><span>Keeps 2/3, about log((R − L)/ε) steps. Useful when only f(x) can be computed.</span></li></ul></div>
+  <div class="pitw"><div class="k3" style="color:#C62828">Watch out for</div><ul class="pit">
+    <li><b>Not unimodal</b><span>Several local peaks: it may return the wrong one.</span></li>
+    <li><b>Flat stretches</b><span>If f(m1) = f(m2) on a plateau, the peak can be lost. Needs strict rise and fall.</span></li>
+    <li><b>Real numbers</b><span>Stop after a fixed number of steps, not on an exact <span style="white-space:nowrap">hi − lo</span> test.</span></li>
+    <li><b>Middle case</b><span>In the array version, move both ends: <span style="white-space:nowrap">lo = m1 + 1</span> and <span style="white-space:nowrap">hi = m2 − 1</span>.</span></li></ul>
+    </div>
+</div>
+</div>
+<div class="doodle" style="left:966px;top:496px;width:240px"><svg viewBox="0 0 240 150" width="240" height="150" fill="none" stroke="#1a1a1a" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<circle cx="70" cy="50" r="13"/><path d="M64 47 l3 1 M76 47 l-3 1 M65 56 q5 4 10 0"/>
+<path d="M70 63 L70 100 M70 100 L60 146 M70 100 L80 146 M70 74 L50 90 M70 74 L96 64"/>
+<circle cx="170" cy="50" r="13"/><path d="M164 47 l3 1 M176 47 l-3 1 M165 56 q5 4 10 0"/>
+<path d="M170 63 L170 100 M170 100 L160 146 M170 100 L180 146 M170 74 L190 90 M170 74 L144 64"/>
+<path d="M96 64 L144 64" stroke-width="2.6"/>
+<text x="120" y="22" font-size="13" fill="#5B5E63" stroke="none" text-anchor="middle">binary &amp; ternary: still friends</text>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

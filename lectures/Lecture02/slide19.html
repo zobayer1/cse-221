@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why stop at two?</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:20px 24px; }
+.codebox pre { font-size:22px; line-height:1.7; }
+.codebox .fn { font-weight:700; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.onote { font-size:15px; color:var(--muted); }
+
+.wq { margin-top:14px; font-family:var(--serif); font-weight:400; font-size:30px; line-height:1.3; }
+.wq b { color:var(--blue); font-weight:700; }
+.whyw { margin-top:22px; display:grid; grid-template-columns:1fr 230px; gap:24px; align-items:center; }
+.cutr { display:grid; grid-template-columns:210px 600px; gap:18px; align-items:center; padding:9px 0; }
+.cutr .cl b { display:block; font-family:var(--serif); font-weight:700; font-size:22px; }
+.cutr .cl span { font-size:15px; color:var(--muted); }
+.uses { margin-top:36px; display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.use { background:var(--tint); box-shadow:inset 5px 0 0 var(--blue); padding:12px 18px; }
+.use h3 { font-size:19px; font-weight:700; }
+.use h3 span { font-family:var(--serif); color:var(--blue); margin-right:8px; }
+.use p { font-size:16px; color:var(--muted); line-height:1.45; margin-top:4px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Why stop at two?<span class="ftag">Think</span></div>
+<div class="frame">
+<p class="wq">Binary search splits the range into <b>2</b> parts. What if we split it into <b>3</b>? Or more?</p>
+<div class="whyw"><div>
+  <div class="cutr"><div class="cl"><b>Binary search</b><span>1 cut, 2 parts</span></div><svg viewBox="0 0 600 56" width="600" height="56" fill="none"><rect x="10" y="6" width="580" height="44" rx="3" stroke="#1a1a1a" stroke-width="2" fill="#fff"/><path d="M300.0 6 v44" stroke="#2B5BAA" stroke-width="2.6" stroke-dasharray=""/></svg></div>
+  <div class="cutr"><div class="cl"><b>Ternary search</b><span>2 cuts, 3 parts</span></div><svg viewBox="0 0 600 56" width="600" height="56" fill="none"><rect x="10" y="6" width="580" height="44" rx="3" stroke="#1a1a1a" stroke-width="2" fill="#fff"/><path d="M203.3 6 v44" stroke="#1a1a1a" stroke-width="2.6" stroke-dasharray="6 5"/><path d="M396.7 6 v44" stroke="#1a1a1a" stroke-width="2.6" stroke-dasharray="6 5"/></svg></div>
+  <div class="cutr"><div class="cl"><b>k-ary search?</b><span>k − 1 cuts, k parts</span></div><svg viewBox="0 0 600 56" width="600" height="56" fill="none"><rect x="10" y="6" width="580" height="44" rx="3" stroke="#1a1a1a" stroke-width="2" fill="#fff"/><path d="M106.7 6 v44" stroke="#1a1a1a" stroke-width="2.6" stroke-dasharray="6 5"/><path d="M203.3 6 v44" stroke="#1a1a1a" stroke-width="2.6" stroke-dasharray="6 5"/><path d="M300.0 6 v44" stroke="#1a1a1a" stroke-width="2.6" stroke-dasharray="6 5"/><path d="M396.7 6 v44" stroke="#1a1a1a" stroke-width="2.6" stroke-dasharray="6 5"/><path d="M493.3 6 v44" stroke="#1a1a1a" stroke-width="2.6" stroke-dasharray="6 5"/></svg></div>
+</div><svg viewBox="0 0 230 190" width="230" height="190" fill="none" stroke="#1a1a1a" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<path d="M70 50 q-4 -32 54 -32 q56 0 54 30 q-2 22 -44 22 l-6 14 l-4 -14 q-52 0 -54 -20 z" stroke-width="1.8"/>
+<text x="124" y="48" font-size="15" fill="#2B5BAA" stroke="none" text-anchor="middle" font-weight="700">why not 3?</text>
+<circle cx="124" cy="112" r="14"/><path d="M118 108 q2 -3 4 0 M127 108 q2 -3 4 0"/><ellipse cx="124" cy="119" rx="3" ry="3.5"/>
+<path d="M124 126 L124 162 M124 162 L113 190 M124 162 L135 190 M124 136 L106 124 L102 104 M124 136 L144 148"/>
+</svg></div>
+<div class="k3" style="margin-top:36px">Ternary search: two common uses</div>
+<div class="uses" style="margin-top:10px">
+  <div class="use"><h3><span>1</span>Search a sorted array</h3><p>Find x, like binary search, but keep one of three parts each step.</p></div>
+  <div class="use"><h3><span>2</span>Find the peak of a unimodal function</h3><p>A function that rises, then falls. Drop the third that cannot hold the peak.</p></div>
+</div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

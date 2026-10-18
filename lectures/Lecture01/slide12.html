@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How fast do they grow?</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.gt { margin-top:30px; width:100%; border-collapse:collapse; }
+.gt th { font-family:var(--serif); font-weight:700; font-size:24px; color:var(--blue); text-align:right; padding:0 14px 12px; border-bottom:2px solid var(--ink); white-space:nowrap; }
+.gt td { font-family:var(--serif); font-size:24px; text-align:right; padding:14px 14px; border-bottom:1px solid var(--grey); white-space:nowrap; }
+.gt th:first-child, .gt td:first-child { text-align:left; color:var(--ink); font-weight:700; padding-left:0; }
+.gt .x { background:#FBE9E7; color:#C62828; font-weight:700; }
+.gt th.x { background:none; color:#C62828; }
+.gnote { margin-top:20px; display:grid; grid-template-columns:1fr 250px; gap:24px; align-items:center; }
+.gnote p { font-size:20px; line-height:1.45; padding:14px 20px; background:var(--tint); border-left:5px solid #C62828; }
+.gnote p b { font-weight:700; }
+.lgn { font-size:15px; color:var(--muted); margin-top:10px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">How fast do they grow?</div>
+<div class="frame"><table class="gt"><tr><th><i>n</i></th><th>1</th><th>log <i>n</i></th><th><i>n</i></th><th><i>n</i> log <i>n</i></th><th><i>n</i><sup>2</sup></th><th><i>n</i><sup>3</sup></th><th class="x">2<sup><i>n</i></sup></th></tr><tr><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td class="x">2</td></tr><tr><td>10</td><td>1</td><td>3.32</td><td>10</td><td>33</td><td>100</td><td>1,000</td><td class="x">1,024</td></tr><tr><td>100</td><td>1</td><td>6.64</td><td>100</td><td>664</td><td>10,000</td><td>1,000,000</td><td class="x">1.3 × 10<sup>30</sup></td></tr><tr><td>1,000</td><td>1</td><td>9.97</td><td>1,000</td><td>9,966</td><td>1,000,000</td><td>10<sup>9</sup></td><td class="x">1.1 × 10<sup>301</sup></td></tr></table><p class="lgn">log means log<sub>2</sub>. Values rounded.</p><div class="gnote"><p>At a billion steps per second, 2<sup>100</sup> steps would take about <b>40 trillion years</b>, roughly 3,000 times the age of the universe.</p></div></div>
+<div class="doodle" style="left:959px;top:489px;width:250px"><svg viewBox="0 0 250 120" width="250" height="120" fill="none" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<rect x="10" y="40" width="96" height="62" rx="4"/><rect x="20" y="50" width="76" height="40" stroke-width="1.6"/><path d="M40 102 l-6 14 h48 l-6 -14" stroke-width="1.8"/>
+<text x="58" y="76" font-size="13" fill="#C62828" stroke="none" text-anchor="middle" font-weight="600">2^100…</text>
+<circle cx="178" cy="44" r="14"/><path d="M171 40 l4 2 M185 40 l-4 2 M172 52 q6 -4 12 0"/><path d="M196 34 q4 6 0 10 M200 50 q3 4 0 7" stroke="#2B5BAA" stroke-width="2"/>
+<path d="M178 58 L178 92 M178 92 L168 118 M178 92 L188 118 M178 68 L150 64 L132 72 M178 68 L196 82"/>
+<text x="210" y="20" font-size="13" fill="#5B5E63" stroke="none" text-anchor="middle">still running…</text>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

@@ -1,0 +1,60 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linear search</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.arr { display:flex; }
+.arr .c { display:flex; flex-direction:column; align-items:center; }
+.arr .v { width:var(--w,92px); height:var(--h,78px); border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:var(--fs,34px); background:#fff; }
+.arr .c:first-child .v { margin-left:0; }
+.arr .i { font-family:var(--mono); font-size:var(--is,17px); color:var(--muted); margin-top:6px; }
+.arr .v.out { background:#EEF0F2; color:#B4B7BB; border-color:#B4B7BB; position:relative; z-index:0; }
+.arr .v.chk { background:var(--blue); color:#fff; border-color:var(--blue); position:relative; z-index:1; }
+.arr .v.hit { box-shadow:inset 0 0 0 3px #C62828; }
+
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:20px 24px; }
+.codebox pre { font-size:22px; line-height:1.7; }
+.codebox .fn { font-weight:700; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.onote { font-size:15px; color:var(--muted); }
+
+.lw { margin-top:18px; display:grid; grid-template-columns:470px 1fr; gap:44px; }
+.lw .idea { margin-top:16px; font-size:19px; color:var(--muted); line-height:1.45; }
+.ex .q { font-size:20px; margin:14px 0 12px; }
+.ex .q b { font-weight:700; }
+.ex .res { margin-top:14px; font-size:19px; }
+.ex .res b { color:var(--blue); font-weight:700; }
+.try { margin-top:10px; display:flex; align-items:flex-end; justify-content:space-between; font-size:19px; }
+.try .tq { color:#C62828; font-weight:700; margin-right:4px; }
+.cases { margin-top:36px; display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.cs { padding:14px 20px; display:grid; grid-template-columns:auto 1fr; gap:4px 18px; align-items:baseline; }
+.cs.b { background:#EEF6EF; box-shadow:inset 5px 0 0 #2E7D32; } .cs.w { background:#FBEDEC; box-shadow:inset 5px 0 0 #C62828; }
+.cs h3 { font-size:20px; font-weight:700; }
+.cs .o { font-family:var(--serif); font-weight:700; font-size:30px; grid-row:span 2; }
+.cs.b .o { color:#2E7D32; } .cs.w .o { color:#C62828; }
+.cs p { font-size:17px; color:var(--muted); line-height:1.4; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Linear search</div>
+<div class="frame">
+
+<div class="lw">
+  <div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">LINEAR-SEARCH</span>(A, n, x)
+<span class="ln">2</span>    <span class="kw">for</span> i = 0 <span class="kw">to</span> n − 1
+<span class="ln">3</span>        <span class="kw">if</span> A[i] == x
+<span class="ln">4</span>            <span class="kw">return</span> i
+<span class="ln">5</span>    <span class="kw">return</span> NIL</pre></div><p class="idea">Check every element from left to right until we find <i>x</i> or run out of elements.</p></div>
+  <div class="ex"><div class="k3">Example</div><p class="q">Find <b><i>x</i> = 42</b> in an <b>unsorted</b> array</p><div class="arr" style="--w:66px;--h:56px;--fs:24px;--is:14px"><div class="c"><div class="v chk">17</div><div class="i">0</div></div><div class="c"><div class="v chk">3</div><div class="i">1</div></div><div class="c"><div class="v chk hit">42</div><div class="i">2</div></div><div class="c"><div class="v">8</div><div class="i">3</div></div><div class="c"><div class="v">59</div><div class="i">4</div></div><div class="c"><div class="v">24</div><div class="i">5</div></div><div class="c"><div class="v">12</div><div class="i">6</div></div><div class="c"><div class="v">31</div><div class="i">7</div></div></div>
+    <p class="res">Found at index 2 after <b>3 comparisons</b></p><div class="try"><div><span class="tq">(?)</span> What if <i>x</i> = 50, which is not in A?</div></div></div>
+</div>
+<div class="cases">
+  <div class="cs b"><div class="o">O(1)</div><h3>Best case</h3><p><i>x</i> is the first element: 1 comparison.</p></div>
+  <div class="cs w"><div class="o">O(<i>n</i>)</div><h3>Worst case</h3><p><i>x</i> is the last element, or not in A at all: <i>n</i> comparisons.</p></div>
+</div>
+<p class="onote" style="margin-top:8px">O(·) is an upper bound for large <i>n</i>, as in Lecture 1. The formal definition comes later in the course.</p>
+</div>
+<div class="doodle" style="left:1069px;top:341px;width:140px"><svg viewBox="0 0 140 110" width="140" height="110" fill="none" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><circle cx="70" cy="30" r="12"/><path d="M64 27 l3 1 M76 27 l-3 1 M65 36 q5 -3 10 0"/><path d="M70 42 L70 76 M70 76 L61 106 M70 76 L79 106 M70 52 L54 44 L48 30 M70 52 L86 44 L92 30"/><text x="112" y="20" font-size="15" font-weight="700" fill="#C62828" stroke="none">?!</text></svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

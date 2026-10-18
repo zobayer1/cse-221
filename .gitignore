@@ -1,0 +1,28 @@
+# Python directories
+**/__pycache__/
+*.py[cod]
+*$py.class
+
+# File formats
+*.pdf
+
+# Pre-conversion copies of lectures (kept on disk for tools/convert_legacy.py; git history keeps old versions)
+lectures/_archive/
+
+# Instructor-only reference solutions (never publish)
+assignments/*/instructor/
+
+# Office lock files (e.g. while Fall26_Lesson_Plans.xlsx is open)
+.~lock.*#
+~$*
+
+# Editors and OS
+*.swp
+*~
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Claude Code per-user settings
+.claude/settings.local.json

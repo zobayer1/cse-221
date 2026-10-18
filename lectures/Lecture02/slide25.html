@@ -1,0 +1,77 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ternary search, recursively</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.cx2 { margin-top:36px; display:grid; gap:12px; }
+.cx2 .c { padding:10px 16px; background:var(--tint); border-left:5px solid var(--blue); }
+.cx2 h3 { font-size:16px; font-weight:700; }
+.cx2 .o { font-family:var(--serif); font-weight:700; font-size:24px; color:var(--blue); }
+.cx2 p { font-size:15px; color:var(--muted); line-height:1.4; margin-top:2px; }
+
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:20px 24px; }
+.codebox pre { font-size:22px; line-height:1.7; }
+.codebox .fn { font-weight:700; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.onote { font-size:15px; color:var(--muted); }
+
+.rw3 { margin-top:12px; display:grid; grid-template-columns:690px 1fr; gap:28px; }
+.rw3 .codebox { padding:14px 18px; }
+.rw3 .codebox pre { font-size:15.5px; line-height:1.5; }
+.call0 { margin-top:10px; font-size:17px; color:var(--muted); }
+.call0 code { font-family:var(--mono); color:var(--ink); font-size:16px; }
+.tr2 { margin-top:10px; font-family:var(--mono); font-size:15px; line-height:1.4; }
+.tr2 .f { padding:6px 10px; border-left:3px solid var(--grey); margin-bottom:5px; }
+.tr2 .f b { font-weight:700; display:block; }
+.tr2 .f span { color:var(--muted); }
+.tr2 .f.hit { border-left-color:#2E7D32; background:#EEF6EF; } .tr2 .f.hit b, .tr2 .f.hit span { color:#2E7D32; }
+.cx { margin-top:36px; padding-top:14px; display:grid; grid-template-columns:1fr 1fr 300px; gap:20px; align-items:end; }
+.cx > div.c { padding:12px 18px; background:var(--tint); border-left:5px solid var(--blue); }
+.cx h3 { font-size:17px; font-weight:700; }
+.cx .o { font-family:var(--serif); font-weight:700; font-size:26px; color:var(--blue); }
+.cx p { font-size:15px; color:var(--muted); line-height:1.4; margin-top:2px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Ternary search, recursively</div>
+<div class="frame">
+
+<div class="rw3">
+  <div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">TERNARY-SEARCH-REC</span>(A, x, lo, hi)
+<span class="ln">2</span>    <span class="kw">if</span> lo &gt; hi
+<span class="ln">3</span>        <span class="kw">return</span> NIL
+<span class="ln">4</span>    third = ⌊(hi − lo) / 3⌋
+<span class="ln">5</span>    m1 = lo + third
+<span class="ln">6</span>    m2 = hi − third
+<span class="ln">7</span>    <span class="kw">if</span> A[m1] == x
+<span class="ln">8</span>        <span class="kw">return</span> m1
+<span class="ln">9</span>    <span class="kw">if</span> A[m2] == x
+<span class="ln">10</span>        <span class="kw">return</span> m2
+<span class="ln">11</span>    <span class="kw">if</span> x &lt; A[m1]
+<span class="ln">12</span>        <span class="kw">return</span> TERNARY-SEARCH-REC(A, x, lo, m1 − 1)
+<span class="ln">13</span>    <span class="kw">elseif</span> x &gt; A[m2]
+<span class="ln">14</span>        <span class="kw">return</span> TERNARY-SEARCH-REC(A, x, m2 + 1, hi)
+<span class="ln">15</span>    <span class="kw">else</span>
+<span class="ln">16</span>        <span class="kw">return</span> TERNARY-SEARCH-REC(A, x, m1 + 1, m2 − 1)</pre></div><p class="call0">Start with <code>TERNARY-SEARCH-REC(A, x, 0, n − 1)</code>. Each call checks m1 and m2, then searches one third.</p></div>
+  <div style="display:flex;flex-direction:column"><div class="k3">Trace: find 42</div>
+    <div class="tr2">
+      <div class="f"><b>(lo 0, hi 7) m1 2, m2 5</b><span>42 &gt; 31, search (6, 7)</span></div>
+      <div class="f hit" style="margin-left:20px"><b>(lo 6, hi 7) m1 6, m2 7</b><span>A[m1] = 42, return 6</span></div>
+      <div class="f" style="border-left-color:transparent"><span>6 is passed back up to the first call</span></div>
+    </div>
+    <div class="cx2">
+      <div class="c"><h3>Time</h3><div class="o">O(log <i>n</i>)</div><p>One call on a third of the range: <span style="white-space:nowrap"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i>/3) + <i>c</i>′</span></p></div>
+      <div class="c"><h3>Extra space</h3><div class="o">O(log <i>n</i>)</div><p>Up to log<sub>3</sub> <i>n</i> + 1 calls on the stack. The loop version needs only O(1).</p></div>
+    </div></div>
+</div>
+</div>
+<div class="doodle" style="left:480px;top:592px;width:234px"><svg viewBox="0 0 300 120" width="260" height="104" fill="none" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<rect x="8" y="72" width="81" height="30" rx="3" stroke="#2B5BAA" stroke-width="2.4"/><path d="M35 72 v30 M62 72 v30" stroke="#2B5BAA" stroke-width="1.6"/>
+<rect x="62" y="78" width="27" height="18" rx="2" stroke="#2B5BAA" stroke-width="1.8"/><path d="M71 78 v18 M80 78 v18" stroke="#2B5BAA" stroke-width="1.2"/>
+<circle cx="200" cy="34" r="12"/><path d="M194 31 l3 1 M206 31 l-3 1 M195 39 q5 4 10 0"/>
+<path d="M200 46 L200 80 M200 80 L190 114 M200 80 L210 114 M200 56 L150 70 L96 80 M200 56 L222 46"/>
+<text x="250" y="22" font-size="13" fill="#5B5E63" stroke="none" text-anchor="middle">a third of a third</text><text x="250" y="38" font-size="13" fill="#5B5E63" stroke="none" text-anchor="middle">of a third…</text>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

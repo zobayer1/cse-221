@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>log(n!) grows like n log n</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.nl { flex:1; margin-top:14px; display:grid; grid-template-columns:1fr 360px; gap:36px; align-items:center; }
+.fac { font-family:var(--serif); font-size:30px; display:flex; flex-wrap:wrap; align-items:flex-end; gap:6px; }
+.fac .grp { display:flex; flex-direction:column; align-items:center; }
+.fac .grp .u { padding:0 6px 4px; border-bottom:3px solid; }
+.fac .grp .l { font-family:var(--sans); font-size:15px; font-weight:700; margin-top:6px; }
+.fac .big .u, .fac .big .l { border-color:var(--blue); color:var(--blue); }
+.fac .sml .u, .fac .sml .l { border-color:var(--grey); color:var(--muted); }
+.steps { margin-top:22px; font-family:var(--serif); font-size:25px; line-height:1.75; }
+.steps .m { font-family:var(--sans); font-size:15px; color:var(--muted); margin-left:14px; }
+.steps b { color:var(--blue); }
+.k3x { font-size:14px; font-weight:700; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px; }
+.tiles { display:flex; align-items:center; gap:6px; }
+.tiles .eqs { font-family:var(--serif); font-size:28px; margin-right:6px; }
+.tl { width:44px; height:44px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:24px; border:2px solid; border-radius:6px; }
+.tl.b { background:#E3EBF7; border-color:var(--blue); color:var(--blue); }
+.tl.g { background:#F3F4F5; border-color:#B4B7BB; color:#9A9EA3; }
+.tiles .dot { font-size:24px; color:var(--muted); }
+.tlab { display:flex; gap:28px; margin:6px 0 10px 66px; font-size:14px; font-weight:700; }
+.tlab .b { color:var(--blue); width:236px; } .tlab .g { color:#9A9EA3; }
+.eqx { font-family:var(--serif); font-size:25px; line-height:1.7; }
+.eqx b { color:var(--blue); }
+.om { margin-top:10px; font-size:16px; color:var(--muted); }
+.om b { color:var(--ink); }
+.win { border:3px solid var(--blue); border-radius:10px; padding:16px 20px; }
+.win .k3 { font-size:14px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px; }
+.win p { font-size:18px; line-height:1.5; }
+.win p b { font-weight:700; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">log(<i>n</i>!) grows like <i>n</i> log <i>n</i></div>
+<div class="frame"><div class="nl"><div><div class="k3x">Try <i style="text-transform:none">n</i> = 8</div><div class="tiles"><span class="eqs">8! =</span><span class="tl b">8</span><span class="dot">×</span><span class="tl b">7</span><span class="dot">×</span><span class="tl b">6</span><span class="dot">×</span><span class="tl b">5</span><span class="dot">×</span><span class="tl g">4</span><span class="dot">×</span><span class="tl g">3</span><span class="dot">×</span><span class="tl g">2</span><span class="dot">×</span><span class="tl g">1</span></div><div class="tlab"><span class="b">top half: each ≥ 4</span><span class="g">rest: each ≥ 1, ignore</span></div><div class="eqx">8! ≥ 4 · 4 · 4 · 4 = 4<sup>4</sup></div><div class="k3x" style="margin-top:22px">In general</div><div class="eqx"><i>n</i>! ≥ (<i>n</i>/2)<sup><i>n</i>/2</sup></div><div class="eqx">log(<i>n</i>!) ≥ (<i>n</i>/2) · log(<i>n</i>/2) = <b>Ω(<i>n</i> log <i>n</i>)</b></div><p class="om"><b>Ω</b> means “at least”: the lower-bound partner of O.</p></div><div><div class="win"><div class="k3">The verdict</div><p>Any comparison sort needs <b>Ω(<i>n</i> log <i>n</i>)</b> comparisons in the worst case.</p><p style="margin-top:10px">Merge sort is <b>optimal</b>. No amount of cleverness beats <i>n</i> log <i>n</i>…</p><p style="margin-top:10px;color:var(--blue)"><b>…unless we stop comparing.</b></p></div></div></div></div>
+<div class="doodle" style="left:852px;top:502px;width:340px"><svg width="340" height="160" viewBox="0 0 340 160" fill="none" stroke="#1A1A1A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1" style="display:block;margin:18px auto 0">
+<rect x="96" y="4" width="240" height="50" rx="10" stroke-width="2"/><path d="M120 54 l-18 16 l32 -16" fill="#fff" stroke-width="2"/>
+<text x="216" y="25" font-size="13.5" fill="#1A1A1A" stroke="none" text-anchor="middle">Sort without comparing?!</text>
+<text x="216" y="43" font-size="13.5" fill="#1A1A1A" stroke="none" text-anchor="middle">See you next class…</text>
+<circle cx="80" cy="84" r="13"/><circle cx="75" cy="81" r="1.6" fill="#1A1A1A"/><circle cx="85" cy="81" r="1.6" fill="#1A1A1A"/><circle cx="80" cy="90" r="3"/>
+<path d="M80 97 v30"/><path d="M80 127 l-9 26"/><path d="M80 127 l9 26"/><path d="M80 106 l-18 -14"/><path d="M80 106 l18 -14"/>
+<path d="M30 154 H170" stroke-width="2"/></svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

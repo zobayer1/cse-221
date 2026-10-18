@@ -1,0 +1,73 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can binary search find a peak? (1)</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.arr { display:flex; }
+.arr .c { display:flex; flex-direction:column; align-items:center; }
+.arr .v { width:var(--w,92px); height:var(--h,78px); border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:var(--fs,34px); background:#fff; }
+.arr .c:first-child .v { margin-left:0; }
+.arr .i { font-family:var(--mono); font-size:var(--is,17px); color:var(--muted); margin-top:6px; }
+.arr .v.out { background:#EEF0F2; color:#B4B7BB; border-color:#B4B7BB; position:relative; z-index:0; }
+.arr .v.chk { background:var(--blue); color:#fff; border-color:var(--blue); position:relative; z-index:1; }
+.arr .v.hit { box-shadow:inset 0 0 0 3px #C62828; }
+
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:20px 24px; }
+.codebox pre { font-size:22px; line-height:1.7; }
+.codebox .fn { font-weight:700; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.onote { font-size:15px; color:var(--muted); }
+
+.pkq { margin-top:8px; font-family:var(--serif); font-weight:400; font-size:27px; }
+.pkq b { color:#2E7D32; font-weight:700; }
+.pkw { margin-top:12px; display:grid; grid-template-columns:590px 1fr; gap:32px; flex:1; min-height:0; }
+.rise { display:flex; margin-top:6px; }
+.rise span { width:62px; margin-left:-2px; text-align:center; font-family:var(--mono); font-size:15px; font-weight:700; }
+.rise span:first-child { margin-left:0; }
+.rise .y { color:#2E7D32; } .rise .n { color:#C62828; }
+.rlab { font-size:14px; color:var(--muted); margin-top:4px; }
+.pkw .codebox { margin-top:12px; padding:10px 16px; }
+.pkw .codebox pre { font-size:15px; line-height:1.45; }
+.pkn { font-size:14px; color:var(--muted); margin-top:6px; line-height:1.45; }
+.pkn b { color:var(--ink); font-weight:700; }
+.two { display:grid; gap:12px; }
+.two .c { padding:12px 16px; background:var(--tint); box-shadow:inset 5px 0 0 var(--blue); }
+.two h3 { font-size:18px; font-weight:700; }
+.two p { font-size:16px; color:var(--muted); line-height:1.45; margin-top:4px; }
+.two p b { color:var(--ink); font-weight:700; }
+.key { margin-top:12px; font-size:17px; line-height:1.5; }
+.key b { font-weight:700; }
+.cont { margin-top:10px; font-size:15px; color:var(--muted); line-height:1.5; padding-top:10px; border-top:1px solid var(--grey); }
+.cont b { color:var(--ink); font-weight:700; }
+.pk1 { margin-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; }
+.pk1 .rlab { font-size:17px; margin-top:10px; line-height:1.45; }
+.pk1 .codebox { margin-top:0; padding:14px 20px; }
+.pk1 .codebox pre { font-size:19px; line-height:1.55; }
+.pk1 .pkn { font-size:17px; margin-top:12px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Can binary search find a peak? (1)<span class="ftag amber">Trivia</span></div>
+<div class="frame">
+
+<p class="pkq"><b>Yes.</b> Compare each middle element with its right neighbor.</p>
+<div class="pk1">
+  <div><div class="arr" style="--w:64px;--h:52px;--fs:22px;--is:13px"><div class="c"><div class="v">1</div><div class="i">0</div></div><div class="c"><div class="v">3</div><div class="i">1</div></div><div class="c"><div class="v">6</div><div class="i">2</div></div><div class="c"><div class="v">9</div><div class="i">3</div></div><div class="c"><div class="v">12</div><div class="i">4</div></div><div class="c"><div class="v found" style="background:#2E7D32;border-color:#2E7D32;color:#fff">15</div><div class="i">5</div></div><div class="c"><div class="v">11</div><div class="i">6</div></div><div class="c"><div class="v">7</div><div class="i">7</div></div><div class="c"><div class="v">2</div><div class="i">8</div></div></div>
+    <div class="rise"><span class="y">Y</span><span class="y">Y</span><span class="y">Y</span><span class="y">Y</span><span class="y">Y</span><span class="n">N</span><span class="n">N</span><span class="n">N</span><span></span></div><p class="rlab">Is A[i] &lt; A[i + 1]? &nbsp;Y Y Y Y Y N N N flips once: a <b style="color:var(--ink);font-weight:600">monotonic</b> yes/no test. The peak is at the <span style="white-space:nowrap">first N.</span></p></div>
+  <div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">PEAK</span>(A, n)
+<span class="ln">2</span>    lo = 0
+<span class="ln">3</span>    hi = n − 1
+<span class="ln">4</span>    <span class="kw">while</span> lo &lt; hi
+<span class="ln">5</span>        mid = lo + ⌊(hi − lo) / 2⌋
+<span class="ln">6</span>        <span class="kw">if</span> A[mid] &lt; A[mid + 1]
+<span class="ln">7</span>            lo = mid + 1
+<span class="ln">8</span>        <span class="kw">else</span>
+<span class="ln">9</span>            hi = mid
+<span class="ln">10</span>    <span class="kw">return</span> lo</pre></div>
+    <p class="pkn">Here <b>lo &lt; hi</b> and <b>hi = mid</b> are correct: the invariant is “the peak is in [lo, hi]”, and mid + 1 never leaves it. Conventions must match the invariant.</p></div>
+</div>
+</div>
+
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

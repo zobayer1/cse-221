@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What makes an algorithm good?</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.lede { max-width:1040px; }
+.gw { margin-top:40px; display:grid; grid-template-columns:1.25fr 1fr; gap:32px; }
+.card { padding:28px 28px; display:grid; grid-template-columns:1fr 160px; gap:12px; align-items:center; min-height:290px; }
+.card svg { width:160px; height:auto; }
+.card .k { font-size:16px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; }
+.card h3 { font-family:var(--serif); font-weight:700; font-size:38px; white-space:nowrap; line-height:1.08; margin-top:10px; }
+.card p { font-size:20px; line-height:1.45; margin-top:14px; }
+.card.t { background:var(--blue); color:#fff; } .card.t .k, .card.t p { color:#dce6f5; }
+.card.m { background:var(--tint); box-shadow:inset 0 6px 0 var(--grey); } .card.m .k { color:var(--muted); } .card.m p { color:var(--muted); }
+.given { margin-top:36px; display:flex; gap:16px; align-items:baseline; font-size:21px; padding:14px 22px; border-left:5px solid var(--ink); background:#fff; border-top:1px solid var(--grey); border-bottom:1px solid var(--grey); }
+.given b { font-weight:700; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">What makes an algorithm good?</div>
+<div class="frame">
+
+<p class="lede">Among algorithms that solve a problem correctly, we prefer the one that uses fewer resources.</p>
+<div class="gw">
+  <div class="card t"><div><div class="k">Most important</div><h3>Runs in less time</h3><p>Time complexity: how the running time grows as the input gets bigger. This is what we will analyze most in this course.</p></div><svg viewBox="0 0 170 150" width="170" height="150" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="104" cy="34" r="14"/><path d="M98 31 l3 1 M110 31 l-3 1 M99 39 q5 4 10 0"/>
+<path d="M98 48 L84 88 M84 88 L102 106 L96 132 M84 88 L66 104 L44 108 M94 58 L114 74 L130 64 M94 58 L72 62 L62 78"/>
+<path d="M30 52 h26 M20 70 h30 M34 88 h18" stroke-width="2" opacity="0.7"/>
+<circle cx="140" cy="40" r="16" stroke-width="2"/><path d="M140 30 v10 l7 5 M136 22 h8" stroke-width="2"/>
+</svg></div>
+  <div class="card m"><div><div class="k">Also matters</div><h3>Uses less memory</h3><p>Space complexity: how much extra memory it needs.</p></div><svg viewBox="0 0 170 150" width="170" height="150" fill="none" stroke="#1a1a1a" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<rect x="46" y="8" width="82" height="50" rx="3"/><text x="87" y="40" font-size="17" font-weight="600" fill="#2B5BAA" stroke="none" text-anchor="middle">DATA</text>
+<path d="M52 58 L66 72 M122 58 L108 72"/>
+<circle cx="87" cy="80" r="13"/><path d="M81 77 l4 2 M93 77 l-4 2 M81 87 q6 -4 12 0"/>
+<path d="M87 93 L87 120 M87 120 L76 146 M87 120 L98 146 M87 100 L66 72 M87 100 L108 72"/>
+<path d="M140 76 q4 6 0 10 M148 70 q6 10 0 18" stroke-width="2"/>
+</svg></div>
+</div>
+<p class="given"><b>Correctness comes first.</b> A fast algorithm that gives the wrong answer is not a good algorithm.</p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

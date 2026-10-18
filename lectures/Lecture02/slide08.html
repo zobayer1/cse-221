@@ -1,0 +1,61 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linear search, recursively</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:20px 24px; }
+.codebox pre { font-size:22px; line-height:1.7; }
+.codebox .fn { font-weight:700; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.onote { font-size:15px; color:var(--muted); }
+
+.rw2 { margin-top:18px; display:grid; grid-template-columns:610px 1fr; gap:36px; }
+.rw2 .codebox pre { font-size:19px; }
+.call0 { margin-top:12px; font-size:18px; color:var(--muted); }
+.call0 code { font-family:var(--mono); color:var(--ink); font-size:17px; }
+.tr2 { margin-top:12px; font-family:var(--mono); font-size:16px; line-height:1.4; }
+.tr2 .f { padding:6px 10px; border-left:3px solid var(--grey); margin-bottom:4px; }
+.tr2 .f b { font-weight:700; }
+.tr2 .f span { color:var(--muted); }
+.tr2 .f.hit { border-left-color:var(--blue); background:var(--tint); }
+.tr2 .f.hit b { color:var(--blue); }
+.cx { margin-top:36px; display:grid; grid-template-columns:1fr 1fr 300px; gap:20px; align-items:end; }
+.cx > div.c { padding:12px 18px; background:var(--tint); border-left:5px solid var(--blue); }
+.cx h3 { font-size:17px; font-weight:700; }
+.cx .o { font-family:var(--serif); font-weight:700; font-size:26px; color:var(--blue); }
+.cx p { font-size:15px; color:var(--muted); line-height:1.4; margin-top:2px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Linear search, recursively</div>
+<div class="frame">
+
+<div class="rw2">
+  <div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">LINEAR-SEARCH-REC</span>(A, n, x, i)
+<span class="ln">2</span>    <span class="kw">if</span> i == n
+<span class="ln">3</span>        <span class="kw">return</span> NIL
+<span class="ln">4</span>    <span class="kw">if</span> A[i] == x
+<span class="ln">5</span>        <span class="kw">return</span> i
+<span class="ln">6</span>    <span class="kw">return</span> LINEAR-SEARCH-REC(A, n, x, i + 1)</pre></div><p class="call0">Start with <code>LINEAR-SEARCH-REC(A, n, x, 0)</code>. Each call checks one element, then hands the rest of the array to the next call.</p></div>
+  <div><div class="k3">Trace: find 42 in [17, 3, 42, 8]</div>
+    <div class="tr2">
+      <div class="f" style="margin-left:0"><b>i = 0</b> <span>A[0] = 17 ≠ 42, call with i = 1</span></div>
+      <div class="f" style="margin-left:22px"><b>i = 1</b> <span>A[1] = 3 ≠ 42, call with i = 2</span></div>
+      <div class="f hit" style="margin-left:44px"><b>i = 2</b> <span>A[2] = 42, return 2</span></div>
+      <div class="f" style="margin-left:0;border-left-color:transparent"><span>2 is passed back up to the first call</span></div>
+    </div></div>
+</div>
+<div class="cx">
+  <div class="c"><h3>Time</h3><div class="o">O(<i>n</i>)</div><p>One element per call, up to <i>n</i> calls.<br><span style="white-space:nowrap"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i> − 1) + <i>c</i></span></p></div>
+  <div class="c"><h3>Extra space</h3><div class="o">O(<i>n</i>)</div><p>Up to <i>n</i> calls waiting on the call stack.<br>The loop version needs only O(1).</p></div>
+  <svg viewBox="0 0 300 120" width="300" height="120" fill="none" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<circle cx="40" cy="40" r="11"/><path d="M40 51 L40 84 M40 84 L32 114 M40 84 L48 114 M40 60 L26 72 M40 60 L62 54"/><circle cx="130" cy="40" r="11"/><path d="M130 51 L130 84 M130 84 L122 114 M130 84 L138 114 M130 60 L116 72 M130 60 L152 54"/><circle cx="220" cy="40" r="11"/><path d="M220 51 L220 84 M220 84 L212 114 M220 84 L228 114 M220 60 L206 72 M220 60 L242 54"/>
+<path d="M35 38 h3 M42 38 h3 M36 45 h8 M125 38 h3 M132 38 h3 M126 45 h8"/><path d="M215 37 q2 -2 4 0 M222 37 q2 -2 4 0 M214 44 q6 5 12 0"/>
+<path d="M66 50 l14 0 M156 50 l14 0" stroke="#2B5BAA" stroke-width="1.8"/><path d="M76 46 l4 4 l-4 4 M166 46 l4 4 l-4 4" stroke="#2B5BAA" stroke-width="1.8"/>
+<g stroke="none" font-size="12" fill="#5B5E63" text-anchor="middle"><text x="40" y="16">not me…</text><text x="130" y="16">not me…</text><text x="220" y="16" fill="#2B5BAA" font-weight="700">it's me!</text></g>
+</svg>
+</div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

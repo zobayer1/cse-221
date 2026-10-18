@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A different way to divide</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.arr { display:flex; }
+.arr .c { display:flex; flex-direction:column; align-items:center; }
+.arr .v { width:var(--w,92px); height:var(--h,78px); border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:var(--fs,34px); background:#fff; }
+.arr .c:first-child .v { margin-left:0; }
+.arr .i { font-family:var(--mono); font-size:var(--is,17px); color:var(--muted); margin-top:6px; }
+.arr .v.out { background:#EEF0F2; color:#B4B7BB; border-color:#B4B7BB; position:relative; z-index:0; }
+.arr .v.chk { background:var(--blue); color:#fff; border-color:var(--blue); position:relative; z-index:1; }
+.arr .v.hit { box-shadow:inset 0 0 0 3px #C62828; }
+
+.gl { flex:1; margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:36px; }
+.glc { border:2px solid var(--ink); border-radius:10px; padding:14px 20px 16px; display:flex; flex-direction:column; align-items:center; gap:12px; }
+.glc.new { border-color:var(--blue); border-width:3px; }
+.glc .k3 { align-self:stretch; font-size:15px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); border-bottom:2px solid var(--ink); padding-bottom:6px; }
+.glc.new .k3 { color:var(--blue); border-color:var(--blue); }
+.glc h3 { font-family:var(--serif); font-weight:700; font-size:26px; }
+.glc .arr { --w:46px; --h:44px; --fs:22px; }
+.glc .cut { display:flex; align-items:center; gap:14px; }
+.glc .cut .bar { width:4px; height:64px; background:#C62828; border-radius:2px; }
+.glc p { font-size:17px; color:var(--muted); text-align:center; line-height:1.45; }
+.glc p b { color:var(--ink); }
+.nx { margin-top:18px; text-align:center; font-family:var(--serif); font-size:26px; }
+.nx b { color:var(--blue); }
+.nx span { font-family:var(--sans); font-size:16px; color:var(--muted); margin-left:10px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">A different way to divide</div>
+<div class="frame"><div class="gl"><div class="glc"><div class="k3">So far: merge sort</div><h3>Split by <b>position</b></h3><div class="cut"><div class="arr"><div class="c"><div class="v">5</div></div><div class="c"><div class="v">2</div></div><div class="c"><div class="v">9</div></div><div class="c"><div class="v">1</div></div></div><div class="bar"></div><div class="arr"><div class="c"><div class="v">7</div></div><div class="c"><div class="v">3</div></div><div class="c"><div class="v">8</div></div><div class="c"><div class="v">4</div></div></div></div><p>Cut in the middle, <b>without looking</b>.<br>All the real work happens <b>later</b>, in MERGE.</p><svg width="320" height="112" viewBox="0 0 200 70" fill="none" stroke="#1A1A1A" stroke-width="1.8" stroke-linecap="round" style="margin-top:14px"><circle cx="40" cy="20" r="11"/><path d="M35 18 h3 M43 18 h3"/><path d="M35 26 h10"/><path d="M40 31 v20 M40 51 l-7 16 M40 51 l7 16 M40 38 l-12 8 M40 38 l12 8"/><text x="120" y="38" font-size="13" fill="#5B5E63" stroke="none" text-anchor="middle" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">“I’ll sort it out later.”</text></svg></div><div class="glc new"><div class="k3">New idea</div><h3>Split by <b>value</b></h3><svg width="470" height="220" viewBox="0 0 470 220" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><g stroke="#1A1A1A" stroke-width="2.4"><circle cx="34" cy="129" r="9"/><path d="M34 138 V166.6"/><path d="M34 166.6 L26 190 M34 166.6 L42 190"/><path d="M34 146 L24 158 M34 146 L44 158"/></g><g stroke="#1A1A1A" stroke-width="2.4"><circle cx="91" cy="150" r="8"/><path d="M91 158 V175.6"/><path d="M91 175.6 L83 190 M91 175.6 L99 190"/><path d="M91 166 L81 178 M91 166 L101 178"/></g><g stroke="#1A1A1A" stroke-width="2.4"><circle cx="148" cy="107" r="9"/><path d="M148 116 V156.7"/><path d="M148 156.7 L140 190 M148 156.7 L156 190"/><path d="M148 124 L138 136 M148 124 L158 136"/></g><g stroke="#1A1A1A" stroke-width="2.4"><circle cx="205" cy="158" r="8"/><path d="M205 166 V179.2"/><path d="M205 179.2 L197 190 M205 179.2 L213 190"/><path d="M205 174 L195 186 M205 174 L215 186"/></g><g stroke="#1A1A1A" stroke-width="2.4"><circle cx="262" cy="119" r="9"/><path d="M262 128 V162.1"/><path d="M262 162.1 L254 190 M262 162.1 L270 190"/><path d="M262 136 L252 148 M262 136 L272 148"/></g><g stroke="#2B5BAA" stroke-width="2.4"><circle cx="319" cy="141" r="9"/><path d="M319 150 V172.0"/><path d="M319 172.0 L311 190 M319 172.0 L327 190"/><path d="M319 158 L309 170 M319 158 L329 170"/></g><g stroke="#1A1A1A" stroke-width="2.4"><circle cx="376" cy="113" r="9"/><path d="M376 122 V159.4"/><path d="M376 159.4 L368 190 M376 159.4 L384 190"/><path d="M376 130 L366 142 M376 130 L386 142"/></g><g stroke="#1A1A1A" stroke-width="2.4"><circle cx="433" cy="137" r="9"/><path d="M433 146 V170.2"/><path d="M433 170.2 L425 190 M433 170.2 L441 190"/><path d="M433 154 L423 166 M433 154 L443 166"/></g><path d="M329 160 L337 112" stroke="#2B5BAA" stroke-width="2.2"/><rect x="321" y="84" width="56" height="28" rx="4" fill="#2B5BAA" stroke="#2B5BAA"/><text x="349" y="103" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">pivot</text><path d="M6 190 H464" stroke="#1A1A1A" stroke-width="2"/><path d="M150 210 H40" stroke="#2B5BAA" stroke-width="2.2"/><path d="M48 204 l-8 6 l8 6" stroke="#2B5BAA" stroke-width="2.2"/><text x="160" y="214" font-size="13" fill="#2B5BAA" stroke="none">shorter</text><path d="M330 210 H440" stroke="#D9822B" stroke-width="2.2"/><path d="M432 204 l8 6 l-8 6" stroke="#D9822B" stroke-width="2.2"/><text x="324" y="214" font-size="13" fill="#B5651D" stroke="none" text-anchor="end">taller</text></svg><p>Pick someone, then <b>shorter</b> people go left and <b>taller</b> go right.<br>Do the work <b>first</b>. Is there anything left to merge?</p></div></div><p class="nx">Up next: <b>Quicksort</b><span>Tony Hoare, 1959</span></p></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

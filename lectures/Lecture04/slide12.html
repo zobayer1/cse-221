@@ -1,0 +1,41 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merge sort</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:20px 24px; }
+.codebox pre { font-size:22px; line-height:1.7; }
+.codebox .fn { font-weight:700; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.onote { font-size:15px; color:var(--muted); }
+
+.ms { flex:1; margin-top:10px; display:grid; grid-template-columns:680px 1fr; gap:36px; align-items:center; }
+.ms .codebox pre { font-size:21px; line-height:1.75; }
+.msr { display:flex; flex-direction:column; gap:12px; }
+.msr .k3 { margin-bottom:2px; }
+.msr .cl { font-family:var(--mono); font-size:18px; background:var(--tint); padding:8px 12px; display:inline-block; }
+.msr p { font-size:17px; color:var(--muted); line-height:1.45; }
+.msr p b { color:var(--ink); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Merge sort</div>
+<div class="frame"><div style="display:flex;align-items:baseline;gap:16px"><span style="font-size:16px;color:var(--muted)">John von Neumann, 1945</span></div><div class="ms"><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">MERGE-SORT</span>(A, lo, hi)
+<span class="ln">2</span>    <span class="kw">if</span> lo ≥ hi                  <span style="color:var(--blue);font-weight:600;font-size:16px;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--sans)">◃ base case</span>
+<span class="ln">3</span>        <span class="kw">return</span>                  <span style="color:var(--muted)">// size ≤ 1</span>
+<span class="ln">4</span>    mid = ⌊(lo + hi) / 2⌋       <span style="color:var(--blue);font-weight:600;font-size:16px;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--sans)">◃ split</span>
+<span class="ln">5</span>    <span class="fn">MERGE-SORT</span>(A, lo, mid)      <span style="color:var(--blue);font-weight:600;font-size:16px;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--sans)">◃ recurse</span>
+<span class="ln">6</span>    <span class="fn">MERGE-SORT</span>(A, mid + 1, hi)  <span style="color:var(--blue);font-weight:600;font-size:16px;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--sans)">◃ recurse</span>
+<span class="ln">7</span>    <span class="fn">MERGE</span>(A, lo, mid, hi)       <span style="color:var(--blue);font-weight:600;font-size:16px;letter-spacing:0.06em;text-transform:uppercase;font-family:var(--sans)">◃ combine</span></pre></div><div class="msr"><div class="k3">First call</div><div><span class="cl">MERGE-SORT(A, 0, n − 1)</span></div><p><b>MERGE</b> here merges A[lo..mid] and A[mid+1..hi] into a temporary array, then copies it back into A[lo..hi].</p></div></div></div>
+<div class="doodle" style="left:762px;top:478px;width:300px"><svg width="300" height="200" viewBox="0 0 300 200" fill="none" stroke="#1A1A1A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<rect x="4" y="4" width="220" height="52" rx="10" stroke-width="2"/><path d="M110 56 l-6 16 l20 -16" fill="#fff" stroke-width="2"/>
+<text x="114" y="26" font-size="13.5" fill="#1A1A1A" stroke="none" text-anchor="middle">You sort that half, you sort this</text>
+<text x="114" y="45" font-size="13.5" fill="#1A1A1A" stroke="none" text-anchor="middle">half. I’ll just merge. Boss life!</text>
+<circle cx="120" cy="96" r="14"/><path d="M113 92 h4 M123 92 h4"/><path d="M113 101 q7 5 14 0"/>
+<path d="M120 110 v38"/><path d="M120 148 l-11 30"/><path d="M120 148 l11 30"/><path d="M120 122 l-40 -4"/><path d="M120 122 l40 -4"/>
+<circle cx="40" cy="128" r="10"/><path d="M40 138 v24 M40 162 l-8 20 M40 162 l8 20 M40 146 l-12 8 M40 146 l12 8"/><path d="M35 126 h3 M43 126 h3"/><path d="M36 133 h8"/>
+<circle cx="200" cy="128" r="10"/><path d="M200 138 v24 M200 162 l-8 20 M200 162 l8 20 M200 146 l-12 8 M200 146 l12 8"/><path d="M195 126 h3 M203 126 h3"/><path d="M196 133 h8"/>
+<path d="M4 184 H296" stroke-width="2"/></svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

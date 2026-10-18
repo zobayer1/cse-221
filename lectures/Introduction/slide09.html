@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prerequisites</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.path { margin-top:56px; display:grid; grid-template-columns:1fr 48px 1fr 48px 1fr 48px 1fr; align-items:stretch; }
+.course { border:1.5px solid var(--ink); border-radius:6px; padding:20px 22px; background:#fff; box-shadow:0 1px 3px rgba(0,0,0,.18); }
+.course .c { font-size:20px; font-weight:700; color:var(--blue); }
+.course .t { font-size:26px; line-height:1.2; margin-top:8px; min-height:62px; }
+.course .cr { font-size:18px; color:var(--muted); margin-top:10px; }
+.course.this { position:relative; background:var(--blue); border-color:var(--blue); color:#fff; }
+.course.this .c, .course.this .cr { color:#dce6f5; }
+.course.this .here { position:absolute; right:6px; bottom:100%; } /* overlay standing on the box */
+.arrow { display:flex; align-items:center; justify-content:center; }
+.arrow::before { content:''; width:22px; height:2px; background:var(--ink); }
+.arrow::after { content:''; border-left:10px solid var(--ink); border-top:7px solid transparent; border-bottom:7px solid transparent; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Prerequisites</div>
+<div class="frame">
+<p class="lede">You should have completed these courses before taking CSE 221</p>
+<div class="path">
+  <div class="course"><div class="c">CSE 110</div><div class="t">Programming Language I</div><div class="cr">3 credits</div></div><div class="arrow"></div>
+  <div class="course"><div class="c">CSE 111</div><div class="t">Programming Language II</div><div class="cr">3 credits</div></div><div class="arrow"></div>
+  <div class="course"><div class="c">CSE 220</div><div class="t">Data Structures</div><div class="cr">3 credits</div></div><div class="arrow"></div>
+  <div class="course this"><div class="c">CSE 221</div><div class="t">Algorithms</div><div class="cr">This course</div><svg class="here" width="210" height="112" viewBox="0 0 210 112" fill="none" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="160" cy="22" r="12"/><path d="M155 20l2 1M165 20l-2 1M155 26q5 4 10 0"/><path d="M160 34v38M160 72l-11 38M160 72l11 38M160 46l20-18M160 46l-18 12"/><path d="M104 48q20 6 34 6" stroke="#2B5BAA" stroke-width="1.8"/><path d="M132 49l7 5-8 3" stroke="#2B5BAA" stroke-width="1.8"/><text x="2" y="46" stroke="none" fill="#2B5BAA" font-family="CMU Sans Serif" font-weight="700" font-size="19">you are here</text></svg></div>
+</div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

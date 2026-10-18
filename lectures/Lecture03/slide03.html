@@ -1,0 +1,49 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comparison sorting</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:20px 24px; }
+.codebox pre { font-size:22px; line-height:1.7; }
+.codebox .fn { font-weight:700; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.onote { font-size:15px; color:var(--muted); }
+
+.cs-l { margin-top:14px; font-family:var(--serif); font-weight:400; font-size:30px; line-height:1.3; max-width:1080px; }
+.cs-l b { color:var(--blue); font-weight:700; }
+.csw { margin-top:20px; display:grid; grid-template-columns:1fr 1fr 300px; gap:32px; align-items:start; }
+.csw .it { padding:9px 0; border-bottom:1px solid var(--grey); font-size:17px; line-height:1.4; color:var(--muted); }
+.csw .it b { color:var(--ink); font-weight:700; display:block; font-size:18px; }
+.csw .it code { font-family:var(--mono); font-size:16px; color:var(--ink); }
+.tease { margin-top:36px; font-size:16px; color:var(--muted); padding:10px 18px; background:var(--tint); border-left:5px solid var(--blue); }
+.tease b { color:var(--ink); font-weight:700; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Comparison sorting</div>
+<div class="frame">
+
+<p class="cs-l">A <b>comparison sort</b> puts elements in order using only one kind of question about them: <b>is A[i] ≤ A[j]?</b></p>
+<div class="csw">
+  <div><div class="k3">The problem</div>
+    <div class="it"><b>Input</b>An array A of <i>n</i> elements</div>
+    <div class="it"><b>Output</b>The same elements rearranged so that A[0] ≤ A[1] ≤ … ≤ A[<i>n</i> − 1]</div>
+    <div class="it"><b>Allowed</b>Compare two elements, and move or swap them</div></div>
+  <div><div class="k3">What we count</div>
+    <div class="it"><b>Comparisons</b>How many times we ask <code>A[i] &gt; A[j]?</code> This drives the running time.</div>
+    <div class="it"><b>Swaps (or shifts)</b>How many times elements move. Matters when moving is expensive.</div>
+    <div class="it"><b>Passes</b>How many times the outer loop runs.</div></div>
+  <svg viewBox="0 0 300 200" width="300" height="200" fill="none" stroke="#1a1a1a" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">
+<path d="M90 60 L230 44" stroke-width="3"/><path d="M160 52 L160 150 M130 150 h60"/><path d="M160 40 l-8 12 h16 z" fill="#1a1a1a"/>
+<path d="M90 60 L72 100 M90 60 L108 100 M64 100 h52 q-26 24 -52 0 z"/><path d="M230 44 L212 84 M230 44 L248 84 M204 84 h52 q-26 24 -52 0 z"/>
+<rect x="76" y="78" width="28" height="22" rx="3" fill="#2B5BAA" stroke="#2B5BAA"/><text x="90" y="95" font-size="16" font-weight="700" fill="#fff" stroke="none" text-anchor="middle">7</text>
+<rect x="216" y="62" width="28" height="22" rx="3" fill="#fff" stroke="#2B5BAA"/><text x="230" y="79" font-size="16" font-weight="700" fill="#2B5BAA" stroke="none" text-anchor="middle">2</text>
+<circle cx="40" cy="128" r="12"/><path d="M34 125 l3 1 M46 125 l-3 1 M35 133 q5 3 10 0"/><path d="M40 140 L40 172 M40 172 L32 198 M40 172 L48 198 M40 150 L28 160 M40 150 L60 132"/>
+<text x="250" y="140" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1" font-size="14" fill="#5B5E63" stroke="none" text-anchor="middle">7 &gt; 2</text>
+</svg>
+</div>
+<p class="tease">Today: <b>bubble, insertion and selection sort</b>, all comparison sorts. Later: merge sort and quicksort, and sorts that do not compare at all.</p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

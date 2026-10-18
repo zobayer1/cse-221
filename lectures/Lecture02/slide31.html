@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linear vs binary vs ternary</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.at { margin-top:22px; width:100%; border-collapse:collapse; }
+.at th { font-family:var(--serif); font-weight:700; font-size:24px; text-align:left; padding:0 16px 10px 0; border-bottom:2px solid var(--ink); }
+.at th:first-child { font-family:var(--sans); font-size:15px; font-weight:400; color:var(--muted); }
+.at td { padding:17px 16px 17px 0; border-bottom:1px solid var(--grey); font-size:20px; vertical-align:baseline; }
+.at td:first-child { font-size:17px; color:var(--muted); width:30%; }
+.at td.o { font-family:var(--serif); font-weight:700; font-size:23px; }
+.at td small { display:block; font-size:14px; color:var(--muted); margin-top:2px; }
+.at tr.win td:not(:first-child) { font-weight:700; }
+.at .best { color:var(--blue); }
+.afoot { margin-top:12px; font-size:14px; color:var(--muted); line-height:1.5; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Linear vs binary vs ternary</div>
+<div class="frame">
+
+<table class="at">
+  <tr><th>Property</th><th>Linear</th><th>Binary</th><th>Ternary</th></tr>
+  <tr><td>Sorted input required?</td><td>No</td><td>Yes</td><td>Yes*</td></tr>
+  <tr><td>Worst-case time</td><td class="o" style="color:#C62828">O(<i>n</i>)</td><td class="o best">O(log <i>n</i>)</td><td class="o best">O(log <i>n</i>)</td></tr>
+  <tr><td>Search space after one step</td><td>One element fewer</td><td>About half</td><td>About one third<small>two thirds discarded</small></td></tr>
+  <tr><td>Elements compared per step</td><td>1</td><td>1<small>A[mid]</small></td><td>2<small>A[m1] and A[m2]</small></td></tr>
+  <tr class="win"><td>Typical array-search choice</td><td>Unsorted data</td><td class="best">Sorted data</td><td>Rarely preferred</td></tr>
+</table>
+<p class="afoot">* For array search. For finding a peak, ternary search needs a unimodal function instead.<br>
+Elements compared counts each key comparison once. Slide 24 counted the separate == and &lt; tests, giving 2 and 4. The ratio is the same.</p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

@@ -1,0 +1,50 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Answer: about 500 comparisons</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.arr { display:flex; }
+.arr .c { display:flex; flex-direction:column; align-items:center; }
+.arr .v { width:var(--w,92px); height:var(--h,78px); border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:var(--fs,34px); background:#fff; }
+.arr .c:first-child .v { margin-left:0; }
+.arr .i { font-family:var(--mono); font-size:var(--is,17px); color:var(--muted); margin-top:6px; }
+.arr .v.out { background:#EEF0F2; color:#B4B7BB; border-color:#B4B7BB; position:relative; z-index:0; }
+.arr .v.chk { background:var(--blue); color:#fff; border-color:var(--blue); position:relative; z-index:1; }
+.arr .v.hit { box-shadow:inset 0 0 0 3px #C62828; }
+
+.av { margin-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:48px; flex:1; min-height:0; }
+.av table { width:100%; border-collapse:collapse; }
+.av th { font-size:15px; font-weight:400; color:var(--muted); text-align:right; padding:0 0 8px; border-bottom:2px solid var(--ink); }
+.av th:first-child, .av td:first-child { text-align:left; }
+.av td { font-family:var(--serif); font-size:22px; text-align:right; padding:8px 0; border-bottom:1px solid var(--grey); }
+.av td.d { color:var(--muted); text-align:center; }
+.eq { font-family:var(--serif); font-size:28px; line-height:1.7; }
+.eq .big { font-size:46px; font-weight:700; color:var(--blue); }
+.frac { display:inline-flex; flex-direction:column; align-items:center; vertical-align:middle; margin:0 6px; }
+.frac span:first-child { border-bottom:2px solid var(--ink); padding:0 6px; }
+.anote { margin-top:16px; font-size:18px; color:var(--muted); line-height:1.5; }
+.anote b { color:var(--ink); font-weight:700; }
+.avg { margin-top:36px; padding:14px 20px; background:var(--blue); color:#fff; font-size:22px; }
+.avg b { font-family:var(--serif); font-weight:700; font-size:26px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Answer: about 500 comparisons</div>
+<div class="frame">
+
+<div class="av">
+  <div><table><tr><th>Target at index</th><th>Comparisons</th></tr>
+    <tr><td>0</td><td>1</td></tr><tr><td>1</td><td>2</td></tr><tr><td>2</td><td>3</td></tr>
+    <tr><td class="d" colspan="2">⋮</td></tr><tr><td><i>i</i></td><td><i>i</i> + 1</td></tr>
+    <tr><td class="d" colspan="2">⋮</td></tr><tr><td><i>n</i> − 1</td><td><i>n</i></td></tr></table></div>
+  <div style="display:flex;flex-direction:column">
+    <div class="eq">Average = <span class="frac"><span>1 + 2 + … + <i>n</i></span><span><i>n</i></span></span> = <span class="frac"><span><i>n</i> + 1</span><span>2</span></span></div>
+    <div class="eq">For <i>n</i> = 1,000: <span class="big">500.5</span></div>
+    <p class="anote">Assumes a <b>successful</b> search with every position <b>equally likely</b>.</p>
+    <div class="avg">Average case: about <i>n</i>/2 comparisons, still <b>O(<i>n</i>)</b></div>
+  </div>
+</div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

@@ -1,0 +1,47 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guess my order</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.tagq { display:inline-block; font-size:15px; font-weight:700; color:#fff; background:var(--blue); padding:4px 12px; letter-spacing:0.06em; text-transform:uppercase; }
+.eg { margin-top:36px; display:grid; grid-template-columns:repeat(3,1fr); gap:36px; }
+.ec { border:2px solid var(--ink); border-radius:10px; padding:16px 18px 18px; display:flex; flex-direction:column; align-items:center; }
+.ec h3 { font-family:var(--serif); font-weight:700; font-size:28px; margin-top:4px; }
+.ec svg { margin:6px 0 10px; }
+.ec .q { width:100%; display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--grey); padding:10px 4px; font-size:21px; }
+.ec .q i { font-style:normal; width:38px; height:38px; border:2.5px dashed var(--blue); border-radius:8px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:24px; color:var(--blue); }
+
+.g3 { flex:1; display:grid; grid-template-columns:1fr 360px; gap:30px; align-items:center; }
+.cards3 { display:flex; gap:24px; margin:6px 0 24px; }
+.cd { width:104px; height:148px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+  background-color:var(--blue);
+  background-image:repeating-linear-gradient(45deg, rgba(255,255,255,.22) 0 2px, transparent 2px 11px),
+                   repeating-linear-gradient(-45deg, rgba(255,255,255,.22) 0 2px, transparent 2px 11px);
+  outline:2px solid rgba(255,255,255,.85); outline-offset:-9px; box-shadow:0 3px 8px rgba(0,0,0,.28); } /* a face-down playing card */
+.cd span { width:60px; height:60px; border-radius:50%; background:#fff; color:var(--blue); display:flex; align-items:center; justify-content:center;
+  font-family:var(--serif); font-style:italic; font-weight:700; font-size:38px; line-height:1; box-shadow:0 0 0 3px var(--blue-d); }
+.rules { font-size:21px; line-height:1.5; }
+.rules b { font-weight:700; }
+.rules code { font-family:var(--mono); font-size:19px; background:var(--tint); padding:2px 8px; color:var(--blue); }
+.g3 .qs { margin-top:16px; display:flex; flex-direction:column; gap:12px; }
+.g3 .qs div { display:flex; gap:12px; align-items:baseline; font-size:22px; line-height:1.35; }
+.g3 .qs b { font-family:var(--serif); color:var(--blue); font-size:26px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Guess my order<span class="ftag">Discuss</span></div>
+<div class="frame"><div class="g3"><div><div class="cards3"><div class="cd"><span>a</span></div><div class="cd"><span>b</span></div><div class="cd"><span>c</span></div></div><p class="rules">Three hidden numbers. You may only ask <code>is x &lt; y?</code> and I answer <b>yes</b> or <b>no</b>.</p><div class="qs"><div><b>1</b><span>How many questions do you need, in the <b style="font-size:22px;color:var(--ink);font-family:var(--sans)">worst case</b>, to know the full order?</span></div><div><b>2</b><span>Can anyone do it in 2?</span></div></div></div><svg width="360" height="300" viewBox="0 0 360 300" fill="none" stroke="#1A1A1A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<rect x="10" y="8" width="200" height="62" rx="12" stroke-width="2"/><path d="M70 70 l-6 22 l22 -22" fill="#fff" stroke-width="2"/>
+<text x="110" y="34" font-size="15" fill="#1A1A1A" stroke="none" text-anchor="middle">Is a &lt; b? Is b &lt; c?</text>
+<text x="110" y="55" font-size="15" fill="#1A1A1A" stroke="none" text-anchor="middle">Is a &lt; c? Is…</text>
+<circle cx="80" cy="126" r="16"/><circle cx="74" cy="122" r="1.8" fill="#1A1A1A"/><circle cx="86" cy="122" r="1.8" fill="#1A1A1A"/><path d="M73 133 q7 -3 14 0"/>
+<path d="M80 142 v62"/><path d="M80 160 l-26 16"/><path d="M80 160 l20 -22"/><path d="M80 204 l-18 34"/><path d="M80 204 l18 34"/>
+<rect x="190" y="108" width="160" height="62" rx="12" stroke-width="2"/><path d="M276 170 l4 22 l-22 -22" fill="#fff" stroke-width="2"/>
+<text x="270" y="134" font-size="15" fill="#1A1A1A" stroke="none" text-anchor="middle">Yes. No. Maybe.</text>
+<text x="270" y="155" font-size="15" fill="#1A1A1A" stroke="none" text-anchor="middle">Just kidding: no.</text>
+<circle cx="282" cy="214" r="16"/><path d="M274 210 h4 M286 210 h4"/><path d="M274 220 q8 6 16 0"/>
+<path d="M282 230 v40"/><path d="M282 242 l-20 -10"/><path d="M282 244 l22 -8"/><path d="M282 270 l-14 26"/><path d="M282 270 l14 26"/>
+<path d="M2 296 H356" stroke-width="2"/></svg></div></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typical running-time functions (1)</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.fns { margin-top:22px; border-top:2px solid var(--ink); }
+.fn { display:grid; grid-template-columns:150px 1fr 300px; gap:28px; align-items:baseline; padding:15px 0; border-bottom:1px solid var(--grey); }
+.fn .nt { font-family:var(--serif); font-weight:700; font-size:36px; color:var(--blue); white-space:nowrap; }
+.fn h3 { font-size:21px; font-weight:700; }
+.fn p { font-size:19px; color:var(--muted); line-height:1.4; margin-top:3px; }
+.fn .eg { font-size:17px; line-height:1.4; }
+.fn .eg span { display:block; font-size:13px; font-weight:700; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; }
+.fhead { display:grid; grid-template-columns:150px 1fr 300px; gap:28px; font-size:15px; color:var(--muted); margin-top:20px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Typical running-time functions (1)</div>
+<div class="frame"><div class="fns"><div class="fn"><div class="nt">1</div><div><h3>Constant</h3><p>Instructions run once, or a fixed few times, whatever <i>n</i> is.</p></div><div class="eg"><span>Example</span>Reading A[i]; swapping two values</div></div><div class="fn"><div class="nt">log <i>n</i></div><div><h3>Logarithmic</h3><p>A big problem is solved by cutting it down by a constant fraction at each step.</p></div><div class="eg"><span>Example</span>Binary search</div></div><div class="fn"><div class="nt"><i>n</i></div><div><h3>Linear</h3><p>A small amount of work is done on each input element.</p></div><div class="eg"><span>Example</span>Finding the minimum</div></div><div class="fn"><div class="nt"><i>n</i> log <i>n</i></div><div><h3>Linearithmic</h3><p>Split into smaller problems, solve each independently, then combine the solutions.</p></div><div class="eg"><span>Example</span>Merge sort</div></div></div></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

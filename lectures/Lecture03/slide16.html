@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Telling them apart</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.dw { margin-top:18px; display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+.dc .hd { padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.dc h3 { font-family:var(--serif); font-weight:700; font-size:28px; }
+.dc .an { font-size:16px; color:var(--blue); font-weight:700; margin-top:2px; }
+.dc .rw { padding:9px 0; border-bottom:1px solid var(--grey); font-size:16.5px; line-height:1.4; }
+.dc .rw span { display:block; font-size:12.5px; font-weight:700; color:var(--muted); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:2px; }
+.dc .rw b { font-weight:700; }
+.conf { margin-top:36px; display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+.conf div { padding:10px 16px; font-size:16px; line-height:1.45; background:#FFF7E0; box-shadow:inset 5px 0 0 #E0A800; }
+.conf b { font-weight:700; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Telling them apart</div>
+<div class="frame"><div class="dw"><div class="dc"><div class="hd"><h3>Bubble sort</h3><div class="an">Bubbles rise to the top</div></div><div class="rw"><span>One pass</span>Swaps <b>neighbors</b> all the way along</div><div class="rw"><span>Sorted part</span>Grows from the <b>right</b>, final</div><div class="rw"><span>Best case</span>Still O(<i>n</i><sup>2</sup>): always compares</div><div class="rw"><span>Moves</span>Many swaps: 13 in our example</div></div><div class="dc"><div class="hd"><h3>Insertion sort</h3><div class="an">Sorting cards in your hand</div></div><div class="rw"><span>One pass</span>Takes the <b>next</b> element and slides it into the sorted part</div><div class="rw"><span>Sorted part</span>Grows from the <b>left</b>, not final</div><div class="rw"><span>Best case</span>O(<i>n</i>) on sorted input</div><div class="rw"><span>Moves</span>Many shifts: 13 in our example</div></div><div class="dc"><div class="hd"><h3>Selection sort</h3><div class="an">Pick the smallest, put it next</div></div><div class="rw"><span>One pass</span>Searches the <b>unsorted</b> part for the minimum</div><div class="rw"><span>Sorted part</span>Grows from the <b>left</b>, final</div><div class="rw"><span>Best case</span>Still O(<i>n</i><sup>2</sup>): always scans</div><div class="rw"><span>Moves</span>At most <i>n</i> − 1 swaps: 5 in our example</div></div></div><div class="conf"><div><b>Insertion vs selection:</b> selection <b>searches</b> the unsorted part for what comes next. Insertion <b>takes</b> what comes next and searches the sorted part for where it goes.</div><div><b>Same 13?</b> Bubble swaps and insertion shifts both equal the number of <b>inversions</b>: pairs that are out of order. Each one fixes exactly one.</div></div></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The recurrence</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.rq { margin-top:18px; display:flex; justify-content:center; align-items:flex-start; gap:14px; font-family:var(--serif); font-size:40px; }
+.rq .pt { display:flex; flex-direction:column; align-items:center; }
+.rq .pt .u { padding:0 6px 4px; border-bottom:3px solid; }
+.rq .pt .l { font-family:var(--sans); font-size:15px; font-weight:700; margin-top:6px; text-align:center; line-height:1.3; }
+.rq .b .u, .rq .b .l { border-color:var(--blue); color:var(--blue); }
+.rq .o .u, .rq .o .l { border-color:#D9822B; color:#B5651D; }
+.rq .g .u, .rq .g .l { border-color:#2E7D32; color:#2E7D32; }
+.rq .pl { padding-top:0; }
+.rb { margin-top:24px; display:grid; grid-template-columns:1fr 360px; gap:34px; }
+.un { position:relative; background:var(--tint); border-left:5px solid var(--blue); padding:14px 22px; }
+.un .k3 { font-size:14px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:6px; }
+.un div.r { font-family:var(--serif); font-size:22px; line-height:1.7; }
+.un div.r .m { font-family:var(--sans); font-size:14px; color:var(--muted); margin-left:14px; }
+.un div.r b { color:var(--blue); }
+.cmp2 { border:2px solid var(--ink); border-radius:10px; padding:12px 18px; display:flex; flex-direction:column; gap:10px; }
+.cmp2 .k3 { font-size:14px; font-weight:700; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; }
+.cmp2 .rw2 { display:flex; flex-direction:column; gap:2px; padding-bottom:8px; border-bottom:1px solid var(--grey); }
+.cmp2 .rw2:last-child { border-bottom:none; padding-bottom:0; }
+.cmp2 .nm2 { font-size:16px; font-weight:700; }
+.cmp2 .f { font-family:var(--serif); font-size:21px; }
+.cmp2 .f b { color:var(--blue); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">The recurrence</div>
+<div class="frame"><div class="rq"><span><i>T</i>(<i>n</i>) =</span><div class="pt b"><span class="u">2</span><span class="l">two<br>halves</span></div><div class="pt o"><span class="u"><i>T</i>(<i>n</i>/2)</span><span class="l">each half<br>size</span></div><span class="pl">+</span><div class="pt g"><span class="u"><i>cn</i></span><span class="l">merge<br>cost</span></div><span style="font-size:24px;color:var(--muted);padding-top:14px;margin-left:24px;font-family:var(--sans)">and <i>T</i>(1) = <i>c</i></span></div><div class="rb"><div class="un"><div class="k3">Unroll it</div><div class="r"><i>T</i>(<i>n</i>) = 2<i>T</i>(<i>n</i>/2) + <i>cn</i></div><div class="r">&emsp;&emsp;= 4<i>T</i>(<i>n</i>/4) + 2<i>cn</i></div><div class="r">&emsp;&emsp;= 8<i>T</i>(<i>n</i>/8) + 3<i>cn</i></div><div class="r">&emsp;&emsp;= 2<sup><i>k</i></sup><i>T</i>(<i>n</i>/2<sup><i>k</i></sup>) + <i>k</i>·<i>cn</i><span class="m">stop when <i>n</i>/2<sup><i>k</i></sup> = 1, so <i>k</i> = log <i>n</i></span></div><div class="r">&emsp;&emsp;= <i>cn</i> + <i>cn</i> log <i>n</i> = <b>O(<i>n</i> log <i>n</i>)</b></div><svg style="position:absolute;right:16px;bottom:10px" width="220" height="120" viewBox="0 0 220 120" fill="none" stroke="#1A1A1A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<rect x="70" y="2" width="146" height="44" rx="10" stroke-width="2" fill="#fff"/><path d="M90 46 l-10 14 l22 -14" fill="#fff" stroke-width="2"/>
+<text x="143" y="21" font-size="13" fill="#1A1A1A" stroke="none" text-anchor="middle">Keep unrolling till</text>
+<text x="143" y="38" font-size="13" fill="#1A1A1A" stroke="none" text-anchor="middle">you hit size 1!</text>
+<circle cx="60" cy="66" r="11" fill="#fff"/><path d="M55 64 h3 M63 64 h3"/><path d="M55 70 q5 4 10 0"/>
+<path d="M60 77 v22"/><path d="M60 99 l-8 18"/><path d="M60 99 l8 18"/><path d="M60 85 l-16 6"/><path d="M60 85 l18 6"/>
+<rect x="6" y="88" width="10" height="26" rx="4" fill="#fff"/><path d="M16 92 h62 v14 h-62" stroke="#2B5BAA" fill="#fff"/></svg></div><div class="cmp2"><div class="k3">Remember binary search?</div><div class="rw2"><span class="nm2">Binary search</span><span class="f"><i>T</i>(<i>n</i>) = <b>1</b>·<i>T</i>(<i>n</i>/2) + <i>c</i></span><span class="f">→ <b>O(log <i>n</i>)</b></span></div><div class="rw2"><span class="nm2">Merge sort</span><span class="f"><i>T</i>(<i>n</i>) = <b>2</b>·<i>T</i>(<i>n</i>/2) + <i>cn</i></span><span class="f">→ <b>O(<i>n</i> log <i>n</i>)</b></span></div><div style="font-size:15px;color:var(--muted);line-height:1.4">Same halving, but merge sort keeps <b style="color:var(--ink)">both</b> halves and pays <b style="color:var(--ink)"><i>n</i></b> per level.</div></div></div></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

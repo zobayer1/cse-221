@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What is a computational problem?</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.io { display:grid; grid-template-columns:1fr 130px 1fr; align-items:start; }
+.io .k { font-weight:700; color:var(--blue); }
+.io p { margin-top:4px; }
+.io .ar { align-self:center; text-align:center; font-size:40px; color:var(--blue); }
+.io .ar.box { align-self:start; line-height:0; margin-top:1px; }
+.cap { font-size:18px; color:var(--muted); margin-top:8px; }
+.cells { --w:66px; --h:58px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">What is a computational problem?</div>
+<div class="frame">
+<div class="block"><div class="bt">Definition</div><div class="bb">A <b>problem</b> states what the <b>input</b> looks like and what <b>output</b> we want for it. It says nothing about how to get there.</div></div>
+<div class="io mt-l">
+  <div><div class="k">Input</div><p>A sequence of <var>n</var> numbers <var>a</var><sub>1</sub>, <var>a</var><sub>2</sub>, …, <var>a<sub>n</sub></var></p></div>
+  <div class="ar">→</div>
+  <div><div class="k">Output</div><p>The same numbers, reordered so that each is no larger than the next</p></div>
+</div>
+<div class="io mt">
+  <div><div class="cells"><span>31</span><span>41</span><span>59</span><span>26</span><span>41</span><span>58</span></div><div class="cap">One instance of the sorting problem</div></div>
+  <div class="ar box"><svg width="120" height="56" viewBox="0 0 120 56" fill="none" stroke="#2B5BAA" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 28h26M24 22l7 6-7 6M90 28h26M110 22l7 6-7 6"/><rect x="36" y="8" width="48" height="40" rx="5" fill="#2B5BAA"/><text x="60" y="38" text-anchor="middle" stroke="none" fill="#fff" font-family="CMU Serif" font-weight="700" font-size="26">?</text></svg></div>
+  <div><div class="cells"><span class="hi">26</span><span class="hi">31</span><span class="hi">41</span><span class="hi">41</span><span class="hi">58</span><span class="hi">59</span></div><div class="cap">The correct output for that instance. <i>How</i> to get it is up to the algorithm.</div></div>
+</div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

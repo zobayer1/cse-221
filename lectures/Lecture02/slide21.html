@@ -1,0 +1,66 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ternary search: iterative</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:20px 24px; }
+.codebox pre { font-size:22px; line-height:1.7; }
+.codebox .fn { font-weight:700; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.onote { font-size:15px; color:var(--muted); }
+
+.tw2 { margin-top:14px; display:grid; grid-template-columns:540px 1fr; gap:36px; }
+.tw2 .codebox { padding:10px 18px; }
+.tw2 .codebox pre { font-size:17px; line-height:1.52; }
+.tt { width:100%; border-collapse:collapse; margin-top:6px; }
+.tt th { font-size:14px; font-weight:400; color:var(--muted); text-align:center; padding:6px 0; border-bottom:1px solid var(--grey); }
+.tt td { text-align:center; font-family:var(--mono); font-size:17px; padding:9px 0; border-bottom:1px solid var(--grey); }
+.tt td.a { text-align:left; font-family:var(--sans); font-size:15px; color:var(--muted); padding-left:10px; }
+.tt tr.hit td { color:#2E7D32; font-weight:700; } .tt tr.hit td.a { color:#2E7D32; }
+.tt th:last-child { text-align:left; padding-left:10px; }
+.kd { margin-top:16px; }
+.kd li { list-style:none; display:grid; grid-template-columns:140px 1fr; gap:12px; padding:9px 0; border-bottom:1px solid var(--grey); font-size:16px; color:var(--muted); line-height:1.4; align-items:baseline; }
+.kd li code { font-family:var(--mono); font-size:15px; color:var(--ink); font-weight:700; }
+.tsum { margin-top:14px; padding:12px 16px; background:var(--tint); border-left:5px solid var(--blue); font-size:17px; line-height:1.45; }
+.tsum b { font-weight:700; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Ternary search: iterative</div>
+<div class="frame">
+
+<div class="tw2">
+  <div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">TERNARY-SEARCH</span>(A, n, x)
+<span class="ln">2</span>    lo = 0
+<span class="ln">3</span>    hi = n − 1
+<span class="ln">4</span>    <span class="kw">while</span> lo ≤ hi
+<span class="ln">5</span>        third = ⌊(hi − lo) / 3⌋
+<span class="ln">6</span>        m1 = lo + third
+<span class="ln">7</span>        m2 = hi − third
+<span class="ln">8</span>        <span class="kw">if</span> A[m1] == x
+<span class="ln">9</span>            <span class="kw">return</span> m1
+<span class="ln">10</span>        <span class="kw">if</span> A[m2] == x
+<span class="ln">11</span>            <span class="kw">return</span> m2
+<span class="ln">12</span>        <span class="kw">if</span> x &lt; A[m1]
+<span class="ln">13</span>            hi = m1 − 1
+<span class="ln">14</span>        <span class="kw">elseif</span> x &gt; A[m2]
+<span class="ln">15</span>            lo = m2 + 1
+<span class="ln">16</span>        <span class="kw">else</span>
+<span class="ln">17</span>            lo = m1 + 1
+<span class="ln">18</span>            hi = m2 − 1
+<span class="ln">19</span>    <span class="kw">return</span> NIL</pre></div></div>
+  <div><div class="k3">Trace: find 42 in [3, 8, 12, 17, 24, 31, 42, 59]</div>
+    <table class="tt"><tr><th>lo</th><th>hi</th><th>m1</th><th>m2</th><th>A[m1], A[m2]</th><th>action</th></tr>
+      <tr><td>0</td><td>7</td><td>2</td><td>5</td><td>12, 31</td><td class="a">42 &gt; 31, so lo = 6</td></tr>
+      <tr class="hit"><td>6</td><td>7</td><td>6</td><td>7</td><td>42, 59</td><td class="a">A[m1] = 42, return 6</td></tr></table>
+    <p class="tsum"><b>2 iterations</b>, where binary search needed 3. But each iteration here can make up to 4 comparisons. Which is really faster? We will compare them soon.</p>
+    <ul class="kd">
+      <li><code>third</code><span>When the range has 1 or 2 elements, third = 0, so m1 = lo and m2 = hi.</span></li>
+      <li><code>m1 ± 1, m2 ± 1</code><span>m1 and m2 are already checked, so leave them out, as in binary search.</span></li>
+      <li><code>middle case</code><span>Moves both ends: lo = m1 + 1 and hi = m2 − 1.</span></li>
+    </ul></div>
+</div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

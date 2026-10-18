@@ -1,0 +1,63 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your turn</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.tw { margin-top:30px; display:grid; grid-template-columns:420px 1fr; gap:48px; flex:1; min-height:0; }
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:22px 24px; }
+.codebox pre { font-size:21px; line-height:1.75; }
+.codebox .fn { font-weight:700; }
+.tspec { margin-top:20px; font-size:19px; color:var(--muted); line-height:1.5; }
+.qs2 { border-top:2px solid var(--ink); }
+.q { display:grid; grid-template-columns:180px 1fr; gap:16px; align-items:baseline; padding:16px 0; border-bottom:1px solid var(--grey); }
+.q h3 { font-family:var(--serif); font-weight:700; font-size:25px; color:var(--blue); }
+.q p { font-size:20px; line-height:1.4; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Your turn<span class="ftag">Discuss</span></div>
+<div class="frame">
+
+<p class="lede">Find each of the five properties in the SUM algorithm.</p>
+<div class="tw">
+  <div>
+    <div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">SUM</span>(n)
+<span class="ln">2</span>    total = 0
+<span class="ln">3</span>    <span class="kw">for</span> i = 1 <span class="kw">to</span> n
+<span class="ln">4</span>        total = total + i
+<span class="ln">5</span>    <span class="kw">return</span> total</pre></div>
+    
+  </div>
+  <div class="qs2">
+    <div class="q"><h3>Input</h3><p>What does SUM take in?</p></div>
+    <div class="q"><h3>Output</h3><p>What does it return, and on which line?</p></div>
+    <div class="q"><h3>Definiteness</h3><p>Could any line be read two ways?</p></div>
+    <div class="q"><h3>Finiteness</h3><p>How do we know the loop always stops?</p></div>
+    <div class="q"><h3>Effectiveness</h3><p>Could you carry out each step by hand?</p></div>
+  </div>
+</div>
+</div>
+<div class="doodle" style="left:84px;bottom:34px;width:390px;opacity:.85"><svg viewBox="0 0 420 200" width="420" height="200" fill="none" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">
+<!-- figure 1: hand raised -->
+<circle cx="62" cy="122" r="15"/><path d="M56 119 q1 -2 2 0 M66 119 q1 -2 2 0 M57 128 q5 4 10 0"/>
+<path d="M62 137 L61 168 M61 168 L50 194 M61 168 L72 193 M61 146 L44 160 M62 146 L80 128 L84 116"/>
+<!-- bubble 1 -->
+<path d="M30 30 q-2 -26 40 -26 q42 0 40 28 q0 26 -38 24 l-14 18 l2 -19 q-30 -2 -30 -25 z"/>
+<text x="70" y="44" font-size="34" font-weight="700" fill="#2B5BAA" stroke="none" text-anchor="middle">?</text>
+<!-- figure 2: glasses, thinking -->
+<circle cx="208" cy="118" r="15"/><circle cx="202" cy="116" r="4.5" stroke-width="1.8"/><circle cx="214" cy="116" r="4.5" stroke-width="1.8"/><path d="M206.5 116 h3 M203 126 h10"/>
+<path d="M208 133 L208 166 M208 166 L198 194 M208 166 L219 194 M208 142 L192 152 L203 132 M208 142 L226 156"/>
+<!-- thought cloud -->
+<path d="M180 64 q-14 -4 -8 -18 q-6 -18 14 -20 q6 -16 26 -10 q14 -12 30 0 q20 -4 22 14 q16 6 6 22 q4 18 -18 16 q-10 12 -28 4 q-16 10 -30 -2 q-16 2 -14 -6 z" stroke-width="2"/>
+<circle cx="196" cy="84" r="4" stroke-width="1.8"/><circle cx="202" cy="96" r="2.5" stroke-width="1.6"/>
+<text x="216" y="56" font-size="22" font-style="italic" fill="#2B5BAA" stroke="none" text-anchor="middle">i ≤ n …</text>
+<!-- figure 3: arms up, excited -->
+<circle cx="348" cy="122" r="15"/><path d="M342 118 l3 2 M354 118 l-3 2 M341 127 q7 7 14 0 z"/>
+<path d="M348 137 L349 168 M349 168 L337 194 M349 168 L362 192 M348 145 L330 128 L326 116 M348 145 L368 128 L372 116"/>
+<!-- bubble 3 -->
+<path d="M318 40 q0 -34 40 -34 q46 0 44 34 q0 30 -40 28 l6 18 l-20 -19 q-30 -2 -30 -27 z"/>
+<text x="360" y="54" font-size="34" font-weight="700" fill="#2B5BAA" stroke="none" text-anchor="middle">!</text>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

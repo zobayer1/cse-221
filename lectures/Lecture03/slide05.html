@@ -1,0 +1,47 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bubble sort</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:20px 24px; }
+.codebox pre { font-size:22px; line-height:1.7; }
+.codebox .fn { font-weight:700; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.onote { font-size:15px; color:var(--muted); }
+
+.bw { margin-top:16px; display:grid; grid-template-columns:600px 1fr; gap:36px; flex:1; min-height:0; }
+.bw .codebox pre { font-size:18px; line-height:1.55; }
+.idea { font-size:19px; line-height:1.5; }
+.swp { margin-top:14px; }
+.swp svg { display:block; margin:2px auto 0; }
+.idea b { font-weight:700; }
+.idea li { list-style:none; padding:9px 0 9px 22px; border-bottom:1px solid var(--grey); position:relative; }
+.idea li::before { content:''; position:absolute; left:0; top:19px; width:8px; height:8px; background:var(--blue); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Bubble sort</div>
+<div class="frame">
+
+<div class="bw">
+  <div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">BUBBLE-SORT</span>(A, n)
+<span class="ln">2</span>    <span class="kw">for</span> i = 0 <span class="kw">to</span> n − 2
+<span class="ln">3</span>        <span class="kw">for</span> j = 0 <span class="kw">to</span> n − 2 − i
+<span class="ln">4</span>            <span class="kw">if</span> A[j] &gt; A[j + 1]
+<span class="ln">5</span>                exchange A[j] with A[j + 1]</pre></div><div class="swp"><div class="k3">What “swap” means: 3 moves, with a spare</div><svg viewBox="-6 -24 462 238" width="520" height="268" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><defs><marker id="sah" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#2B5BAA"/></marker></defs><path d="M49 149 L49 92 L91 92 L91 149 Z" fill="#7A4A2A" stroke="none"/><path d="M48 150 L48 78 Q48 64 60 58 L60 40 L80 40 L80 58 Q92 64 92 78 L92 150 Z" fill="none" stroke="#1a1a1a" stroke-width="2.2"/><rect x="59" y="32" width="22" height="9" rx="2" fill="#1a1a1a" stroke="none"/><text x="70" y="128" font-size="13" font-weight="600" fill="#fff" text-anchor="middle" stroke="none">tea</text><text x="70" y="172" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1" font-size="15" font-weight="600" fill="#1a1a1a" text-anchor="middle" stroke="none">A[j]</text><path d="M188 150 L188 78 Q188 64 200 58 L200 40 L220 40 L220 58 Q232 64 232 78 L232 150 Z" fill="none" stroke="#1a1a1a" stroke-width="2.2"/><rect x="199" y="32" width="22" height="9" rx="2" fill="#1a1a1a" stroke="none"/><text x="210" y="172" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1" font-size="15" font-weight="600" fill="#1a1a1a" text-anchor="middle" stroke="none">temp</text><path d="M329 149 L329 92 L371 92 L371 149 Z" fill="#2B5BAA" stroke="none"/><path d="M328 150 L328 78 Q328 64 340 58 L340 40 L360 40 L360 58 Q372 64 372 78 L372 150 Z" fill="none" stroke="#1a1a1a" stroke-width="2.2"/><rect x="339" y="32" width="22" height="9" rx="2" fill="#1a1a1a" stroke="none"/><text x="350" y="128" font-size="13" font-weight="600" fill="#fff" text-anchor="middle" stroke="none">juice</text><text x="350" y="172" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1" font-size="15" font-weight="600" fill="#1a1a1a" text-anchor="middle" stroke="none">A[j+1]</text><path d="M82 60 Q140.0 14 198 60" fill="none" stroke="#2B5BAA" stroke-width="2.2" marker-end="url(#sah)"/><circle cx="140.0" cy="39.0" r="11" fill="#2B5BAA" stroke="none"/><text x="140.0" y="44.0" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" stroke="none">1</text><path d="M222 60 Q280.0 14 338 60" fill="none" stroke="#2B5BAA" stroke-width="2.2" marker-end="url(#sah)"/><circle cx="280.0" cy="39.0" r="11" fill="#2B5BAA" stroke="none"/><text x="280.0" y="44.0" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" stroke="none">3</text><path d="M344 60 Q210.0 -50 76 60" fill="none" stroke="#2B5BAA" stroke-width="2.2" marker-end="url(#sah)"/><circle cx="210.0" cy="7.0" r="11" fill="#2B5BAA" stroke="none"/><text x="210.0" y="12.0" font-size="13" font-weight="700" fill="#fff" text-anchor="middle" stroke="none">2</text><circle cx="10" cy="200" r="10" fill="#2B5BAA"/><text x="10" y="205" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">1</text><text x="26" y="205" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1" font-size="14" fill="#1a1a1a">temp = A[j]</text><circle cx="162" cy="200" r="10" fill="#2B5BAA"/><text x="162" y="205" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">2</text><text x="178" y="205" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1" font-size="14" fill="#1a1a1a">A[j] = A[j+1]</text><circle cx="314" cy="200" r="10" fill="#2B5BAA"/><text x="314" y="205" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">3</text><text x="330" y="205" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1" font-size="14" fill="#1a1a1a">A[j+1] = temp</text></svg></div></div>
+  <div style="display:flex;flex-direction:column"><div class="k3">Idea</div><ul class="idea">
+    <li>Walk through the array and <b>swap neighbors</b> that are out of order.</li>
+    <li>After pass 1, the <b>largest</b> element has bubbled to the end. After pass <i>k</i>, the last <i>k</i> are in place.</li>
+    <li>Always makes <b><i>n</i> − 1 passes</b>, even if the array becomes sorted sooner.</li></ul>
+    <div style="margin-top:36px;align-self:flex-end"><svg viewBox="0 0 260 200" width="260" height="200" fill="none" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<circle cx="200" cy="40" r="26" stroke="#2B5BAA"/><text x="200" y="47" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-size="20" font-weight="700" fill="#2B5BAA" stroke="none" text-anchor="middle">9</text>
+<circle cx="160" cy="96" r="14" stroke="#2B5BAA" stroke-width="1.8"/><circle cx="182" cy="140" r="8" stroke="#2B5BAA" stroke-width="1.6"/>
+<circle cx="70" cy="110" r="13"/><path d="M64 107 l3 1 M76 107 l-3 1 M64 116 q6 5 12 0"/>
+<path d="M70 123 L70 160 M70 160 L60 196 M70 160 L80 196 M70 133 L52 120 M70 133 L96 112 L116 92"/>
+<text x="200" y="190" font-size="13" fill="#5B5E63" stroke="none" text-anchor="middle">big ones float up!</text>
+</svg></div></div>
+</div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

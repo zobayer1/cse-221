@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Best, worst and average case (1)</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.lede { max-width:1090px; }
+.bw { margin-top:22px; border-top:2px solid var(--ink); }
+.bwr { display:grid; grid-template-columns:30px 230px 1fr 270px; gap:24px; align-items:start; padding:19px 0; border-bottom:1px solid var(--grey); }
+.bwr .sw { width:16px; height:16px; border-radius:3px; margin-top:12px; }
+.bwr h3 { font-family:var(--serif); font-weight:700; font-size:30px; }
+.bwr p { font-size:21px; line-height:1.45; padding-top:4px; }
+.bwr p b { font-weight:700; }
+.bwr .eg { font-size:16px; color:var(--muted); line-height:1.45; }
+.bwr .eg span { display:block; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; }
+.bwr .eg i, .bwr .eg em { font-family:var(--serif); color:var(--ink); font-size:19px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Best, worst and average case (1)</div>
+<div class="frame"><p class="lede">The same algorithm can take a different number of steps on different inputs of the same size.</p><div class="bw"><div class="bwr"><div class="sw" style="background:#C62828"></div><h3>Worst case</h3><p>The <b>maximum</b> number of steps taken on any input of size <i>n</i>.</p><div class="eg"><span>MIN example</span>Decreasing array: every element is a new minimum<br><em><i>T</i>(<i>n</i>) = 3<i>n</i> − 1</em></div></div><div class="bwr"><div class="sw" style="background:#2E7D32"></div><h3>Best case</h3><p>The <b>minimum</b> number of steps taken on any input of size <i>n</i>.</p><div class="eg"><span>MIN example</span>A[0] is already the minimum: the line m = A[i] never runs<br><em><i>T</i>(<i>n</i>) = 2<i>n</i></em></div></div><div class="bwr"><div class="sw" style="background:#2B5BAA"></div><h3>Average case</h3><p>The <b>average</b> number of steps over all inputs of size <i>n</i>, usually assuming each is equally likely.</p><div class="eg"><span>MIN example</span>Somewhere in between, depending on how the inputs are spread<br><em>2<i>n</i> ≤ <i>T</i>(<i>n</i>) ≤ 3<i>n</i> − 1</em></div></div></div></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

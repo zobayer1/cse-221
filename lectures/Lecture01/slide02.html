@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Today’s agenda</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ag { display:grid; grid-template-columns:repeat(2,1fr); gap:72px; max-width:1000px; margin:0 auto; width:100%; }
+.ag h3 { font-size:24px; font-weight:700; padding-bottom:12px; border-bottom:2px solid var(--ink); }
+.ag ol { list-style:none; }
+.ag li { display:grid; grid-template-columns:42px 1fr; align-items:baseline; font-size:22px; line-height:1.35; padding:16px 0; border-bottom:1px solid var(--grey); }
+.ag li i { font-family:var(--serif); font-style:italic; }
+.ag li .fx { white-space:nowrap; color:var(--muted); }
+.ag li sup { font-size:0.65em; line-height:0; }
+.ag li b { font-family:var(--serif); font-weight:700; font-size:22px; color:var(--blue); line-height:1.2; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Today’s agenda</div>
+<div class="frame"><div class="ag"><div><h3>Analyzing algorithms</h3><ol><li><b>1</b><span>Running time and memory</span></li><li><b>2</b><span>Counting the steps an algorithm takes</span></li><li><b>3</b><span>Common growth rates<br><span class="fx">log <i>n</i>, <i>n</i>, <i>n</i> log <i>n</i>, <i>n</i><sup>2</sup>, 2<sup><i>n</i></sup></span></span></li></ol></div><div><h3>Measuring complexity</h3><ol><li><b>4</b><span>Best, worst and average case</span></li><li><b>5</b><span>Why exact complexity is hard to calculate</span></li><li><b>6</b><span>Upper bound functions</span></li><li><b>7</b><span>The RAM model of computation</span></li></ol></div></div></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

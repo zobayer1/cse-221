@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quicksort: in-place? stable?</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.tagq { display:inline-block; font-size:15px; font-weight:700; color:#fff; background:var(--blue); padding:4px 12px; letter-spacing:0.06em; text-transform:uppercase; }
+.eg { margin-top:36px; display:grid; grid-template-columns:repeat(3,1fr); gap:36px; }
+.ec { border:2px solid var(--ink); border-radius:10px; padding:16px 18px 18px; display:flex; flex-direction:column; align-items:center; }
+.ec h3 { font-family:var(--serif); font-weight:700; font-size:28px; margin-top:4px; }
+.ec svg { margin:6px 0 10px; }
+.ec .q { width:100%; display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--grey); padding:10px 4px; font-size:21px; }
+.ec .q i { font-style:normal; width:38px; height:38px; border:2.5px dashed var(--blue); border-radius:8px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:24px; color:var(--blue); }
+
+.tagq { display:inline-block; font-size:15px; font-weight:700; color:#fff; background:var(--blue); padding:4px 12px; letter-spacing:0.06em; text-transform:uppercase; }
+.eg { margin-top:36px; display:grid; grid-template-columns:repeat(3,1fr); gap:36px; }
+.ec { border:2px solid var(--ink); border-radius:10px; padding:16px 18px 18px; display:flex; flex-direction:column; align-items:center; }
+.ec h3 { font-family:var(--serif); font-weight:700; font-size:28px; margin-top:4px; }
+.ec svg { margin:6px 0 10px; }
+.ec .q { width:100%; display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--grey); padding:10px 4px; font-size:21px; }
+.ec .q i { font-style:normal; width:38px; height:38px; border:2.5px dashed var(--blue); border-radius:8px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:24px; color:var(--blue); }
+
+.ec .q i.ok { border:2.5px solid #2E7D32; background:#2E7D32; color:#fff; font-family:var(--sans); font-size:22px; }
+.ec .q i.no { border:2.5px solid #C62828; background:#C62828; color:#fff; font-family:var(--sans); font-size:22px; }
+.why2 { width:100%; border-top:1px solid var(--grey); padding-top:12px; display:flex; flex-direction:column; align-items:center; gap:6px; }
+.cr { display:flex; align-items:center; gap:0; }
+.c2 { width:46px; height:40px; border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:20px; background:#fff; }
+.cr .c2:first-child { margin-left:0; }
+.c2 sub { font-size:12px; font-family:var(--sans); font-weight:700; margin-left:1px; }
+.c2.ca { background:#DCE5F3; color:#1F4A8F; } .c2.cb { background:#FBE6D4; color:#9A4A10; }
+.c2.key { border-color:#2B5BAA; border-width:3px; }
+.cap2 { font-family:var(--mono); font-size:14px; color:var(--muted); }
+.cap2 b { color:#C62828; font-weight:700; } .cap2 .g { color:#2E7D32; font-weight:700; }
+.tk2 { margin-top:36px; font-size:18px; padding:10px 20px; background:var(--tint); border-left:5px solid var(--blue); }
+.tk2 b { font-weight:700; }
+.arrow2 { font-size:22px; color:var(--blue); line-height:1; margin:0 8px; }
+.hz { display:flex; align-items:center; }
+.hz .c2 { width:38px; height:36px; font-size:18px; }
+.ec svg { height:120px; width:auto; }
+
+.mq { flex:1; margin-top:18px; display:grid; grid-template-columns:360px 1fr; gap:48px; align-items:center; }
+.tq { display:flex; flex-direction:column; gap:22px; }
+.tq .it { display:flex; gap:14px; align-items:flex-start; }
+.tq .it b.n { font-family:var(--serif); color:var(--blue); font-size:28px; line-height:1; }
+.tq .it p { font-size:20px; line-height:1.4; }
+.tq .vis { display:flex; align-items:center; gap:12px; margin-top:8px; font-family:var(--sans); font-size:15px; color:var(--muted); }
+.c2.qq { border-style:dashed; color:var(--grey); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Quicksort: in-place? stable?<span class="ftag">Discuss</span></div>
+<div class="frame"><div class="mq"><div class="ec"><svg viewBox="0 0 200 150" width="200" height="130" fill="none" stroke-linecap="round">
+<rect x="20" y="14" width="40" height="30" fill="#E3EBF7" stroke="#2B5BAA" stroke-width="2"/><rect x="60" y="14" width="40" height="30" fill="#E3EBF7" stroke="#2B5BAA" stroke-width="2"/>
+<rect x="100" y="14" width="30" height="30" fill="#1A1A1A" stroke="#1A1A1A" stroke-width="2"/>
+<rect x="130" y="14" width="50" height="30" fill="#FBEBDD" stroke="#D9822B" stroke-width="2"/>
+<path d="M60 44 L40 90 M60 44 L80 90 M155 44 L155 90" stroke="#A7A9AC" stroke-width="2"/>
+<rect x="20" y="90" width="80" height="30" fill="#E3EBF7" stroke="#2B5BAA" stroke-width="2"/><rect x="130" y="90" width="50" height="30" fill="#FBEBDD" stroke="#D9822B" stroke-width="2"/>
+<path d="M115 44 v76" stroke="#1A1A1A" stroke-width="2" stroke-dasharray="4 4"/></svg><h3>Quicksort</h3><div class="q"><span>In-place</span><i>?</i></div><div class="q"><span>Stable</span><i>?</i></div></div><div class="tq"><div class="it"><b class="n">1</b><div><p>Does PARTITION ever need a second array?</p></div></div><div class="it"><b class="n">2</b><div><p>Trace PARTITION on this input. Where do the two 2s end up?</p><div class="vis"><div class="cr"><span class="c2 ca">2<sub>a</sub></span><span class="c2 cb">2<sub>b</sub></span><span class="c2 ">1</span></div><span class="arrow2">→</span><div class="cr"><span class="c2 qq">?</span><span class="c2 qq">?</span><span class="c2 qq">?</span></div><span style="margin-left:8px">pivot = 1</span></div></div></div><svg width="250" height="150" viewBox="0 0 250 150" fill="none" stroke="#1A1A1A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<rect x="70" y="4" width="176" height="50" rx="10" stroke-width="2"/><path d="M96 54 l-14 14 l26 -14" fill="#fff" stroke-width="2"/>
+<text x="158" y="25" font-size="13.5" fill="#1A1A1A" stroke="none" text-anchor="middle">No bag this time.</text>
+<text x="158" y="43" font-size="13.5" fill="#1A1A1A" stroke="none" text-anchor="middle">What’s the catch?</text>
+<circle cx="50" cy="80" r="13"/><circle cx="45" cy="77" r="1.6" fill="#1A1A1A"/><circle cx="55" cy="77" r="1.6" fill="#1A1A1A"/><path d="M45 87 h10"/>
+<path d="M50 93 v30"/><path d="M50 123 l-9 24"/><path d="M50 123 l9 24"/><path d="M50 102 l-14 14"/><path d="M50 102 l10 -14 l-4 -6"/>
+<text x="20" y="66" font-size="20" fill="#2B5BAA" stroke="none" font-weight="700">?</text></svg></div></div></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

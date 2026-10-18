@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Using the RAM model fairly</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.rl { margin-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:40px; flex:1; min-height:0; }
+.rl .k3 { font-size:15px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.rl .bad { color:#C62828; } .rl .ok { color:var(--blue); }
+.it { padding:12px 0; border-bottom:1px solid var(--grey); }
+.it h3 { font-family:var(--serif); font-weight:700; font-size:23px; }
+.it p { font-size:18px; color:var(--muted); line-height:1.45; margin-top:3px; }
+.rlr { display:flex; flex-direction:column; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Using the RAM model fairly</div>
+<div class="frame">
+
+<div class="rl">
+  <div>
+    <div class="k3 bad">Don't abuse it</div>
+    <div class="it"><h3>No magic instructions</h3><p>A “sort” instruction would make sorting one step. Real computers don't have one, so the RAM model doesn't either.</p></div>
+    <div class="it"><h3>Watch the grey areas</h3><p>Computing <i>x</i><sup><i>n</i></sup> is not one step in general. Shortcuts like 2<sup><i>k</i></sup> by a bit shift only count when the result fits in a word.</p></div>
+    <div class="it"><h3>Words can't grow</h3><p>Otherwise we could pack huge amounts of data into one word and process it in one step.</p></div>
+  </div>
+  <div class="rlr">
+    <div class="k3 ok">What it leaves out, and why that's fine</div>
+    <div class="it"><h3>No memory hierarchy</h3><p>Caches and virtual memory are ignored. Models that include them are much harder to work with.</p></div>
+    <div class="it"><h3>Still a good predictor</h3><p>In practice, RAM-model analysis predicts real performance well.</p></div>
+  </div>
+</div>
+</div>
+<div class="doodle" style="right:150px;bottom:30px;width:230px"><svg viewBox="0 0 230 190" width="230" height="190" fill="none" stroke="#1a1a1a" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<rect x="18" y="58" width="74" height="40" rx="3" stroke="#C62828"/><text x="55" y="84" font-size="15" font-weight="700" fill="#C62828" stroke="none" text-anchor="middle">SORT</text>
+<circle cx="70" cy="128" r="12"/><path d="M64 126 l4 1 M76 126 l-4 1 M66 134 q4 2 8 -1"/>
+<path d="M70 140 L72 168 M72 168 L62 188 M72 168 L82 188 M70 148 L56 98 M70 148 L90 100"/>
+<circle cx="170" cy="118" r="13"/><path d="M164 115 l4 2 M176 115 l-4 2 M165 125 q5 -4 10 0"/>
+<path d="M170 131 L170 162 M170 162 L160 188 M170 162 L180 188 M170 140 L150 132 L138 120 M170 140 L188 148"/>
+<path d="M138 120 l-4 -10 M138 120 l-10 -4" stroke-width="2"/>
+<text x="176" y="84" font-size="17" font-weight="700" fill="#2B5BAA" stroke="none" text-anchor="middle">nope.</text>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

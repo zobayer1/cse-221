@@ -1,0 +1,27 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merge sort in the wild</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.wl { position:relative; height:500px; margin-top:6px; } /* bubbles are absolutely placed inside: needs a fixed height */
+.bb { position:absolute; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:26px 44px; border:2.4px solid var(--ink); background:#fff; text-align:center; }
+.bb h3 { font-family:var(--serif); font-weight:700; font-size:25px; }
+.bb code { font-family:var(--mono); font-size:16px; background:var(--tint); padding:2px 8px; color:var(--blue); }
+.bb .al { font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); }
+.bb .sm2 { font-size:12.5px; color:var(--muted); }
+.ctr { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); display:flex; flex-direction:column; align-items:center; }
+.ctr .t { font-family:var(--serif); font-weight:700; font-size:22px; color:var(--blue); margin-top:4px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Merge sort in the wild</div>
+<div class="frame"><div class="wl"><div class="bb" style="left:0px;top:40px;transform:rotate(-3deg);border-radius:46% 54% 50% 50% / 58% 48% 52% 42%"><h3>Python</h3><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><code>sort()</code><code>sorted()</code></div><span class="al">Timsort</span></div><div class="bb" style="left:300px;top:10px;transform:rotate(2deg);border-radius:52% 48% 44% 56% / 50% 58% 42% 50%"><h3>Java</h3><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><code>Collections.sort()</code><code>Arrays.sort()</code></div><span class="sm2">Arrays.sort: objects only (primitives use quicksort)</span><span class="al">Timsort</span></div><div class="bb" style="left:770px;top:150px;transform:rotate(-2deg);border-radius:50% 50% 56% 44% / 46% 54% 46% 54%"><h3>JavaScript</h3><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><code>Array.prototype.sort()</code></div><span class="al">V8: Timsort</span></div><div class="bb" style="left:40px;top:300px;transform:rotate(3deg);border-radius:56% 44% 50% 50% / 52% 46% 54% 48%"><h3>Rust</h3><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><code>slice.sort()</code></div><span class="al">merge-based (driftsort)</span></div><div class="bb" style="left:820px;top:360px;transform:rotate(-3deg);border-radius:48% 52% 46% 54% / 56% 50% 50% 44%"><h3>Perl</h3><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><code>sort()</code></div><span class="al">mergesort</span></div><div class="ctr" style="top:70%"><svg width="250" height="190" viewBox="0 0 250 190" fill="none" stroke="#1A1A1A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<rect x="8" y="4" width="234" height="50" rx="10" stroke-width="2"/><path d="M118 54 l-6 18 l22 -18" fill="#fff" stroke-width="2"/>
+<text x="125" y="25" font-size="13.5" fill="#1A1A1A" stroke="none" text-anchor="middle">Psst… I’ve been in your</text>
+<text x="125" y="43" font-size="13.5" fill="#1A1A1A" stroke="none" text-anchor="middle">code all along.</text>
+<circle cx="125" cy="92" r="15"/><path d="M116 88 l6 0 M128 88 l6 0" stroke-width="3"/><path d="M118 99 q7 5 14 0"/>
+<path d="M125 107 v38"/><path d="M125 145 l-12 34"/><path d="M125 145 l12 34"/><path d="M125 118 l-22 14"/><path d="M125 118 l20 -18"/>
+<path d="M60 182 H190" stroke-width="2"/></svg></div></div></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

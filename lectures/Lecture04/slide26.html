@@ -1,0 +1,41 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can you spot a problem?</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.arr { display:flex; }
+.arr .c { display:flex; flex-direction:column; align-items:center; }
+.arr .v { width:var(--w,92px); height:var(--h,78px); border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:var(--fs,34px); background:#fff; }
+.arr .c:first-child .v { margin-left:0; }
+.arr .i { font-family:var(--mono); font-size:var(--is,17px); color:var(--muted); margin-top:6px; }
+.arr .v.out { background:#EEF0F2; color:#B4B7BB; border-color:#B4B7BB; position:relative; z-index:0; }
+.arr .v.chk { background:var(--blue); color:#fff; border-color:var(--blue); position:relative; z-index:1; }
+.arr .v.hit { box-shadow:inset 0 0 0 3px #C62828; }
+
+.tagq { display:inline-block; font-size:15px; font-weight:700; color:#fff; background:var(--blue); padding:4px 12px; letter-spacing:0.06em; text-transform:uppercase; }
+.eg { margin-top:36px; display:grid; grid-template-columns:repeat(3,1fr); gap:36px; }
+.ec { border:2px solid var(--ink); border-radius:10px; padding:16px 18px 18px; display:flex; flex-direction:column; align-items:center; }
+.ec h3 { font-family:var(--serif); font-weight:700; font-size:28px; margin-top:4px; }
+.ec svg { margin:6px 0 10px; }
+.ec .q { width:100%; display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--grey); padding:10px 4px; font-size:21px; }
+.ec .q i { font-style:normal; width:38px; height:38px; border:2.5px dashed var(--blue); border-radius:8px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:24px; color:var(--blue); }
+
+.sp { flex:1; display:grid; grid-template-columns:1fr 320px; gap:30px; align-items:center; }
+.spq { display:flex; flex-direction:column; gap:22px; }
+.spq .it { display:flex; gap:14px; align-items:flex-start; }
+.spq .it b.n { font-family:var(--serif); color:var(--blue); font-size:30px; line-height:1; }
+.spq .it p { font-size:22px; line-height:1.4; }
+.spq .arr { --w:54px; --h:48px; --fs:24px; margin-top:10px; }
+.spq .arr .v.pv { background:var(--ink); color:#fff; border-color:var(--ink); position:relative; z-index:1; }
+.big2 { font-family:var(--serif); font-size:34px; font-weight:700; margin-bottom:4px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Can you spot a problem?<span class="ftag">Discuss</span></div>
+<div class="frame"><div class="sp"><div class="spq"><p class="big2">Quicksort looks great. What could go wrong?</p><div class="it"><b class="n">1</b><div><p>Merge sort always splits in half. <b>Who decides</b> where quicksort splits?</p></div></div><div class="it"><b class="n">2</b><div><p>Run QUICKSORT on this input. What do the splits look like?</p><div class="arr"><div class="c"><div class="v">1</div></div><div class="c"><div class="v">2</div></div><div class="c"><div class="v">3</div></div><div class="c"><div class="v">4</div></div><div class="c"><div class="v">5</div></div><div class="c"><div class="v">6</div></div><div class="c"><div class="v">7</div></div><div class="c"><div class="v pv">8</div></div></div></div></div><div class="it"><b class="n">3</b><div><p>How <b>deep</b> can the recursion tree get?</p></div></div></div><svg width="320" height="290" viewBox="0 0 320 290" fill="none" stroke="#1A1A1A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<rect x="40" y="6" width="270" height="58" rx="12" stroke-width="2"/><path d="M120 64 l-12 22 l30 -22" fill="#fff" stroke-width="2"/>
+<text x="175" y="30" font-size="15" fill="#1A1A1A" stroke="none" text-anchor="middle">Hmm… something smells</text>
+<text x="175" y="51" font-size="15" fill="#1A1A1A" stroke="none" text-anchor="middle">fishy here.</text>
+<circle cx="110" cy="128" r="17"/><circle cx="104" cy="124" r="1.8" fill="#1A1A1A"/><circle cx="116" cy="124" r="1.8" fill="#1A1A1A"/><path d="M103 135 q7 -4 14 0"/>
+<path d="M110 145 v64"/><path d="M110 209 l-18 40"/><path d="M110 209 l18 40"/><path d="M110 165 l-24 22"/><path d="M110 165 l34 -6"/>
+<circle cx="172" cy="150" r="20" stroke="#2B5BAA" stroke-width="3"/><path d="M158 164 l-16 -8" stroke="#2B5BAA" stroke-width="3"/>
+<path d="M30 252 H300" stroke-width="2"/></svg></div></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

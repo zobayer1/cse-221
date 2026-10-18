@@ -1,0 +1,27 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Today’s agenda</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ag { margin-top:44px; display:grid; grid-template-columns:repeat(4,1fr); gap:28px; }
+.ag .c { border-top:2px solid var(--ink); padding-top:14px; }
+.ag .c b { font-family:var(--serif); font-weight:700; font-size:40px; color:var(--blue); line-height:1; }
+.ag .c h3 { font-family:var(--serif); font-weight:700; font-size:32px; margin-top:12px; line-height:1.15; }
+.ag .c p { font-size:20px; color:var(--muted); margin-top:10px; line-height:1.45; min-height:87px; }
+.ag .c .t { display:inline-block; margin-top:16px; font-size:16px; font-weight:700; color:var(--blue); border:1.5px solid var(--blue); border-radius:999px; padding:2px 12px; }
+.agb { margin-top:36px; display:grid; grid-template-columns:1fr 360px; gap:28px; align-items:end; }
+.agb p { font-size:20px; color:var(--muted); line-height:1.5; padding-bottom:10px; }
+.agb p b { color:var(--ink); font-weight:700; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Today’s agenda</div>
+<div class="frame"><div class="ag"><div class="c"><b>1</b><h3>Two properties</h3><p>In-place and stable: how we judge a sort beyond speed.</p><span class="t">Concepts</span></div><div class="c"><b>2</b><h3>Merge sort</h3><p>Split in half, sort each half, merge.</p><span class="t">O(<i>n</i> log <i>n</i>)</span></div><div class="c"><b>3</b><h3>Quicksort</h3><p>Pick a pivot, partition around it, recurse.</p><span class="t">O(<i>n</i> log <i>n</i>) avg</span></div><div class="c"><b>4</b><h3>The lower bound</h3><p>Can any comparison sort beat <i>n</i> log <i>n</i>?</p><span class="t">Ω(<i>n</i> log <i>n</i>)</span></div></div><div class="agb"><p>Last class, every sort took O(<i>n</i><sup>2</sup>). Today we go faster, and see what we <b>pay</b> for it.</p></div></div>
+<div class="doodle" style="left:840px;top:496px;width:360px"><svg viewBox="0 0 360 150" width="360" height="150" fill="none" stroke="#1a1a1a" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<path d="M10 140 H350" stroke-width="2"/><path d="M300 140 V60" stroke-width="2"/><path d="M300 60 h34 v10 h-34 v10 h34" stroke="#2B5BAA" stroke-width="2"/>
+<circle cx="220" cy="62" r="12"/><path d="M214 59 l3 1 M226 59 l-3 1 M215 67 q5 4 10 0"/>
+<path d="M220 74 L214 104 M214 104 L198 138 M214 104 L232 132 L244 138 M218 82 L200 92 M218 82 L240 74"/>
+<path d="M170 70 h-28 M176 88 h-36 M168 106 h-24" stroke="#2B5BAA" stroke-width="2"/>
+<circle cx="60" cy="88" r="11"/><path d="M55 86 h3 M62 86 h3 M56 93 h8"/><path d="M60 99 L60 122 M60 122 L52 138 M60 122 L68 138 M60 106 L48 116 M60 106 L72 116"/>
+<text x="60" y="66" font-size="13" fill="#5B5E63" stroke="none" text-anchor="middle">O(n²)…</text>
+<text x="220" y="34" font-size="13" fill="#2B5BAA" stroke="none" text-anchor="middle" font-weight="600">faster!</text>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bubble sort: case analysis</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.cw { margin-top:18px; display:flex; flex-direction:column; flex:1; min-height:0; }
+table.ca { width:100%; border-collapse:collapse; }
+table.ca th { font-size:15px; font-weight:400; color:var(--muted); text-align:left; padding:0 14px 10px 0; border-bottom:2px solid var(--ink); }
+table.ca td { padding:15px 14px 15px 0; border-bottom:1px solid var(--grey); font-size:19px; vertical-align:baseline; }
+table.ca td.k { font-weight:700; width:200px; }
+table.ca td.k span { display:block; font-weight:400; font-size:14px; color:var(--muted); }
+table.ca td .f { font-family:var(--serif); font-size:22px; }
+table.ca td .e { display:block; font-size:14px; color:var(--muted); margin-top:2px; }
+table.ca td.o { font-family:var(--serif); font-weight:700; font-size:24px; }
+.g { color:#2E7D32; } .r { color:#C62828; } .bl { color:var(--blue); }
+.cnote { margin-top:16px; font-size:18px; color:var(--muted); line-height:1.5; }
+.cnote b { color:var(--ink); font-weight:700; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Bubble sort: case analysis</div>
+<div class="frame"><div class="cw"><table class="ca"><tr><th>Case</th><th>Input</th><th>Passes</th><th>Comparisons</th><th>Swaps</th><th>Time</th></tr><tr><td class="k g">Best</td><td>Already sorted</td><td><span class="f"><i>n</i> − 1</span><span class="e">n = 8: 7</span></td><td><span class="f"><i>n</i>(<i>n</i> − 1)/2</span><span class="e">n = 8: 28</span></td><td><span class="f">0</span><span class="e">n = 8: 0</span></td><td class="o g">O(<i>n</i><sup>2</sup>)</td></tr><tr><td class="k r">Worst</td><td>Reverse sorted</td><td><span class="f"><i>n</i> − 1</span><span class="e">n = 8: 7</span></td><td><span class="f"><i>n</i>(<i>n</i> − 1)/2</span><span class="e">n = 8: 28</span></td><td><span class="f"><i>n</i>(<i>n</i> − 1)/2</span><span class="e">n = 8: 28</span></td><td class="o r">O(<i>n</i><sup>2</sup>)</td></tr><tr><td class="k bl">Our example</td><td>[5, 2, 9, 1, 7, 3, 8, 4]</td><td><span class="f">7</span><span class="e"></span></td><td><span class="f">28</span><span class="e"></span></td><td><span class="f">13</span><span class="e"></span></td><td class="o bl"></td></tr></table><p class="cnote">Both loops run in full whatever the input, so bubble sort always makes <i>n</i>(<i>n</i> − 1)/2 comparisons, <b>even on a sorted array</b>. Only the number of swaps changes.<br>Worst case: every pair is out of order, so every comparison causes a swap: (<i>n</i> − 1) + (<i>n</i> − 2) + … + 1 = <i>n</i>(<i>n</i> − 1)/2.</p></div></div>
+<div class="doodle" style="left:966px;top:526px;width:252px"><svg viewBox="0 0 330 150" width="330" height="150" fill="none" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1" style="display:block;margin:auto 0 0 auto;width:420px;height:auto"><rect x="10" y="74" width="15" height="72" rx="2" fill="#2B5BAA" stroke="#2B5BAA" stroke-width="1.8"/><rect x="30" y="83" width="15" height="63" rx="2" fill="#2B5BAA" stroke="#2B5BAA" stroke-width="1.8"/><rect x="50" y="92" width="15" height="54" rx="2" fill="#fff" stroke="#1a1a1a" stroke-width="1.8"/><rect x="70" y="101" width="15" height="45" rx="2" fill="#fff" stroke="#1a1a1a" stroke-width="1.8"/><rect x="90" y="110" width="15" height="36" rx="2" fill="#fff" stroke="#1a1a1a" stroke-width="1.8"/><rect x="110" y="119" width="15" height="27" rx="2" fill="#fff" stroke="#1a1a1a" stroke-width="1.8"/><rect x="130" y="128" width="15" height="18" rx="2" fill="#fff" stroke="#1a1a1a" stroke-width="1.8"/><rect x="150" y="137" width="15" height="9" rx="2" fill="#fff" stroke="#1a1a1a" stroke-width="1.8"/><circle cx="236" cy="52" r="12"/><path d="M230 49 l4 2 M242 49 l-4 2 M231 58 q5 -4 10 0"/><path d="M236 64 L236 102 M236 102 L226 134 M236 102 L246 134 M236 74 L220 58 M236 74 L252 58"/><text x="236" y="18" font-size="14" fill="#5B5E63" stroke="none" text-anchor="middle">every pair needs a swap?!</text></svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

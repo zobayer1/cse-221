@@ -1,0 +1,29 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Today’s agenda</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ag { margin-top:30px; display:grid; grid-template-columns:repeat(3,1fr); gap:44px; }
+.ag .hd { display:flex; align-items:baseline; gap:14px; padding-bottom:10px; border-bottom:2px solid var(--ink); }
+.ag .hd b { font-family:var(--serif); font-weight:700; font-size:40px; color:var(--blue); line-height:1; }
+.ag .hd h3 { font-family:var(--serif); font-weight:700; font-size:30px; }
+.ag .need { font-size:16px; color:var(--muted); margin-top:8px; }
+.ag ul { list-style:none; margin-top:6px; }
+.ag li { font-size:22px; padding:12px 0 12px 22px; border-bottom:1px solid var(--grey); position:relative; }
+.ag li::before { content:''; position:absolute; left:0; top:24px; width:8px; height:8px; background:var(--blue); }
+.agb { margin-top:36px; display:grid; grid-template-columns:1fr 470px; gap:28px; align-items:end; }
+.agb p { font-size:20px; color:var(--muted); line-height:1.5; padding-bottom:10px; }
+.agb p b { color:var(--ink); font-weight:700; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Today’s agenda</div>
+<div class="frame"><div class="ag"><div><div class="hd"><b>1</b><h3>Linear search</h3></div><div class="need">Works on any array</div><ul><li>Pseudocode</li><li>Simulation</li><li>Complexity analysis</li></ul></div><div><div class="hd"><b>2</b><h3>Binary search</h3></div><div class="need">Needs a sorted array</div><ul><li>Pseudocode</li><li>Simulation</li><li>Complexity analysis</li></ul></div><div><div class="hd"><b>3</b><h3>Ternary search</h3></div><div class="need">Needs a sorted array</div><ul><li>Pseudocode</li><li>Simulation</li><li>Complexity analysis</li></ul></div></div><div class="agb"><p>We start with <b>the searching problem</b> itself, and finish by <b>comparing all three</b>.</p></div></div>
+<div class="doodle" style="left:732px;top:466px;width:470px"><svg viewBox="0 0 470 150" width="470" height="150" fill="none" stroke="#1a1a1a" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-size="20">
+<g stroke-width="2"><rect x="10" y="96" width="38" height="38"/><rect x="48" y="96" width="38" height="38"/><rect x="86" y="96" width="38" height="38"/><rect x="124" y="96" width="38" height="38"/><rect x="162" y="96" width="38" height="38"/><rect x="200" y="96" width="38" height="38"/><rect x="238" y="96" width="38" height="38"/><rect x="276" y="96" width="38" height="38"/></g>
+<g stroke="none" fill="#1a1a1a" text-anchor="middle"><text x="29" y="122">3</text><text x="67" y="122">8</text><text x="105" y="122">12</text><text x="143" y="122">17</text><text x="181" y="122">23</text><text x="219" y="122">31</text><text x="257" y="122">40</text><text x="295" y="122">52</text></g>
+<rect x="162" y="96" width="38" height="38" stroke="#2B5BAA" stroke-width="3"/>
+<circle cx="181" cy="72" r="18" stroke-width="2.4"/><path d="M194 59 L222 40" stroke-width="3.2"/>
+<circle cx="350" cy="44" r="14"/><path d="M344 41 l3 1 M356 41 l-3 1 M345 50 q5 3 10 0"/>
+<path d="M350 58 L350 100 M350 100 L338 140 M350 100 L362 140 M350 70 L288 60 L224 40 M350 70 L376 86"/>
+<text x="372" y="22" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1" font-size="14" fill="#5B5E63" stroke="none">is 23 here?</text>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

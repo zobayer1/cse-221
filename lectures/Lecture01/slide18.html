@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why do we need a model?</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.rw { margin-top:22px; display:grid; grid-template-columns:1fr 520px; gap:36px; align-items:center; }
+.rw ul { list-style:none; border-top:2px solid var(--ink); }
+.rw li { font-size:21px; line-height:1.4; padding:12px 0 12px 22px; border-bottom:1px solid var(--grey); position:relative; }
+.rw li::before { content:''; position:absolute; left:0; top:22px; width:8px; height:8px; background:var(--blue); }
+.rw li b { font-weight:700; }
+.sol { margin-top:36px; padding:16px 22px; background:var(--blue); color:#fff; font-size:23px; line-height:1.4; }
+.sol b { color:#fff; font-weight:700; }
+.sol span { color:#dce6f5; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Why do we need a model?</div>
+<div class="frame">
+
+<p class="lede">Timing a program in seconds measures the machine as much as the algorithm.</p>
+<div class="rw">
+  <ul><li>Running time in seconds depends on the <b>hardware</b>.</li>
+      <li>It also depends on the <b>language</b>, the <b>compiler</b> and what else is running.</li>
+      <li>We want to compare <b>algorithms</b>, not computers.</li></ul>
+  <svg data-figure viewBox="0 0 520 230" width="520" height="230" fill="none" stroke="#1a1a1a" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<rect x="20" y="40" width="150" height="96" rx="5"/><rect x="32" y="52" width="126" height="64" stroke-width="1.6"/><path d="M8 146 h174 l-12 -10 h-150 z"/>
+<text x="95" y="90" font-size="20" font-weight="600" fill="#2E7D32" stroke="none" text-anchor="middle">0.8 s</text>
+<text x="95" y="174" font-size="14" fill="#5B5E63" stroke="none" text-anchor="middle">new laptop</text>
+<rect x="350" y="30" width="80" height="140" rx="12"/><rect x="360" y="46" width="60" height="100" stroke-width="1.6"/><circle cx="390" cy="158" r="4" stroke-width="1.6"/>
+<text x="390" y="102" font-size="20" font-weight="600" fill="#C62828" stroke="none" text-anchor="middle">6.1 s</text>
+<text x="390" y="194" font-size="14" fill="#5B5E63" stroke="none" text-anchor="middle">old phone</text>
+<circle cx="262" cy="96" r="14"/><path d="M256 92 q2 -3 4 0 M265 92 q2 -3 4 0"/><ellipse cx="262" cy="103" rx="3.5" ry="4"/>
+<path d="M262 110 L262 152 M262 152 L251 190 M262 152 L273 190 M262 122 L240 112 L222 104 M262 122 L284 112 L302 104"/>
+<text x="262" y="56" font-size="15" font-weight="700" fill="#2B5BAA" stroke="none" text-anchor="middle">same algorithm?!</text>
+</svg>
+</div>
+<p class="sol"><b>Solution:</b> <span>analyze every algorithm on the same simple, imaginary computer, and count its steps. That computer is the</span> <b>RAM model</b>.</p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

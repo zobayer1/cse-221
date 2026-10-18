@@ -1,0 +1,57 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Binary search: iterative</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:20px 24px; }
+.codebox pre { font-size:22px; line-height:1.7; }
+.codebox .fn { font-weight:700; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.onote { font-size:15px; color:var(--muted); }
+
+.bw2 { margin-top:16px; display:grid; grid-template-columns:560px 1fr; gap:36px; }
+.bw2 .codebox { padding:14px 20px; }
+.bw2 .codebox pre { font-size:18.5px; line-height:1.58; }
+.tt { width:100%; border-collapse:collapse; margin-top:6px; }
+.tt th { font-size:14px; font-weight:400; color:var(--muted); text-align:center; padding:6px 0; border-bottom:1px solid var(--grey); }
+.tt td { text-align:center; font-family:var(--mono); font-size:17px; padding:7px 0; border-bottom:1px solid var(--grey); }
+.tt td.a { text-align:left; font-family:var(--sans); font-size:15px; color:var(--muted); padding-left:10px; }
+.tt tr.hit td { color:#2E7D32; font-weight:700; } .tt tr.hit td.a { color:#2E7D32; }
+.tt th:last-child { text-align:left; padding-left:10px; }
+.kd { margin-top:14px; }
+.kd li { list-style:none; display:grid; grid-template-columns:150px 1fr; gap:12px; padding:7px 0; border-bottom:1px solid var(--grey); font-size:15px; color:var(--muted); line-height:1.4; align-items:baseline; }
+.kd li code { font-family:var(--mono); font-size:15px; color:var(--ink); font-weight:700; }
+.inv { margin-top:36px; padding:12px 20px; background:var(--blue); color:#fff; font-size:20px; display:flex; gap:16px; align-items:baseline; }
+.inv b { font-family:var(--sans); font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#DCE6F5; white-space:nowrap; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Binary search: iterative</div>
+<div class="frame">
+
+<div class="bw2">
+  <div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">BINARY-SEARCH</span>(A, n, x)
+<span class="ln">2</span>    lo = 0
+<span class="ln">3</span>    hi = n − 1
+<span class="ln">4</span>    <span class="kw">while</span> lo ≤ hi
+<span class="ln">5</span>        mid = lo + ⌊(hi − lo) / 2⌋
+<span class="ln">6</span>        <span class="kw">if</span> A[mid] == x
+<span class="ln">7</span>            <span class="kw">return</span> mid
+<span class="ln">8</span>        <span class="kw">elseif</span> A[mid] &lt; x
+<span class="ln">9</span>            lo = mid + 1
+<span class="ln">10</span>        <span class="kw">else</span>
+<span class="ln">11</span>            hi = mid − 1
+<span class="ln">12</span>    <span class="kw">return</span> NIL</pre></div></div>
+  <div><div class="k3">Trace: find 42 in [3, 8, 12, 17, 24, 31, 42, 59]</div>
+    <table class="tt"><tr><th>lo</th><th>hi</th><th>mid</th><th>A[mid]</th><th>action</th></tr><tr class=""><td>0</td><td>7</td><td>3</td><td>17</td><td class="a">17 &lt; 42, so lo = 4</td></tr><tr class=""><td>4</td><td>7</td><td>5</td><td>31</td><td class="a">31 &lt; 42, so lo = 6</td></tr><tr class="hit"><td>6</td><td>7</td><td>6</td><td>42</td><td class="a">found, return 6</td></tr></table><p class="onote" style="margin-top:6px">3 comparisons instead of 7.</p>
+    <ul class="kd">
+      <li><code>lo ≤ hi</code><span>The range is not empty yet. When lo &gt; hi, x is not in A.</span></li>
+      <li><code>mid ± 1</code><span>A[mid] is already checked, so leave it out. Using mid instead can loop forever.</span></li>
+      <li><code>lo + ⌊…/2⌋</code><span>Same as ⌊(lo + hi)/2⌋, but lo + hi can overflow in real code.</span></li>
+    </ul></div>
+</div>
+<div class="inv"><b>Loop invariant</b><span>If <i>x</i> is in A, then it is in A[lo..hi].</span></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

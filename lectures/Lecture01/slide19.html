@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The RAM model (1)</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.ra { margin-top:20px; display:grid; grid-template-columns:1.1fr 1fr; gap:44px; flex:1; min-height:0; }
+.asm { border-top:2px solid var(--ink); }
+.as { display:grid; grid-template-columns:40px 1fr; gap:12px; padding:12px 0; border-bottom:1px solid var(--grey); align-items:baseline; }
+.as .n { font-family:var(--serif); font-weight:700; font-size:24px; color:var(--blue); }
+.as h3 { font-size:21px; font-weight:700; }
+.as p { font-size:17px; color:var(--muted); line-height:1.4; margin-top:2px; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.mem { margin-top:16px; display:flex; }
+.mem div { flex:1; border:2px solid var(--ink); border-left-width:0; text-align:center; padding:10px 0 8px; }
+.mem div:first-child { border-left-width:2px; }
+.mem div b { display:block; font-family:var(--mono); font-size:18px; font-weight:700; }
+.mem div span { font-size:13px; color:var(--muted); }
+.mem div.hi { background:var(--blue); border-color:var(--blue); color:#fff; } .mem div.hi span { color:#dce6f5; }
+.addr { margin-top:14px; font-family:var(--serif); font-size:22px; }
+.addr b { color:var(--blue); }
+.mnote { font-size:17px; color:var(--muted); line-height:1.45; margin-top:8px; }
+.inst { margin-top:22px; }
+.inst .row { display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+.inst .row span { font-size:16px; padding:5px 12px; border:1.5px solid var(--blue); color:var(--blue); border-radius:999px; }
+.ra { grid-template-columns:1fr !important; }
+.as { grid-template-columns:52px 1fr; padding:16px 0; } .as .n { font-size:30px; } .as h3 { font-size:27px; } .as p { font-size:21px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">The RAM model (1)</div>
+<div class="frame">
+
+<p class="lede">The <b style="color:var(--ink);font-weight:600">random-access machine</b>: the imaginary computer we analyze algorithms on.</p>
+<div class="ra">
+  <div class="asm">
+    <div class="as"><div class="n">1</div><div><h3>One processor</h3><p>Instructions run one after another, never at the same time.</p></div></div>
+    <div class="as"><div class="n">2</div><div><h3>Every instruction costs one step</h3><p>Each basic instruction takes the same constant time.</p></div></div>
+    <div class="as"><div class="n">3</div><div><h3>Every memory access costs one step</h3><p>Reading or writing a variable takes constant time, even indexing an array.</p></div></div>
+    <div class="as"><div class="n">4</div><div><h3>Simple data, limited words</h3><p>Integers, floating-point numbers and characters. Each word holds a limited number of bits, enough to store <i>n</i>.</p></div></div>
+  </div>
+</div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

@@ -1,0 +1,56 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ternary search: time complexity</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.bc-l { margin-top:10px; font-size:21px; color:var(--muted); line-height:1.45; max-width:1080px; }
+.bc-l b { color:var(--ink); font-weight:700; }
+.bcw { margin-top:18px; display:grid; grid-template-columns:1fr 470px; gap:40px; flex:1; min-height:0; }
+.st2 { width:100%; border-collapse:collapse; }
+.st2 th { font-size:14px; font-weight:400; color:var(--muted); text-align:center; padding:0 0 8px; border-bottom:2px solid var(--ink); }
+.st2 th:first-child { text-align:left; }
+.st2 td { text-align:center; font-family:var(--serif); font-size:22px; padding:8px 0; border-bottom:1px solid var(--grey); }
+.st2 td:first-child { text-align:left; }
+.st2 td.w { color:var(--muted); font-size:19px; }
+.st2 td.t { font-family:var(--mono); font-size:17px; color:var(--blue); }
+.st2 tr.last td { font-weight:700; color:var(--blue); border-bottom:none; }
+.st2 td.d { color:var(--grey); }
+.wk { margin-top:10px; font-size:15px; color:var(--muted); line-height:1.45; }
+.der { background:var(--tint); padding:18px 24px; box-shadow:inset 0 6px 0 var(--blue); }
+.der .k { font-size:14px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; }
+.der .eqs { font-family:var(--serif); font-size:25px; line-height:1.75; margin-top:6px; }
+.der .eqs span { color:var(--muted); font-family:var(--sans); font-size:15px; margin-left:10px; }
+.der .res { margin-top:6px; padding-top:10px; border-top:1px solid var(--grey); font-family:var(--serif); font-size:25px; }
+.der .res b { color:var(--blue); font-size:32px; }
+.bwc { margin-top:14px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.bwc div { padding:10px 14px; font-size:15px; color:var(--muted); line-height:1.4; }
+.bwc b { display:block; font-family:var(--serif); font-size:22px; font-weight:700; }
+.bwc .g { background:#EEF6EF; box-shadow:inset 4px 0 0 #2E7D32; } .bwc .g b { color:#2E7D32; }
+.bwc .r { background:#FBEDEC; box-shadow:inset 4px 0 0 #C62828; } .bwc .r b { color:#C62828; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Ternary search: time complexity</div>
+<div class="frame">
+
+<p class="bc-l">Same method as binary search: track the <b>range size</b> and the <b>work</b> per step. Now each step computes m1 and m2 and makes up to 4 comparisons. Still constant work, <i>c</i>′.</p>
+<div class="bcw">
+  <div><table class="st2"><tr><th>Step</th><th>Range size</th><th>Work</th><th>Example, <i>n</i> = 27</th></tr>
+    <tr><td>1</td><td><i>n</i></td><td class="w"><i>c</i>′</td><td class="t">27</td></tr>
+    <tr><td>2</td><td><i>n</i>/3</td><td class="w"><i>c</i>′</td><td class="t">9</td></tr>
+    <tr><td>3</td><td><i>n</i>/9</td><td class="w"><i>c</i>′</td><td class="t">3</td></tr>
+    <tr><td>4</td><td><i>n</i>/27</td><td class="w"><i>c</i>′</td><td class="t">1</td></tr>
+    <tr><td class="d">⋮</td><td class="d">⋮</td><td class="d">⋮</td><td></td></tr>
+    <tr class="last"><td><i>k</i> + 1</td><td><i>n</i>/3<sup><i>k</i></sup></td><td class="w"><i>c</i>′</td><td></td></tr></table>
+    <p class="wk">As a recurrence: <i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i>/3) + O(1). Compare binary search: <i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i>/2) + O(1).</p></div>
+  <div><div class="der"><div class="k">How many steps?</div>
+    <div class="eqs"><i>n</i> / 3<sup><i>k</i></sup> ≥ 1 <span>still something to search</span><br>
+      <i>n</i> ≥ 3<sup><i>k</i></sup><br>
+      <i>k</i> ≤ log<sub>3</sub> <i>n</i></div>
+    <div class="res">At most log<sub>3</sub> <i>n</i> + 1 steps of <i>c</i>′ work:<br><i>T</i>(<i>n</i>) = <i>c</i>′ (log<sub>3</sub> <i>n</i> + 1) = <b>O(log<sub>3</sub> <i>n</i>)</b></div></div>
+    <div class="bwc"><div class="g"><b>Best: O(1)</b>x is at m1 or m2 in the first step.</div><div class="r"><b>Worst: O(log <i>n</i>)</b>x is absent, or found in the last step.</div></div></div>
+</div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

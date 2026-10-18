@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Binary search: summary</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:20px 24px; }
+.codebox pre { font-size:22px; line-height:1.7; }
+.codebox .fn { font-weight:700; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.onote { font-size:15px; color:var(--muted); }
+
+.bsw { margin-top:20px; display:grid; grid-template-columns:1fr 1fr; gap:44px; flex:1; min-height:0; }
+.bsw table { width:100%; border-collapse:collapse; margin-top:2px; }
+.bsw td { padding:9px 0; border-bottom:1px solid var(--grey); font-size:18px; vertical-align:baseline; }
+.bsw td.o { font-family:var(--serif); font-weight:700; font-size:24px; text-align:right; white-space:nowrap; }
+.bsw td.n { font-size:15px; color:var(--muted); padding-left:14px; }
+.need { margin-top:16px; }
+.need li { list-style:none; padding:8px 0 8px 22px; position:relative; font-size:17px; line-height:1.4; border-bottom:1px solid var(--grey); }
+.need li::before { content:''; position:absolute; left:0; top:16px; width:8px; height:8px; background:var(--blue); }
+.need li b { font-weight:700; }
+.need li span { color:var(--muted); }
+.pit li { list-style:none; display:grid; grid-template-columns:170px 1fr; gap:14px; padding:10px 0; border-bottom:1px solid var(--grey); align-items:baseline; }
+.pit li b { font-family:var(--serif); font-weight:700; font-size:20px; color:#C62828; }
+.pit li span { font-size:16px; color:var(--muted); line-height:1.4; }
+.pitw { display:flex; flex-direction:column; }
+.pitw svg { margin-top:36px; align-self:flex-end; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Binary search: summary</div>
+<div class="frame">
+
+<div class="bsw">
+  <div><div class="k3">Cost</div><table>
+    <tr><td>Best case</td><td class="n">x is the first middle</td><td class="o" style="color:#2E7D32">O(1)</td></tr>
+    <tr><td>Average case</td><td class="n"></td><td class="o" style="color:var(--blue)">O(log <i>n</i>)</td></tr>
+    <tr><td>Worst case</td><td class="n">x absent, or found last</td><td class="o" style="color:#C62828">O(log <i>n</i>)</td></tr>
+    <tr><td>Extra space</td><td class="n">loop / recursion</td><td class="o">O(1) / O(log <i>n</i>)</td></tr></table>
+    <ul class="need"><li><b>Needs a monotonic order</b> <span>(a sorted array is the usual case)</span></li>
+      <li><b>Needs O(1) access to any position</b> <span>(an array, not a linked list)</span></li></ul></div>
+  <div class="pitw"><div class="k3" style="color:#C62828">Watch out for</div><ul class="pit">
+    <li><b>Missing element</b><span>The loop must end when lo &gt; hi, then return NIL.</span></li>
+    <li><b>Duplicates</b><span>Returns <i>some</i> matching index. For the first one, keep searching left.</span></li>
+    <li><b>Off-by-one</b><span>Use lo ≤ hi and mid ± 1. One slip loses an element or loops forever.</span></li>
+    <li><b>Unsorted input</b><span>No error, just a silently wrong answer.</span></li></ul>
+    </div>
+</div>
+</div>
+<div class="doodle" style="left:972px;top:490px;width:230px"><svg viewBox="0 0 230 150" width="230" height="150" fill="none" stroke="#1a1a1a" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<circle cx="110" cy="44" r="14"/><path d="M104 40 q2 -3 4 0 M113 40 q2 -3 4 0 M103 49 q7 7 14 0 z"/>
+<path d="M110 58 L110 100 M110 100 L99 146 M110 100 L121 146 M110 70 L90 52 L86 30 M110 70 L134 84"/>
+<path d="M134 84 l24 -6" stroke-width="2"/><rect x="156" y="62" width="58" height="34" rx="3" stroke="#2B5BAA"/>
+<text x="185" y="84" font-size="13" font-weight="700" fill="#2B5BAA" stroke="none" text-anchor="middle">log n</text>
+<text x="56" y="24" font-size="13" fill="#5B5E63" stroke="none" text-anchor="middle">20 steps for</text><text x="56" y="40" font-size="13" fill="#5B5E63" stroke="none" text-anchor="middle">a million!</text>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

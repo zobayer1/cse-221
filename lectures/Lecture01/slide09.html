@@ -1,0 +1,54 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Order of growth</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ogw { margin-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:48px; flex:1; min-height:0; }
+.ogd p.big { font-family:var(--serif); font-weight:400; font-size:30px; line-height:1.32; }
+.ogd p.big b { color:var(--blue); font-weight:700; }
+.ogd ul { list-style:none; margin-top:20px; border-top:2px solid var(--ink); }
+.ogd li { font-size:20px; line-height:1.4; padding:10px 0 10px 22px; border-bottom:1px solid var(--grey); position:relative; }
+.ogd li::before { content:''; position:absolute; left:0; top:20px; width:8px; height:8px; background:var(--blue); }
+.mins { margin-top:20px; background:var(--tint); border-left:5px solid var(--blue); padding:14px 20px; font-family:var(--serif); font-size:24px; }
+.mins span { color:var(--muted); font-family:var(--sans); font-size:16px; display:block; margin-bottom:2px; }
+.ogx .k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.ogx .f { font-family:var(--serif); font-size:28px; margin:14px 0 8px; }
+.ogx .f b { color:var(--blue); }
+table.og { width:100%; border-collapse:collapse; }
+table.og th { font-size:15px; font-weight:400; color:var(--muted); text-align:right; padding:6px 0; border-bottom:1px solid var(--grey); }
+table.og th:first-child, table.og td:first-child { text-align:left; }
+table.og td { text-align:right; font-family:var(--serif); font-size:21px; padding:8px 0; border-bottom:1px solid var(--grey); }
+table.og td.p { font-weight:700; color:var(--blue); }
+.ogx { display:flex; flex-direction:column; }
+.ogn { font-size:16px; color:var(--muted); margin-top:10px; line-height:1.45; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Order of growth</div>
+<div class="frame">
+
+<div class="ogw">
+  <div class="ogd">
+    <p class="big">The <b>order of growth</b> of a running time is its <b>leading term</b>, without the constant factor.</p>
+    <ul><li>It describes how the algorithm behaves for large <i>n</i>: its <b style="font-weight:600">asymptotic</b> behavior.</li>
+        <li>Lower-order terms and constant factors stop mattering as <i>n</i> grows.</li></ul>
+    <div class="mins"><span>From the MIN example</span><i>T</i>(<i>n</i>) = 3<i>n</i> − 1 &nbsp;→&nbsp; order of growth <b style="color:var(--blue)"><i>n</i></b></div>
+  </div>
+  <div class="ogx">
+    <div class="k3">Why only the leading term?</div>
+    <div class="f"><i>T</i>(<i>n</i>) = <b>5<i>n</i><sup>2</sup></b> + 20<i>n</i> + 100</div>
+    <table class="og"><tr><th><i>n</i></th><th>5<i>n</i><sup>2</sup></th><th><i>T</i>(<i>n</i>)</th><th>share of 5<i>n</i><sup>2</sup></th></tr>
+      <tr><td>10</td><td>500</td><td>800</td><td class="p">62.5%</td></tr>
+      <tr><td>100</td><td>50,000</td><td>52,100</td><td class="p">96.0%</td></tr>
+      <tr><td>1,000</td><td>5,000,000</td><td>5,020,100</td><td class="p">99.6%</td></tr></table>
+    <p class="ogn">As <i>n</i> grows, the <i>n</i><sup>2</sup> term takes over. The order of growth is <i>n</i><sup>2</sup>.</p>
+  </div>
+</div>
+</div>
+<div class="doodle" style="right:56px;bottom:34px;width:330px"><svg viewBox="0 0 330 160" width="330" height="160" fill="none" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">
+<circle cx="250" cy="34" r="20"/><path d="M241 30 l5 2 M259 30 l-5 2 M242 42 q8 6 16 0"/>
+<path d="M250 54 L250 112 M250 112 L234 156 M250 112 L266 156 M250 70 L224 92 M250 70 L280 56 L292 40"/>
+<text x="292" y="98" font-size="26" font-weight="700" fill="#2B5BAA" stroke="none" text-anchor="middle" font-style="italic">n²</text>
+<circle cx="60" cy="122" r="7" stroke-width="1.8"/><path d="M60 129 v13 M60 142 l-5 13 M60 142 l5 13 M60 134 l-7 -6 M60 134 l7 -8" stroke-width="1.8"/>
+<circle cx="120" cy="128" r="5" stroke-width="1.6"/><path d="M120 133 v10 M120 143 l-4 11 M120 143 l4 11 M120 137 l-5 -4 M120 137 l5 -6" stroke-width="1.6"/>
+<g stroke="none" fill="#5B5E63" font-size="14" text-anchor="middle"><text x="60" y="106" font-style="italic">20n</text><text x="120" y="114">100</text><text x="92" y="84" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1" font-size="13">hey, we count too!</text></g>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Running time</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.rdef { margin-top:26px; display:grid; grid-template-columns:1fr 200px; gap:28px; align-items:center; }
+.rdef p { font-family:var(--serif); font-weight:400; font-size:35px; line-height:1.3; }
+.rdef p b { color:var(--blue); font-weight:700; }
+.ops { margin-top:40px; display:grid; grid-template-columns:repeat(5,1fr); gap:16px; }
+.op { border-top:2px solid var(--ink); padding-top:12px; }
+.op h3 { font-size:22px; font-weight:700; }
+.op .c { font-size:21px; color:var(--blue); margin-top:8px; line-height:1.45; }
+.ex2 { margin-top:36px; display:grid; grid-template-columns:auto 1fr; border-left:5px solid var(--blue); font-size:20px; line-height:1.45; }
+.ex2 > span { display:flex; align-items:center; padding:14px 22px; }
+.ex2 .code { background:var(--tint); font-size:21px; padding:14px 28px; }
+.ex2 .why { background:#D6E0F0; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Running time</div>
+<div class="frame">
+
+<div class="rdef"><p><b>Running time</b> is the number of primitive operations, or <b>steps</b>, an algorithm executes before it stops.</p></div>
+<div class="ops">
+  <div class="op"><h3>Arithmetic</h3><div class="c code">+  −  ×  ÷</div></div>
+  <div class="op"><h3>Data movement</h3><div class="c">assign, copy,<br>read A[i]</div></div>
+  <div class="op"><h3>Control</h3><div class="c">call, return,<br>jump</div></div>
+  <div class="op"><h3>Decision</h3><div class="c code">if, while</div></div>
+  <div class="op"><h3>Comparison</h3><div class="c code">&lt;  ≤  =  ≥  &gt;</div></div>
+</div>
+<div class="ex2"><span class="code">total = total + i</span><span class="why"><span>One addition and one assignment: <b>a constant number of steps</b>.<br>Since the exact constant won’t matter, we simply count each line as <b>one step</b>.</span></span></div>
+</div>
+<div class="doodle" style="left:1009px;top:120px;width:200px"><svg viewBox="0 0 200 170" width="200" height="170" fill="none" stroke="#1a1a1a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="60" cy="56" r="15"/><path d="M53 53 l4 1 M67 53 l-4 1 M54 63 h12"/><path d="M48 44 l-6 -8 M60 40 v-9 M72 44 l6 -8" stroke-width="1.8"/>
+<path d="M60 71 L60 112 M60 112 L48 150 M60 112 L72 150 M60 82 L40 100 M60 82 L92 96 L104 92"/>
+<path d="M104 92 l8 -10" stroke-width="2"/>
+<rect x="110" y="26" width="80" height="62" rx="3" stroke-width="2"/>
+<path d="M122 38 v26 M130 38 v26 M138 38 v26 M146 38 v26 M118 58 l34 -14 M162 38 v26 M170 38 v26" stroke="#2B5BAA" stroke-width="2.2"/>
+<path d="M120 78 h60" stroke-width="1.4" opacity="0.5"/>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

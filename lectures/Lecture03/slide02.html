@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Today’s agenda</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ag { margin-top:30px; display:grid; grid-template-columns:repeat(3,1fr); gap:44px; }
+.ag .hd { display:flex; align-items:baseline; gap:14px; padding-bottom:10px; border-bottom:2px solid var(--ink); }
+.ag .hd b { font-family:var(--serif); font-weight:700; font-size:40px; color:var(--blue); line-height:1; }
+.ag .hd h3 { font-family:var(--serif); font-weight:700; font-size:30px; }
+.ag .need { font-size:16px; color:var(--muted); margin-top:8px; }
+.ag ul { list-style:none; margin-top:6px; }
+.ag li { font-size:22px; padding:12px 0 12px 22px; border-bottom:1px solid var(--grey); position:relative; }
+.ag li::before { content:''; position:absolute; left:0; top:24px; width:8px; height:8px; background:var(--blue); }
+.agb { margin-top:36px; display:grid; grid-template-columns:1fr 470px; gap:28px; align-items:end; }
+.agb p { font-size:20px; color:var(--muted); line-height:1.5; padding-bottom:10px; }
+.agb p b { color:var(--ink); font-weight:700; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Today’s agenda</div>
+<div class="frame"><div class="ag"><div><div class="hd"><b>1</b><h3>Bubble sort</h3></div><div class="need">Swap neighbors that are out of order</div><ul><li>Pseudocode</li><li>Simulation</li><li>Complexity analysis</li></ul></div><div><div class="hd"><b>2</b><h3>Insertion sort</h3></div><div class="need">Insert each element into the sorted part</div><ul><li>Pseudocode</li><li>Simulation</li><li>Complexity analysis</li></ul></div><div><div class="hd"><b>3</b><h3>Selection sort</h3></div><div class="need">Pick the smallest, put it in place</div><ul><li>Pseudocode</li><li>Simulation</li><li>Complexity analysis</li></ul></div></div><div class="agb"><p>All three are <b>basic sorting algorithms</b> that take O(<i>n</i><sup>2</sup>) time. We start with <b>the sorting problem</b> itself.</p></div></div>
+<div class="doodle" style="left:732px;top:466px;width:470px"><svg viewBox="0 0 470 160" width="470" height="160" fill="none" stroke="#1a1a1a" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><rect x="12" y="105" width="26" height="45" rx="2" fill="#fff" stroke="#1a1a1a" stroke-width="2"/><rect x="48" y="45" width="26" height="105" rx="2" fill="#2B5BAA" stroke="#2B5BAA" stroke-width="2"/><rect x="84" y="120" width="26" height="30" rx="2" fill="#2B5BAA" stroke="#2B5BAA" stroke-width="2"/><rect x="120" y="75" width="26" height="75" rx="2" fill="#fff" stroke="#1a1a1a" stroke-width="2"/><rect x="156" y="30" width="26" height="120" rx="2" fill="#fff" stroke="#1a1a1a" stroke-width="2"/><rect x="192" y="90" width="26" height="60" rx="2" fill="#fff" stroke="#1a1a1a" stroke-width="2"/><rect x="228" y="60" width="26" height="90" rx="2" fill="#fff" stroke="#1a1a1a" stroke-width="2"/>
+<path d="M61 22 q18 -18 36 0" stroke="#2B5BAA" stroke-width="2"/><path d="M61 24 q18 14 36 0" stroke="#2B5BAA" stroke-width="2" stroke-dasharray="3 3"/><path d="M93 17 l4 5 l-7 1" stroke="#2B5BAA" stroke-width="2"/>
+<circle cx="360" cy="52" r="14"/><path d="M354 49 l3 1 M366 49 l-3 1 M355 58 q5 3 10 0"/>
+<path d="M360 66 L360 108 M360 108 L348 150 M360 108 L372 150 M360 78 L322 64 L290 72 M360 78 L388 94"/>
+<text x="360" y="22" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1" font-size="14" fill="#5B5E63" stroke="none" text-anchor="middle">7 before 2? nope.</text>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

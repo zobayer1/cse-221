@@ -1,0 +1,129 @@
+/* CSE 221 slide theme: Beamer-style frame (title bar, split footline), Computer Modern fonts.
+   Every slide is a fixed 1280x720 canvas; theme.js adds the footline and scales to the window. */
+
+@font-face { font-family:'CMU Sans Serif'; font-style:normal; font-weight:400; src:url(fonts/cmu-sans-serif-500-roman.woff2) format('woff2'); }
+@font-face { font-family:'CMU Sans Serif'; font-style:italic; font-weight:400; src:url(fonts/cmu-sans-serif-500-italic.woff2) format('woff2'); }
+@font-face { font-family:'CMU Sans Serif'; font-style:normal; font-weight:700; src:url(fonts/cmu-sans-serif-700-roman.woff2) format('woff2'); }
+@font-face { font-family:'CMU Sans Serif'; font-style:italic; font-weight:700; src:url(fonts/cmu-sans-serif-700-italic.woff2) format('woff2'); }
+@font-face { font-family:'CMU Serif'; font-style:normal; font-weight:400; src:url(fonts/cmu-serif-500-roman.woff2) format('woff2'); }
+@font-face { font-family:'CMU Serif'; font-style:italic; font-weight:400; src:url(fonts/cmu-serif-500-italic.woff2) format('woff2'); }
+@font-face { font-family:'CMU Serif'; font-style:normal; font-weight:700; src:url(fonts/cmu-serif-700-roman.woff2) format('woff2'); }
+@font-face { font-family:'CMU Typewriter Text'; font-style:normal; font-weight:400; src:url(fonts/cmu-typewriter-text-500-roman.woff2) format('woff2'); }
+/* math symbols CMU lacks (≤ ≥ ≈ ∫ ∑ ⟨⟩ …) fall back to KaTeX's Computer Modern-based fonts */
+@font-face { font-family:'KaTeX_Main'; font-style:normal; font-weight:400; src:url(fonts/KaTeX_Main-Regular.woff2) format('woff2'); }
+@font-face { font-family:'KaTeX_Size1'; font-style:normal; font-weight:400; src:url(fonts/KaTeX_Size1-Regular.woff2) format('woff2'); }
+@font-face { font-family:'CMU Typewriter Text'; font-style:normal; font-weight:700; src:url(fonts/cmu-typewriter-text-700-roman.woff2) format('woff2'); }
+
+:root {
+  --blue:#2B5BAA; --blue-d:#1F4A8F; --blue-l:#8AA8DA; --tint:#E9EEF7; --tint-2:#F4F6FB;
+  --ink:#000; --muted:#555; --grey:#A7A9AC; --rule:#C9CCD1; --red:#C62828; --red-t:#F8E6E6; --green:#2E7D32; --green-t:#E6F1E7;
+  --sans:'CMU Sans Serif','KaTeX_Main','KaTeX_Size1',sans-serif; --serif:'CMU Serif','KaTeX_Main','KaTeX_Size1',serif; --mono:'CMU Typewriter Text','KaTeX_Main','KaTeX_Size1',monospace;
+  --head-h:68px; --foot-h:26px;
+}
+@page { size:1280px 720px; margin:0; }
+* { box-sizing:border-box; margin:0; padding:0; }
+html,body { background:#d9dbde; }
+body { display:flex; align-items:center; justify-content:center; min-height:100vh; font-family:var(--sans); color:var(--ink); }
+.slide { width:1280px; height:720px; background:#fff; position:relative; overflow:hidden; transform-origin:center; font-size:26px; line-height:1.35; }
+@media print { html,body { background:#fff; } body { display:block; min-height:0; } .slide { transform:none !important; } }
+
+/* ---------- frame ---------- */
+.frametitle { position:absolute; left:0; right:0; top:0; height:var(--head-h); line-height:var(--head-h); background:var(--blue); color:#fff; white-space:nowrap; overflow:hidden; padding:0 40px; font-size:34px; font-weight:400; letter-spacing:0.005em; }
+.frametitle small { font-size:0.7em; opacity:0.8; margin-left:14px; }
+/* content is centred vertically as one group: projected slides are read around the middle */
+.frame { position:absolute; left:56px; right:56px; top:var(--head-h); bottom:var(--foot-h); padding:28px 0; display:flex; flex-direction:column; justify-content:center; }
+.frame.top { justify-content:flex-start; }
+.frame > * { flex:0 0 auto !important; } /* children never stretch to fill the frame */
+.frame > :first-child { margin-top:0 !important; } /* the frame centres content, so no leading gap */
+.push { margin-top:44px; }
+
+.footline { position:absolute; left:0; right:0; bottom:0; height:var(--foot-h); display:grid; grid-template-columns:1fr 1fr 1fr; font-size:14px; color:#fff; }
+.footline span { display:flex; align-items:center; padding:0 18px; white-space:nowrap; overflow:hidden; }
+.footline .fl-a { background:var(--ink); justify-content:flex-end; }
+.footline .fl-b { background:var(--blue); justify-content:center; }
+.footline .fl-c { background:var(--blue-d); justify-content:space-between; }
+
+/* ---------- text ---------- */
+b, strong { font-weight:700; }
+.subhd { font-weight:700; margin-bottom:6px; }
+.subhd + .subhd, * + .subhd { margin-top:22px; }
+.lede { color:var(--muted); }
+.muted { color:var(--muted); }
+.blue { color:var(--blue); }
+.red { color:var(--red); }
+.small { font-size:0.8em; }
+.tiny { font-size:0.66em; }
+.math, var { font-family:var(--serif); font-style:italic; }
+.rm { font-family:var(--serif); font-style:normal; }
+code { font-family:var(--mono); }
+
+/* itemize with Beamer balls */
+ul.items { list-style:none; }
+ul.items > li { position:relative; padding-left:30px; margin:8px 0; }
+ul.items > li::before { content:''; position:absolute; left:4px; top:0.42em; width:13px; height:13px; border-radius:50%; background:radial-gradient(circle at 35% 35%, #9DB7E3 0%, var(--blue) 55%, var(--blue-d) 100%); }
+ul.items ul.items > li { padding-left:26px; font-size:0.9em; margin:4px 0; }
+ul.items ul.items > li::before { width:7px; height:7px; top:0.5em; left:6px; background:var(--blue); border-radius:0; }
+ol.items { list-style:none; counter-reset:it; }
+ol.items > li { position:relative; padding-left:40px; margin:8px 0; counter-increment:it; }
+ol.items > li::before { content:counter(it); position:absolute; left:0; top:0.1em; width:26px; height:26px; border-radius:50%; background:var(--blue); color:#fff; font-size:16px; display:flex; align-items:center; justify-content:center; }
+
+/* ---------- blocks ---------- */
+.block { border-radius:6px; overflow:hidden; background:var(--tint-2); box-shadow:0 1px 3px rgba(0,0,0,.18); }
+.block > .bt { background:var(--blue); color:#fff; padding:6px 18px; font-size:0.92em; }
+.block > .bb { padding:12px 18px 14px; }
+.block > .bb.it { font-style:italic; }
+.block.alert > .bt { background:var(--red); } .block.alert { background:var(--red-t); }
+.block.example > .bt { background:var(--green); } .block.example { background:var(--green-t); }
+.qed { display:inline-block; width:14px; height:14px; border:1.5px solid var(--blue); vertical-align:-1px; float:right; margin-top:0.35em; }
+
+/* ---------- layout helpers ---------- */
+.cols { display:grid; grid-template-columns:repeat(var(--n,2), minmax(0,1fr)); gap:var(--gap,48px); }
+.mt-s { margin-top:12px; } .mt { margin-top:24px; } .mt-l { margin-top:40px; }
+
+/* booktabs-style table */
+table.tab { border-collapse:collapse; width:100%; border-top:2px solid var(--ink); border-bottom:2px solid var(--ink); }
+table.tab th { font-weight:700; text-align:left; padding:8px 12px; border-bottom:1px solid var(--ink); }
+table.tab td { padding:8px 12px; vertical-align:baseline; }
+table.tab tr.sep td { border-top:1px solid var(--rule); }
+table.tab .r { text-align:right; }
+table.tab .c { text-align:center; }
+
+/* arrays drawn as boxed cells (.cells, so legacy .arr markup is untouched) */
+.cells { display:inline-flex; }
+.cells > span { width:var(--w,64px); height:var(--h,56px); border:1.5px solid var(--ink); margin-left:-1.5px; display:flex; align-items:center; justify-content:center; font-size:var(--fs,26px); background:#fff; }
+.cells > span:first-child { margin-left:0; }
+.cells > span.hi { background:var(--blue); color:#fff; border-color:var(--ink); }
+.cells > span.out { background:#EEF0F2; color:#9a9da2; }
+.cells > span.mark { color:var(--red); }
+
+/* ---------- title page ---------- */
+.titlepage { position:absolute; left:0; right:0; top:0; bottom:var(--foot-h); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; }
+.titlepage .logo { width:150px; height:auto; }
+.titlepage .course { font-size:22px; color:var(--muted); margin:14px 0 18px; letter-spacing:0.02em; }
+.titlepage .tbox { background:var(--blue); color:#fff; border-radius:8px; padding:22px 64px 20px; min-width:720px; box-shadow:0 2px 6px rgba(0,0,0,.25); }
+.titlepage .tbox h1 { font-weight:400; font-size:46px; line-height:1.15; }
+.titlepage .tbox .sub { font-size:22px; margin-bottom:4px; opacity:0.85; letter-spacing:0.02em; }
+.titlepage .author { margin-top:34px; font-size:26px; }
+.titlepage .inst { margin-top:8px; font-size:20px; color:var(--muted); }
+.titlepage .date { margin-top:22px; font-size:22px; }
+.footline .fl-c > span { padding:0; }
+.titlepage .tbox .sub:empty { display:none; }
+
+/* CLRS-style pseudocode */
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+/* tag inside the title bar, e.g. Discuss: a square, solid block in the tag's color with white text */
+.frametitle .ftag { display:inline-block; vertical-align:middle; line-height:1; font-size:14px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#fff; background:#16305C; padding:7px 11px; margin-left:16px; }
+.frametitle .ftag.red { background:var(--red); }
+.frametitle .ftag.amber { background:#B86E00; }
+.frametitle .ftag.ink { background:#000; }
+
+/* stick figures are overlays: they sit in existing white space and never take part in layout.
+   Place with inline right/bottom (or left/top) offsets relative to the slide. Important diagrams stay in flow. */
+.doodle { position:absolute; z-index:1; pointer-events:none; }
+.doodle svg { display:block; width:100% !important; height:auto !important; margin:0 !important; } /* size the overlay with width on .doodle; beats old inline sizes */
+
+/* check / cross marks drawn as SVG (no font has ✔ ✘); they take the text color */
+svg.tick, svg.cross { width:0.85em; height:0.85em; vertical-align:-0.08em; fill:none; stroke:currentColor; stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; }

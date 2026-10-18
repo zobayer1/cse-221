@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Typical running-time functions (2)</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.fns { margin-top:22px; border-top:2px solid var(--ink); }
+.fn { display:grid; grid-template-columns:150px 1fr 300px; gap:28px; align-items:baseline; padding:15px 0; border-bottom:1px solid var(--grey); }
+.fn .nt { font-family:var(--serif); font-weight:700; font-size:36px; color:var(--blue); white-space:nowrap; }
+.fn h3 { font-size:21px; font-weight:700; }
+.fn p { font-size:19px; color:var(--muted); line-height:1.4; margin-top:3px; }
+.fn .eg { font-size:17px; line-height:1.4; }
+.fn .eg span { display:block; font-size:13px; font-weight:700; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; }
+.fhead { display:grid; grid-template-columns:150px 1fr 300px; gap:28px; font-size:15px; color:var(--muted); margin-top:20px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Typical running-time functions (2)</div>
+<div class="frame"><div class="fns"><div class="fn"><div class="nt"><i>n</i><sup>2</sup></div><div><h3>Quadratic</h3><p>Process all pairs of data items, typically with two nested loops.</p></div><div class="eg"><span>Example</span>Bubble, selection and insertion sort</div></div><div class="fn"><div class="nt"><i>n</i><sup>3</sup></div><div><h3>Cubic</h3><p>Process all triples of data items, typically with three nested loops.</p></div><div class="eg"><span>Example</span>Multiplying two <i>n</i> × <i>n</i> matrices the standard way</div></div><div class="fn"><div class="nt"><i>n</i><sup><i>k</i></sup></div><div><h3>Polynomial</h3><p><i>k</i> nested loops, for a fixed constant <i>k</i>.</p></div><div class="eg"><span>Example</span>Checking every group of <i>k</i> items</div></div><div class="fn"><div class="nt">2<sup><i>n</i></sup></div><div><h3>Exponential</h3><p>Doubles with every extra input element. Very few exponential algorithms are practical.</p></div><div class="eg"><span>Example</span>Trying every subset of <i>n</i> items</div></div></div></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

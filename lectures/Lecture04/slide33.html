@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merge sort vs. quicksort</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.mqv { margin-top:16px; border:2px solid var(--ink); border-radius:10px; overflow:hidden; }
+.mqv table { width:100%; border-collapse:collapse; font-size:20px; }
+.mqv th { background:var(--tint); font-family:var(--serif); font-weight:700; font-size:24px; padding:10px 18px; text-align:left; }
+.mqv td { padding:10px 18px; border-top:1px solid var(--grey); }
+.mqv td:first-child { color:var(--muted); font-weight:700; font-size:15px; text-transform:uppercase; letter-spacing:0.05em; width:220px; }
+.mqv .ok { color:#2E7D32; font-weight:700; } .mqv .no { color:#C62828; font-weight:700; }
+.mqb { margin-top:16px; display:grid; grid-template-columns:1fr 440px; gap:30px; align-items:center; }
+.mqb p { font-size:17px; color:var(--muted); line-height:1.5; }
+.mqb p b { color:var(--ink); font-weight:700; }
+.mqb code { font-family:var(--mono); font-size:15px; background:var(--tint); padding:1px 6px; color:var(--blue); }
+.mqb p.nxq { font-family:var(--serif); font-size:24px; text-align:right; color:var(--ink); line-height:1.35; }
+.nxq b { color:var(--blue); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Merge sort vs. quicksort</div>
+<div class="frame"><div class="mqv"><table><tr><th></th><th>Merge sort</th><th>Quicksort</th></tr><tr><td>Worst case</td><td class="ok">O(<i>n</i> log <i>n</i>)</td><td class="no">O(<i>n</i><sup>2</sup>)</td></tr><tr><td>Average case</td><td class="ok">O(<i>n</i> log <i>n</i>)</td><td class="ok">O(<i>n</i> log <i>n</i>)</td></tr><tr><td>Extra space</td><td class="no">O(<i>n</i>)</td><td class="ok">O(log <i>n</i>) stack</td></tr><tr><td>Stable</td><td class="ok"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td class="no"><svg class="cross" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></td></tr><tr><td>Hard work</td><td>combine (merge)</td><td>divide (partition)</td></tr><tr><td>In practice</td><td>predictable</td><td>usually faster</td></tr></table></div><div class="mqb"><p>Quicksort in the wild: C++ <code>std::sort</code> (introsort: quicksort with a safety net), Java <code>Arrays.sort</code> for primitives (dual-pivot quicksort).</p><p class="nxq">Both are <b><i>n</i> log <i>n</i></b>.<br>Can <b>any</b> comparison sort do better?</p></div></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

@@ -1,0 +1,51 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insertion sort</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.code { font-family:var(--mono); }
+.kw { font-weight:700; color:var(--blue); }
+.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
+
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:20px 24px; }
+.codebox pre { font-size:22px; line-height:1.7; }
+.codebox .fn { font-weight:700; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.onote { font-size:15px; color:var(--muted); }
+
+.bw { margin-top:16px; display:grid; grid-template-columns:600px 1fr; gap:36px; flex:1; min-height:0; }
+.bw .codebox pre { font-size:18px; line-height:1.55; }
+.idea { font-size:19px; line-height:1.5; }
+.swp { margin-top:14px; }
+.swp svg { display:block; margin:2px auto 0; }
+.idea b { font-weight:700; }
+.idea li { list-style:none; padding:9px 0 9px 22px; border-bottom:1px solid var(--grey); position:relative; }
+.idea li::before { content:''; position:absolute; left:0; top:19px; width:8px; height:8px; background:var(--blue); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Insertion sort</div>
+<div class="frame">
+
+<div class="bw">
+  <div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">INSERTION-SORT</span>(A, n)
+<span class="ln">2</span>    <span class="kw">for</span> i = 1 <span class="kw">to</span> n − 1
+<span class="ln">3</span>        key = A[i]
+<span class="ln">4</span>        j = i − 1
+<span class="ln">5</span>        <span class="kw">while</span> j ≥ 0 <span class="kw">and</span> A[j] &gt; key
+<span class="ln">6</span>            A[j + 1] = A[j]
+<span class="ln">7</span>            j = j − 1
+<span class="ln">8</span>        A[j + 1] = key</pre></div></div>
+  <div style="display:flex;flex-direction:column"><div class="k3">Idea</div><ul class="idea">
+    <li>The left part A[0..i − 1] is <b>sorted</b>. Take the next element, the <b>key</b>.</li>
+    <li><b>Shift</b> larger elements one step right, then drop the key into the gap.</li>
+    <li>It moves elements by <b>shifting</b>, not swapping. One shift is one write.</li></ul>
+    </div>
+</div>
+</div>
+<div class="doodle" style="left:918px;top:520px;width:224px"><svg viewBox="0 0 280 190" width="280" height="190" fill="none" stroke="#1a1a1a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><rect x="14" y="96" width="38" height="54" rx="4" fill="#fff"/><text x="33" y="129" font-size="18" font-weight="700" text-anchor="middle" fill="#1a1a1a" stroke="none">2</text><rect x="58" y="96" width="38" height="54" rx="4" fill="#fff"/><text x="77" y="129" font-size="18" font-weight="700" text-anchor="middle" fill="#1a1a1a" stroke="none">5</text><rect x="102" y="96" width="38" height="54" rx="4" fill="#fff"/><text x="121" y="129" font-size="18" font-weight="700" text-anchor="middle" fill="#1a1a1a" stroke="none">7</text><rect x="146" y="96" width="38" height="54" rx="4" fill="#fff"/><text x="165" y="129" font-size="18" font-weight="700" text-anchor="middle" fill="#1a1a1a" stroke="none">9</text>
+<path d="M99 90 v62" stroke="#2B5BAA" stroke-width="2.4" stroke-dasharray="5 4"/>
+<rect x="80" y="14" width="38" height="54" rx="4" fill="#2B5BAA" stroke="#2B5BAA"/><text x="99" y="47" font-size="18" font-weight="700" text-anchor="middle" fill="#fff" stroke="none">6</text>
+<path d="M99 70 v14" stroke="#2B5BAA" stroke-width="2.2"/><path d="M93 78 l6 8 l6 -8" stroke="#2B5BAA" stroke-width="2.2"/>
+<circle cx="236" cy="70" r="12"/><path d="M230 67 l3 1 M242 67 l-3 1 M231 75 q5 4 10 0"/><path d="M236 82 L236 116 M236 116 L227 148 M236 116 L245 148 M236 92 L180 70 L124 44 M236 92 L254 104"/>
+<text x="140" y="180" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1" font-size="13" fill="#5B5E63" stroke="none" text-anchor="middle">like sorting cards in your hand</text>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>
