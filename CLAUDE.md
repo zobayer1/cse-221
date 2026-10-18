@@ -12,7 +12,7 @@ Lecture slides are written as HTML first, and the PDF slides are made from those
 
 - `books/`: Algorithms textbooks as PDFs. **CLRS (*Introduction to Algorithms*) is the primary textbook**. Cite it when a reference is needed.
 - `lectures/<LectureNN>/slideNN.html`: one HTML file per slide (`Introduction/`, `Lecture01/`, …). The number in the file name is the slide order. `lectures/theme/` holds the shared theme, and `lectures/_archive/` holds pre-conversion backups (local only).
-- `assignments/assignmentN/`: assignment papers (HTML, built to PDF like quizzes). Each one's `instructor/` folder holds reference solutions and is git-ignored: never publish it.
+- `assignments/assignmentN/`: assignment papers (HTML, built to PDF like quizzes). Each one's `instructor/` folder holds reference solutions and is git-ignored: never publish it. Each one's `support/` folder holds helper programs for students, licensed **MIT** (not CC BY-NC-SA like everything else): it needs its own `LICENSE` file, and each source file starts with `// SPDX-License-Identifier: MIT`.
 - `quizzes/quizN/`: quiz questions and answer scripts. Write these in HTML first, then convert them to PDF the same way as the slides.
 - `simulations/<topic>_simulator.html`: interactive algorithm simulators, one file each.
 - `tools/`: `make_pdf.sh` (build PDFs), `check_slides.sh` (rule checks), `place_doodles.sh` (place stick-figure overlays), `convert_legacy.py` (old-format deck → theme).
@@ -85,7 +85,7 @@ All lectures (`Introduction/`, `Lecture01/`–`Lecture04/`) use a Beamer-style t
 
 ## Simulator architecture
 
-Each simulator is a single responsive HTML file (not a fixed canvas) with inline CSS and one inline `<script>`, and with its fonts embedded as base64. **Simulators must stay self-contained in a single HTML file** (CSS, script, fonts and images all inline, no external or shared files), so students can download one file and open it offline. Slides are the opposite: they share `lectures/theme/` and keep images in `thumbs/`. **Simulators keep their own visual theme** (IBM Plex fonts, their own layout and state colors): they don't follow the slide theme and needn't be restyled when the slides change. Only their **pseudocode** must match the slides (see the pseudocode rule). It usually has an array input, preset chips, step/play controls and a visual trace. 
+Each simulator is a single responsive HTML file (not a fixed canvas) with inline CSS and one inline `<script>`, and with its fonts embedded as base64. Simulators are licensed **MIT** (not CC BY-NC-SA): `simulations/LICENSE` holds the full text, and because each simulator is downloaded on its own, every file also starts (after `<!DOCTYPE html>`) with an `SPDX-License-Identifier: MIT` comment, which a new simulator must include. **Simulators must stay self-contained in a single HTML file** (CSS, script, fonts and images all inline, no external or shared files), so students can download one file and open it offline. Slides are the opposite: they share `lectures/theme/` and keep images in `thumbs/`. **Simulators keep their own visual theme** (IBM Plex fonts, their own layout and state colors): they don't follow the slide theme and needn't be restyled when the slides change. Only their **pseudocode** must match the slides (see the pseudocode rule). It usually has an array input, preset chips, step/play controls and a visual trace. 
 
 ## Design rules
 

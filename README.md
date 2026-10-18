@@ -105,9 +105,11 @@ It reports content that overflows its frame or runs into the footer, stick figur
 
 ## License
 
-The course materials (slides, quizzes, simulators and tools) are © 2026 Zobayer Hasan and licensed under [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/) (CC BY-NC-SA 4.0). You may share and adapt them for non-commercial purposes, as long as you give credit and share your adaptations under the same license. The full text is in [LICENSE](LICENSE).
+The course materials (slides, quizzes, assignments and tools) are © 2026 Zobayer Hasan and licensed under [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/) (CC BY-NC-SA 4.0). You may share and adapt them for non-commercial purposes, as long as you give credit and share your adaptations under the same license. The full text is in [LICENSE](LICENSE).
 
 These parts are not covered by that license and remain under their own terms:
+
+- the simulators in `simulations/` and the assignment support programs in `assignments/*/support/`, under the MIT License ([simulators](simulations/LICENSE), [support programs](assignments/assignment1/support/LICENSE)), so students can use and adapt them freely, including in their own solutions. Each simulator carries the notice inside the file; its embedded IBM Plex fonts are under the SIL Open Font License;
 
 - the BRAC University logo, a trademark of BRAC University;
 - the textbook cover images in `thumbs/` folders, © their publishers;

@@ -11,3 +11,7 @@ The commands are the same on Windows, macOS and Linux.
 
 File format: no header; each value is a signed 64-bit integer (Java `long`), 8 bytes, little-endian.
 The default seed is 221.
+
+## License
+
+These support programs are released under the [MIT License](LICENSE): you may use, modify and share them freely, including in your own solutions. The rest of the course materials are under CC BY-NC-SA 4.0 (see the repository README).

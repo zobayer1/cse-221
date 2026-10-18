@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 Zobayer Hasan. See LICENSE in this folder.
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
