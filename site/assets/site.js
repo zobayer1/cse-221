@@ -21,12 +21,13 @@
   if (page !== 'viewer') {
     var foot = document.createElement('footer');
     foot.className = 'foot';
-    foot.innerHTML = '<p><a class="cc" href="' + CC + '" rel="license">CC BY-NC-SA 4.0</a></p>' +
+    foot.innerHTML = '<div class="in"><div class="side"><a class="cc" href="' + CC + '" rel="license">CC BY-NC-SA 4.0</a>' +
+      '<a href="' + esc(C.repo) + '">Source on GitHub</a></div><div class="lic">' +
       '<p>© 2026 ' + esc(C.instructor) + '. The course materials on this site are licensed under the <a href="' + CC + '" rel="license">' +
       'Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>. ' +
       'You may share and adapt them for non-commercial purposes if you give credit and share your adaptations under the same license.</p>' +
       '<p>The simulators and assignment support programs are under the <a href="simulations/LICENSE.txt">MIT License</a>. ' +
-      'The BRAC University logo and the textbook cover images belong to their owners. <a href="' + esc(C.repo) + '">Source on GitHub</a></p>';
+      'The BRAC University logo and the textbook cover images belong to their owners.</p></div></div>';
     document.body.appendChild(foot);
   } else {
     var lic = document.createElement('a');

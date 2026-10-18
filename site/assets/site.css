@@ -51,6 +51,7 @@ h2 { font-family:var(--serif); font-size:28px; padding-bottom:6px; border-bottom
 h2 small { font-family:var(--sans); font-weight:400; font-size:15px; color:var(--muted); margin-left:10px; }
 
 .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:16px; }
+.grid.two { grid-template-columns:repeat(2, 1fr); }
 .card { background:var(--card); border:1px solid var(--rule); border-top:3px solid var(--blue); padding:16px 18px; display:flex; flex-direction:column; gap:8px; }
 .card .k { font-size:13px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); }
 .card h3 { font-family:var(--serif); font-size:21px; line-height:1.2; }
@@ -76,11 +77,12 @@ h2 small { font-family:var(--sans); font-weight:400; font-size:15px; color:var(-
 .lec .acts { display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end; }
 
 .empty { color:var(--muted); font-style:italic; }
-.foot { border-top:1px solid var(--rule); margin-top:48px; padding:20px 16px 28px; text-align:center; font-size:13px; color:var(--muted); }
-.foot p { max-width:760px; margin:0 auto 6px; }
+.foot { border-top:1px solid var(--rule); margin-top:48px; font-size:13px; color:var(--muted); }
+.foot .in { max-width:1080px; margin:0 auto; padding:20px 16px 28px; display:grid; grid-template-columns:180px 1fr; gap:12px 32px; }
+.foot .side { display:flex; flex-direction:column; align-items:flex-start; gap:8px; }
+.foot .lic p { margin-bottom:6px; }
 .cc { display:inline-block; font-size:12px; font-weight:700; letter-spacing:.04em; padding:2px 8px; border:1px solid currentColor; color:var(--muted); white-space:nowrap; }
 .cc:hover { color:var(--blue); text-decoration:none; }
-.foot .cc { margin-bottom:6px; }
 
 /* Glossary */
 .gtools { display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-bottom:12px; }
@@ -106,8 +108,11 @@ dl.gl > div:target { background:var(--tint-2); }
   .hours tr { display:block; padding:4px 0; }
   .lec .n:empty { display:none; }
   .lec { grid-template-columns:1fr; }
+  .grid.two { grid-template-columns:1fr; }
   .lec .acts { justify-content:flex-start; }
   dl.gl > div { grid-template-columns:1fr; }
+  .foot .in { grid-template-columns:1fr; }
+  .foot .side { flex-direction:row; align-items:center; gap:14px; }
 }
 
 /* Slide viewer */
