@@ -23,9 +23,9 @@
 @page { size:1280px 720px; margin:0; }
 * { box-sizing:border-box; margin:0; padding:0; }
 html,body { background:#d9dbde; }
-body { display:flex; align-items:center; justify-content:center; min-height:100vh; font-family:var(--sans); color:var(--ink); }
+body { display:flex; align-items:center; justify-content:center; height:100vh; overflow:hidden; font-family:var(--sans); color:var(--ink); }
 .slide { flex-shrink:0; width:1280px; height:720px; background:#fff; position:relative; overflow:hidden; transform-origin:center; font-size:26px; line-height:1.35; }
-@media print { html,body { background:#fff; } body { display:block; min-height:0; } .slide { transform:none !important; } }
+@media print { html,body { background:#fff; } body { display:block; height:auto; overflow:visible; } .slide { transform:none !important; } }
 
 /* ---------- frame ---------- */
 .frametitle { position:absolute; left:0; right:0; top:0; height:var(--head-h); line-height:var(--head-h); background:var(--blue); color:#fff; white-space:nowrap; overflow:hidden; padding:0 40px; font-size:34px; font-weight:400; letter-spacing:0.005em; }
