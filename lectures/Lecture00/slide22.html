@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indexing in this course</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ix { display:grid; grid-template-columns:1fr 1fr; gap:48px; }
+.ix .k3 { font-size:15px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); margin-bottom:16px; }
+.ix .k3.b { color:var(--blue); } .ix .k3.g { color:var(--muted); }
+.ar { display:flex; }
+.ar .c { display:flex; flex-direction:column; align-items:center; }
+.ar .v { width:64px; height:54px; border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:26px; background:#fff; }
+.ar .c:first-child .v { margin-left:0; }
+.ar .i { font-family:var(--mono); font-size:17px; margin-top:6px; }
+.ix .b .i { color:var(--blue); font-weight:700; } .ix .g .i { color:var(--muted); }
+.ix .g .v { border-color:#9A9EA3; color:#5B5E63; }
+.ln2 { margin-top:16px; font-family:var(--mono); font-size:19px; line-height:1.7; }
+.ln2 .kw { font-weight:700; color:var(--blue); }
+.ix .g .ln2 { color:var(--muted); } .ix .g .ln2 .kw { color:var(--muted); }
+.blk { margin-top:34px; display:flex; flex-direction:column; gap:16px; }
+.blk .bb { font-size:21px; line-height:1.45; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Indexing in this course<span class="ftag ink">Note</span></div>
+<div class="frame">
+<div class="ix">
+  <div class="b"><div class="k3 b">This course: 0-based</div>
+    <div class="ar"><div class="c"><div class="v">7</div><div class="i">0</div></div><div class="c"><div class="v">3</div><div class="i">1</div></div><div class="c"><div class="v">9</div><div class="i">2</div></div><div class="c"><div class="v">4</div><div class="i">3</div></div><div class="c"><div class="v">1</div><div class="i">4</div></div></div>
+    <div class="ln2"><i>A</i>[0..<i>n</i> − 1]<br><span class="kw">for</span> i = 0 <span class="kw">to</span> n − 1</div></div>
+  <div class="g"><div class="k3 g">CLRS: 1-based</div>
+    <div class="ar"><div class="c"><div class="v">7</div><div class="i">1</div></div><div class="c"><div class="v">3</div><div class="i">2</div></div><div class="c"><div class="v">9</div><div class="i">3</div></div><div class="c"><div class="v">4</div><div class="i">4</div></div><div class="c"><div class="v">1</div><div class="i">5</div></div></div>
+    <div class="ln2"><i>A</i>[1..<i>n</i>]<br><span class="kw">for</span> i = 1 <span class="kw">to</span> n</div></div>
+</div>
+<div class="blk">
+  <div class="block"><div class="bt">Unless stated otherwise</div><div class="bb">Arrays start at index <b>0</b> in all slides, quizzes and simulators. We follow the textbook’s pseudocode style, but <b>not</b> its 1-based indexing.</div></div>
+  <div class="block example"><div class="bt">In exams and assignments</div><div class="bb">Write in <b>either</b> style. A correct algorithm gets <b>full marks</b> whether it indexes from 0 or from 1.</div></div>
+</div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

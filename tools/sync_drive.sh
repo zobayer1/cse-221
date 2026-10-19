@@ -6,9 +6,8 @@
 #   tools/sync_drive.sh push --apply   # stage, then upload
 #   tools/sync_drive.sh ls [path]      # list the Drive folder (recursively)
 #
-# _drive/ has the Drive folder's layout and names: Lectures/Lecture00.pdf (the Introduction,
-# numbered 00 to keep the sort order), Lectures/LectureNN.pdf, Quizzes/QN/CSE221_QuizN[_Answers].pdf,
-# Assignments/assignmentN.pdf, Simulations/*. What goes in comes from site/content.json, as for the
+# _drive/ has the Drive folder's layout and names: Lectures/LectureNN.pdf (Lecture00 is the
+# Introduction), Quizzes/QN/CSE221_QuizN[_Answers].pdf, Assignments/assignmentN.pdf, Simulations/*. What goes in comes from site/content.json, as for the
 # website: only entries marked "released": true, and quiz answers only once answersReleased is
 # also true. Build PDFs first with tools/make_pdf.sh.
 #
@@ -38,8 +37,7 @@ for l in c["lectures"]:
     if not l.get("released"):
         continue
     d = l["dir"]
-    name = "Lecture00" if d == "Introduction" else d
-    plan[f"Lectures/{name}.pdf"] = f"lectures/{d}/{d}.pdf"
+    plan[f"Lectures/{d}.pdf"] = f"lectures/{d}/{d}.pdf"
 for q in c["quizzes"]:
     d, n = q["dir"], re.sub(r"\D", "", q["dir"])
     if q.get("released"):

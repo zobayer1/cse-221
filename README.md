@@ -8,7 +8,7 @@ The repository holds the lecture slides, quizzes, assignments and a set of inter
 
 | Folder | Lecture | Topics |
 |---|---|---|
-| `lectures/Introduction` | Introduction | Course goals, schedule, prerequisites, textbooks, assessment and attendance; what an algorithm and a computational problem are; Knuth's five features; algorithms vs programs; what makes an algorithm good |
+| `lectures/Lecture00` | Introduction | Course goals, schedule, prerequisites, textbooks, assessment and attendance; what an algorithm and a computational problem are; Knuth's five features; algorithms vs programs; what makes an algorithm good |
 | `lectures/Lecture01` | Lecture 1: Analyzing Algorithms | Running time and memory, input size, counting steps, order of growth, common growth rates, best/worst/average case, upper bounds, the RAM model |
 | `lectures/Lecture02` | Lecture 2: Search Algorithms | Linear, binary and ternary search, iterative and recursive; time complexity; off-by-one errors and duplicates; finding a peak |
 | `lectures/Lecture03` | Lecture 3: Sorting Algorithms | Comparison sorting; bubble, insertion and selection sort with best and worst case analysis |
@@ -21,7 +21,7 @@ Every slide is its own file (`slide01.html`, `slide02.html`, …), and you can o
 ```
 lectures/
   theme/              shared stylesheet, fonts, logo and footer script
-  Introduction/       one folder per lecture: slideNN.html, deck.js, thumbs/
+  Lecture00/          one folder per lecture: slideNN.html, deck.js, thumbs/
   Lecture01/ …
   _archive/           pre-conversion copies of converted lectures (local only, not in git)
 assignments/          assignment papers (HTML, built to PDF; instructor/ folders are not in git)
@@ -78,7 +78,7 @@ PDFs are not committed, so build them locally. You need:
 - Python 3, for `tools/convert_legacy.py` and `tools/place_doodles.sh`.
 
 ```sh
-tools/make_pdf.sh Introduction             # → lectures/Introduction/Introduction.pdf
+tools/make_pdf.sh Lecture00                # → lectures/Lecture00/Lecture00.pdf
 tools/make_pdf.sh Lecture01                # → lectures/Lecture01/Lecture01.pdf
 tools/make_pdf.sh lectures/Lecture02 out.pdf   # any folder, merged into one PDF
 tools/make_pdf.sh quizzes/quiz1/*.html     # each file → a PDF next to it

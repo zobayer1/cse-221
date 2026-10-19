@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radix sort: complexity</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ar { display:flex; }
+.ar .c { display:flex; flex-direction:column; align-items:center; }
+.ar .v { width:var(--w,58px); height:var(--h,52px); border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:var(--fs,26px); background:#fff; position:relative; }
+.ar .c:first-child .v { margin-left:0; }
+.ar .i { font-family:var(--mono); font-size:var(--is,15px); color:var(--muted); margin-top:4px; }
+.ar .v.b { background:var(--blue); color:#fff; border-color:var(--blue); z-index:1; }
+.ar .v.t { background:#E3EBF7; color:var(--blue); }
+.ar .v.g { background:#EEF0F2; color:#9A9EA3; }
+.ar .v sub { font-family:var(--sans); font-size:0.5em; font-weight:700; margin-left:1px; }
+.nm { font-family:var(--serif); font-weight:700; font-size:28px; color:var(--blue); }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.cx { display:grid; grid-template-columns:660px 1fr; gap:40px; align-items:center; }
+.eq { display:flex; align-items:flex-start; gap:16px; }
+.ec { display:flex; flex-direction:column; align-items:center; border:2px solid var(--ink); border-radius:8px; padding:10px 16px; }
+.ec b { font-family:var(--serif); font-size:28px; } .ec small { font-size:14px; color:var(--muted); margin-top:4px; }
+.ec.res { border-color:var(--blue); } .ec.res b { color:var(--blue); }
+.op { font-family:var(--serif); font-size:32px; padding-top:12px; }
+.kk { margin-top:12px; font-size:17px; color:var(--muted); }
+.lin { margin-top:14px; font-size:22px; } .lin b { color:var(--blue); }
+.tab { font-size:19px; }
+.tab td:last-child, .tab th:last-child, .tab td:nth-child(2), .tab th:nth-child(2) { text-align:center; font-family:var(--serif); }
+.tab th:nth-child(2), .tab th:last-child { font-family:var(--sans); }
+.tab tr.tot td { font-weight:700; color:var(--blue); }
+.cxr { display:flex; flex-direction:column; gap:14px; }
+.cxc { border:2px solid var(--ink); border-radius:10px; padding:12px 16px; }
+.cxc .t { display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid var(--ink); padding-bottom:6px; margin-bottom:8px; }
+.cxc h3 { font-family:var(--serif); font-weight:700; font-size:24px; }
+.cxc .big { font-family:var(--serif); font-weight:700; font-size:26px; color:var(--blue); }
+.cxc .big .tick { width:26px; height:26px; color:var(--green); }
+.cxc p { font-size:16.5px; line-height:1.45; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Radix sort: complexity</div>
+<div class="frame">
+<div class="cx"><div class="cxl">
+  <div class="eq"><span class="ec"><b><i>d</i></b><small>passes</small></span><span class="op">×</span><span class="ec"><b>Θ(<i>n</i> + <i>k</i>)</b><small>counting sort per pass</small></span><span class="op">=</span><span class="ec res"><b>Θ(<i>d</i>(<i>n</i> + <i>k</i>))</b><small>total</small></span></div>
+  <p class="kk"><i>k</i> = number of values a digit can take (10 for decimal)</p>
+  <p class="lin">When <i>d</i> is a constant and <i>k</i> = O(<i>n</i>), this is <b>Θ(<i>n</i>)</b>.</p>
+  <table class="tab mt"><thead><tr><th>Student IDs</th><th>Counters</th><th>Work</th></tr></thead>
+  <tbody><tr><td>counting sort</td><td>10<sup>8</sup></td><td>Θ(<i>n</i> + 10<sup>8</sup>)</td></tr>
+  <tr class="tot"><td>radix sort, <i>d</i> = 8</td><td>10 per pass</td><td>Θ(8(<i>n</i> + 10)) = Θ(<i>n</i>)</td></tr></tbody></table>
+</div><div class="cxr">
+  <div class="cxc"><div class="t"><h3>Space</h3><span class="big">Θ(<i>n</i> + <i>k</i>)</span></div><p>output array and counters of one counting-sort pass, reused. Not in-place.</p></div>
+  <div class="cxc"><div class="t"><h3>Stable</h3><span class="big"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></span></div><p>every pass is stable, so the whole sort is</p></div>
+  <div class="cxc"><p><b>Choose the digit size.</b> A 32-bit number is 4 bytes: <i>d</i> = 4 passes with <i>k</i> = 256 (CLRS §8.3).</p></div>
+</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

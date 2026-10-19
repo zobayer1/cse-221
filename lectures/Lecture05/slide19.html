@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Example: three passes</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ar { display:flex; }
+.ar .c { display:flex; flex-direction:column; align-items:center; }
+.ar .v { width:var(--w,58px); height:var(--h,52px); border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:var(--fs,26px); background:#fff; position:relative; }
+.ar .c:first-child .v { margin-left:0; }
+.ar .i { font-family:var(--mono); font-size:var(--is,15px); color:var(--muted); margin-top:4px; }
+.ar .v.b { background:var(--blue); color:#fff; border-color:var(--blue); z-index:1; }
+.ar .v.t { background:#E3EBF7; color:var(--blue); }
+.ar .v.g { background:#EEF0F2; color:#9A9EA3; }
+.ar .v sub { font-family:var(--sans); font-size:0.5em; font-weight:700; margin-left:1px; }
+.nm { font-family:var(--serif); font-weight:700; font-size:28px; color:var(--blue); }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.ex3 { display:flex; align-items:center; gap:18px; }
+.cl3 { display:flex; flex-direction:column; gap:6px; align-items:center; }
+.ch { font-size:16px; font-weight:700; color:var(--blue); letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px; }
+.nb { width:104px; height:46px; border:2px solid var(--ink); border-radius:6px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:27px; letter-spacing:0.04em; background:#fff; }
+.nb.fin { border-color:var(--blue); }
+.dg { color:#fff; background:var(--blue); padding:0 3px; border-radius:3px; }
+.arw { display:flex; flex-direction:column; align-items:center; font-size:34px; color:var(--blue); margin-top:30px; }
+.arw span { font-size:14px; color:var(--muted); }
+.nt3 { margin-left:20px; } .nt3 p { font-size:19px; line-height:1.45; color:var(--muted); } .nt3 p + p { margin-top:12px; } .nt3 b { color:var(--ink); }
+.nt3 .src { font-size:15px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Example: three passes</div>
+<div class="frame">
+<div class="ex3"><div class="cl3"><div class="ch">input</div><span class="nb">329</span><span class="nb">457</span><span class="nb">657</span><span class="nb">839</span><span class="nb">436</span><span class="nb">720</span><span class="nb">355</span></div><div class="arw">→<span>pass 1</span></div><div class="cl3"><div class="ch">on ones</div><span class="nb">72<span class="dg">0</span></span><span class="nb">35<span class="dg">5</span></span><span class="nb">43<span class="dg">6</span></span><span class="nb">45<span class="dg">7</span></span><span class="nb">65<span class="dg">7</span></span><span class="nb">32<span class="dg">9</span></span><span class="nb">83<span class="dg">9</span></span></div><div class="arw">→<span>pass 2</span></div><div class="cl3"><div class="ch">on tens</div><span class="nb">7<span class="dg">2</span>0</span><span class="nb">3<span class="dg">2</span>9</span><span class="nb">4<span class="dg">3</span>6</span><span class="nb">8<span class="dg">3</span>9</span><span class="nb">3<span class="dg">5</span>5</span><span class="nb">4<span class="dg">5</span>7</span><span class="nb">6<span class="dg">5</span>7</span></div><div class="arw">→<span>pass 3</span></div><div class="cl3"><div class="ch">on hundreds</div><span class="nb fin"><span class="dg">3</span>29</span><span class="nb fin"><span class="dg">3</span>55</span><span class="nb fin"><span class="dg">4</span>36</span><span class="nb fin"><span class="dg">4</span>57</span><span class="nb fin"><span class="dg">6</span>57</span><span class="nb fin"><span class="dg">7</span>20</span><span class="nb fin"><span class="dg">8</span>39</span></div><div class="nt3"><p>Each pass is a <b>stable</b> sort on the shaded digit.</p><p>After <i>d</i> = 3 passes, the list is sorted.</p><p class="src">CLRS Figure 8.3</p></div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

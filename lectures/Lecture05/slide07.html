@@ -1,0 +1,44 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why “counting” sort?</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ar { display:flex; }
+.ar .c { display:flex; flex-direction:column; align-items:center; }
+.ar .v { width:var(--w,58px); height:var(--h,52px); border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:var(--fs,26px); background:#fff; position:relative; }
+.ar .c:first-child .v { margin-left:0; }
+.ar .i { font-family:var(--mono); font-size:var(--is,15px); color:var(--muted); margin-top:4px; }
+.ar .v.b { background:var(--blue); color:#fff; border-color:var(--blue); z-index:1; }
+.ar .v.t { background:#E3EBF7; color:var(--blue); }
+.ar .v.g { background:#EEF0F2; color:#9A9EA3; }
+.ar .v sub { font-family:var(--sans); font-size:0.5em; font-weight:700; margin-left:1px; }
+.nm { font-family:var(--serif); font-weight:700; font-size:28px; color:var(--blue); }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.nc { display:grid; grid-template-columns:540px 1fr; gap:56px; align-items:center; }
+.rw { display:flex; align-items:center; gap:18px; } .rw .nm { width:30px; }
+.rw .ar { --w:56px; --h:48px; --fs:24px; }
+.lab { margin:18px 0 8px 48px; font-size:17px; color:var(--muted); }
+.bins { display:flex; gap:12px; margin-left:48px; }
+.bin { width:64px; display:flex; flex-direction:column; align-items:center; }
+.bt2 { height:46px; width:64px; display:flex; gap:5px; justify-content:center; align-items:flex-end; border-bottom:2px solid var(--ink); padding-bottom:4px; }
+.bt2 .tk { display:block; width:3px; height:34px; background:var(--blue); }
+.bt2 .z { color:var(--grey); font-size:22px; }
+.bv { font-family:var(--mono); font-size:17px; color:var(--muted); margin-top:4px; }
+.bc2 { font-family:var(--serif); font-weight:700; font-size:24px; color:var(--blue); }
+.ncr p { font-size:23px; line-height:1.45; } .ncr p + p { margin-top:18px; color:var(--muted); } .ncr b { color:var(--blue); }
+.block .bb { font-size:22px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Why “counting” sort?</div>
+<div class="frame">
+<div class="nc"><div>
+  <div class="rw"><span class="nm">A</span><div class="ar"><div class="c"><div class="v ">2</div></div><div class="c"><div class="v ">5</div></div><div class="c"><div class="v ">3</div></div><div class="c"><div class="v ">0</div></div><div class="c"><div class="v ">2</div></div><div class="c"><div class="v ">3</div></div><div class="c"><div class="v ">0</div></div><div class="c"><div class="v ">3</div></div></div></div>
+  <div class="lab">one counter per possible value, 0 to <i>k</i> = 5</div>
+  <div class="bins"><div class="bin"><div class="bt2"><i class="tk"></i><i class="tk"></i></div><div class="bv">0</div><div class="bc2">2</div></div><div class="bin"><div class="bt2"><span class="z">–</span></div><div class="bv">1</div><div class="bc2">0</div></div><div class="bin"><div class="bt2"><i class="tk"></i><i class="tk"></i></div><div class="bv">2</div><div class="bc2">2</div></div><div class="bin"><div class="bt2"><i class="tk"></i><i class="tk"></i><i class="tk"></i></div><div class="bv">3</div><div class="bc2">3</div></div><div class="bin"><div class="bt2"><span class="z">–</span></div><div class="bv">4</div><div class="bc2">0</div></div><div class="bin"><div class="bt2"><i class="tk"></i></div><div class="bv">5</div><div class="bc2">1</div></div></div>
+  <div class="rw" style="margin-top:22px"><span class="nm">B</span><div class="ar"><div class="c"><div class="v t">0</div></div><div class="c"><div class="v t">0</div></div><div class="c"><div class="v t">2</div></div><div class="c"><div class="v t">2</div></div><div class="c"><div class="v t">3</div></div><div class="c"><div class="v t">3</div></div><div class="c"><div class="v t">3</div></div><div class="c"><div class="v t">5</div></div></div></div>
+</div><div class="ncr">
+  <p>It never compares two keys. It <b>counts</b> how many times each value appears.</p>
+  <p>Then it reads the counters back in order: two 0s, no 1s, two 2s, three 3s, …</p>
+</div></div>
+<div class="block mt-l"><div class="bt">Assumption</div><div class="bb">Every key is an <b>integer from 0 to <i>k</i></b>, and we know <i>k</i> in advance.</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can you sort these in O(n)?</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.eg { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+.ec { border:2px solid var(--ink); border-radius:10px; padding:16px 18px 14px; display:flex; flex-direction:column; align-items:center; }
+.ec .no { font-family:var(--serif); font-weight:700; font-size:22px; color:var(--blue); align-self:flex-start; }
+.ec h3 { font-family:var(--serif); font-weight:700; font-size:27px; margin-top:2px; }
+.ec .sub { font-size:17px; color:var(--muted); margin:4px 0 14px; text-align:center; line-height:1.35; }
+.ec .smp { height:96px; display:flex; align-items:center; }
+.ec .cells { --w:40px; --h:44px; --fs:21px; font-family:var(--serif); }
+.ec .cells.w { --w:56px; }
+.ec .ph { display:flex; flex-direction:column; gap:6px; font-family:var(--mono); font-size:21px; }
+.ec .ph span { border:1.5px solid var(--ink); padding:2px 12px; background:#fff; }
+.ec .q { width:100%; display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--grey); margin-top:16px; padding-top:10px; font-size:21px; }
+.ec .q .bx { font-style:normal; width:38px; height:38px; border:2.5px dashed var(--blue); border-radius:8px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:24px; color:var(--blue); }
+.qs { margin-top:30px; display:flex; flex-direction:column; gap:10px; }
+.qs div { display:flex; gap:14px; align-items:baseline; font-size:22px; line-height:1.35; }
+.qs b { font-family:var(--serif); color:var(--blue); font-size:26px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Can you sort these in O(<i>n</i>)?<span class="ftag">Discuss</span></div>
+<div class="frame">
+<div class="eg">
+  <div class="ec"><span class="no">1</span><h3>Bits</h3><p class="sub">a million entries,<br>each 0 or 1</p>
+    <div class="smp"><div class="cells"><span>1</span><span>0</span><span>1</span><span>1</span><span>0</span><span>0</span><span>1</span></div></div>
+    <div class="q"><span>O(<var>n</var>)?</span><span class="bx">?</span></div></div>
+  <div class="ec"><span class="no">2</span><h3>Exam marks</h3><p class="sub">500 students,<br>each mark from 0 to 100</p>
+    <div class="smp"><div class="cells w"><span>72</span><span>45</span><span>90</span><span>72</span><span>18</span></div></div>
+    <div class="q"><span>O(<var>n</var>)?</span><span class="bx">?</span></div></div>
+  <div class="ec"><span class="no">3</span><h3>Student IDs</h3><p class="sub">every BRACU student,<br>each ID 8 digits long</p>
+    <div class="smp"><div class="ph"><span>24101137</span><span>23241058</span></div></div>
+    <div class="q"><span>O(<var>n</var>)?</span><span class="bx">?</span></div></div>
+</div>
+<div class="qs"><div><b>1</b><span>What do we know about these values that a comparison sort never uses?</span></div><div><b>2</b><span>Does the same trick work for all three?</span></div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

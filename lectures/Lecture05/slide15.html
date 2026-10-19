@@ -1,0 +1,44 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Too many counters</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ar { display:flex; }
+.ar .c { display:flex; flex-direction:column; align-items:center; }
+.ar .v { width:var(--w,58px); height:var(--h,52px); border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:var(--fs,26px); background:#fff; position:relative; }
+.ar .c:first-child .v { margin-left:0; }
+.ar .i { font-family:var(--mono); font-size:var(--is,15px); color:var(--muted); margin-top:4px; }
+.ar .v.b { background:var(--blue); color:#fff; border-color:var(--blue); z-index:1; }
+.ar .v.t { background:#E3EBF7; color:var(--blue); }
+.ar .v.g { background:#EEF0F2; color:#9A9EA3; }
+.ar .v sub { font-family:var(--sans); font-size:0.5em; font-weight:700; margin-left:1px; }
+.nm { font-family:var(--serif); font-weight:700; font-size:28px; color:var(--blue); }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.tm { display:grid; grid-template-columns:1fr 1fr; gap:56px; }
+.tm .k3 { margin-bottom:16px; }
+.nt { margin-top:12px; font-size:19px; color:var(--muted); } .nt b { color:var(--ink); }
+.bq { margin-top:38px; font-family:var(--serif); font-size:40px; line-height:1.25; } .bq b { color:var(--blue); }
+.qs { margin-top:24px; display:flex; flex-direction:column; gap:10px; }
+.qs div { display:flex; gap:14px; align-items:baseline; font-size:22px; line-height:1.35; } .qs b { font-family:var(--serif); color:var(--blue); font-size:26px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Too many counters<span class="ftag">Think</span></div>
+<div class="frame">
+<div class="tm"><div>
+  <div class="k3">Counting sort on student IDs</div>
+  <div class="rw"><div class="ar" style="--w:54px;--h:56px;--fs:28px"><div class="c"><div class="v b">2</div></div><div class="c"><div class="v b">4</div></div><div class="c"><div class="v b">1</div></div><div class="c"><div class="v b">0</div></div><div class="c"><div class="v b">1</div></div><div class="c"><div class="v b">1</div></div><div class="c"><div class="v b">3</div></div><div class="c"><div class="v b">7</div></div></div></div>
+  <p class="nt">one key, up to 10<sup>8</sup> values: <b>100 million counters</b></p>
+</div><div>
+  <div class="k3">But look inside the key</div>
+  <div class="rw"><div class="ar" style="--w:54px;--h:56px;--fs:28px"><div class="c"><div class="v t">2</div></div><div class="c"><div class="v t">4</div></div><div class="c"><div class="v t">1</div></div><div class="c"><div class="v t">0</div></div><div class="c"><div class="v t">1</div></div><div class="c"><div class="v t">1</div></div><div class="c"><div class="v t">3</div></div><div class="c"><div class="v b">7</div></div></div></div>
+  <p class="nt">8 digits, each only 0–9: <b>10 counters</b> per digit</p>
+</div></div>
+<p class="bq">Can we sort the IDs <b>one digit at a time</b>?</p>
+<div class="qs"><div><b>1</b><span>Which digit should we sort on first: the leftmost or the rightmost?</span></div><div><b>2</b><span>After sorting on one digit, how do we keep that work when we sort on the next one?</span></div></div>
+</div>
+<div class="doodle" style="left:1010px;top:470px;width:200px"><svg viewBox="0 0 200 160" width="200" height="160" fill="none" stroke="#1a1a1a" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">
+<circle cx="90" cy="62" r="13"/><circle cx="85" cy="59" r="1.6" fill="#1a1a1a"/><circle cx="95" cy="59" r="1.6" fill="#1a1a1a"/><path d="M85 69 q5 -3 10 0"/>
+<path d="M90 75 L90 116 M90 116 L80 154 M90 116 L100 154 M90 86 L72 102 M90 86 L104 96 L96 72"/>
+<path d="M30 156 H170" stroke-width="2"/>
+<g stroke="none" font-weight="700" text-anchor="middle"><text x="128" y="44" font-size="34" fill="#2B5BAA">?</text><text x="152" y="26" font-size="22" fill="#2B5BAA">?</text></g>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

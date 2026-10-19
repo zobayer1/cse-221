@@ -11,7 +11,7 @@ Lecture slides are written as HTML first, and the PDF slides are made from those
 ## Directories
 
 - `books/`: Algorithms textbooks as PDFs. **CLRS (*Introduction to Algorithms*) is the primary textbook**. Cite it when a reference is needed.
-- `lectures/<LectureNN>/slideNN.html`: one HTML file per slide (`Introduction/`, `Lecture01/`, …). The number in the file name is the slide order. `lectures/theme/` holds the shared theme, and `lectures/_archive/` holds pre-conversion backups (local only).
+- `lectures/<LectureNN>/slideNN.html`: one HTML file per slide (`Lecture00/` is the Introduction, then `Lecture01/`, …). The number in the file name is the slide order. `lectures/theme/` holds the shared theme, and `lectures/_archive/` holds pre-conversion backups (local only).
 - `assignments/assignmentN/`: assignment papers (HTML, built to PDF like quizzes). Each one's `instructor/` folder holds reference solutions and is git-ignored: never publish it. Each one's `support/` folder holds helper programs for students, licensed **MIT** (not CC BY-NC-SA like everything else): it needs its own `LICENSE` file, and each source file starts with `// SPDX-License-Identifier: MIT`.
 - `quizzes/quizN/`: quiz questions and answer scripts. Write these in HTML first, then convert them to PDF the same way as the slides. Until a quiz has taken place, keep its paper and answers in `quizzes/quizN/instructor/`, which is git-ignored (the repo is public, so anything committed is visible on GitHub). Move them up into `quizzes/quizN/` only when the instructor releases them, and then mark them released in `site/content.json`.
 - `simulations/<topic>_simulator.html`: interactive algorithm simulators, one file each.
@@ -20,7 +20,7 @@ Lecture slides are written as HTML first, and the PDF slides are made from those
 
 ## Slide architecture
 
-All lectures (`Introduction/`, `Lecture01/`–`Lecture04/`) use a Beamer-style theme with a LaTeX look. The conversion steps below apply to any old-format deck brought in later; pre-conversion backups are kept locally in `lectures/_archive/<Lecture>-vN/`.
+All lectures (`Lecture00/` (the Introduction) through `Lecture05/`) use a Beamer-style theme with a LaTeX look. The conversion steps below apply to any old-format deck brought in later; pre-conversion backups are kept locally in `lectures/_archive/<Lecture>-vN/`.
 
 ### New theme (`lectures/theme/`)
 - `theme.css` holds the shared stylesheet. It defines the Computer Modern fonts (CMU Sans Serif for text, CMU Serif for math and numbers, CMU Typewriter for code), loaded from `theme/fonts/` (OFL), and the BRAC-blue palette tokens. CMU lacks math symbols such as `≤ ≥ ≈ ∫ ∑ ⟨⟩`, so each font stack (`--sans`, `--serif`, `--mono`) falls back to KaTeX_Main / KaTeX_Size1 (MIT), which are also Computer Modern–based. In an SVG, write the stack out in full, e.g. `font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"`. It also sets the 1280×720 canvas with its `@page` and print rules.
@@ -41,7 +41,7 @@ All lectures (`Introduction/`, `Lecture01/`–`Lecture04/`) use a Beamer-style t
   - Keep theme class names distinctive. Old slides bring their own CSS with names like `.hd`, `.row`, `.big` and `.arr`, so the theme must not define those. If an old slide uses a name the theme already defines, such as `doodle`, rename it during conversion.
 - `theme.js` holds the course details (name, initials, term, section) in one place. It fills `data-course="…"` / `data-deck="…"` placeholders, adds the three-part footline (author name only | `CSE 221 · <deck label>` | term · page `n / N`), and scales the slide to the window. It reads the page number from the file name.
 - Each lecture folder has a `deck.js` with `window.DECK = { title: 'Search Algorithms', num: 'Lecture 2', label: 'Lecture 2: Search Algorithms', total: N }`. The title page shows the logo, then a smaller "CSE 221 – Algorithms" line, then the blue box with `num` above `title`. **Update `total` whenever slides are added or removed.**
-- A slide is a small file: it links `../theme/theme.css`, adds a short `<style>` for anything specific to that slide, has a `.frametitle` and a `.frame`, and ends with `<script src="deck.js"></script><script src="../theme/theme.js"></script>`. Copy an Introduction slide to start a new one.
+- A slide is a small file: it links `../theme/theme.css`, adds a short `<style>` for anything specific to that slide, has a `.frametitle` and a `.frame`, and ends with `<script src="deck.js"></script><script src="../theme/theme.js"></script>`. Copy a `Lecture00` slide to start a new one.
 - Check new symbols with `pdffonts`. If `DejaVu*`, `Liberation*` or `Noto*` shows up, a glyph is missing from both CMU and KaTeX.
 - Images go in `lectures/<Lecture>/thumbs/` as small files, never inlined as base64. Use JPEG (or PNG for diagrams or transparency) at about 2× the size shown on the slide. Don't upscale a small source, and don't re-encode if that makes the file bigger. Once the thumbnail is in place, the downloaded originals can be deleted.
 
@@ -60,7 +60,7 @@ All lectures (`Introduction/`, `Lecture01/`–`Lecture04/`) use a Beamer-style t
 
 ### Style rules
 - Keep content around the vertical middle. Don't leave a gap in the middle with text pushed to the top and bottom.
-- **Stick figures are afterthoughts.** They only fill gaps that already exist; never create or enlarge a gap to make room for one. Put them in a `.doodle` overlay, a direct child of `.slide` placed with inline `right/bottom` (or `left/top`) offsets and a `width`, so they never affect layout. An overlay can also be pinned to an element: make that element `position:relative` and position the figure absolutely inside it, as with the "you are here" figure on the Introduction's Prerequisites slide. Important diagrams and charts are the exception: they stay in the layout. Mark such an SVG with a `data-figure` attribute, as on Lecture 1's "Why do we need a model?" slide, so `check_slides.sh` doesn't flag it. After centering, check that no overlay overlaps text.
+- **Stick figures are afterthoughts.** They only fill gaps that already exist; never create or enlarge a gap to make room for one. Put them in a `.doodle` overlay, a direct child of `.slide` placed with inline `right/bottom` (or `left/top`) offsets and a `width`, so they never affect layout. An overlay can also be pinned to an element: make that element `position:relative` and position the figure absolutely inside it, as with the "you are here" figure on the Prerequisites slide in `Lecture00/` (the Introduction). Important diagrams and charts are the exception: they stay in the layout. Mark such an SVG with a `data-figure` attribute, as on Lecture 1's "Why do we need a model?" slide, so `check_slides.sh` doesn't flag it. After centering, check that no overlay overlaps text.
 - Prefer blocks stacked vertically when there are only two or three of them and each holds a full sentence.
 - Center the headers and values in rows of figures (credits, percentages).
 - Use tables with column headers that say what the rows are (e.g. "Midterm Topics" / "Final Topics") rather than separator rows.
@@ -76,7 +76,7 @@ All lectures (`Introduction/`, `Lecture01/`–`Lecture04/`) use a Beamer-style t
   - **Line numbers** on every block (`.ln`).
   - **Simulators:** their pseudocode must match the slides line for line. Check both whenever either changes. A simulator may show several lines under one highlight key, so a slide line can be split without changing the step logic.
 - Use **US English** spelling in all slides, quizzes and simulators: analyze/analyzing, behavior, characterize, recognize, color, center, modeling. Fix British spellings when converting a lecture. Quotations stay exactly as their source wrote them.
-- The course schedule slides in `Introduction/` list topics decided centrally by the course committee. The order of lectures in class can differ from it, so don't renumber or restructure lectures to match the schedule.
+- The course schedule slides in `Lecture00/` (the Introduction) list topics decided centrally by the course committee. The order of lectures in class can differ from it, so don't renumber or restructure lectures to match the schedule.
 - Only use facts the instructor has confirmed (book editions, weeks, rooms). Ask rather than guess, and take book details from the PDFs in `books/`.
 
 ### Old format (for converting legacy decks)

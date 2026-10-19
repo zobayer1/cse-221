@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Last digit first</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ar { display:flex; }
+.ar .c { display:flex; flex-direction:column; align-items:center; }
+.ar .v { width:var(--w,58px); height:var(--h,52px); border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:var(--fs,26px); background:#fff; position:relative; }
+.ar .c:first-child .v { margin-left:0; }
+.ar .i { font-family:var(--mono); font-size:var(--is,15px); color:var(--muted); margin-top:4px; }
+.ar .v.b { background:var(--blue); color:#fff; border-color:var(--blue); z-index:1; }
+.ar .v.t { background:#E3EBF7; color:var(--blue); }
+.ar .v.g { background:#EEF0F2; color:#9A9EA3; }
+.ar .v sub { font-family:var(--sans); font-size:0.5em; font-weight:700; margin-left:1px; }
+.nm { font-family:var(--serif); font-weight:700; font-size:28px; color:var(--blue); }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.ld { display:grid; grid-template-columns:770px 1fr; gap:36px; align-items:center; }
+.pass { display:flex; flex-direction:column; gap:22px; }
+.pr { display:grid; grid-template-columns:250px auto 1fr; gap:18px; align-items:center; }
+.pl { font-size:19px; color:var(--muted); text-align:right; } .pl b { color:var(--ink); }
+.ns { display:flex; gap:10px; }
+.nb { width:72px; height:56px; border:2px solid var(--ink); border-radius:6px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:28px; }
+.dg { color:#fff; background:var(--blue); padding:0 3px; border-radius:3px; }
+.ok { color:var(--green); font-weight:700; font-size:19px; white-space:nowrap; }
+.why p { font-size:21px; line-height:1.45; } .why p + p { margin-top:16px; color:var(--muted); } .why b { color:var(--blue); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Last digit first</div>
+<div class="frame">
+<div class="ld"><div class="pass">
+  <div class="pr"><span class="pl">input</span><div class="ns"><span class="nb">31</span><span class="nb">12</span><span class="nb">23</span><span class="nb">11</span><span class="nb">22</span></div></div>
+  <div class="pr"><span class="pl">sort on the <b>ones</b> digit</span><div class="ns"><span class="nb">3<span class="dg">1</span></span><span class="nb">1<span class="dg">1</span></span><span class="nb">1<span class="dg">2</span></span><span class="nb">2<span class="dg">2</span></span><span class="nb">2<span class="dg">3</span></span></div></div>
+  <div class="pr"><span class="pl">then on the <b>tens</b> digit, stably</span><div class="ns"><span class="nb"><span class="dg">1</span>1</span><span class="nb"><span class="dg">1</span>2</span><span class="nb"><span class="dg">2</span>2</span><span class="nb"><span class="dg">2</span>3</span><span class="nb"><span class="dg">3</span>1</span></div><span class="ok"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg> sorted</span></div>
+</div><div class="why">
+  <p>The <b>last pass decides the most</b>: it orders by the tens digit.</p>
+  <p>Ties on the tens digit (11, 12 and 22, 23) are already in order from the earlier pass, and a <b>stable</b> pass keeps them that way.</p>
+</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

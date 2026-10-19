@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Today’s agenda</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ag { margin-top:44px; display:grid; grid-template-columns:repeat(3,1fr); gap:36px; }
+.ag .c { border-top:2px solid var(--ink); padding-top:14px; }
+.ag .c b { font-family:var(--serif); font-weight:700; font-size:40px; color:var(--blue); line-height:1; }
+.ag .c h3 { font-family:var(--serif); font-weight:700; font-size:32px; margin-top:12px; line-height:1.15; }
+.ag .c p { font-size:20px; color:var(--muted); margin-top:10px; line-height:1.45; min-height:58px; }
+.ag .c .t { display:inline-block; margin-top:16px; font-size:16px; font-weight:700; color:var(--blue); border:1.5px solid var(--blue); border-radius:999px; padding:2px 12px; }
+.agb { margin-top:36px; display:grid; grid-template-columns:1fr 360px; gap:28px; align-items:end; }
+.agb p { font-size:20px; color:var(--muted); line-height:1.5; padding-bottom:10px; }
+.agb p b { color:var(--ink); font-weight:700; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Today’s agenda</div>
+<div class="frame"><div class="ag"><div class="c"><b>1</b><h3>Beating <i>n</i> log <i>n</i>?</h3><p>What the lower bound assumed, and how to step around it.</p><span class="t">Discuss</span></div><div class="c"><b>2</b><h3>Counting sort</h3><p>Count each value, then write the values back in order.</p><span class="t">O(<i>n</i> + <i>k</i>)</span></div><div class="c"><b>3</b><h3>Radix sort</h3><p>Sort digit by digit, with a stable sort on each digit.</p><span class="t">O(<i>d</i>(<i>n</i> + <i>k</i>))</span></div></div><div class="agb"><p>Last class, no comparison sort could beat <b><i>n</i> log <i>n</i></b>. Today we sort <b>without comparing</b>.</p></div></div>
+<div class="doodle" style="left:860px;top:490px;width:340px"><svg viewBox="0 0 340 160" width="340" height="160" fill="none" stroke="#1a1a1a" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<path d="M10 150 H330" stroke-width="2"/>
+<path d="M70 150 V96" stroke-width="2.4"/><rect x="10" y="56" width="120" height="40" rx="5" fill="#fff" stroke-width="2"/>
+<text x="70" y="82" font-size="17" fill="#1a1a1a" stroke="none" text-anchor="middle" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">A</tspan>[<tspan font-style="italic">i</tspan>] ≤ <tspan font-style="italic">A</tspan>[<tspan font-style="italic">j</tspan>]?</text>
+<path d="M8 100 L132 52" stroke="#C62828" stroke-width="2.6" opacity="0.85"/>
+<circle cx="200" cy="80" r="13"/><circle cx="195" cy="77" r="1.6" fill="#1a1a1a"/><circle cx="205" cy="77" r="1.6" fill="#1a1a1a"/><path d="M194 85 q6 6 12 0"/>
+<path d="M200 93 L200 124 M200 124 L190 150 M200 124 L210 150 M200 102 L176 88 M200 102 L222 88"/>
+<rect x="176" y="4" width="160" height="44" rx="10" fill="#fff" stroke-width="2"/><path d="M220 48 l-8 18 l26 -18" fill="#fff" stroke-width="2"/><path d="M222 46 h14" stroke="#fff" stroke-width="3"/>
+<text x="256" y="31" font-size="14" fill="#2B5BAA" stroke="none" text-anchor="middle" font-weight="700">No comparing today!</text>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

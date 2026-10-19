@@ -1,0 +1,44 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Look inside the elements</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.lk { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+.lk .k3 { font-size:15px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.lk .k3.g { color:var(--muted); } .lk .k3.b { color:var(--blue); }
+.lk h3 { font-family:var(--serif); font-weight:700; font-size:28px; margin-top:10px; }
+.lk svg { display:block; margin:12px 0 10px; }
+.lk p { font-size:19px; line-height:1.45; color:var(--muted); }
+.lk p b { color:var(--ink); }
+.cb { margin-top:30px; }
+.cb .bb { font-size:21px; line-height:1.45; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Look inside the elements</div>
+<div class="frame">
+<div class="lk">
+  <div><div class="k3 g">Comparison sort</div><h3>Elements are sealed boxes</h3>
+    <svg data-figure width="540" height="150" viewBox="0 0 540 150" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">
+    <rect x="112" y="14" width="76" height="62" rx="4" fill="#E4E6E9" stroke="#1a1a1a" stroke-width="2.2"/><text x="150" y="54" font-size="28" font-weight="700" fill="#5B5E63" text-anchor="middle">?</text>
+    <rect x="292" y="14" width="76" height="62" rx="4" fill="#E4E6E9" stroke="#1a1a1a" stroke-width="2.2"/><text x="330" y="54" font-size="28" font-weight="700" fill="#5B5E63" text-anchor="middle">?</text>
+    <text x="240" y="56" font-size="30" fill="#1a1a1a" text-anchor="middle">≤ ?</text>
+    <text x="150" y="98" font-size="16" fill="#5B5E63" text-anchor="middle" font-style="italic">A<tspan font-style="normal">[</tspan>i<tspan font-style="normal">]</tspan></text><text x="330" y="98" font-size="16" fill="#5B5E63" text-anchor="middle" font-style="italic">A<tspan font-style="normal">[</tspan>j<tspan font-style="normal">]</tspan></text>
+    <path d="M240 72 V118" stroke="#1a1a1a" stroke-width="2.2"/><path d="M232 110 l8 8 l8 -8" stroke="#1a1a1a" stroke-width="2.2"/>
+    <text x="240" y="144" font-size="18" fill="#1a1a1a" text-anchor="middle" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">only <tspan font-weight="700">yes</tspan> or <tspan font-weight="700">no</tspan></text>
+    </svg>
+    <p>We learn one bit per question, so sorting needs <b>Ω(<i>n</i> log <i>n</i>)</b> questions.</p></div>
+  <div><div class="k3 b">Looking deeper</div><h3>Open the box, read the key</h3>
+    <svg data-figure width="540" height="150" viewBox="0 0 540 150" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">
+    <rect x="20" y="62" width="76" height="62" rx="4" fill="#fff" stroke="#1a1a1a" stroke-width="2.2"/><path d="M20 62 l-12 -26 M96 62 l12 -26" stroke="#1a1a1a" stroke-width="2.2"/>
+    <text x="58" y="104" font-size="28" font-weight="700" fill="#2B5BAA" text-anchor="middle">72</text>
+    <text x="58" y="146" font-size="15" fill="#5B5E63" text-anchor="middle" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">a mark</text>
+    <path d="M110 93 H160" stroke="#2B5BAA" stroke-width="2.2"/><path d="M152 85 l8 8 l-8 8" stroke="#2B5BAA" stroke-width="2.2"/>
+    <g stroke="#1a1a1a" stroke-width="1.6" fill="#fff"><rect x="172" y="76" width="34" height="34"/><rect x="206" y="76" width="34" height="34"/><rect x="290" y="76" width="34" height="34"/><rect x="324" y="76" width="34" height="34" fill="#2B5BAA"/><rect x="358" y="76" width="34" height="34"/><rect x="442" y="76" width="34" height="34"/></g>
+    <text x="265" y="98" font-size="20" fill="#A7A9AC" text-anchor="middle">…</text><text x="417" y="98" font-size="20" fill="#A7A9AC" text-anchor="middle">…</text>
+    <g font-size="14" fill="#5B5E63" text-anchor="middle" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1"><text x="189" y="128">0</text><text x="223" y="128">1</text><text x="307" y="128">71</text><text x="341" y="128" fill="#2B5BAA" font-weight="700">72</text><text x="375" y="128">73</text><text x="459" y="128">100</text></g>
+    <text x="324" y="50" font-size="18" fill="#2B5BAA" text-anchor="middle" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">it belongs in slot 72</text>
+    </svg>
+    <p>The key itself says <b>where it goes</b>, without comparing it to any other element.</p></div>
+</div>
+<div class="block cb"><div class="bt">The catch</div><div class="bb">We must know what the keys look like: <b>integers in a small range</b> (counting sort), or <b>a fixed number of digits</b> (radix sort).</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

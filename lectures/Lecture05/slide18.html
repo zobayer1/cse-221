@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radix sort</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ar { display:flex; }
+.ar .c { display:flex; flex-direction:column; align-items:center; }
+.ar .v { width:var(--w,58px); height:var(--h,52px); border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:var(--fs,26px); background:#fff; position:relative; }
+.ar .c:first-child .v { margin-left:0; }
+.ar .i { font-family:var(--mono); font-size:var(--is,15px); color:var(--muted); margin-top:4px; }
+.ar .v.b { background:var(--blue); color:#fff; border-color:var(--blue); z-index:1; }
+.ar .v.t { background:#E3EBF7; color:var(--blue); }
+.ar .v.g { background:#EEF0F2; color:#9A9EA3; }
+.ar .v sub { font-family:var(--sans); font-size:0.5em; font-weight:700; margin-left:1px; }
+.nm { font-family:var(--serif); font-weight:700; font-size:28px; color:var(--blue); }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.ms { display:flex; flex-direction:column; gap:34px; }
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:18px 24px; }
+.codebox pre { font-size:24px; line-height:1.7; } .codebox .fn { font-weight:700; }
+.msr { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+.msr .k3 { margin-bottom:10px; }
+.msr p { font-size:18px; line-height:1.5; color:var(--muted); } .msr p b { color:var(--ink); }
+.msr .m { font-family:var(--serif); font-size:20px; color:var(--ink); }
+.cl { font-family:var(--mono); font-size:17px; background:var(--tint); padding:4px 10px; color:var(--ink); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Radix sort</div>
+<div class="frame">
+<div class="ms"><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">RADIX-SORT</span>(A, n, d)
+<span class="ln">2</span>    <span class="kw">for</span> i = 0 <span class="kw">to</span> d − 1
+<span class="ln">3</span>        use a stable sort to sort A[0..n − 1] on digit i</pre></div>
+<div class="msr">
+  <div><div class="k3">Digits</div><p>Digit 0 is the ones digit, digit <i>d</i> − 1 the highest.<br>Digit <i>i</i> of <i>x</i> is <span class="m">⌊<i>x</i> / 10<sup><i>i</i></sup>⌋ mod 10</span>.</p></div>
+  <div><div class="k3">The stable sort</div><p><b>Counting sort</b> with keys 0 to 9: count and place each element <b>by its digit <i>i</i></b>, but copy the <b>whole number</b> into <i>B</i>.</p></div>
+  <div><div class="k3">First call</div><p><span class="cl">RADIX-SORT(A, n, 8)</span> for 8-digit student IDs</p></div>
+</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bits: just count</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ar { display:flex; }
+.ar .c { display:flex; flex-direction:column; align-items:center; }
+.ar .v { width:var(--w,58px); height:var(--h,52px); border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:var(--fs,26px); background:#fff; position:relative; }
+.ar .c:first-child .v { margin-left:0; }
+.ar .i { font-family:var(--mono); font-size:var(--is,15px); color:var(--muted); margin-top:4px; }
+.ar .v.b { background:var(--blue); color:#fff; border-color:var(--blue); z-index:1; }
+.ar .v.t { background:#E3EBF7; color:var(--blue); }
+.ar .v.g { background:#EEF0F2; color:#9A9EA3; }
+.ar .v sub { font-family:var(--sans); font-size:0.5em; font-weight:700; margin-left:1px; }
+.nm { font-family:var(--serif); font-weight:700; font-size:28px; color:var(--blue); }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.bc { display:grid; grid-template-columns:520px 1fr; gap:56px; align-items:center; }
+.rw { display:flex; align-items:flex-start; gap:18px; } .rw .nm { width:30px; padding-top:8px; }
+.tally { display:flex; gap:22px; margin:26px 0 26px 48px; }
+.tb { border:2px dashed var(--blue); border-radius:8px; padding:8px 18px; display:flex; gap:14px; align-items:baseline; }
+.tn { font-size:19px; color:var(--muted); } .tv { font-family:var(--serif); font-weight:700; font-size:32px; color:var(--blue); }
+.st { display:flex; gap:14px; align-items:baseline; padding:10px 0; border-bottom:1px solid var(--grey); }
+.st b { font-family:var(--serif); color:var(--blue); font-size:26px; } .st p { font-size:22px; line-height:1.4; }
+.res { margin-top:18px; font-family:var(--serif); font-size:32px; } .res b { color:var(--blue); }
+.nb { margin-top:8px; font-size:18px; color:var(--muted); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Bits: just count</div>
+<div class="frame">
+<div class="bc"><div class="bcl">
+  <div class="rw"><span class="nm">A</span><div class="ar"><div class="c"><div class="v ">1</div><div class="i">0</div></div><div class="c"><div class="v ">0</div><div class="i">1</div></div><div class="c"><div class="v ">1</div><div class="i">2</div></div><div class="c"><div class="v ">1</div><div class="i">3</div></div><div class="c"><div class="v ">0</div><div class="i">4</div></div><div class="c"><div class="v ">0</div><div class="i">5</div></div><div class="c"><div class="v ">1</div><div class="i">6</div></div></div></div>
+  <div class="tally"><div class="tb"><span class="tn">zeros</span><span class="tv">3</span></div><div class="tb"><span class="tn">ones</span><span class="tv">4</span></div></div>
+  <div class="rw"><span class="nm">B</span><div class="ar"><div class="c"><div class="v t">0</div><div class="i">0</div></div><div class="c"><div class="v t">0</div><div class="i">1</div></div><div class="c"><div class="v t">0</div><div class="i">2</div></div><div class="c"><div class="v ">1</div><div class="i">3</div></div><div class="c"><div class="v ">1</div><div class="i">4</div></div><div class="c"><div class="v ">1</div><div class="i">5</div></div><div class="c"><div class="v ">1</div><div class="i">6</div></div></div></div>
+</div><div class="bcr">
+  <div class="st"><b>1</b><p>One pass over <i>A</i>: count the 0s. The rest are 1s.</p></div>
+  <div class="st"><b>2</b><p>Write that many 0s, then the 1s.</p></div>
+  <p class="res">Two passes: <b>O(<i>n</i>)</b></p>
+  <p class="nb">No element was ever compared with another.</p>
+</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

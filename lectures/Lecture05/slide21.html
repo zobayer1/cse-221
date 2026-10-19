@@ -1,0 +1,35 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stable passes keep earlier work</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ar { display:flex; }
+.ar .c { display:flex; flex-direction:column; align-items:center; }
+.ar .v { width:var(--w,58px); height:var(--h,52px); border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:var(--fs,26px); background:#fff; position:relative; }
+.ar .c:first-child .v { margin-left:0; }
+.ar .i { font-family:var(--mono); font-size:var(--is,15px); color:var(--muted); margin-top:4px; }
+.ar .v.b { background:var(--blue); color:#fff; border-color:var(--blue); z-index:1; }
+.ar .v.t { background:#E3EBF7; color:var(--blue); }
+.ar .v.g { background:#EEF0F2; color:#9A9EA3; }
+.ar .v sub { font-family:var(--sans); font-size:0.5em; font-weight:700; margin-left:1px; }
+.nm { font-family:var(--serif); font-weight:700; font-size:28px; color:var(--blue); }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.sw { display:flex; flex-direction:column; gap:22px; }
+.sw h3 { font-size:22px; font-weight:700; display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.ok { color:var(--green); } .no { color:var(--red); }
+.ns { display:flex; gap:10px; }
+.nb { width:104px; height:50px; border:2px solid var(--ink); border-radius:6px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:28px; letter-spacing:0.04em; }
+.nb.hl { border-color:var(--blue); box-shadow:0 0 0 3px #E3EBF7; }
+.dg { color:#fff; background:var(--blue); padding:0 3px; border-radius:3px; }
+.vd { margin-top:8px; font-size:18px; font-weight:700; }
+.block .bb { font-size:21px; line-height:1.45; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Stable passes keep earlier work</div>
+<div class="frame">
+<div class="sw">
+  <div><h3><span class="ok"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></span> Stable pass 3</h3><div class="ns"><span class="nb hl"><span class="dg">3</span>29</span><span class="nb hl"><span class="dg">3</span>55</span><span class="nb"><span class="dg">4</span>36</span><span class="nb"><span class="dg">4</span>57</span><span class="nb"><span class="dg">6</span>57</span><span class="nb"><span class="dg">7</span>20</span><span class="nb"><span class="dg">8</span>39</span></div><p class="vd ok">329 stays before 355: sorted</p></div>
+  <div><h3><span class="no"><svg class="cross" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Unstable pass 3</h3><div class="ns"><span class="nb hl"><span class="dg">3</span>55</span><span class="nb hl"><span class="dg">3</span>29</span><span class="nb"><span class="dg">4</span>36</span><span class="nb"><span class="dg">4</span>57</span><span class="nb"><span class="dg">6</span>57</span><span class="nb"><span class="dg">7</span>20</span><span class="nb"><span class="dg">8</span>39</span></div><p class="vd no">355 before 329: the tens pass is undone</p></div>
+</div>
+<div class="block mt-l"><div class="bt">Why it works</div><div class="bb">After pass <i>i</i>, the numbers are sorted on their last <i>i</i> digits. A stable pass on the next digit orders by that digit and <b>keeps</b> the order of ties, so after <i>d</i> passes the whole number is sorted.</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

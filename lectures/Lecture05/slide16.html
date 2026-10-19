@@ -1,0 +1,48 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why “radix” sort?</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ar { display:flex; }
+.ar .c { display:flex; flex-direction:column; align-items:center; }
+.ar .v { width:var(--w,58px); height:var(--h,52px); border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:var(--fs,26px); background:#fff; position:relative; }
+.ar .c:first-child .v { margin-left:0; }
+.ar .i { font-family:var(--mono); font-size:var(--is,15px); color:var(--muted); margin-top:4px; }
+.ar .v.b { background:var(--blue); color:#fff; border-color:var(--blue); z-index:1; }
+.ar .v.t { background:#E3EBF7; color:var(--blue); }
+.ar .v.g { background:#EEF0F2; color:#9A9EA3; }
+.ar .v sub { font-family:var(--sans); font-size:0.5em; font-weight:700; margin-left:1px; }
+.nm { font-family:var(--serif); font-weight:700; font-size:28px; color:var(--blue); }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.nc { display:grid; grid-template-columns:520px 1fr; gap:48px; align-items:center; }
+.big { font-size:26px; line-height:1.4; } .big b { color:var(--blue); }
+.dl { display:flex; gap:0; margin:24px 0 16px; }
+.dc { display:flex; flex-direction:column; align-items:center; }
+.dc .v { width:84px; height:76px; border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:40px; }
+.dc:first-child .v { margin-left:0; }
+.dc .v.b { background:var(--blue); color:#fff; border-color:var(--blue); position:relative; z-index:1; } .dc .v.t { background:#E3EBF7; color:var(--blue); }
+.dc .l { margin-top:6px; font-size:15px; color:var(--muted); text-align:center; line-height:1.3; }
+.nt { font-size:18px; color:var(--muted); line-height:1.45; } .nt b { color:var(--ink); }
+.cd .k3 { margin-bottom:10px; } .cd svg { display:block; margin-bottom:6px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Why “radix” sort?</div>
+<div class="frame">
+<div class="nc"><div>
+  <p class="big"><b>Radix</b> is Latin for “root”. In math it is the <b>base</b> of a number system.</p>
+  <div class="dl"><div class="dc"><span class="v b">3</span><span class="l">digit 2<br>hundreds</span></div><div class="dc"><span class="v t">2</span><span class="l">digit 1<br>tens</span></div><div class="dc"><span class="v t">9</span><span class="l">digit 0<br>ones</span></div></div>
+  <p class="nt">Base 10: every digit is one of <b>10</b> values. Base 2 has 2 (bits), base 256 has 256 (bytes).</p>
+</div><div class="cd"><div class="k3">Before computers</div>
+  <svg data-figure width="520" height="170" viewBox="0 0 520 170" fill="none" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+  <path d="M10 20 H160 V100 H24 L10 86 Z" fill="#FBF6E9" stroke="#1a1a1a" stroke-width="2"/>
+  <rect x="96" y="24" width="18" height="72" fill="#E3EBF7" stroke="#2B5BAA" stroke-width="1.6"/>
+  <g fill="#1a1a1a"><rect x="40" y="40" width="5" height="8"/><rect x="60" y="64" width="5" height="8"/><rect x="80" y="32" width="5" height="8"/><rect x="102" y="56" width="5" height="8"/><rect x="124" y="72" width="5" height="8"/><rect x="142" y="44" width="5" height="8"/></g>
+  <text x="105" y="16" font-size="13" fill="#2B5BAA" text-anchor="middle">one column</text>
+  <path d="M170 60 H220" stroke="#2B5BAA" stroke-width="2.2"/><path d="M212 52 l8 8 l-8 8" stroke="#2B5BAA" stroke-width="2.2"/>
+  <rect x="226" y="34" width="280" height="56" rx="6" stroke="#1a1a1a" stroke-width="2" fill="#fff"/><text x="366" y="68" font-size="16" fill="#1a1a1a" text-anchor="middle">card sorter reads the hole</text>
+  <g><path d="M230 112 v26 h22 v-26" stroke="#1a1a1a" stroke-width="1.8"/><text x="241" y="156" font-size="13" fill="#5B5E63" text-anchor="middle">0</text></g><g><path d="M258 112 v26 h22 v-26" stroke="#1a1a1a" stroke-width="1.8"/><text x="269" y="156" font-size="13" fill="#5B5E63" text-anchor="middle">1</text></g><g><path d="M286 112 v26 h22 v-26" stroke="#1a1a1a" stroke-width="1.8"/><text x="297" y="156" font-size="13" fill="#5B5E63" text-anchor="middle">2</text></g><g><path d="M314 112 v26 h22 v-26" stroke="#1a1a1a" stroke-width="1.8"/><text x="325" y="156" font-size="13" fill="#5B5E63" text-anchor="middle">3</text></g><g><path d="M342 112 v26 h22 v-26" stroke="#1a1a1a" stroke-width="1.8"/><text x="353" y="156" font-size="13" fill="#5B5E63" text-anchor="middle">4</text></g><g><path d="M370 112 v26 h22 v-26" stroke="#1a1a1a" stroke-width="1.8"/><text x="381" y="156" font-size="13" fill="#5B5E63" text-anchor="middle">5</text></g><g><path d="M398 112 v26 h22 v-26" stroke="#1a1a1a" stroke-width="1.8"/><text x="409" y="156" font-size="13" fill="#5B5E63" text-anchor="middle">6</text></g><g><path d="M426 112 v26 h22 v-26" stroke="#1a1a1a" stroke-width="1.8"/><text x="437" y="156" font-size="13" fill="#5B5E63" text-anchor="middle">7</text></g><g><path d="M454 112 v26 h22 v-26" stroke="#1a1a1a" stroke-width="1.8"/><text x="465" y="156" font-size="13" fill="#5B5E63" text-anchor="middle">8</text></g><g><path d="M482 112 v26 h22 v-26" stroke="#1a1a1a" stroke-width="1.8"/><text x="493" y="156" font-size="13" fill="#5B5E63" text-anchor="middle">9</text></g>
+  <text x="366" y="106" font-size="13" fill="#5B5E63" text-anchor="middle">drops the card into one of 10 bins</text>
+  </svg>
+  <p class="nt">Punched-card sorters did radix sort by machine: one column per pass, then stack the bins in order (CLRS §8.3).</p>
+</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

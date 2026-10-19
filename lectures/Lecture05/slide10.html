@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Example: count, then add up</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ar { display:flex; }
+.ar .c { display:flex; flex-direction:column; align-items:center; }
+.ar .v { width:var(--w,58px); height:var(--h,52px); border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:var(--fs,26px); background:#fff; position:relative; }
+.ar .c:first-child .v { margin-left:0; }
+.ar .i { font-family:var(--mono); font-size:var(--is,15px); color:var(--muted); margin-top:4px; }
+.ar .v.b { background:var(--blue); color:#fff; border-color:var(--blue); z-index:1; }
+.ar .v.t { background:#E3EBF7; color:var(--blue); }
+.ar .v.g { background:#EEF0F2; color:#9A9EA3; }
+.ar .v sub { font-family:var(--sans); font-size:0.5em; font-weight:700; margin-left:1px; }
+.nm { font-family:var(--serif); font-weight:700; font-size:28px; color:var(--blue); }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.ex { display:flex; flex-direction:column; gap:22px; }
+.rw { display:flex; align-items:flex-start; gap:18px; } .tg { width:30px; padding-top:8px; }
+.nt { padding-top:14px; margin-left:18px; font-size:19px; color:var(--muted); }
+.stp .k3 { margin-bottom:14px; max-width:900px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Example: count, then add up</div>
+<div class="frame">
+<div class="ex">
+  <div class="rw"><span class="tg"><span class="nm">A</span></span><div class="ar"><div class="c"><div class="v ">2</div><div class="i">0</div></div><div class="c"><div class="v ">5</div><div class="i">1</div></div><div class="c"><div class="v ">3</div><div class="i">2</div></div><div class="c"><div class="v ">0</div><div class="i">3</div></div><div class="c"><div class="v ">2</div><div class="i">4</div></div><div class="c"><div class="v ">3</div><div class="i">5</div></div><div class="c"><div class="v ">0</div><div class="i">6</div></div><div class="c"><div class="v ">3</div><div class="i">7</div></div></div><span class="nt"><i>n</i> = 8, <i>k</i> = 5</span></div>
+  <div class="stp"><div class="k3">Lines 5–6: count</div>
+    <div class="rw"><span class="tg"><span class="nm">C</span></span><div class="ar"><div class="c"><div class="v t">2</div><div class="i">0</div></div><div class="c"><div class="v t">0</div><div class="i">1</div></div><div class="c"><div class="v t">2</div><div class="i">2</div></div><div class="c"><div class="v t">3</div><div class="i">3</div></div><div class="c"><div class="v t">0</div><div class="i">4</div></div><div class="c"><div class="v t">1</div><div class="i">5</div></div></div><span class="nt">two 0s, no 1s, two 2s, three 3s, no 4s, one 5</span></div></div>
+  <div class="stp"><div class="k3">Lines 8–9: add up from the left</div>
+    <div class="rw"><span class="tg"><span class="nm">C</span></span><div class="ar"><div class="c"><div class="v b">2</div><div class="i">0</div></div><div class="c"><div class="v b">2</div><div class="i">1</div></div><div class="c"><div class="v b">4</div><div class="i">2</div></div><div class="c"><div class="v b">7</div><div class="i">3</div></div><div class="c"><div class="v b">7</div><div class="i">4</div></div><div class="c"><div class="v b">8</div><div class="i">5</div></div></div><span class="nt">2, 2 + 0, 2 + 2, 4 + 3, 7 + 0, 7 + 1</span></div></div>
+</div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

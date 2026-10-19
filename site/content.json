@@ -9,11 +9,12 @@
   },
 
   "lectures": [
-    { "dir": "Introduction", "released": true, "topics": "Course goals, schedule, prerequisites, textbooks, assessment; what an algorithm and a computational problem are; what makes an algorithm good" },
+    { "dir": "Lecture00", "released": true, "topics": "Course goals, schedule, prerequisites, textbooks, assessment; what an algorithm and a computational problem are; what makes an algorithm good" },
     { "dir": "Lecture01", "released": true, "topics": "Input size, running time and memory, order of growth, best, worst and average case, upper bounds, the RAM model" },
     { "dir": "Lecture02", "released": true, "topics": "Linear, binary and ternary search, iterative and recursive; off-by-one errors and duplicates; finding a peak", "simulators": ["linear_search", "binary_search", "ternary_search"] },
     { "dir": "Lecture03", "released": true, "topics": "Comparison sorting; bubble, insertion and selection sort with best- and worst-case analysis", "simulators": ["basic_sorting"] },
-    { "dir": "Lecture04", "released": true, "topics": "Divide and conquer, merge sort, quicksort and pivot choice, stable and in-place sorting, the comparison-sorting lower bound", "simulators": ["merge_sort", "quicksort"] }
+    { "dir": "Lecture04", "released": true, "topics": "Divide and conquer, merge sort, quicksort and pivot choice, stable and in-place sorting, the comparison-sorting lower bound", "simulators": ["merge_sort", "quicksort"] },
+    { "dir": "Lecture05", "released": false, "topics": "Sorting faster than n log n without comparisons; counting sort and radix sort" }
   ],
 
   "simulators": [

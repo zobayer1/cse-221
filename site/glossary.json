@@ -1,6 +1,6 @@
 [
-  {"term": "Algorithm", "def": "A finite sequence of well-defined instructions that takes an input and produces the correct output for a given problem, in a finite amount of time.", "see": [["Introduction", 17], ["Introduction", 18]], "clrs": "§1.1"},
-  {"term": "Computational problem", "def": "A statement of what the input looks like and what output we want for it. It says nothing about how to get there; one particular input is an instance.", "see": [["Introduction", 19]], "clrs": "§1.1"},
+  {"term": "Algorithm", "def": "A finite sequence of well-defined instructions that takes an input and produces the correct output for a given problem, in a finite amount of time.", "see": [["Lecture00", 17], ["Lecture00", 18]], "clrs": "§1.1"},
+  {"term": "Computational problem", "def": "A statement of what the input looks like and what output we want for it. It says nothing about how to get there; one particular input is an instance.", "see": [["Lecture00", 19]], "clrs": "§1.1"},
   {"term": "Input size", "def": "The measure n that running time is expressed in. It depends on the input: the number of array elements, the degree of a polynomial, the bits of a number, or the vertices and edges of a graph.", "see": [["Lecture01", 4]], "clrs": "§2.2"},
   {"term": "Running time", "def": "The number of basic steps an algorithm executes on an input, written as a function T(n) of the input size.", "see": [["Lecture01", 5]], "clrs": "§2.2"},
   {"term": "Space (memory) complexity", "def": "The extra memory an algorithm uses, as a function of the input size.", "see": [["Lecture01", 6]]},

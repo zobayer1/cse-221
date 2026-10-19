@@ -1,0 +1,47 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Counting sort</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ar { display:flex; }
+.ar .c { display:flex; flex-direction:column; align-items:center; }
+.ar .v { width:var(--w,58px); height:var(--h,52px); border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:var(--fs,26px); background:#fff; position:relative; }
+.ar .c:first-child .v { margin-left:0; }
+.ar .i { font-family:var(--mono); font-size:var(--is,15px); color:var(--muted); margin-top:4px; }
+.ar .v.b { background:var(--blue); color:#fff; border-color:var(--blue); z-index:1; }
+.ar .v.t { background:#E3EBF7; color:var(--blue); }
+.ar .v.g { background:#EEF0F2; color:#9A9EA3; }
+.ar .v sub { font-family:var(--sans); font-size:0.5em; font-weight:700; margin-left:1px; }
+.nm { font-family:var(--serif); font-weight:700; font-size:28px; color:var(--blue); }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.ms { display:grid; grid-template-columns:690px 1fr; gap:36px; align-items:center; }
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:16px 22px; }
+.codebox pre { font-size:19px; line-height:1.62; }
+.codebox .fn { font-weight:700; }
+.codebox .cm { color:var(--muted); }
+.an { color:var(--blue); font-weight:600; font-size:15px; letter-spacing:0.06em; text-transform:uppercase; font-family:var(--sans); }
+.msr { display:flex; flex-direction:column; gap:8px; }
+.msr .k3 + p { margin-bottom:10px; }
+.msr p { font-size:18px; line-height:1.45; color:var(--muted); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Counting sort</div>
+<div class="frame">
+<div class="ms"><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">COUNTING-SORT</span>(A, B, n, k)
+<span class="ln">2</span>    let C[0..k] be a new array
+<span class="ln">3</span>    <span class="kw">for</span> i = 0 <span class="kw">to</span> k                 <span class="an">◃ clear</span>
+<span class="ln">4</span>        C[i] = 0
+<span class="ln">5</span>    <span class="kw">for</span> j = 0 <span class="kw">to</span> n − 1             <span class="an">◃ count</span>
+<span class="ln">6</span>        C[A[j]] = C[A[j]] + 1
+<span class="ln">7</span>    <span class="cm">// C[i] is now the number of keys equal to i</span>
+<span class="ln">8</span>    <span class="kw">for</span> i = 1 <span class="kw">to</span> k                 <span class="an">◃ add up</span>
+<span class="ln">9</span>        C[i] = C[i] + C[i − 1]
+<span class="ln">10</span>    <span class="cm">// C[i] is now the number of keys ≤ i</span>
+<span class="ln">11</span>    <span class="kw">for</span> j = n − 1 <span class="kw">downto</span> 0         <span class="an">◃ place</span>
+<span class="ln">12</span>        C[A[j]] = C[A[j]] − 1
+<span class="ln">13</span>        B[C[A[j]]] = A[j]</pre></div><div class="msr">
+  <div class="k3">Input</div><p><i>A</i>[0..<i>n</i> − 1], each key an integer from 0 to <i>k</i></p>
+  <div class="k3">Output</div><p><i>B</i>[0..<i>n</i> − 1], the same keys in sorted order</p>
+  <div class="k3">Why step down first?</div><p>Slots are 0-indexed: the keys ≤ <i>v</i> fill slots 0 to <i>C</i>[<i>v</i>] − 1, so line 12 moves <i>C</i>[<i>v</i>] to a free slot before line 13 uses it.</p>
+</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

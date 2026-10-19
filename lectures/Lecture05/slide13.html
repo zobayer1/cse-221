@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Right to left keeps it stable</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ar { display:flex; }
+.ar .c { display:flex; flex-direction:column; align-items:center; }
+.ar .v { width:var(--w,58px); height:var(--h,52px); border:2px solid var(--ink); margin-left:-2px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-weight:700; font-size:var(--fs,26px); background:#fff; position:relative; }
+.ar .c:first-child .v { margin-left:0; }
+.ar .i { font-family:var(--mono); font-size:var(--is,15px); color:var(--muted); margin-top:4px; }
+.ar .v.b { background:var(--blue); color:#fff; border-color:var(--blue); z-index:1; }
+.ar .v.t { background:#E3EBF7; color:var(--blue); }
+.ar .v.g { background:#EEF0F2; color:#9A9EA3; }
+.ar .v sub { font-family:var(--sans); font-size:0.5em; font-weight:700; margin-left:1px; }
+.nm { font-family:var(--serif); font-weight:700; font-size:28px; color:var(--blue); }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.sw { display:grid; grid-template-columns:1fr 1fr; gap:48px; }
+.sw h3 { font-size:23px; font-weight:700; display:flex; align-items:center; gap:10px; }
+.ok { color:var(--green); } .no { color:var(--red); }
+.sub { font-size:18px; color:var(--muted); margin:6px 0 16px; } .sub b { color:var(--ink); }
+.rw { display:flex; align-items:flex-start; gap:14px; } .rw .nm { padding-top:6px; }
+.rw .ar { --w:56px; --h:50px; --fs:24px; }
+.vd { margin:10px 0 0 44px; font-size:19px; font-weight:700; }
+.block .bb { font-size:22px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Right to left keeps it stable</div>
+<div class="frame">
+<div class="sw"><div><h3><span class="ok"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></span> Right to left: <span class="code kw">downto</span></h3>
+  <p class="sub">3<sub>c</sub> is seen first and takes the <b>last</b> 3-slot</p>
+  <div class="rw"><span class="nm">B</span><div class="ar"><div class="c"><div class="v ">0</div><div class="i">0</div></div><div class="c"><div class="v ">0</div><div class="i">1</div></div><div class="c"><div class="v ">2</div><div class="i">2</div></div><div class="c"><div class="v ">2</div><div class="i">3</div></div><div class="c"><div class="v t">3<sub>a</sub></div><div class="i">4</div></div><div class="c"><div class="v t">3<sub>b</sub></div><div class="i">5</div></div><div class="c"><div class="v t">3<sub>c</sub></div><div class="i">6</div></div><div class="c"><div class="v ">5</div><div class="i">7</div></div></div></div><p class="vd ok">a, b, c: input order kept</p></div>
+<div><h3><span class="no"><svg class="cross" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></span> Left to right: <span class="code kw">to</span></h3>
+  <p class="sub">3<sub>a</sub> is seen first and takes the <b>last</b> 3-slot</p>
+  <div class="rw"><span class="nm">B</span><div class="ar"><div class="c"><div class="v ">0</div><div class="i">0</div></div><div class="c"><div class="v ">0</div><div class="i">1</div></div><div class="c"><div class="v ">2</div><div class="i">2</div></div><div class="c"><div class="v ">2</div><div class="i">3</div></div><div class="c"><div class="v t">3<sub>c</sub></div><div class="i">4</div></div><div class="c"><div class="v t">3<sub>b</sub></div><div class="i">5</div></div><div class="c"><div class="v t">3<sub>a</sub></div><div class="i">6</div></div><div class="c"><div class="v ">5</div><div class="i">7</div></div></div></div><p class="vd no">c, b, a: equal keys reversed</p></div></div>
+<div class="block mt-l"><div class="bt">Takeaway</div><div class="bb">Both versions sort, but only right to left is <b>stable</b>. Radix sort, coming next, depends on that.</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>
