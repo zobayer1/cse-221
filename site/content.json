@@ -12,7 +12,7 @@
     { "dir": "Lecture00", "released": true, "topics": "Course goals, schedule, prerequisites, textbooks, assessment; what an algorithm and a computational problem are; what makes an algorithm good" },
     { "dir": "Lecture01", "released": true, "topics": "Input size, running time and memory, order of growth, best, worst and average case, upper bounds, the RAM model" },
     { "dir": "Lecture02", "released": true, "topics": "Linear, binary and ternary search, iterative and recursive; off-by-one errors and duplicates; finding a peak", "simulators": ["linear_search", "binary_search", "ternary_search"] },
-    { "dir": "Lecture03", "released": true, "topics": "Comparison sorting; bubble, insertion and selection sort with best- and worst-case analysis", "simulators": ["basic_sorting"] },
+    { "dir": "Lecture03", "released": true, "topics": "Comparison sorting; bubble, insertion and selection sort with best- and worst-case analysis", "simulators": ["bubble_sort", "insertion_sort", "selection_sort"] },
     { "dir": "Lecture04", "released": true, "topics": "Divide and conquer, merge sort, quicksort and pivot choice, stable and in-place sorting, the comparison-sorting lower bound", "simulators": ["merge_sort", "quicksort"] },
     { "dir": "Lecture05", "released": true, "topics": "Sorting faster than n log n without comparisons; counting sort and radix sort", "simulators": ["counting_radix_sort"] }
   ],
@@ -21,7 +21,9 @@
     { "id": "linear_search", "released": true, "title": "Linear Search", "desc": "Checking each element from left to right; best, worst and not-present cases." },
     { "id": "binary_search", "released": true, "title": "Binary Search", "desc": "Halving the range [lo, hi] on every comparison; leftmost match with duplicates, and a buggy lo = mid version." },
     { "id": "ternary_search", "released": true, "title": "Ternary Search", "desc": "Two cuts m1 and m2 splitting a sorted array's range in three." },
-    { "id": "basic_sorting", "released": true, "title": "Bubble, Insertion and Selection Sort", "desc": "The three simple sorts, one comparison or move per step." },
+    { "id": "bubble_sort", "released": true, "title": "Bubble Sort", "desc": "Swapping out-of-order neighbors, pass by pass, until the largest remaining element bubbles to the end." },
+    { "id": "insertion_sort", "released": true, "title": "Insertion Sort", "desc": "Lifting out each key and shifting larger elements right to insert it into the sorted part." },
+    { "id": "selection_sort", "released": true, "title": "Selection Sort", "desc": "Scanning for the smallest remaining element and swapping it into the next position." },
     { "id": "merge_sort", "released": true, "title": "Merge Sort", "desc": "The array splitting down, then merging back up." },
     { "id": "quicksort", "released": true, "title": "Quicksort", "desc": "Each pivot partitioning its block; last-element and median-of-three pivots." },
     { "id": "counting_radix_sort", "released": true, "title": "Counting Sort and Radix Sort", "desc": "Counting keys into C, adding up and placing into B; radix sort as one stable counting sort per digit." }

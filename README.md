@@ -50,7 +50,9 @@ Each simulator in `simulations/` is a single HTML file. Download it and open it 
 | `linear_search_simulator.html` | Checking each element from left to right; best, worst and not-present cases |
 | `binary_search_simulator.html` | Halving the range `[lo, hi]` on every comparison; standard, leftmost-match with duplicates, and a buggy `lo = mid` version |
 | `ternary_search_simulator.html` | Two cuts `m1` and `m2` splitting a sorted array's range in three |
-| `basic_sorting_simulator.html` | Bubble, selection and insertion sort, one comparison or move per step |
+| `bubble_sort_simulator.html` | Swapping out-of-order neighbors until the largest remaining element bubbles to the end |
+| `insertion_sort_simulator.html` | Inserting each key into the sorted part on its left |
+| `selection_sort_simulator.html` | Selecting the smallest remaining element and swapping it into place |
 | `merge_sort_simulator.html` | The array splitting down, then merging back up |
 | `quicksort_simulator.html` | Each pivot partitioning its block; last-element and median-of-three pivots |
 
