@@ -14,7 +14,7 @@
     { "dir": "Lecture02", "released": true, "topics": "Linear, binary and ternary search, iterative and recursive; off-by-one errors and duplicates; finding a peak", "simulators": ["linear_search", "binary_search", "ternary_search"] },
     { "dir": "Lecture03", "released": true, "topics": "Comparison sorting; bubble, insertion and selection sort with best- and worst-case analysis", "simulators": ["bubble_sort", "insertion_sort", "selection_sort"] },
     { "dir": "Lecture04", "released": true, "topics": "Divide and conquer, merge sort, quicksort and pivot choice, stable and in-place sorting, the comparison-sorting lower bound", "simulators": ["merge_sort", "quicksort"] },
-    { "dir": "Lecture05", "released": true, "topics": "Sorting faster than n log n without comparisons; counting sort and radix sort", "simulators": ["counting_radix_sort"] }
+    { "dir": "Lecture05", "released": true, "topics": "Sorting faster than n log n without comparisons; counting sort and radix sort", "simulators": ["counting_sort", "radix_sort"] }
   ],
 
   "simulators": [
@@ -26,7 +26,8 @@
     { "id": "selection_sort", "released": true, "title": "Selection Sort", "desc": "Scanning for the smallest remaining element and swapping it into the next position." },
     { "id": "merge_sort", "released": true, "title": "Merge Sort", "desc": "The array splitting down, then merging back up." },
     { "id": "quicksort", "released": true, "title": "Quicksort", "desc": "Each pivot partitioning its block; last-element and median-of-three pivots." },
-    { "id": "counting_radix_sort", "released": true, "title": "Counting Sort and Radix Sort", "desc": "Counting keys into C, adding up and placing into B; radix sort as one stable counting sort per digit." }
+    { "id": "counting_sort", "released": true, "title": "Counting Sort", "desc": "Counting keys into C, adding the counts up and placing each key into B; placing right to left keeps it stable." },
+    { "id": "radix_sort", "released": true, "title": "Radix Sort", "desc": "One stable counting sort per digit, from the ones digit up, and what goes wrong when a pass is not stable." }
   ],
 
   "quizzes": [

@@ -55,6 +55,8 @@ Each simulator in `simulations/` is a single HTML file. Download it and open it 
 | `selection_sort_simulator.html` | Selecting the smallest remaining element and swapping it into place |
 | `merge_sort_simulator.html` | The array splitting down, then merging back up |
 | `quicksort_simulator.html` | Each pivot partitioning its block; last-element and median-of-three pivots |
+| `counting_sort_simulator.html` | Counting keys, adding the counts up and placing each key into its slot; stable and unstable placing |
+| `radix_sort_simulator.html` | One stable counting sort per digit, from the ones digit up |
 
 They all work the same way:
 
