@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulator – CSE 221</title>
+<link rel="icon" href="lectures/theme/img/brac-logo.png">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body data-page="sim" class="viewer">
+<div class="vbar">
+  <a class="btn" href="index.html#simulators" title="All simulators">☰ Simulators</a>
+  <div class="ttl" id="ttl"></div>
+  <button class="btn" id="prev" aria-label="Previous simulator">←</button>
+  <select id="sel" aria-label="Go to simulator"></select>
+  <button class="btn" id="next" aria-label="Next simulator">→</button>
+  <a class="btn" id="slides" hidden></a>
+  <button class="btn" id="fs" title="Full screen">⛶</button>
+  <a class="btn" id="open" target="_blank" title="Open this simulator on its own">↗</a>
+  <a class="btn" id="dl" download>Download</a>
+</div>
+<div class="stage sim" id="stage">
+  <iframe id="frame" title="Simulator"></iframe>
+</div>
+<script src="assets/data.js"></script><script src="assets/site.js"></script>
+</body></html>

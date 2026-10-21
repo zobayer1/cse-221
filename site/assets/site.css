@@ -120,6 +120,7 @@ body.viewer { height:100vh; height:100dvh; display:flex; flex-direction:column; 
 .stage .nav:hover { color:rgba(0,0,0,.35); background:linear-gradient(to var(--d), transparent, rgba(0,0,0,.06)); }
 .stage .nav.prev { --d:left; } .stage .nav.next { --d:right; }
 .stage .nav[disabled] { display:none; }
+.stage.sim, .stage.sim iframe { background:var(--bg); }
 .stage:fullscreen { background:#000; } .stage:fullscreen iframe { background:#000; }
 .hint { font-size:13px; color:var(--muted); }
 @media (max-width: 720px) { .hint { display:none; } .vbar .ttl { flex-basis:100%; } }

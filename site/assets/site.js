@@ -5,6 +5,7 @@
   var sim = function (id) { return S.simulators.filter(function (s) { return s.id === id; })[0]; };
   var lec = function (dir) { return S.lectures.filter(function (l) { return l.dir === dir; })[0]; };
   var slideUrl = function (dir, n) { return 'slides.html?l=' + encodeURIComponent(dir) + (n > 1 ? '#' + n : ''); };
+  var simUrl = function (s) { return 'sim.html?s=' + encodeURIComponent(s.id); };
   var page = document.body.getAttribute('data-page');
 
   // Header and footer.
@@ -14,9 +15,10 @@
   top.innerHTML = '<div class="in"><a class="brand" href="index.html">' + esc(C.code) + ' · ' + esc(C.name) + '</a><nav>' +
     nav.map(function (n) { return '<a href="' + n[0] + '"' + (page === 'glossary' && n[1] === 'Glossary' ? ' class="on"' : '') + '>' + n[1] + '</a>'; }).join('') +
     '</nav></div>';
-  if (page !== 'viewer') document.body.insertBefore(top, document.body.firstChild);
+  var bare = page === 'viewer' || page === 'sim';
+  if (!bare) document.body.insertBefore(top, document.body.firstChild);
   var CC = 'https://creativecommons.org/licenses/by-nc-sa/4.0/';
-  if (page !== 'viewer') {
+  if (!bare) {
     var foot = document.createElement('footer');
     foot.className = 'foot';
     foot.innerHTML = '<div class="in"><div class="side"><a class="cc" href="' + CC + '" rel="license">CC BY-NC-SA 4.0</a>' +
@@ -30,10 +32,16 @@
   } else {
     var lic = document.createElement('a');
     lic.className = 'cc';
-    lic.href = CC;
+    if (page === 'sim') {
+      lic.href = 'simulations/LICENSE.txt';
+      lic.title = 'MIT License';
+      lic.textContent = 'MIT';
+    } else {
+      lic.href = CC;
+      lic.title = 'Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International';
+      lic.textContent = 'CC BY-NC-SA 4.0';
+    }
     lic.rel = 'license';
-    lic.title = 'Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International';
-    lic.textContent = 'CC BY-NC-SA 4.0';
     document.querySelector('.vbar').appendChild(lic);
   }
 
@@ -50,7 +58,7 @@
       var sims = (l.simulators || []).map(sim).filter(Boolean);
       return '<div class="lec"><div class="n">' + esc(l.num) + '</div><div><h3><a href="' + slideUrl(l.dir, 1) + '">' + esc(l.title) + '</a></h3>' +
         '<p>' + esc(l.topics) + ' · ' + l.total + ' slides</p>' +
-        (sims.length ? '<div class="chips">' + sims.map(function (s) { return '<a class="chip" href="' + esc(s.file) + '">▶ ' + esc(s.title) + ' simulator</a>'; }).join('') + '</div>' : '') +
+        (sims.length ? '<div class="chips">' + sims.map(function (s) { return '<a class="chip" href="' + simUrl(s) + '">▶ ' + esc(s.title) + ' simulator</a>'; }).join('') + '</div>' : '') +
         '</div><div class="acts"><a class="btn pri" href="' + slideUrl(l.dir, 1) + '">View slides</a>' +
         pdfBtn(l.pdf && 'lectures/' + l.dir + '/' + l.pdf) + '</div></div>';
     }).join('');
@@ -58,8 +66,8 @@
     q('#simulators .grid').innerHTML = S.simulators.map(function (s) {
       var used = S.lectures.filter(function (l) { return (l.simulators || []).indexOf(s.id) >= 0; });
       return '<div class="card"><div class="k">' + esc(used.map(function (l) { return l.num; }).join(', ') || 'Simulator') + '</div>' +
-        '<h3><a href="' + esc(s.file) + '">' + esc(s.title) + '</a></h3><p>' + esc(s.desc) + '</p>' +
-        '<div class="acts"><a class="btn pri" href="' + esc(s.file) + '">Open</a><a class="btn" href="' + esc(s.file) + '" download>Download</a></div></div>';
+        '<h3><a href="' + simUrl(s) + '">' + esc(s.title) + '</a></h3><p>' + esc(s.desc) + '</p>' +
+        '<div class="acts"><a class="btn pri" href="' + simUrl(s) + '">Open</a><a class="btn" href="' + esc(s.file) + '" download>Download</a></div></div>';
     }).join('');
   };
 
@@ -74,7 +82,7 @@
       });
       if (t.clrs) refs.push('<span>CLRS ' + esc(t.clrs) + '</span>');
       var s = t.sim && sim(t.sim);
-      if (s) refs.push('<a href="' + esc(s.file) + '">▶ ' + esc(s.title) + ' simulator</a>');
+      if (s) refs.push('<a href="' + simUrl(s) + '">▶ ' + esc(s.title) + ' simulator</a>');
       return '<div id="' + id(t.term) + '" data-q="' + esc((t.term + ' ' + t.def).toLowerCase()) + '"><dt>' + esc(t.term) + '</dt><dd><p>' + esc(t.def) + '</p><div class="refs">' + refs.join('') + '</div></dd></div>';
     }).join('');
     var letters = [];
@@ -92,7 +100,7 @@
         return '<li><a href="' + esc(i.url) + '">' + esc(i.title) + '</a><span>' + esc(i.by) + '</span></li>';
       }).join('') + '</ul>';
     }).join('') + '<h3 class="subhd">Simulators</h3><ul class="links">' + S.simulators.map(function (s) {
-      return '<li><a href="' + esc(s.file) + '">' + esc(s.title) + '</a><span>' + esc(s.desc) + '</span></li>';
+      return '<li><a href="' + simUrl(s) + '">' + esc(s.title) + '</a><span>' + esc(s.desc) + '</span></li>';
     }).join('') + '</ul>';
   };
 
@@ -172,6 +180,42 @@
       try { frame.contentDocument.addEventListener('keydown', onKey); swipe(frame.contentDocument); } catch (err) { /* file:// */ }
     });
     show(i, false);
+  };
+
+  R.sim = function () {
+    var id = new URLSearchParams(location.search).get('s');
+    var M = sim(id) || S.simulators[0], k = S.simulators.indexOf(M);
+    var P = S.simulators[k - 1], N = S.simulators[k + 1];
+    var used = S.lectures.filter(function (l) { return (l.simulators || []).indexOf(M.id) >= 0; });
+    var frame = document.getElementById('frame'), sel = document.getElementById('sel');
+
+    document.title = M.title + ' simulator – ' + C.code;
+    document.getElementById('ttl').innerHTML = (used.length ? '<small>' + esc(used.map(function (l) { return l.num; }).join(', ')) + '</small>' : '') + esc(M.title);
+    sel.innerHTML = S.simulators.map(function (s) { return '<option value="' + esc(s.id) + '">' + esc(s.title) + '</option>'; }).join('');
+    sel.value = M.id;
+    sel.addEventListener('change', function () { location.href = simUrl(sim(sel.value)); });
+    [['prev', P, 'Previous'], ['next', N, 'Next']].forEach(function (b) {
+      var el = document.getElementById(b[0]);
+      el.disabled = !b[1];
+      if (b[1]) { el.title = b[2] + ': ' + b[1].title; el.addEventListener('click', function () { location.href = simUrl(b[1]); }); }
+    });
+    if (used.length) {
+      var sl = document.getElementById('slides');
+      sl.hidden = false;
+      sl.href = slideUrl(used[0].dir, 1);
+      sl.title = 'Slides: ' + (used[0].num ? used[0].num + ': ' : '') + used[0].title;
+      sl.textContent = (used[0].num || 'Lecture') + ' slides';
+    }
+    document.getElementById('open').href = M.file;
+    document.getElementById('dl').href = M.file;
+    var stage = document.getElementById('stage');
+    document.getElementById('fs').addEventListener('click', function () {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else if (stage.requestFullscreen) stage.requestFullscreen();
+    });
+    // The simulator uses the arrow keys, Space, Home and End itself, so give it the focus.
+    frame.addEventListener('load', function () { frame.focus(); });
+    frame.src = M.file;
   };
 
   if (R[page]) R[page]();
