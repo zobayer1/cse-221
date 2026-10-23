@@ -1,38 +1,28 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Using the simulators</title>
+<title>Counting sort vs. radix sort</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.code { font-family:var(--mono); }
-.kw { font-weight:700; color:var(--blue); }
-.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
-
-.smw { margin-top:20px; display:grid; grid-template-columns:1fr 560px; gap:28px; flex:1; min-height:0; }
-.ss { display:grid; grid-template-columns:44px 1fr; gap:12px; padding:14px 0; border-bottom:1px solid var(--grey); align-items:baseline; }
-.ss:first-child { border-top:2px solid var(--ink); }
-.ss b { font-family:var(--serif); font-weight:700; font-size:28px; color:var(--blue); }
-.ss h3 { font-size:22px; font-weight:700; }
-.ss p { font-size:17px; color:var(--muted); margin-top:4px; line-height:1.45; }
-.ss code { font-family:var(--mono); font-size:15px; color:var(--ink); background:var(--tint); padding:1px 6px; }
-.ss kbd { font-family:var(--mono); font-size:14px; border:1px solid var(--line,#D5D8DC); border-bottom-width:2px; border-radius:4px; padding:0 6px; background:#fff; color:var(--ink); }
-.files { margin-top:6px; display:flex; flex-direction:column; gap:3px; }
-.stack { position:relative; }
-.stack img { position:absolute; width:440px; border-radius:6px; box-shadow:0 10px 24px rgba(0,0,0,.18), 0 0 0 1px rgba(0,0,0,.12); background:#fff; }
-.stack img:nth-child(1) { left:0; top:0; transform:rotate(-4deg); }
-.stack img:nth-child(2) { left:60px; top:96px; transform:rotate(2deg); }
-.stack img:nth-child(3) { left:118px; top:192px; transform:rotate(-1deg); }
+.mqv { border:2px solid var(--ink); border-radius:10px; overflow:hidden; }
+.mqv table { width:100%; border-collapse:collapse; font-size:20px; }
+.mqv th { background:var(--tint); font-family:var(--serif); font-weight:700; font-size:24px; padding:10px 18px; text-align:left; }
+.mqv td { padding:9px 18px; border-top:1px solid var(--grey); }
+.mqv td:first-child { color:var(--muted); font-weight:700; font-size:15px; text-transform:uppercase; letter-spacing:0.05em; width:200px; }
+.mqv .ok { color:var(--green); font-weight:700; } .mqv .no { color:var(--red); font-weight:700; }
+.mqv .m { font-size:16px; color:var(--muted); }
+.mqb { margin-top:20px; font-family:var(--serif); font-size:25px; line-height:1.35; text-align:center; }
+.mqb b { color:var(--blue); }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">Using the simulators</div>
-<div class="frame">
-
-<div class="smw">
-  <div>
-    <div class="ss"><b>1</b><div><h3>Download the HTML file</h3><p>One file for each algorithm:</p>
-      <div class="files"><code>counting_sort_simulator.html</code><code>radix_sort_simulator.html</code></div></div></div>
-    <div class="ss"><b>2</b><div><h3>Open it in your browser</h3><p>Double-click it, or drag it into Chrome, Firefox or Edge. No installation and no internet needed.</p></div></div>
-    <div class="ss"><b>3</b><div><h3>Step through it</h3><p>Use <kbd>→</kbd> and <kbd>←</kbd>, or <kbd>Space</kbd> to play. Switch “Place keys” to <span style="font-weight:700;color:var(--ink)">left to right</span> and watch stability break.</p></div></div>
-  </div>
-  <div class="stack" aria-hidden="true"><img src="thumbs/sim-count.jpg" alt="Counting sort simulator, placing keys"><img src="thumbs/sim-radix.jpg" alt="Radix sort simulator, second pass"><img src="thumbs/sim-trap.jpg" alt="Radix sort simulator, left-to-right placing gives a wrong result"></div>
-</div>
-</div>
+<div class="frametitle">Counting sort vs. radix sort</div>
+<div class="frame"><div class="mqv"><table>
+<tr><th></th><th>Counting sort</th><th>Radix sort</th></tr>
+<tr><td>Keys</td><td>integers from 0 to <i>k</i></td><td><i>d</i> digits, each with <i>k</i> possible values</td></tr>
+<tr><td>Time</td><td>Θ(<i>n</i> + <i>k</i>)</td><td>Θ(<i>d</i>(<i>n</i> + <i>k</i>))</td></tr>
+<tr><td>Extra space</td><td class="no">Θ(<i>n</i> + <i>k</i>)</td><td class="no">Θ(<i>n</i> + <i>k</i>)</td></tr>
+<tr><td>Stable</td><td class="ok"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg> <span class="m">placing right to left</span></td><td class="ok"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg> <span class="m">if every pass is stable</span></td></tr>
+<tr><td>Compares keys</td><td>never</td><td>never</td></tr>
+<tr><td>Good for</td><td>small ranges: exam marks, ages</td><td>fixed-length keys: student IDs, dates</td></tr>
+<tr><td>Breaks down</td><td class="no"><i>k</i> much larger than <i>n</i></td><td class="no">keys get longer as <i>n</i> grows</td></tr>
+</table></div>
+<p class="mqb">Neither compares keys. Both <b>pay for it</b> by assuming what the keys look like.</p></div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>
