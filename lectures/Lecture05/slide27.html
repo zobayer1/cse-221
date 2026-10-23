@@ -27,7 +27,7 @@
 <div class="frame">
 <table class="tab"><thead><tr><th></th><th>Outer loop runs</th><th>Each time, inner work</th><th>Total</th><th><i>n</i> = 10<sup>6</sup></th></tr></thead>
 <tbody><tr><td><b>Bubble sort</b></td><td><i>n</i> − 1 times<br><span class="m">grows with <i>n</i></span></td><td>up to <i>n</i> − 1</td><td class="t r">Θ(<i>n</i><sup>2</sup>)</td><td class="t">≈ 5 × 10<sup>11</sup></td></tr>
-<tr><td><b>Radix sort</b>, 8-digit IDs</td><td><i>d</i> = 8 times<br><span class="m">fixed: IDs never get longer</span></td><td>2<i>n</i> + 19</td><td class="t b">Θ(<i>n</i>)</td><td class="t">≈ 1.6 × 10<sup>7</sup></td></tr></tbody></table>
+<tr><td><b>Radix sort</b>, 8-digit IDs</td><td><i>d</i> = 8 times<br><span class="m">fixed: IDs never get longer</span></td><td>3<i>n</i> + 19</td><td class="t b">Θ(<i>n</i>)</td><td class="t">≈ 2.4 × 10<sup>7</sup></td></tr></tbody></table>
 <div class="block mt-l"><div class="bt">Rule</div><div class="bb">Add up how many times each line runs. Nesting multiplies the work only by <b>how many times the outer loop runs</b>. A loop that runs a fixed number of times is just a constant factor.</div></div>
 <div class="block alert mt"><div class="bt">Caution</div><div class="bb">That holds only while <i>d</i> is fixed. If the keys can grow up to <i>n</i>, they need about log<sub>10</sub> <i>n</i> digits, and decimal radix sort is Θ(<i>n</i> log <i>n</i>) again.</div></div>
 </div>
