@@ -15,7 +15,7 @@
 .k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
 .ms { display:flex; flex-direction:column; gap:34px; }
 .codebox { background:var(--tint); border-left:5px solid var(--blue); padding:18px 24px; }
-.codebox pre { font-size:24px; line-height:1.7; } .codebox .fn { font-weight:700; }
+.codebox pre { font-size:24px; line-height:1.7; } .codebox .fn { font-weight:700; } .codebox .cm { color:var(--muted); }
 .msr { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
 .msr .k3 { margin-bottom:10px; }
 .msr p { font-size:18px; line-height:1.5; color:var(--muted); } .msr p b { color:var(--ink); }
@@ -26,11 +26,13 @@
 <div class="frametitle">Radix sort</div>
 <div class="frame">
 <div class="ms"><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">RADIX-SORT</span>(A, n, d)
-<span class="ln">2</span>    <span class="kw">for</span> i = 0 <span class="kw">to</span> d − 1
-<span class="ln">3</span>        use a stable sort to sort A[0..n − 1] on digit i</pre></div>
+<span class="ln">2</span>    let B[0..n − 1] be a new array
+<span class="ln">3</span>    <span class="kw">for</span> i = 0 <span class="kw">to</span> d − 1
+<span class="ln">4</span>        <span class="cm">// use a stable sort to sort A[0..n − 1] on digit i</span>
+<span class="ln">5</span>        <span class="fn">COUNTING-SORT-DIGIT</span>(A, B, n, i)</pre></div>
 <div class="msr">
   <div><div class="k3">Digits</div><p>Digit 0 is the ones digit, digit <i>d</i> − 1 the highest.<br>Digit <i>i</i> of <i>x</i> is <span class="m">⌊<i>x</i> / 10<sup><i>i</i></sup>⌋ mod 10</span>.</p></div>
-  <div><div class="k3">The stable sort</div><p><b>Counting sort</b> with keys 0 to 9: count and place each element <b>by its digit <i>i</i></b>, but copy the <b>whole number</b> into <i>B</i>.</p></div>
+  <div><div class="k3">The stable sort</div><p><b>Counting sort</b> with keys 0 to 9 (next slide): count and place each element <b>by its digit <i>i</i></b>, but copy the <b>whole number</b> into <i>B</i>.</p></div>
   <div><div class="k3">First call</div><p><span class="cl">RADIX-SORT(A, n, 8)</span> for 8-digit student IDs</p></div>
 </div></div>
 </div>
