@@ -83,6 +83,7 @@ button:disabled{opacity:.35;cursor:not-allowed}
 .status .k{display:block;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
 .code{font-family:'IBM Plex Mono',monospace;font-size:15px;line-height:1.6;background:var(--tint);padding:10px 0;border-radius:4px;margin:0;overflow-x:auto}
 .code div{padding:0 16px;white-space:pre;border-left:5px solid transparent}
+.code sup{font-size:.7em;line-height:0}
 .code div.on{background:#DCE5F3;border-left-color:var(--blue)}
 .code div.var{color:#9A4A10}
 .code .ln{color:var(--grey);display:inline-block;width:2.2em}
@@ -162,19 +163,21 @@ let dir='rl',detail='all',base=PRESETS.example.slice(),all=[],steps=[],cur=0,tim
 function code(){
   const ln=(n,s)=>`<span class="ln">${n}</span>${s}`;
   const c=[
-    ['c1',ln(1,F('COUNTING-SORT')+'(A, B, n, k)')],
-    ['c2',ln(2,'    let C[0..k] be a new array')],
-    ['c3',ln(3,'    '+K('for')+' i = 0 '+K('to')+' k')],
-    ['c4',ln(4,'        C[i] = 0')],
+    ['c1',ln(1,F('COUNTING-SORT-DIGIT')+'(A, B, n, i)')],
+    ['c2',ln(2,'    let C[0..9] be a new array')],
+    ['c3',ln(3,'    '+K('for')+' v = 0 '+K('to')+' 9')],
+    ['c4',ln(4,'        C[v] = 0')],
     ['c5',ln(5,'    '+K('for')+' j = 0 '+K('to')+' n − 1')],
-    ['c6',ln(6,'        C[A[j]] = C[A[j]] + 1')],
-    ['c7',ln(7,'    '+CM('// C[i] is now the number of keys equal to i'))],
-    ['c8',ln(8,'    '+K('for')+' i = 1 '+K('to')+' k')],
-    ['c9',ln(9,'        C[i] = C[i] + C[i − 1]')],
-    ['c10',ln(10,'    '+CM('// C[i] is now the number of keys ≤ i'))],
-    ['c11',ln(11,dir==='rl'?'    '+K('for')+' j = n − 1 '+K('downto')+' 0':'    '+K('for')+' j = 0 '+K('to')+' n − 1'),dir==='lr'?'var':''],
-    ['c12',ln(12,'        C[A[j]] = C[A[j]] − 1')],
-    ['c13',ln(13,'        B[C[A[j]]] = A[j]')]];
+    ['c6',ln(6,'        key = ⌊A[j] / 10<sup>i</sup>⌋ mod 10   '+CM('// digit i'))],
+    ['c7',ln(7,'        C[key] = C[key] + 1')],
+    ['c8',ln(8,'    '+K('for')+' v = 1 '+K('to')+' 9')],
+    ['c9',ln(9,'        C[v] = C[v] + C[v − 1]')],
+    ['c10',ln(10,dir==='rl'?'    '+K('for')+' j = n − 1 '+K('downto')+' 0':'    '+K('for')+' j = 0 '+K('to')+' n − 1'),dir==='lr'?'var':''],
+    ['c11',ln(11,'        key = ⌊A[j] / 10<sup>i</sup>⌋ mod 10')],
+    ['c12',ln(12,'        C[key] = C[key] − 1')],
+    ['c13',ln(13,'        B[C[key]] = A[j]')],
+    ['c14',ln(14,'    '+K('for')+' j = 0 '+K('to')+' n − 1')],
+    ['c15',ln(15,'        A[j] = B[j]')]];
   return [['r1',ln(1,F('RADIX-SORT')+'(A, n, d)')],['r2',ln(2,'    '+K('for')+' i = 0 '+K('to')+' d − 1')],['r3',ln(3,'        use a stable sort to sort A[0..n − 1] on digit i')],['-',''],...c];
 }
 
@@ -189,35 +192,34 @@ function build(vals){
   const n=vals.length;let A=tagged(vals),C=null,B=null;
   const st={pass:null,d:null};
   const push=o=>S.push(Object.assign({A:A.slice(),C:C?C.slice():null,B:B?B.slice():null,it,hist:hist.slice(),pass:st.pass,d:st.d},o));
-  function csort(key,k,pass){
-    const where=pass===null?'':` (pass ${pass+1}, keys = digit ${pass})`;
-    const kk=pass===null?'A[j]':`digit ${pass} of A[j]`;
-    C=new Array(k+1).fill(null);B=new Array(n).fill(null);
-    push({hl:['c1','c2'],msg:`<span class="k">New counters${where}</span>`+(pass===null?`Keys run from 0 to k = ${k}, so C gets k + 1 = ${k+1} counters, one for each possible key.`:`A digit is 0 to 9, so k = 9: just 10 counters, however big the numbers are.`)});
-    C.fill(0);it+=k+1;
-    push({hl:['c3','c4'],msg:`<span class="k">Clear</span>All ${k+1} counters set to 0 (${k+1} loop iterations).`});
-    for(let j=0;j<n;j++){const v=key(A[j]);C[v]++;it++;
-      push({hl:['c5','c6'],j,ci:v,phase:'count',msg:`<span class="k">Count, j = ${j}</span>A[${j}] = ${nm(A[j])}`+(pass===null?'':`, digit ${pass} is <strong>${v}</strong>`)+`. C[${v}] becomes ${C[v]}.`});}
-    push({hl:['c7'],phase:'count',msg:`<span class="k">Counted</span>C[i] is now how many keys equal i. Reading C left to right already lists the keys in order.`});
-    for(let i=1;i<=k;i++){const before=C[i];C[i]+=C[i-1];it++;
-      push({hl:['c8','c9'],ci:i,cprev:i-1,phase:'add',msg:`<span class="k">Add up, i = ${i}</span>C[${i}] = ${before} + C[${i-1}] = ${before} + ${C[i-1]} = ${C[i]}: ${C[i]} key${C[i]===1?'':'s'} ${C[i]===1?'is':'are'} ≤ ${i}.`});}
-    push({hl:['c10'],phase:'add',msg:`<span class="k">Running totals</span>C[v] is now the number of keys ≤ v, so the last key v belongs in slot C[v] − 1.`+(dir==='lr'?' <strong>This run places left to right</strong>, the variant from the “Why right to left?” slide.':'')});
+  function csort(i){
+    C=new Array(10).fill(null);B=new Array(n).fill(null);
+    push({hl:['c1','c2'],msg:`<span class="k">New counters (pass ${i+1}, keys = digit ${i})</span>A digit is 0 to 9, so k = 9: just 10 counters, however big the numbers are.`});
+    C.fill(0);it+=10;
+    push({hl:['c3','c4'],msg:`<span class="k">Clear</span>All 10 counters set to 0 (10 loop iterations).`});
+    for(let j=0;j<n;j++){const v=digit(A[j].v,i);C[v]++;it++;
+      push({hl:['c5','c6','c7'],j,ci:v,phase:'count',msg:`<span class="k">Count, j = ${j}</span>A[${j}] = ${nm(A[j])}, digit ${i} is <strong>${v}</strong>. C[${v}] becomes ${C[v]}.`});}
+    push({hl:[],phase:'count',msg:`<span class="k">Counted</span>C[v] is now how many keys have digit v. Reading C left to right already lists the digits in order.`});
+    for(let v=1;v<=9;v++){const before=C[v];C[v]+=C[v-1];it++;
+      push({hl:['c8','c9'],ci:v,cprev:v-1,phase:'add',msg:`<span class="k">Add up, v = ${v}</span>C[${v}] = ${before} + C[${v-1}] = ${before} + ${C[v-1]} = ${C[v]}: ${C[v]} key${C[v]===1?'':'s'} ${C[v]===1?'has':'have'} digit ≤ ${v}.`});}
+    push({hl:[],phase:'add',msg:`<span class="k">Running totals</span>C[v] is now the number of keys with digit ≤ v, so the last such key belongs in slot C[v] − 1.`+(dir==='lr'?' <strong>This run places left to right</strong>, the variant from the “Why right to left?” slide.':'')});
     const order=dir==='rl'?[...Array(n).keys()].reverse():[...Array(n).keys()];const done=[];
-    for(const j of order){const v=key(A[j]);C[v]--;B[C[v]]=A[j];it++;done.push(j);
-      push({hl:['c11','c12','c13'],j,ci:v,bpos:C[v],done:done.slice(),phase:'place',msg:`<span class="k">Place, j = ${j}</span>A[${j}] = ${nm(A[j])}`+(pass===null?'':`, digit ${pass} is ${v}`)+`. C[${v}] = ${C[v]+1} − 1 = ${C[v]}, so B[${C[v]}] = ${nm(A[j])}.`});}
+    for(const j of order){const v=digit(A[j].v,i);C[v]--;B[C[v]]=A[j];it++;done.push(j);
+      push({hl:['c10','c11','c12','c13'],j,ci:v,bpos:C[v],done:done.slice(),phase:'place',msg:`<span class="k">Place, j = ${j}</span>A[${j}] = ${nm(A[j])}, digit ${i} is ${v}. C[${v}] = ${C[v]+1} − 1 = ${C[v]}, so B[${C[v]}] = ${nm(A[j])}.`});}
+    A=B.slice();it+=n;
   }
   const d=Math.max(1,String(Math.max(...vals)).length);st.d=d;
   push({hl:[],major:true,msg:`<span class="k">Ready</span>The largest key has d = ${d} digit${d>1?'s':''}, so radix sort makes ${d} pass${d>1?'es':''}, from the ones digit up. Each pass is a counting sort on one digit.`});
   for(let i=0;i<d;i++){st.pass=i;
     push({hl:['r2','r3'],msg:`<span class="k">Pass ${i+1} of ${d}</span>Sort the whole list on digit ${i}, the <strong>${PLACE[i]}</strong> digit, with a counting sort.`});
-    csort(x=>digit(x.v,i),9,i);
-    A=B.slice();const m=10**(i+1),ok=A.every((x,t)=>t===0||A[t-1].v%m<=x.v%m);
+    csort(i);
+    const m=10**(i+1),ok=A.every((x,t)=>t===0||A[t-1].v%m<=x.v%m);
     hist.push({i,list:A.slice()});
-    push({hl:['r3'],major:true,copied:true,okPass:ok,msg:`<span class="k">Pass ${i+1} done</span>Copy B back into A. `+(ok?`The list is now sorted on its last ${i+1} digit${i?'s':''}.`:`<strong>The list is not sorted on its last ${i+1} digits:</strong> placing left to right reversed ties, undoing earlier passes.`)+` Loop iterations so far: ${it}.`});
+    push({hl:['c14','c15'],major:true,copied:true,okPass:ok,msg:`<span class="k">Pass ${i+1} done</span>Copy B back into A (${n} loop iterations). `+(ok?`The list is now sorted on its last ${i+1} digit${i?'s':''}.`:`<strong>The list is not sorted on its last ${i+1} digits:</strong> placing left to right reversed ties, undoing earlier passes.`)+` Loop iterations so far: ${it}.`});
   }
   st.pass=null;
   const ok=A.every((x,t)=>t===0||A[t-1].v<=x.v);
-  push({hl:[],major:true,final:true,okSort:ok,msg:ok?`<span class="k">Done</span><strong>Sorted after ${d} pass${d>1?'es':''}.</strong> Loop iterations: d × (2n + 19) = ${d} × (2·${n} + 19) = ${it}. Key comparisons: 0.`
+  push({hl:[],major:true,final:true,okSort:ok,msg:ok?`<span class="k">Done</span><strong>Sorted after ${d} pass${d>1?'es':''}.</strong> Loop iterations: d × (3n + 19) = ${d} × (3·${n} + 19) = ${it}. Key comparisons: 0.`
     :`<span class="k">Done, but wrong</span><strong>Not sorted!</strong> Every pass must be stable. Placing left to right broke ties, so later passes undid earlier ones. Switch back to right to left.`});
   return S;
 }
@@ -266,7 +268,7 @@ function render(){
     .map(([bg,bd,t,ring])=>`<span><i class="sw" style="background:${bg};border-color:${ring?'var(--ink)':bd}${ring?';box-shadow:0 0 0 2px #fff,0 0 0 4px #D9822B':''}"></i>${t}</span>`).join('')+'<span><i class="sw" style="background:var(--blue);border-color:var(--blue)"></i>Digit being sorted on</span>';
   $('msg').className='status'+(last?(s.okSort&&(s.okStable!==false)?' ok':' no'):(s.okPass===false?' no':''));$('msg').innerHTML=s.msg;
   $('code').innerHTML=code().map(([k,h,x])=>k==='-'?'<div class="sep"></div>':`<div class="${s.hl.includes(k)?'on':''} ${x||''}">${h}</div>`).join('');
-  $('cnote').innerHTML='Line 3 runs COUNTING-SORT with <b>k = 9</b>, using <b>digit i of A[j]</b> as the key in lines 6, 12 and 13, but copying the whole number into B.';
+  $('cnote').innerHTML='Line 3 of RADIX-SORT calls <b>COUNTING-SORT-DIGIT(A, B, n, i)</b>: counting sort with <b>k = 9</b> and <b>digit i of A[j]</b> as the key, copying the whole number into B and then B back into A.';
   $('prev').disabled=cur===0;$('next').disabled=last;
   if(last)stop();
 }
