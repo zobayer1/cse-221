@@ -46,11 +46,11 @@ button:disabled{opacity:.35;cursor:not-allowed}
 .stats{display:flex;gap:30px;flex-wrap:wrap;align-items:baseline;font-size:16px;color:var(--muted)}
 .stats b{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:22px;color:var(--ink);margin-left:6px}
 .stats b.z{color:var(--green)}
-.wrap{display:grid;grid-template-columns:minmax(0,1fr) 570px;gap:28px;align-items:start}
-@media(max-width:1100px){.wrap{grid-template-columns:minmax(0,1fr)}}
+.wrap{display:grid;grid-template-columns:minmax(0,1fr) 600px;gap:28px;align-items:start}
+@media(max-width:1200px){.wrap{grid-template-columns:minmax(0,1fr)}}
 .leftc,.rightc{min-width:0}
 .rightc{position:sticky;top:12px;margin-top:14px}
-@media(max-width:1100px){.rightc{position:static}}
+@media(max-width:1200px){.rightc{position:static}}
 .stage{margin-top:10px}
 .rowlab{font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin:16px 0 6px}
 .rowlab span{text-transform:none;letter-spacing:0;font-weight:500}
@@ -178,7 +178,8 @@ function code(){
     ['c13',ln(13,'        B[C[key]] = A[j]')],
     ['c14',ln(14,'    '+K('for')+' j = 0 '+K('to')+' n − 1')],
     ['c15',ln(15,'        A[j] = B[j]')]];
-  return [['r1',ln(1,F('RADIX-SORT')+'(A, n, d)')],['r2',ln(2,'    '+K('for')+' i = 0 '+K('to')+' d − 1')],['r3',ln(3,'        use a stable sort to sort A[0..n − 1] on digit i')],['-',''],...c];
+  return [['r1',ln(1,F('RADIX-SORT')+'(A, n, d)')],['r2',ln(2,'    let B[0..n − 1] be a new array')],['r3',ln(3,'    '+K('for')+' i = 0 '+K('to')+' d − 1')],
+    ['r4',ln(4,'        '+CM('// use a stable sort to sort A[0..n − 1] on digit i'))],['r5',ln(5,'        '+F('COUNTING-SORT-DIGIT')+'(A, B, n, i)')],['-',''],...c];
 }
 
 // Equal values get tags a, b, c… in input order, so stability can be seen.
@@ -209,9 +210,9 @@ function build(vals){
     A=B.slice();it+=n;
   }
   const d=Math.max(1,String(Math.max(...vals)).length);st.d=d;
-  push({hl:[],major:true,msg:`<span class="k">Ready</span>The largest key has d = ${d} digit${d>1?'s':''}, so radix sort makes ${d} pass${d>1?'es':''}, from the ones digit up. Each pass is a counting sort on one digit.`});
+  push({hl:['r1','r2'],major:true,msg:`<span class="k">Ready</span>The largest key has d = ${d} digit${d>1?'s':''}, so radix sort makes ${d} pass${d>1?'es':''}, from the ones digit up. Each pass is a counting sort on one digit.`});
   for(let i=0;i<d;i++){st.pass=i;
-    push({hl:['r2','r3'],msg:`<span class="k">Pass ${i+1} of ${d}</span>Sort the whole list on digit ${i}, the <strong>${PLACE[i]}</strong> digit, with a counting sort.`});
+    push({hl:['r3','r4','r5'],msg:`<span class="k">Pass ${i+1} of ${d}</span>Sort the whole list on digit ${i}, the <strong>${PLACE[i]}</strong> digit, with a counting sort.`});
     csort(i);
     const m=10**(i+1),ok=A.every((x,t)=>t===0||A[t-1].v%m<=x.v%m);
     hist.push({i,list:A.slice()});
@@ -268,7 +269,7 @@ function render(){
     .map(([bg,bd,t,ring])=>`<span><i class="sw" style="background:${bg};border-color:${ring?'var(--ink)':bd}${ring?';box-shadow:0 0 0 2px #fff,0 0 0 4px #D9822B':''}"></i>${t}</span>`).join('')+'<span><i class="sw" style="background:var(--blue);border-color:var(--blue)"></i>Digit being sorted on</span>';
   $('msg').className='status'+(last?(s.okSort&&(s.okStable!==false)?' ok':' no'):(s.okPass===false?' no':''));$('msg').innerHTML=s.msg;
   $('code').innerHTML=code().map(([k,h,x])=>k==='-'?'<div class="sep"></div>':`<div class="${s.hl.includes(k)?'on':''} ${x||''}">${h}</div>`).join('');
-  $('cnote').innerHTML='Line 3 of RADIX-SORT calls <b>COUNTING-SORT-DIGIT(A, B, n, i)</b>: counting sort with <b>k = 9</b> and <b>digit i of A[j]</b> as the key, copying the whole number into B and then B back into A.';
+  $('cnote').innerHTML='Line 5 of RADIX-SORT calls <b>COUNTING-SORT-DIGIT(A, B, n, i)</b>: counting sort with <b>k = 9</b> and <b>digit i of A[j]</b> as the key, copying the whole number into B and then B back into A.';
   $('prev').disabled=cur===0;$('next').disabled=last;
   if(last)stop();
 }
