@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Today’s agenda</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ag { margin-top:44px; display:grid; grid-template-columns:repeat(3,1fr); gap:36px; }
+.ag .c { border-top:2px solid var(--ink); padding-top:14px; }
+.ag .c b { font-family:var(--serif); font-weight:700; font-size:40px; color:var(--blue); line-height:1; }
+.ag .c h3 { font-family:var(--serif); font-weight:700; font-size:32px; margin-top:12px; line-height:1.15; }
+.ag .c p { font-size:20px; color:var(--muted); margin-top:10px; line-height:1.45; min-height:58px; }
+.ag .c .t { display:inline-block; margin-top:16px; font-size:16px; font-weight:700; color:var(--blue); border:1.5px solid var(--blue); border-radius:999px; padding:2px 12px; }
+.agb { margin-top:36px; display:grid; grid-template-columns:1fr 360px; gap:28px; align-items:end; }
+.agb p { font-size:20px; color:var(--muted); line-height:1.5; padding-bottom:10px; }
+.agb p b { color:var(--ink); font-weight:700; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Today’s agenda</div>
+<div class="frame"><div class="ag"><div class="c"><b>1</b><h3>Three bounds</h3><p>Upper, lower and tight: what O, Ω and Θ mean, and how to prove one.</p><span class="t">O · Ω · Θ</span></div><div class="c"><b>2</b><h3>Asymptotic arithmetic</h3><p>Rules for sums, products and logs, so we rarely need a full proof.</p><span class="t">Rules</span></div><div class="c"><b>3</b><h3>Analyzing loops</h3><p>Read the running time of iterative code, one loop at a time.</p><span class="t">Θ(?)</span></div></div><div class="agb"><p>In Lecture 1, an upper bound held <b>“for large <i>n</i>”</b>. Today we make that precise. Practice problems come in a separate handout.</p></div></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

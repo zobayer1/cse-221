@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Big-Omega: the definition</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.wd { font-family:var(--serif); font-size:34px; line-height:1.3; }
+.wd b { color:var(--blue); }
+.wd .rd { font-family:var(--sans); font-size:18px; color:var(--muted); display:block; margin-top:4px; }
+.dfb { margin-top:22px; }
+.dfb .bb { font-family:var(--serif); font-size:27px; line-height:1.6; padding:14px 22px; }
+.dfb .bb .l2 { display:block; padding-left:118px; }
+.dfb .bb .hl { border-bottom:3px solid var(--blue-l); padding-bottom:1px; }
+
+.cmp { margin-top:24px; display:grid; grid-template-columns:110px 1fr 1fr; align-items:baseline; border-top:2px solid var(--ink); }
+.cmp > div { padding:12px 10px 12px 0; border-bottom:1px solid var(--rule); font-size:19px; }
+.cmp .n { font-family:var(--serif); font-size:28px; }
+.cmp .n.o { color:var(--red); } .cmp .n.w { color:var(--green); }
+.cmp .c { font-family:var(--serif); font-size:24px; }
+.cmp .c b { font-weight:700; background:#FFF3C4; padding:0 4px; }
+.cmp .d { color:var(--muted); }
+.nt { margin-top:18px; font-size:18px; color:var(--muted); line-height:1.45; }
+.nt .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Big-Omega: the definition</div>
+<div class="frame">
+<p class="wd"><b><i>f</i>(<i>n</i>) = Ω(<i>g</i>(<i>n</i>))</b> means <i>f</i> grows at least as fast as <i>g</i>, up to a constant factor.<span class="rd">Read it as “<i>f</i> is big-Omega of <i>g</i>”.</span></p>
+<div class="block dfb"><div class="bt">Definition (CLRS, p. 48)</div><div class="bb">Ω(<i>g</i>(<i>n</i>)) = { <i>f</i>(<i>n</i>) : there exist <span class="hl">positive constants <i>c</i> and <i>n</i><sub>0</sub></span> such that <span class="l2"><span class="hl">0 ≤ <i>c</i> · <i>g</i>(<i>n</i>) ≤ <i>f</i>(<i>n</i>)</span> <span class="hl">for all <i>n</i> ≥ <i>n</i><sub>0</sub></span> }</span></div></div>
+<div class="cmp">
+  <div class="n o">O</div><div class="c">0 ≤ <i>f</i>(<i>n</i>) <b>≤</b> <i>c</i> · <i>g</i>(<i>n</i>)</div><div class="d">upper bound: <i>f</i> stays on or below <i>c</i> · <i>g</i></div>
+  <div class="n w">Ω</div><div class="c">0 ≤ <i>c</i> · <i>g</i>(<i>n</i>) <b>≤</b> <i>f</i>(<i>n</i>)</div><div class="d">lower bound: <i>f</i> stays on or above <i>c</i> · <i>g</i></div>
+</div>
+<p class="nt">Everything else is the same: one <i>c</i>, one <i>n</i><sub>0</sub>, for all <i>n</i> ≥ <i>n</i><sub>0</sub>. So <span class="m"><i>f</i>(<i>n</i>) = Ω(<i>g</i>(<i>n</i>))</span> exactly when <span class="m"><i>g</i>(<i>n</i>) = O(<i>f</i>(<i>n</i>))</span> (CLRS, p. 52).</p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proving Big-O: find <i>c</i> and <i>n</i><sub>0</sub></title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.eq { font-family:var(--serif); font-size:30px; margin-bottom:18px; }
+.pr { display:grid; grid-template-columns:330px 1fr; column-gap:36px; }
+.pr .hd { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.pr .s, .pr .e { padding:16px 0; border-bottom:1px solid var(--rule); }
+.pr .s { display:grid; grid-template-columns:36px 1fr; gap:10px; font-size:19px; line-height:1.4; }
+.pr .s b { font-family:var(--serif); font-size:26px; color:var(--blue); line-height:1; }
+.pr .e { font-family:var(--serif); font-size:24px; line-height:1.45; }
+.pr .e .w { font-family:var(--sans); font-size:17px; color:var(--muted); display:block; }
+.pr .e .u { color:var(--blue); }
+.cn { margin-top:22px; display:flex; gap:16px; align-items:center; font-size:21px; }
+.cn .m { font-family:var(--serif); font-size:28px; }
+.cn svg.tick { color:var(--green); width:1.1em; height:1.1em; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Proving Big-O: find <i>c</i> and <i>n</i><sub>0</sub></div>
+<div class="frame">
+<p class="eq">Is 2<i>n</i><sup>2</sup> + 3<i>n</i> + 5 = O(<i>n</i><sup>2</sup>)?</p>
+<div class="pr">
+  <div class="hd">Method</div><div class="hd">Example</div>
+  <div class="s"><b>1</b><span>Write down what we need, with <i>c</i> and <i>n</i><sub>0</sub> still unknown.</span></div>
+  <div class="e"><span class="w">We need, for all <i>n</i> ≥ <i>n</i><sub>0</sub>:</span>2<i>n</i><sup>2</sup> + 3<i>n</i> + 5 ≤ <i>c</i> · <i>n</i><sup>2</sup></div>
+  <div class="s"><b>2</b><span>For <i>n</i> ≥ 1, raise every term of <i>f</i> up to <i>g</i>. Each term can only grow.</span></div>
+  <div class="e"><span class="w">For <i>n</i> ≥ 1:</span>3<i>n</i> ≤ <span class="u">3<i>n</i><sup>2</sup></span>  and  5 ≤ <span class="u">5<i>n</i><sup>2</sup></span></div>
+  <div class="s"><b>3</b><span>Add up the coefficients. That sum is <i>c</i>, and <i>n</i><sub>0</sub> = 1.</span></div>
+  <div class="e"><span class="w">So, for every <i>n</i> ≥ 1:</span>2<i>n</i><sup>2</sup> + 3<i>n</i> + 5 ≤ 2<i>n</i><sup>2</sup> + <span class="u">3<i>n</i><sup>2</sup></span> + <span class="u">5<i>n</i><sup>2</sup></span> = 10<i>n</i><sup>2</sup></div>
+</div>
+<div class="cn"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg><span><span class="m"><i>c</i> = 10, <i>n</i><sub>0</sub> = 1</span> work, so <span class="m">2<i>n</i><sup>2</sup> + 3<i>n</i> + 5 = O(<i>n</i><sup>2</sup>)</span>.</span></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

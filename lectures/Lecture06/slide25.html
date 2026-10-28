@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strict bounds: little-o and little-omega</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+
+.rw { display:grid; grid-template-columns:1fr 400px; gap:44px; align-items:center; }
+.dl > div { padding:12px 0; border-bottom:1px solid var(--rule); }
+.dl .h { font-family:var(--serif); font-size:26px; }
+.dl .h b { color:var(--blue); }
+.dl .d { font-family:var(--serif); font-size:20px; margin-top:4px; }
+.dl .w { font-size:18px; color:var(--muted); margin-top:4px; line-height:1.4; }
+.dl .w .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; }
+.ky { margin-top:16px; font-size:19px; line-height:1.45; }
+.ky b { color:var(--blue); }
+table.tab td, table.tab th { font-size:21px; padding:8px 10px; text-align:center; }
+table.tab td { font-family:var(--serif); }
+table.tab td.a { font-size:26px; }
+table.tab tr.st td { color:var(--blue); }
+.src { margin-top:8px; font-size:15px; color:var(--muted); text-align:right; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Strict bounds: little-o and little-omega</div>
+<div class="frame">
+<div class="rw"><div><div class="k3">Strict bounds</div>
+<div class="dl">
+<div><div class="h"><b>o</b>(<i>g</i>(<i>n</i>)), little-o: <i>f</i> grows strictly slower</div><div class="d">for <b>every</b> <i>c</i> &gt; 0 there is an <i>n</i><sub>0</sub> with 0 ≤ <i>f</i>(<i>n</i>) &lt; <i>c</i> · <i>g</i>(<i>n</i>) for all <i>n</i> ≥ <i>n</i><sub>0</sub></div><div class="w">Example: <span class="m">2<i>n</i> = o(<i>n</i><sup>2</sup>)</span>, but <span class="m">2<i>n</i><sup>2</sup> ≠ o(<i>n</i><sup>2</sup>)</span> (CLRS, p. 50).</div></div>
+<div><div class="h"><b>ω</b>(<i>g</i>(<i>n</i>)), little-omega: <i>f</i> grows strictly faster</div><div class="d">for <b>every</b> <i>c</i> &gt; 0 there is an <i>n</i><sub>0</sub> with 0 ≤ <i>c</i> · <i>g</i>(<i>n</i>) &lt; <i>f</i>(<i>n</i>) for all <i>n</i> ≥ <i>n</i><sub>0</sub></div><div class="w">Example: <span class="m"><i>n</i><sup>2</sup>/2 = ω(<i>n</i>)</span>, but <span class="m"><i>n</i><sup>2</sup>/2 ≠ ω(<i>n</i><sup>2</sup>)</span> (CLRS, p. 51).</div></div>
+</div>
+<p class="ky">The difference: for O, <b>some</b> <i>c</i> must work. For o, <b>every</b> <i>c</i> must work, however small.</p>
+</div><div><table class="tab"><thead><tr><th><i>f</i>(<i>n</i>) = …</th><th>is like</th><th>bound</th></tr></thead><tbody>
+<tr><td>O(<i>g</i>(<i>n</i>))</td><td class="a"><i>a</i> ≤ <i>b</i></td><td>upper</td></tr>
+<tr><td>Ω(<i>g</i>(<i>n</i>))</td><td class="a"><i>a</i> ≥ <i>b</i></td><td>lower</td></tr>
+<tr><td>Θ(<i>g</i>(<i>n</i>))</td><td class="a"><i>a</i> = <i>b</i></td><td>tight</td></tr>
+<tr class="st"><td>o(<i>g</i>(<i>n</i>))</td><td class="a"><i>a</i> &lt; <i>b</i></td><td>strict upper</td></tr>
+<tr class="st"><td>ω(<i>g</i>(<i>n</i>))</td><td class="a"><i>a</i> &gt; <i>b</i></td><td>strict lower</td></tr>
+</tbody></table><p class="src">The analogy from CLRS, p. 52.</p></div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

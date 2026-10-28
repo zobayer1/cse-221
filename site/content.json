@@ -14,7 +14,8 @@
     { "dir": "Lecture02", "released": true, "topics": "Linear, binary and ternary search, iterative and recursive; off-by-one errors and duplicates; finding a peak", "simulators": ["linear_search", "binary_search", "ternary_search"] },
     { "dir": "Lecture03", "released": true, "topics": "Comparison sorting; bubble, insertion and selection sort with best- and worst-case analysis", "simulators": ["bubble_sort", "insertion_sort", "selection_sort"] },
     { "dir": "Lecture04", "released": true, "topics": "Divide and conquer, merge sort, quicksort and pivot choice, stable and in-place sorting, the comparison-sorting lower bound", "simulators": ["merge_sort", "quicksort"] },
-    { "dir": "Lecture05", "released": true, "topics": "Sorting faster than n log n without comparisons; counting sort and radix sort", "simulators": ["counting_sort", "radix_sort"] }
+    { "dir": "Lecture05", "released": true, "topics": "Sorting faster than n log n without comparisons; counting sort and radix sort", "simulators": ["counting_sort", "radix_sort"] },
+    { "dir": "Lecture06", "released": true, "topics": "Asymptotic notation: Big-O, Big-Omega and Big-Theta (with little-o and little-omega), asymptotic arithmetic, analyzing iterative code" }
   ],
 
   "simulators": [

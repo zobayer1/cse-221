@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>An upper bound, not the exact growth</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.rw { display:grid; grid-template-columns:1fr 520px; gap:40px; align-items:center; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.ts { margin-top:12px; display:flex; flex-direction:column; gap:8px; }
+.ts div { font-family:var(--serif); font-size:26px; display:flex; gap:14px; align-items:center; }
+.ts svg.tick { color:var(--green); }
+.ts .w { font-family:var(--sans); font-size:17px; color:var(--muted); }
+.an { margin-top:22px; font-size:20px; line-height:1.45; }
+.an b { color:var(--blue); }
+.an .q { color:var(--muted); }
+.tb { margin-top:26px; }
+.tb .bb { font-size:19px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">An upper bound, not the exact growth</div>
+<div class="frame">
+<div class="rw"><div><div class="k3">All true at once</div>
+<div class="ts"><div><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg><span>3<i>n</i> + 10 = O(<i>n</i>)</span><span class="w">tightest</span></div>
+<div><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg><span>3<i>n</i> + 10 = O(<i>n</i><sup>2</sup>)</span></div>
+<div><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg><span>3<i>n</i> + 10 = O(2<sup><i>n</i></sup>)</span></div></div>
+<p class="an">Big-O only says <b>“no faster than”</b>. A looser bound is still true, but says less, like <span class="q">“I am under 200 years old”</span>.</p>
+</div><svg data-figure viewBox="0 0 520 330" width="520" height="330" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><ellipse cx="260" cy="170" rx="250" ry="155" fill="#F4F6FB" stroke="#A7A9AC" stroke-width="2"/><ellipse cx="225" cy="195" rx="185" ry="118" fill="#E9EEF7" stroke="#2B5BAA" stroke-width="2" stroke-opacity="0.6"/><ellipse cx="190" cy="220" rx="118" ry="80" fill="#D5E0F2" stroke="#2B5BAA" stroke-width="2.4"/><text x="380" y="78" font-size="22" fill="#5B5E63" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">O(2<tspan dy="-9" font-size="14" font-style="italic">n</tspan><tspan dy="9">)</tspan></text><text x="290" y="130" font-size="22" fill="#2B5BAA" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" opacity="0.85">O(<tspan font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">n</tspan><tspan dy="-9" font-size="14">2</tspan><tspan dy="9">)</tspan></text><text x="190" y="176" font-size="22" fill="#2B5BAA" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" text-anchor="middle" font-weight="700">O(<tspan font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">n</tspan>)</text><circle cx="190" cy="222" r="6" fill="#1a1a1a"/><text x="190" y="256" font-size="20" fill="#1a1a1a" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" text-anchor="middle">3<tspan font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">n</tspan> + 10</text></svg></div>
+<div class="block tb"><div class="bt">Give the tightest bound you can prove</div><div class="bb">The sets are nested: everything in O(<i>n</i>) is also in O(<i>n</i><sup>2</sup>) and O(2<sup><i>n</i></sup>). When we state a bound, we pick the <b>smallest</b> <i>g</i> that still works.</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

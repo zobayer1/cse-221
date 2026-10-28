@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The growth ladder</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+
+.rw { display:grid; grid-template-columns:560px 1fr; gap:44px; align-items:center; }
+.lad { display:flex; flex-direction:column-reverse; gap:4px; }
+.lad > div { display:grid; grid-template-columns:130px 140px 1fr; gap:12px; align-items:baseline; padding:5px 14px; background:var(--tint-2); border-left:5px solid var(--blue); }
+.lad .f { font-family:var(--serif); font-size:23px; }
+.lad .k { font-size:15px; color:var(--muted); }
+.lad .e { font-size:15px; color:var(--ink); }
+.ar { font-size:15px; color:var(--muted); text-align:center; margin-bottom:6px; }
+.fa { padding:12px 0; border-bottom:1px solid var(--rule); font-size:19px; line-height:1.45; }
+.fa .m { font-family:var(--serif); white-space:nowrap; }
+.fa .w { font-size:16px; color:var(--muted); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">The growth ladder</div>
+<div class="frame">
+<div class="rw"><div><p class="ar">↑ grows faster: each rung is little-o of the one above it</p><div class="lad"><div style="border-left-color:hsl(218,40%,62%)"><span class="f">1</span><span class="k">constant</span><span class="e">reading <i>A</i>[<i>i</i>]</span></div><div style="border-left-color:hsl(218,45%,58%)"><span class="f">log <i>n</i></span><span class="k">logarithmic</span><span class="e">binary search</span></div><div style="border-left-color:hsl(218,50%,54%)"><span class="f">√<i>n</i></span><span class="k">square root</span><span class="e"></span></div><div style="border-left-color:hsl(218,55%,50%)"><span class="f"><i>n</i></span><span class="k">linear</span><span class="e">linear search</span></div><div style="border-left-color:hsl(218,60%,46%)"><span class="f"><i>n</i> log <i>n</i></span><span class="k">linearithmic</span><span class="e">merge sort</span></div><div style="border-left-color:hsl(218,65%,42%)"><span class="f"><i>n</i><sup>2</sup></span><span class="k">quadratic</span><span class="e">insertion sort, worst case</span></div><div style="border-left-color:hsl(218,70%,38%)"><span class="f"><i>n</i><sup>3</sup></span><span class="k">cubic</span><span class="e">three nested loops</span></div><div style="border-left-color:hsl(218,75%,34%)"><span class="f">2<sup><i>n</i></sup></span><span class="k">exponential</span><span class="e">all subsets</span></div><div style="border-left-color:hsl(218,80%,30%)"><span class="f"><i>n</i>!</span><span class="k">factorial</span><span class="e">all orderings</span></div></div></div>
+<div><div class="k3">Three facts behind the ladder</div>
+<div class="fa">Any power of log <i>n</i> grows slower than any power of <i>n</i>: <span class="m">log<sup><i>b</i></sup> <i>n</i> = o(<i>n</i><sup><i>a</i></sup>)</span> for constants <i>a</i> &gt; 0, <i>b</i>.<div class="w">CLRS, p. 57</div></div>
+<div class="fa">Any power of <i>n</i> grows slower than any exponential: <span class="m"><i>n</i><sup><i>b</i></sup> = o(<i>a</i><sup><i>n</i></sup>)</span> for constants <i>a</i> &gt; 1, <i>b</i>.<div class="w">CLRS eq. 3.10, p. 55</div></div>
+<div class="fa"><i>n</i>! grows faster still: <span class="m"><i>n</i>! = ω(2<sup><i>n</i></sup>)</span>.<div class="w">CLRS eq. 3.19, p. 58</div></div>
+</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

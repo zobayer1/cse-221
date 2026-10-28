@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analyzing loops: the rules</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:12px 20px; }
+.codebox pre { font-size:19px; line-height:1.6; } .codebox .fn { font-weight:700; }
+
+.rw { display:grid; grid-template-columns:1fr 560px; gap:40px; align-items:center; }
+.rr > div { display:grid; grid-template-columns:170px 1fr; gap:12px; padding:10px 0; border-bottom:1px solid var(--rule); align-items:baseline; }
+.rr .c { font-size:19px; font-weight:700; }
+.rr .v { font-size:18px; color:var(--muted); line-height:1.4; }
+.rr .v .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; }
+.codebox pre { font-size:18px; }
+.codebox .an { color:var(--blue); font-family:var(--serif); font-size:17px; }
+.tt { margin-top:14px; font-family:var(--serif); font-size:20px; line-height:1.5; }
+.tt b { color:var(--blue); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Analyzing loops: the rules</div>
+<div class="frame">
+<div class="rw"><div><div class="k3">The rules</div><div class="rr">
+<div><span class="c">Simple step</span><span class="v">An assignment, comparison or arithmetic step: <span class="m">Θ(1)</span>.</span></div>
+<div><span class="c">One after another</span><span class="v">Add the costs, so the largest one wins.</span></div>
+<div><span class="c">if / else</span><span class="v">The test, plus the more expensive branch (worst case).</span></div>
+<div><span class="c">A loop</span><span class="v">(number of iterations) × (cost of one iteration).</span></div>
+<div><span class="c">Nested loops</span><span class="v">Work from the inside out.</span></div>
+</div></div>
+<div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">EXAMPLE</span>(A, n)
+<span class="ln">2</span>    s = 0                         <span class="an">Θ(1)</span>
+<span class="ln">3</span>    <span class="kw">for</span> i = 0 <span class="kw">to</span> n − 1           <span class="an">n times</span>
+<span class="ln">4</span>        <span class="kw">if</span> A[i] &gt; 0              <span class="an">Θ(1)</span>
+<span class="ln">5</span>            s = s + A[i]          <span class="an">Θ(1)</span>
+<span class="ln">6</span>    <span class="kw">for</span> i = 0 <span class="kw">to</span> n − 1           <span class="an">n times</span>
+<span class="ln">7</span>        <span class="kw">for</span> j = 0 <span class="kw">to</span> n − 1       <span class="an">n times each</span>
+<span class="ln">8</span>            s = s + 1             <span class="an">Θ(1)</span>
+<span class="ln">9</span>    <span class="kw">return</span> s                      <span class="an">Θ(1)</span></pre></div><p class="tt">Θ(1) + <i>n</i> · Θ(1) + <i>n</i> · <i>n</i> · Θ(1) + Θ(1) = <b>Θ(<i>n</i><sup>2</sup>)</b></p></div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

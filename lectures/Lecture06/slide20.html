@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proving Big-Omega</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.eq { font-family:var(--serif); font-size:30px; margin-bottom:14px; }
+.pr { border-top:2px solid var(--ink); }
+.pr > div { display:grid; grid-template-columns:36px 340px 1fr; gap:10px; align-items:baseline; padding:14px 0; border-bottom:1px solid var(--rule); }
+.pr b { font-family:var(--serif); font-size:26px; color:var(--blue); }
+.pr .s { font-size:19px; line-height:1.4; }
+.pr .e { font-family:var(--serif); font-size:24px; }
+.pr .e .u { color:var(--green); }
+.cn { margin-top:16px; display:flex; gap:16px; align-items:center; font-size:21px; }
+.cn .m { font-family:var(--serif); font-size:26px; }
+.cn svg.tick { color:var(--green); width:1.1em; height:1.1em; }
+.nn { margin-top:24px; display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+.nn > div { background:var(--tint-2); border-top:3px solid var(--blue); padding:12px 18px; }
+.nn .k { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; }
+.nn p { font-size:18px; line-height:1.45; margin-top:4px; }
+.nn .m { font-family:var(--serif); white-space:nowrap; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Proving Big-Omega</div>
+<div class="frame">
+<p class="eq">Is 2<i>n</i><sup>2</sup> − 10<i>n</i> = Ω(<i>n</i><sup>2</sup>)?</p>
+<div class="pr">
+  <div><b>1</b><span class="s">We need, for all <i>n</i> ≥ <i>n</i><sub>0</sub>:</span><span class="e">2<i>n</i><sup>2</sup> − 10<i>n</i> ≥ <i>c</i> · <i>n</i><sup>2</sup></span></div>
+  <div><b>2</b><span class="s">For a lower bound, a minus term must be paid for with part of the top term. <span style="white-space:nowrap">For <i>n</i> ≥ 10:</span></span><span class="e">10<i>n</i> ≤ <i>n</i><sup>2</sup>, so 2<i>n</i><sup>2</sup> − 10<i>n</i> ≥ 2<i>n</i><sup>2</sup> − <i>n</i><sup>2</sup> = <span class="u"><i>n</i><sup>2</sup></span></span></div>
+</div>
+<div class="cn"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg><span><span class="m"><i>c</i> = 1, <i>n</i><sub>0</sub> = 10</span> work, so <span class="m">2<i>n</i><sup>2</sup> − 10<i>n</i> = Ω(<i>n</i><sup>2</sup>)</span>.</span></div>
+<div class="nn"><div><div class="k">For a lower bound, drop the positive terms</div><p>That makes the expression smaller: <span class="m">2<i>n</i><sup>2</sup> + 3<i>n</i> + 5 ≥ 2<i>n</i><sup>2</sup></span> for every <span style="white-space:nowrap"><i>n</i> ≥ 1</span>, so <span class="m"><i>c</i> = 2, <i>n</i><sub>0</sub> = 1</span>.</p></div>
+<div><div class="k">Not every pair works</div><p><i>n</i> is not Ω(<i>n</i><sup>2</sup>): <span class="m"><i>n</i> ≥ <i>c</i> · <i>n</i><sup>2</sup></span> means <span class="m"><i>c</i> · <i>n</i> ≤ 1</span>, which fails once <span class="m"><i>n</i> &gt; 1/<i>c</i></span>.</p></div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

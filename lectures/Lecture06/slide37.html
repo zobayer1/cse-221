@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Best case, worst case and the bounds</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:12px 20px; }
+.codebox pre { font-size:19px; line-height:1.6; } .codebox .fn { font-weight:700; }
+
+.rw { display:grid; grid-template-columns:420px 1fr; gap:44px; align-items:center; }
+.codebox pre { font-size:18px; }
+.cs { margin-top:12px; display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.cs > div { background:var(--tint-2); padding:8px 14px; border-top:3px solid var(--green); font-size:17px; }
+.cs > div.w { border-top-color:var(--red); }
+.cs .m { font-family:var(--serif); font-size:22px; display:block; }
+.my { font-size:20px; line-height:1.45; }
+.my s { color:var(--red); }
+.my b { color:var(--blue); }
+.st { font-size:18px; line-height:1.45; padding:9px 0; border-bottom:1px solid var(--rule); }
+.st .m { font-family:var(--serif); white-space:nowrap; }
+.qs { margin-top:20px; }
+.qs .bb { font-size:18px; }
+.qs .m { font-family:var(--serif); white-space:nowrap; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Best case, worst case and the bounds</div>
+<div class="frame">
+<div class="rw"><div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">LINEAR-SEARCH</span>(A, n, x)
+<span class="ln">2</span>    <span class="kw">for</span> i = 0 <span class="kw">to</span> n − 1
+<span class="ln">3</span>        <span class="kw">if</span> A[i] == x
+<span class="ln">4</span>            <span class="kw">return</span> i
+<span class="ln">5</span>    <span class="kw">return</span> NIL</pre></div><div class="cs"><div>best case: <i>x</i> is first<span class="m">Θ(1)</span></div><div class="w">worst case: <i>x</i> is missing<span class="m">Θ(<i>n</i>)</span></div></div></div>
+<div><p class="my">A common mix-up: <s>“O is the worst case, Ω is the best case.”</s> No: best and worst case are <b>two different functions</b>, and each one gets its own bounds.</p>
+<div class="st">Worst case: <span class="m">Θ(<i>n</i>)</span>. Best case: <span class="m">Θ(1)</span>.</div>
+<div class="st">On every input, the running time is <span class="m">O(<i>n</i>)</span> (the worst case caps it) and <span class="m">Ω(1)</span>.</div>
+</div></div>
+<div class="block qs"><div class="bt">Back to slide 3: is quicksort O(<i>n</i><sup>2</sup>) or O(<i>n</i> log <i>n</i>)?</div><div class="bb">Its worst case is <span class="m">Θ(<i>n</i><sup>2</sup>)</span> and its best and average cases are <span class="m">Θ(<i>n</i> log <i>n</i>)</span>. So “quicksort is O(<i>n</i><sup>2</sup>)” holds on every input, while O(<i>n</i> log <i>n</i>) holds only for its best and average cases. A bound on the worst case is a bound on every input (CLRS, p. 48).</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

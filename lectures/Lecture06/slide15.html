@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can you break it?</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.qw { display:grid; grid-template-columns:1fr 340px; gap:48px; align-items:center; }
+.qq { font-family:var(--serif); font-size:44px; line-height:1.25; }
+.qq b { color:var(--blue); }
+.qs { margin-top:16px; font-size:22px; line-height:1.45; }
+.qs .m { font-family:var(--serif); white-space:nowrap; }
+.tr { margin-top:28px; display:flex; gap:16px; flex-wrap:wrap; }
+.tr > span { font-size:21px; border:2px solid var(--ink); padding:8px 18px; }
+.tr > span .m { font-family:var(--serif); }
+.tr > span b { color:var(--blue); margin-left:10px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Can you break it?<span class="ftag">Discuss</span></div>
+<div class="frame">
+<div class="qw"><div><p class="qq">Is <b><i>n</i><sup>2</sup> = O(<i>n</i>)</b>?</p>
+<p class="qs">Find a multiplier <i>c</i> and a starting point <i>n</i><sub>0</sub> with <span class="m"><i>n</i><sup>2</sup> ≤ <i>c</i> · <i>n</i></span> for all <span class="m"><i>n</i> ≥ <i>n</i><sub>0</sub></span>. Or explain why no pair can work.</p>
+<div class="tr"><span><span class="m"><i>c</i> = 10</span><b>fails at <i>n</i> = ?</b></span><span><span class="m"><i>c</i> = 1,000</span><b>fails at <i>n</i> = ?</b></span><span><span class="m"><i>c</i> = 10<sup>9</sup></span><b>fails at <i>n</i> = ?</b></span></div></div>
+<svg viewBox="0 0 300 270" width="340" height="306" fill="none" stroke="#1a1a1a" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">
+<path d="M20 256 H280" stroke-width="2"/>
+<rect x="150" y="70" width="44" height="186" fill="#F8E6E6" stroke="#C62828" stroke-width="2"/>
+<path d="M172 64 V24 M162 36 l10 -12 l10 12" stroke="#C62828" stroke-width="2.4"/>
+<text x="172" y="168" font-size="22" fill="#C62828" stroke="none" text-anchor="middle" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">n</tspan><tspan dy="-8" font-size="14">2</tspan></text>
+<path d="M128 70 H216" stroke="#2B5BAA" stroke-width="4"/>
+<text x="232" y="76" font-size="18" fill="#2B5BAA" stroke="none" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">c</tspan> · <tspan font-style="italic">n</tspan></text>
+<circle cx="88" cy="128" r="14"/><path d="M81 124 l4 2 M95 124 l-4 2 M82 135 q6 -4 12 0"/><path d="M106 116 q4 6 0 12" stroke="#2B5BAA" stroke-width="1.8"/>
+<path d="M88 142 L88 190 M88 190 L74 256 M88 190 L102 256 M88 152 L112 106 L134 70 M88 152 L118 120 L148 72"/>
+</svg></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

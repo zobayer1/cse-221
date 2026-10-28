@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Big-Theta: the definition</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.wd { font-family:var(--serif); font-size:34px; line-height:1.3; }
+.wd b { color:var(--blue); }
+.wd .rd { font-family:var(--sans); font-size:18px; color:var(--muted); display:block; margin-top:4px; }
+.dfb { margin-top:22px; }
+.dfb .bb { font-family:var(--serif); font-size:27px; line-height:1.6; padding:14px 22px; }
+.dfb .bb .l2 { display:block; padding-left:118px; }
+.dfb .bb .hl { border-bottom:3px solid var(--blue-l); padding-bottom:1px; }
+
+.dfb .bb .l2 { padding-left:118px; }
+.th { margin-top:22px; }
+.th .bb { font-size:21px; }
+.th .m { font-family:var(--serif); white-space:nowrap; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Big-Theta: the definition</div>
+<div class="frame">
+<p class="wd"><b><i>f</i>(<i>n</i>) = Θ(<i>g</i>(<i>n</i>))</b> means <i>f</i> grows exactly like <i>g</i>, up to constant factors.<span class="rd">Read it as “<i>f</i> is big-Theta of <i>g</i>”.</span></p>
+<div class="block dfb"><div class="bt">Definition (CLRS, p. 44)</div><div class="bb">Θ(<i>g</i>(<i>n</i>)) = { <i>f</i>(<i>n</i>) : there exist positive constants <i>c</i><sub>1</sub>, <i>c</i><sub>2</sub> and <i>n</i><sub>0</sub> such that <span class="l2">0 ≤ <span class="hl"><i>c</i><sub>1</sub> · <i>g</i>(<i>n</i>) ≤ <i>f</i>(<i>n</i>)</span> <span class="hl">≤ <i>c</i><sub>2</sub> · <i>g</i>(<i>n</i>)</span> for all <i>n</i> ≥ <i>n</i><sub>0</sub> }</span></div></div>
+<div class="block th"><div class="bt">Theorem 3.1 (CLRS, p. 48)</div><div class="bb"><span class="m"><i>f</i>(<i>n</i>) = Θ(<i>g</i>(<i>n</i>))</span> if and only if <span class="m"><i>f</i>(<i>n</i>) = O(<i>g</i>(<i>n</i>))</span> and <span class="m"><i>f</i>(<i>n</i>) = Ω(<i>g</i>(<i>n</i>))</span>. To prove Θ, prove O and Ω, then take the larger <i>n</i><sub>0</sub>.</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

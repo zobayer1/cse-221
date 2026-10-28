@@ -1,0 +1,35 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Answer C: the surprise</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:12px 20px; }
+.codebox pre { font-size:19px; line-height:1.6; } .codebox .fn { font-weight:700; }
+
+.rw { display:grid; grid-template-columns:400px 1fr; gap:44px; align-items:center; }
+.codebox pre { font-size:17px; }
+.st { font-size:19px; line-height:1.45; padding:10px 0; border-bottom:1px solid var(--rule); }
+.st .m { font-family:var(--serif); font-size:22px; white-space:nowrap; }
+.cn { margin-top:14px; font-family:var(--serif); font-size:30px; }
+.cn b { color:var(--blue); }
+.cn .s { font-family:var(--sans); font-size:18px; color:var(--red); margin-left:12px; }
+.vg { margin-top:18px; }
+.src { font-size:15px; color:var(--muted); margin-top:6px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Answer C: the surprise</div>
+<div class="frame">
+<div class="rw"><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">COUNT-C</span>(n)
+<span class="ln">2</span>    count = 0
+<span class="ln">3</span>    k = 1
+<span class="ln">4</span>    <span class="kw">while</span> k ≤ n
+<span class="ln">5</span>        <span class="kw">for</span> j = 0 <span class="kw">to</span> k − 1
+<span class="ln">6</span>            count = count + 1
+<span class="ln">7</span>        k = 2 · k
+<span class="ln">8</span>    <span class="kw">return</span> count</pre></div><div><div class="k3">Count the runs</div>
+<div class="st">Now the inner loop runs <span class="m"><i>k</i></span> times: <span class="m">1 + 2 + 4 + … + 2<sup><i>m</i></sup></span>, where 2<sup><i>m</i></sup> is the largest power of 2 that is ≤ <i>n</i>.</div>
+<div class="st">That sum is <span class="m">2<sup><i>m</i> + 1</sup> − 1</span>, which lies between <span class="m"><i>n</i></span> and <span class="m">2<i>n</i></span>.</div>
+<p class="cn">COUNT-C is <b>Θ(<i>n</i>)</b><span class="s">not Θ(<i>n</i> log <i>n</i>)!</span></p><p class="src">The geometric series, CLRS (A.5), p. 1147.</p></div></div>
+<div class="vg"><svg data-figure viewBox="0 0 740 150" width="740" height="150" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><rect x="30" y="60" width="19" height="44" fill="#E3EBF7" stroke="#2B5BAA" stroke-width="2"/><text x="39.5" y="88" font-size="17" fill="#2B5BAA" text-anchor="middle" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">1</text><rect x="52" y="60" width="41" height="44" fill="#E3EBF7" stroke="#2B5BAA" stroke-width="2"/><text x="72.5" y="88" font-size="17" fill="#2B5BAA" text-anchor="middle" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">2</text><rect x="96" y="60" width="85" height="44" fill="#E3EBF7" stroke="#2B5BAA" stroke-width="2"/><text x="138.5" y="88" font-size="17" fill="#2B5BAA" text-anchor="middle" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">4</text><rect x="184" y="60" width="173" height="44" fill="#E3EBF7" stroke="#2B5BAA" stroke-width="2"/><text x="270.5" y="88" font-size="17" fill="#2B5BAA" text-anchor="middle" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">8</text><rect x="360" y="60" width="349" height="44" fill="#E3EBF7" stroke="#2B5BAA" stroke-width="2"/><text x="534.5" y="88" font-size="17" fill="#2B5BAA" text-anchor="middle" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">16</text><path d="M30 124 H709" stroke="#1a1a1a" stroke-width="2"/><path d="M30 118 v12 M709 118 v12" stroke="#1a1a1a" stroke-width="2"/><text x="371.0" y="146" font-size="17" text-anchor="middle" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">1 + 2 + 4 + 8 + 16 = 31 &lt; 2 · 16</text><text x="30" y="40" font-size="15" fill="#5B5E63">runs in each pass, <tspan font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">n</tspan> = 16: each pass is as long as all the earlier ones together, plus one</text></svg></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

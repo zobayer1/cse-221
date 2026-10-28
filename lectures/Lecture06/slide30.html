@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logs and exponents</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+
+.two { display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+.ln2 h3 { font-family:var(--serif); font-size:28px; margin:12px 0 4px; }
+.ln2 h3 b { color:var(--green); } .ln2.ex h3 b { color:var(--red); }
+.ln2 .r { font-family:var(--serif); font-size:22px; padding:10px 0; border-bottom:1px solid var(--rule); }
+.ln2 .r .w { font-family:var(--sans); font-size:16px; color:var(--muted); display:block; margin-top:2px; }
+.ln2 .r .ok { color:var(--green); } .ln2 .r .no { color:var(--red); }
+.ans { margin-top:22px; }
+.ans .bb { font-size:19px; }
+.ans .m { font-family:var(--serif); white-space:nowrap; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Logs and exponents</div>
+<div class="frame">
+<div class="two"><div class="ln2"><div class="k3">Logarithms</div><h3>The base <b>does not</b> matter</h3>
+<div class="r">log<sub><i>a</i></sub> <i>n</i> = log<sub><i>b</i></sub> <i>n</i> / log<sub><i>b</i></sub> <i>a</i><span class="w">changing the base only divides by a constant (CLRS eq. 3.15, p. 56)</span></div>
+<div class="r">log<sub>2</sub> <i>n</i> = Θ(log<sub>10</sub> <i>n</i>) = Θ(log <i>n</i>)<span class="w">so we just write log <i>n</i>, as in Lecture 2</span></div>
+<div class="r">log(<i>n</i><sup><i>k</i></sup>) = <i>k</i> log <i>n</i> = Θ(log <i>n</i>)<span class="w">a power inside the log is a constant factor outside it</span></div></div>
+<div class="ln2 ex"><div class="k3">Exponentials</div><h3>The base <b>does</b> matter</h3>
+<div class="r">3<sup><i>n</i></sup> / 2<sup><i>n</i></sup> = 1.5<sup><i>n</i></sup> grows without bound<span class="w">so 2<sup><i>n</i></sup> = o(3<sup><i>n</i></sup>): 2<sup><i>n</i></sup> and 3<sup><i>n</i></sup> are not Θ of each other</span></div>
+<div class="r"><span class="ok">2<sup><i>n</i> + 1</sup> = 2 · 2<sup><i>n</i></sup> = Θ(2<sup><i>n</i></sup>)</span><span class="w">a +1 in the exponent is a constant factor</span></div>
+<div class="r"><span class="no">2<sup>2<i>n</i></sup> = 4<sup><i>n</i></sup> ≠ O(2<sup><i>n</i></sup>)</span><span class="w">a factor in the exponent changes the base: 4<sup><i>n</i></sup> / 2<sup><i>n</i></sup> = 2<sup><i>n</i></sup> grows</span></div></div></div>
+<div class="block ans"><div class="bt">Back to the question on slide 3</div><div class="bb"><span class="m">2<sup><i>n</i> + 1</sup></span> and <span class="m">2<sup>2<i>n</i></sup></span> both look like 2<sup><i>n</i></sup>, but only the first one grows like it. This is CLRS Exercise 3.1-4.</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

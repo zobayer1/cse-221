@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guess the complexity</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:12px 20px; }
+.codebox pre { font-size:19px; line-height:1.6; } .codebox .fn { font-weight:700; }
+
+.g3 { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.g3 > div { display:flex; flex-direction:column; }
+.g3 .codebox { flex:1; }
+.g3 .codebox pre { font-size:17px; }
+.g3 .a { margin-top:12px; font-family:var(--serif); font-size:28px; text-align:center; }
+.g3 .a b { color:var(--grey); }
+.lead { font-family:var(--serif); font-size:28px; margin-bottom:18px; }
+.hint { margin-top:22px; font-size:18px; color:var(--muted); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Guess the complexity<span class="ftag">Discuss</span></div>
+<div class="frame">
+<p class="lead">How many times does <span style="font-family:var(--mono)">count = count + 1</span> run? Give a Θ bound.</p>
+<div class="g3"><div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">COUNT-A</span>(n)
+<span class="ln">2</span>    count = 0
+<span class="ln">3</span>    <span class="kw">for</span> i = 0 <span class="kw">to</span> n − 1
+<span class="ln">4</span>        <span class="kw">for</span> j = 0 <span class="kw">to</span> i
+<span class="ln">5</span>            count = count + 1
+<span class="ln">6</span>    <span class="kw">return</span> count</pre></div><p class="a">Θ(<b>?</b>)</p></div><div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">COUNT-B</span>(n)
+<span class="ln">2</span>    count = 0
+<span class="ln">3</span>    k = 1
+<span class="ln">4</span>    <span class="kw">while</span> k ≤ n
+<span class="ln">5</span>        <span class="kw">for</span> j = 0 <span class="kw">to</span> n − 1
+<span class="ln">6</span>            count = count + 1
+<span class="ln">7</span>        k = 2 · k
+<span class="ln">8</span>    <span class="kw">return</span> count</pre></div><p class="a">Θ(<b>?</b>)</p></div><div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">COUNT-C</span>(n)
+<span class="ln">2</span>    count = 0
+<span class="ln">3</span>    k = 1
+<span class="ln">4</span>    <span class="kw">while</span> k ≤ n
+<span class="ln">5</span>        <span class="kw">for</span> j = 0 <span class="kw">to</span> k − 1
+<span class="ln">6</span>            count = count + 1
+<span class="ln">7</span>        k = 2 · k
+<span class="ln">8</span>    <span class="kw">return</span> count</pre></div><p class="a">Θ(<b>?</b>)</p></div></div>
+<p class="hint">Hint: in B and C, <i>k</i> doubles each time: 1, 2, 4, 8, …</p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Proving Big-Theta</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.eq { font-family:var(--serif); font-size:30px; margin-bottom:16px; }
+.hv { display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+.hv > div { border-top:3px solid var(--red); background:var(--tint-2); padding:12px 20px 14px; }
+.hv > div.w { border-top-color:var(--green); }
+.hv .k { font-size:15px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--red); }
+.hv > div.w .k { color:var(--green); }
+.hv .e { font-family:var(--serif); font-size:24px; margin-top:8px; }
+.hv .s { font-size:17px; color:var(--muted); margin-top:6px; line-height:1.4; }
+.cn { margin-top:18px; display:flex; gap:16px; align-items:center; font-size:21px; }
+.cn .m { font-family:var(--serif); font-size:26px; }
+.cn svg.tick { color:var(--green); width:1.1em; height:1.1em; }
+.nn { margin-top:24px; display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+.nn > div { border-top:2px solid var(--ink); padding-top:10px; }
+.nn .k { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; }
+.nn p { font-size:18px; line-height:1.45; margin-top:4px; }
+.nn .m { font-family:var(--serif); white-space:nowrap; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Proving Big-Theta</div>
+<div class="frame">
+<p class="eq">Is 2<i>n</i><sup>2</sup> + 3<i>n</i> + 5 = Θ(<i>n</i><sup>2</sup>)?</p>
+<div class="hv"><div class="w"><div class="k">Floor: the Ω part</div><div class="e">2<i>n</i><sup>2</sup> ≤ 2<i>n</i><sup>2</sup> + 3<i>n</i> + 5</div><div class="s">Dropping the positive terms 3<i>n</i> + 5 makes it smaller. True for every <span style="white-space:nowrap"><i>n</i> ≥ 1</span>, so <i>c</i><sub>1</sub> = 2.</div></div>
+<div><div class="k">Ceiling: the O part</div><div class="e">2<i>n</i><sup>2</sup> + 3<i>n</i> + 5 ≤ 10<i>n</i><sup>2</sup></div><div class="s">Already proved on the Big-O slides, for every <i>n</i> ≥ 1, so <i>c</i><sub>2</sub> = 10.</div></div></div>
+<div class="cn"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg><span><span class="m"><i>c</i><sub>1</sub> = 2, <i>c</i><sub>2</sub> = 10, <i>n</i><sub>0</sub> = 1</span> work, so <span class="m">2<i>n</i><sup>2</sup> + 3<i>n</i> + 5 = Θ(<i>n</i><sup>2</sup>)</span>.</span></div>
+<div class="nn"><div><div class="k">One half is not enough</div><p><span class="m"><i>n</i> = O(<i>n</i><sup>2</sup>)</span>, but <i>n</i> is not Ω(<i>n</i><sup>2</sup>). So <i>n</i> is not Θ(<i>n</i><sup>2</sup>).</p></div>
+<div><div class="k">In the textbook</div><p>CLRS proves <span class="m">½<i>n</i><sup>2</sup> − 3<i>n</i> = Θ(<i>n</i><sup>2</sup>)</span> with <span class="m"><i>c</i><sub>1</sub> = 1/14, <i>c</i><sub>2</sub> = 1/2, <i>n</i><sub>0</sub> = 7</span> (p.&nbsp;46).</p></div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

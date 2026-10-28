@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asymptotic arithmetic (2)</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+
+.rl { border-top:2px solid var(--ink); }
+.rl > div { display:grid; grid-template-columns:44px 300px 1fr; gap:14px; align-items:baseline; padding:14px 0; border-bottom:1px solid var(--rule); }
+.rl b { font-family:var(--serif); font-size:24px; color:var(--blue); }
+.rl .n { font-size:20px; font-weight:700; }
+.rl .r { font-family:var(--serif); font-size:23px; }
+.rl .x { font-size:17px; color:var(--muted); margin-top:4px; font-family:var(--sans); }
+.rl .x .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; }
+.pf { margin-top:22px; }
+.pf .bb { font-size:19px; }
+.pf .m { font-family:var(--serif); white-space:nowrap; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Asymptotic arithmetic (2)</div>
+<div class="frame">
+<div class="rl">
+<div><b>4</b><span class="n">Products multiply</span><div><div class="r"><i>f</i><sub>1</sub> = O(<i>g</i><sub>1</sub>) and <i>f</i><sub>2</sub> = O(<i>g</i><sub>2</sub>) give <i>f</i><sub>1</sub> · <i>f</i><sub>2</sub> = O(<i>g</i><sub>1</sub> · <i>g</i><sub>2</sub>)</div><div class="x">The same holds for Θ. e.g. <i>n</i> iterations of Θ(log <i>n</i>) work each: <span class="m"><i>n</i> · Θ(log <i>n</i>) = Θ(<i>n</i> log <i>n</i>)</span></div></div></div>
+<div><b>5</b><span class="n">Bounds chain</span><div><div class="r"><i>f</i> = O(<i>g</i>) and <i>g</i> = O(<i>h</i>) give <i>f</i> = O(<i>h</i>)</div><div class="x">Also for Ω, Θ, o and ω (CLRS, p. 51). e.g. <span class="m">log <i>n</i> = O(<i>n</i>)</span> and <span class="m"><i>n</i> = O(<i>n</i><sup>2</sup>)</span>, so <span class="m">log <i>n</i> = O(<i>n</i><sup>2</sup>)</span></div></div></div>
+<div><b>6</b><span class="n">Swap sides</span><div><div class="r"><i>f</i> = Θ(<i>g</i>) ⟺ <i>g</i> = Θ(<i>f</i>), and <i>f</i> = O(<i>g</i>) ⟺ <i>g</i> = Ω(<i>f</i>)</div><div class="x">CLRS, p. 52. e.g. <span class="m"><i>n</i> = O(<i>n</i><sup>2</sup>)</span>, so <span class="m"><i>n</i><sup>2</sup> = Ω(<i>n</i>)</span></div></div></div>
+</div>
+<div class="block alert pf"><div class="bt">“=” only works one way</div><div class="bb"><span class="m"><i>n</i> = O(<i>n</i><sup>2</sup>)</span> and <span class="m"><i>n</i><sup>2</sup> = O(<i>n</i><sup>2</sup>)</span> do not give <i>n</i> = <i>n</i><sup>2</sup>. Read “=” as “is in”, and never write it the other way round, as in O(<i>n</i><sup>2</sup>) = <i>n</i>.</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

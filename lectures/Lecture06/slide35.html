@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Answer B: log <i>n</i> passes of <i>n</i></title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:12px 20px; }
+.codebox pre { font-size:19px; line-height:1.6; } .codebox .fn { font-weight:700; }
+
+.rw { display:grid; grid-template-columns:400px 1fr; gap:44px; align-items:center; }
+.codebox pre { font-size:17px; }
+table.tab td, table.tab th { text-align:center; font-size:20px; padding:6px 10px; }
+table.tab td { font-family:var(--serif); }
+.st { font-size:19px; line-height:1.45; padding:10px 0; border-bottom:1px solid var(--rule); }
+.st .m { font-family:var(--serif); font-size:22px; white-space:nowrap; }
+.cn { margin-top:16px; font-family:var(--serif); font-size:30px; }
+.cn b { color:var(--blue); }
+.tw { display:grid; grid-template-columns:1fr 330px; gap:28px; align-items:start; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Answer B: log <i>n</i> passes of <i>n</i></div>
+<div class="frame">
+<div class="rw"><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">COUNT-B</span>(n)
+<span class="ln">2</span>    count = 0
+<span class="ln">3</span>    k = 1
+<span class="ln">4</span>    <span class="kw">while</span> k ≤ n
+<span class="ln">5</span>        <span class="kw">for</span> j = 0 <span class="kw">to</span> n − 1
+<span class="ln">6</span>            count = count + 1
+<span class="ln">7</span>        k = 2 · k
+<span class="ln">8</span>    <span class="kw">return</span> count</pre></div><div><div class="k3">Count the runs</div><div class="tw"><div>
+<div class="st"><i>k</i> = 1, 2, 4, …, up to <i>n</i>: the outer loop runs <span class="m">⌊log<sub>2</sub> <i>n</i>⌋ + 1</span> times.</div>
+<div class="st">Each time, the inner loop runs <span class="m"><i>n</i></span> times, whatever <i>k</i> is.</div>
+<div class="st">Total: <span class="m"><i>n</i> (⌊log<sub>2</sub> <i>n</i>⌋ + 1)</span></div></div>
+<table class="tab"><thead><tr><th>pass</th><th><i>k</i></th><th>runs</th></tr></thead><tbody><tr><td>1</td><td>1</td><td>16</td></tr><tr><td>2</td><td>2</td><td>16</td></tr><tr><td>3</td><td>4</td><td>16</td></tr><tr><td>4</td><td>8</td><td>16</td></tr><tr><td>5</td><td>16</td><td>16</td></tr><tr><td colspan="2" style="font-family:var(--sans);font-size:16px">total, <i>n</i> = 16</td><td><b>80</b></td></tr></tbody></table></div>
+<p class="cn">COUNT-B is <b>Θ(<i>n</i> log <i>n</i>)</b></p></div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

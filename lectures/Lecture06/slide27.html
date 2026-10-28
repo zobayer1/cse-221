@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Answer: quick check</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+table.tab td, table.tab th { font-size:24px; padding:12px 14px; text-align:center; }
+table.tab td { font-family:var(--serif); }
+table.tab td.q { color:var(--grey); font-family:var(--sans); font-weight:700; }
+table.tab td.why { font-family:var(--sans); font-size:18px; color:var(--muted); text-align:left; }
+table.tab td.ok { color:var(--green); } table.tab td.no { color:var(--red); }
+table.tab th.n { width:70px; }
+.lead { font-family:var(--serif); font-size:30px; margin-bottom:20px; }
+.rt { margin-top:22px; }
+.rt .bb { font-size:20px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Answer: quick check</div>
+<div class="frame">
+<table class="tab"><thead><tr><th class="n"></th><th><i>f</i>(<i>n</i>)</th><th><i>g</i>(<i>n</i>)</th><th>O</th><th>Ω</th><th>Θ</th><th style="text-align:left">why: look at <i>f</i>(<i>n</i>) / <i>g</i>(<i>n</i>)</th></tr></thead><tbody><tr><td>a</td><td>200<i>n</i><sup>2</sup></td><td><i>n</i><sup>2</sup></td><td class="ok"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td class="ok"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td class="ok"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td class="why">ratio 200: a constant</td></tr><tr><td>b</td><td><i>n</i></td><td><i>n</i><sup>2</sup></td><td class="ok"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td class="no"><svg class="cross" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></td><td class="no"><svg class="cross" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></td><td class="why">ratio 1/<i>n</i> shrinks to 0</td></tr><tr><td>c</td><td><i>n</i><sup>2.5</sup></td><td><i>n</i><sup>2</sup></td><td class="no"><svg class="cross" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></td><td class="ok"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td class="no"><svg class="cross" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></td><td class="why">ratio √<i>n</i> grows without bound</td></tr><tr><td>d</td><td><i>n</i> log <i>n</i></td><td><i>n</i></td><td class="no"><svg class="cross" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></td><td class="ok"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td class="no"><svg class="cross" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></td><td class="why">ratio log <i>n</i> grows without bound</td></tr></tbody></table>
+<div class="block rt"><div class="bt">Rule of thumb: watch the ratio <i>f</i>(<i>n</i>) / <i>g</i>(<i>n</i>) as <i>n</i> grows</div><div class="bb">Settles at a constant &gt; 0: <b>Θ</b>. Shrinks to 0: <b>O</b> (in fact o), not Ω. Grows without bound: <b>Ω</b> (in fact ω), not O.</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

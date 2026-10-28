@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quick check</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+table.tab td, table.tab th { font-size:24px; padding:12px 14px; text-align:center; }
+table.tab td { font-family:var(--serif); }
+table.tab td.q { color:var(--grey); font-family:var(--sans); font-weight:700; }
+table.tab td.why { font-family:var(--sans); font-size:18px; color:var(--muted); text-align:left; }
+table.tab td.ok { color:var(--green); } table.tab td.no { color:var(--red); }
+table.tab th.n { width:70px; }
+.lead { font-family:var(--serif); font-size:30px; margin-bottom:20px; }
+.rt { margin-top:22px; }
+.rt .bb { font-size:20px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Quick check<span class="ftag">Discuss</span></div>
+<div class="frame">
+<p class="lead">For each pair, is <i>f</i>(<i>n</i>) = O(<i>g</i>(<i>n</i>))? Ω(<i>g</i>(<i>n</i>))? Θ(<i>g</i>(<i>n</i>))?</p>
+<table class="tab"><thead><tr><th class="n"></th><th><i>f</i>(<i>n</i>)</th><th><i>g</i>(<i>n</i>)</th><th>O</th><th>Ω</th><th>Θ</th></tr></thead><tbody><tr><td>a</td><td>200<i>n</i><sup>2</sup></td><td><i>n</i><sup>2</sup></td><td class="q">?</td><td class="q">?</td><td class="q">?</td></tr><tr><td>b</td><td><i>n</i></td><td><i>n</i><sup>2</sup></td><td class="q">?</td><td class="q">?</td><td class="q">?</td></tr><tr><td>c</td><td><i>n</i><sup>2.5</sup></td><td><i>n</i><sup>2</sup></td><td class="q">?</td><td class="q">?</td><td class="q">?</td></tr><tr><td>d</td><td><i>n</i> log <i>n</i></td><td><i>n</i></td><td class="q">?</td><td class="q">?</td><td class="q">?</td></tr></tbody></table>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

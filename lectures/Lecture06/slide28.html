@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asymptotic arithmetic (1)</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+
+.rl { border-top:2px solid var(--ink); }
+.rl > div { display:grid; grid-template-columns:44px 300px 1fr; gap:14px; align-items:baseline; padding:14px 0; border-bottom:1px solid var(--rule); }
+.rl b { font-family:var(--serif); font-size:24px; color:var(--blue); }
+.rl .n { font-size:20px; font-weight:700; }
+.rl .r { font-family:var(--serif); font-size:23px; }
+.rl .x { font-size:17px; color:var(--muted); margin-top:4px; font-family:var(--sans); }
+.rl .x .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; }
+.pf { margin-top:22px; }
+.pf .bb { font-size:19px; }
+.pf .m { font-family:var(--serif); white-space:nowrap; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Asymptotic arithmetic (1)</div>
+<div class="frame">
+<div class="rl">
+<div><b>1</b><span class="n">Constant factors drop</span><div><div class="r"><i>k</i> · <i>f</i>(<i>n</i>) = Θ(<i>f</i>(<i>n</i>)) for any constant <i>k</i> &gt; 0</div><div class="x">e.g. <span class="m">100<i>n</i><sup>2</sup> = Θ(<i>n</i><sup>2</sup>)</span>, <span class="m">(log <i>n</i>)/2 = Θ(log <i>n</i>)</span></div></div></div>
+<div><b>2</b><span class="n">A sum keeps its largest term</span><div><div class="r"><i>f</i>(<i>n</i>) + <i>g</i>(<i>n</i>) = Θ(max(<i>f</i>(<i>n</i>), <i>g</i>(<i>n</i>)))</div><div class="x">because <span class="m">max ≤ <i>f</i> + <i>g</i> ≤ 2 · max</span>. e.g. <span class="m"><i>n</i><sup>2</sup> + <i>n</i> log <i>n</i> = Θ(<i>n</i><sup>2</sup>)</span></div></div></div>
+<div><b>3</b><span class="n">A polynomial is its top power</span><div><div class="r"><i>a<sub>d</sub> n<sup>d</sup></i> + … + <i>a</i><sub>1</sub><i>n</i> + <i>a</i><sub>0</sub> = Θ(<i>n<sup>d</sup></i>) when <i>a<sub>d</sub></i> &gt; 0</div><div class="x">e.g. <span class="m">3<i>n</i><sup>3</sup> − 100<i>n</i><sup>2</sup> + 7 = Θ(<i>n</i><sup>3</sup>)</span> (CLRS, p. 46)</div></div></div>
+</div>
+<div class="block alert pf"><div class="bt">Two input sizes? Keep both</div><div class="bb">Reading an array of size <i>m</i> and then one of size <i>n</i> takes <span class="m">Θ(<i>m</i> + <i>n</i>)</span>. Writing just Θ(<i>n</i>) is only right if we know <span class="m"><i>m</i> = O(<i>n</i>)</span>.</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

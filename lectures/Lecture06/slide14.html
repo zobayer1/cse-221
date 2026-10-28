@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trading <i>c</i> for <i>n</i><sub>0</sub></title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.rw { display:grid; grid-template-columns:1fr 470px; gap:44px; align-items:center; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.q { font-family:var(--serif); font-size:24px; line-height:1.4; margin-top:12px; }
+.ex { margin-top:12px; font-size:19px; line-height:1.45; color:var(--muted); }
+.ex .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; }
+.ex b { color:var(--ink); }
+table.tab td, table.tab th { text-align:center; font-size:20px; padding:7px 10px; }
+table.tab td { font-family:var(--serif); }
+table.tab td.ok { color:var(--green); } table.tab td.no { color:var(--red); }
+table.tab tr.from td { border-top:2px solid var(--blue); }
+.tip { margin-top:26px; }
+.tip .bb { font-size:19px; }
+.tip .m { font-family:var(--serif); white-space:nowrap; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Trading <i>c</i> for <i>n</i><sub>0</sub></div>
+<div class="frame">
+<div class="rw"><div><div class="k3">Another pair</div>
+<p class="q">Can <i>c</i> = 3 work for 2<i>n</i><sup>2</sup> + 3<i>n</i> + 5 ≤ <i>c</i> · <i>n</i><sup>2</sup>?</p>
+<p class="ex">We need <span class="m">2<i>n</i><sup>2</sup> + 3<i>n</i> + 5 ≤ 3<i>n</i><sup>2</sup></span>, that is <span class="m"><i>n</i><sup>2</sup> ≥ 3<i>n</i> + 5</span>. It fails for <i>n</i> ≤ 4 and holds <b>from <i>n</i> = 5 on</b>: once <i>n</i> ≥ 5, <i>n</i><sup>2</sup> ≥ 5<i>n</i> = 3<i>n</i> + 2<i>n</i> ≥ 3<i>n</i> + 10.</p>
+<p class="ex">So <span class="m"><i>c</i> = 3, <i>n</i><sub>0</sub> = 5</span> works too. Both pairs prove the same thing.</p>
+</div>
+<table class="tab"><thead><tr><th></th><th>2<i>n</i><sup>2</sup> + 3<i>n</i> + 5</th><th>3<i>n</i><sup>2</sup></th><th></th></tr></thead><tbody><tr><td><i>n</i> = 1</td><td>10</td><td>3</td><td class="no"><svg class="cross" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></td></tr><tr><td><i>n</i> = 2</td><td>19</td><td>12</td><td class="no"><svg class="cross" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></td></tr><tr><td><i>n</i> = 3</td><td>32</td><td>27</td><td class="no"><svg class="cross" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></td></tr><tr><td><i>n</i> = 4</td><td>49</td><td>48</td><td class="no"><svg class="cross" viewBox="0 0 16 16"><path d="M4 4l8 8M12 4l-8 8"/></svg></td></tr><tr class="from"><td><i>n</i> = 5</td><td>70</td><td>75</td><td class="ok"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td></tr><tr><td><i>n</i> = 6</td><td>95</td><td>108</td><td class="ok"><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td></tr></tbody></table></div>
+<div class="block tip"><div class="bt">Tip: for an upper bound, drop the negative terms</div><div class="bb">Dropping a negative term makes the expression larger, so a ceiling for the larger one is a ceiling for <i>f</i> too. <span style="white-space:nowrap">For <i>n</i> ≥ 1:</span> <span class="m">5<i>n</i><sup>3</sup> − 2<i>n</i><sup>2</sup> + 4 ≤ 5<i>n</i><sup>3</sup> + 4 ≤ 5<i>n</i><sup>3</sup> + 4<i>n</i><sup>3</sup> = 9<i>n</i><sup>3</sup></span>, so <span class="m"><i>c</i> = 9, <i>n</i><sub>0</sub> = 1</span>.</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>
