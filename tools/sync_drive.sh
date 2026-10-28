@@ -7,7 +7,8 @@
 #   tools/sync_drive.sh ls [path]      # list the Drive folder (recursively)
 #
 # _drive/ has the Drive folder's layout and names: Lectures/LectureNN.pdf (Lecture00 is the
-# Introduction), Quizzes/QN/CSE221_QuizN[_Answers].pdf, Assignments/assignmentN.pdf, Simulations/*. What goes in comes from site/content.json, as for the
+# Introduction), Quizzes/QN/CSE221_QuizN[_Answers].pdf, Assignments/assignmentN.pdf, Practice/<paper>.pdf (practice
+# sheets with answers, from assignments/practice/), Simulations/*. What goes in comes from site/content.json, as for the
 # website: only entries marked "released": true, and quiz answers only once answersReleased is
 # also true. Build PDFs first with tools/make_pdf.sh.
 #
@@ -47,6 +48,9 @@ for q in c["quizzes"]:
 for a in c["assignments"]:
     if a.get("released"):
         plan[f"Assignments/{a['dir']}.pdf"] = f"assignments/{a['dir']}/{a['paper'][:-5]}.pdf"
+for p in c.get("practice", []):
+    if p.get("released"):
+        plan[f"Practice/{p['paper'][:-5]}.pdf"] = f"assignments/{p['dir']}/{p['paper'][:-5]}.pdf"
 for s in c["simulators"]:
     if not s.get("released"):
         continue

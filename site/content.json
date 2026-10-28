@@ -39,6 +39,10 @@
     { "dir": "assignment1", "title": "Assignment 1", "subtitle": "Distributed Merge Sort with a Round-Robin Thread Pool", "due": "30 November 2026, 11:59 PM", "paper": "assignment1.html", "released": true }
   ],
 
+  "practice": [
+    { "dir": "practice", "paper": "asymptotic.html", "title": "Asymptotic Notation Practice", "lecture": "Lecture06", "released": true }
+  ],
+
   "links": [
     { "group": "Textbooks", "items": [
       { "title": "Introduction to Algorithms (CLRS), 3rd edition", "by": "Cormen, Leiserson, Rivest and Stein · The MIT Press, 2009 · main textbook", "url": "https://www.amazon.com/dp/0262033844" },

@@ -1,0 +1,149 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSE 221 Asymptotic Notation Practice</title>
+<style>
+@font-face { font-family:'CMU Sans Serif'; font-weight:400; src:url(../../lectures/theme/fonts/cmu-sans-serif-500-roman.woff2) format('woff2'); }
+@font-face { font-family:'CMU Sans Serif'; font-style:italic; font-weight:400; src:url(../../lectures/theme/fonts/cmu-sans-serif-500-italic.woff2) format('woff2'); }
+@font-face { font-family:'CMU Sans Serif'; font-weight:700; src:url(../../lectures/theme/fonts/cmu-sans-serif-700-roman.woff2) format('woff2'); }
+@font-face { font-family:'CMU Serif'; font-weight:400; src:url(../../lectures/theme/fonts/cmu-serif-500-roman.woff2) format('woff2'); }
+@font-face { font-family:'CMU Serif'; font-style:italic; font-weight:400; src:url(../../lectures/theme/fonts/cmu-serif-500-italic.woff2) format('woff2'); }
+@font-face { font-family:'CMU Serif'; font-weight:700; src:url(../../lectures/theme/fonts/cmu-serif-700-roman.woff2) format('woff2'); }
+@font-face { font-family:'CMU Typewriter Text'; font-weight:400; src:url(../../lectures/theme/fonts/cmu-typewriter-text-500-roman.woff2) format('woff2'); }
+@font-face { font-family:'CMU Typewriter Text'; font-weight:700; src:url(../../lectures/theme/fonts/cmu-typewriter-text-700-roman.woff2) format('woff2'); }
+@font-face { font-family:'KaTeX_Main'; font-weight:400; src:url(../../lectures/theme/fonts/KaTeX_Main-Regular.woff2) format('woff2'); }
+@font-face { font-family:'KaTeX_Size1'; font-weight:400; src:url(../../lectures/theme/fonts/KaTeX_Size1-Regular.woff2) format('woff2'); }
+:root { --blue:#2B5BAA; --blue-d:#1F4A8F; --tint:#E9EEF7; --tint-2:#F4F6FB; --ink:#000; --muted:#555; --grey:#A7A9AC; --rule:#C9CCD1; --red:#C62828; --green:#2E7D32;
+  --sans:'CMU Sans Serif','KaTeX_Main','KaTeX_Size1',sans-serif; --serif:'CMU Serif','KaTeX_Main','KaTeX_Size1',serif; --mono:'CMU Typewriter Text','KaTeX_Main','KaTeX_Size1',monospace; }
+@page { size:A4; margin:14mm 15mm 14mm; }
+* { box-sizing:border-box; margin:0; padding:0; }
+html { background:#d9dbde; }
+body { font-family:var(--sans); color:var(--ink); font-size:10.5pt; line-height:1.45; }
+.sheet { width:210mm; min-height:297mm; margin:10mm auto; background:#fff; padding:14mm 15mm; box-shadow:0 2px 10px rgba(0,0,0,.2); }
+@media print { html { background:#fff; } .sheet { width:auto; min-height:0; margin:0; padding:0; box-shadow:none; } }
+i, .m { font-family:var(--serif); }
+i { font-style:italic; }
+.m { white-space:nowrap; }
+.bar { background:var(--blue); color:#fff; display:flex; justify-content:space-between; align-items:center; padding:2.2mm 5mm; font-size:15pt; }
+.bar .r { font-size:10.5pt; display:flex; gap:3mm; align-items:center; }
+.bar .tag { background:#000; color:#fff; font-size:8pt; font-weight:700; letter-spacing:.08em; padding:.6mm 2mm; text-transform:uppercase; }
+.meta { display:flex; gap:4mm; align-items:center; padding:2.5mm 0 3mm; border-bottom:.8pt solid var(--ink); }
+.meta img { height:10mm; }
+.meta .t { font-family:var(--serif); font-size:12pt; font-weight:700; line-height:1.2; }
+.meta .t span { display:block; font-family:var(--sans); font-weight:400; font-size:9pt; color:var(--muted); }
+.intro { margin-top:3mm; }
+.tb { margin:3mm 0 1mm; background:var(--tint-2); border-left:1.6mm solid var(--blue); padding:2mm 4mm; font-size:9.5pt; break-inside:avoid; }
+.tb .h { font-weight:700; color:var(--blue); font-size:8.5pt; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.8mm; }
+.tb table { border-collapse:collapse; width:100%; }
+.tb td { padding:.5mm 2mm .5mm 0; vertical-align:baseline; }
+.tb td:first-child { font-family:var(--serif); width:30mm; color:var(--blue); white-space:nowrap; }
+h2 { font-family:var(--serif); font-size:13pt; margin:6mm 0 1mm; padding-bottom:1mm; border-bottom:.8pt solid var(--ink); break-after:avoid; }
+h2 b { color:var(--blue); margin-right:2mm; }
+.lead { color:var(--muted); font-size:9.5pt; margin-bottom:1.5mm; }
+ol.q { margin-left:7mm; }
+ol.q > li { margin:1.6mm 0; padding-left:1mm; break-inside:avoid; }
+ol.q > li::marker { font-weight:700; color:var(--blue); }
+.ch { font-size:8pt; font-weight:700; color:var(--red); letter-spacing:.06em; text-transform:uppercase; margin-left:1.5mm; }
+table.cmp { border-collapse:collapse; width:100%; margin-top:1mm; }
+table.cmp th, table.cmp td { padding:1.1mm 2mm; text-align:center; border-bottom:.4pt solid var(--rule); }
+table.cmp thead th { border-top:.8pt solid var(--ink); border-bottom:.6pt solid var(--ink); font-weight:700; }
+table.cmp tbody tr:last-child td { border-bottom:.8pt solid var(--ink); }
+table.cmp td.f { font-family:var(--serif); font-size:11pt; }
+.bx { display:inline-block; width:3.6mm; height:3.6mm; border:.7pt solid var(--ink); vertical-align:-.6mm; }
+svg.tick { width:3.8mm; height:3.8mm; vertical-align:-.7mm; fill:none; stroke:var(--green); stroke-width:2.6; stroke-linecap:round; stroke-linejoin:round; }
+.fl { font-family:var(--serif); font-size:11pt; line-height:1.9; }
+.cg { display:grid; grid-template-columns:1fr 1fr; gap:3mm 5mm; margin-top:1.5mm; }
+.cg > div { break-inside:avoid; }
+.cg .lb { font-weight:700; color:var(--blue); margin-bottom:.6mm; }
+.cg .lb .ch { font-weight:700; }
+.code { background:var(--tint); border-left:1.2mm solid var(--blue); padding:1.6mm 3mm; }
+.code pre { font-family:var(--mono); font-size:9pt; line-height:1.5; white-space:pre; }
+.code .ln { color:var(--grey); display:inline-block; width:5mm; }
+.code .kw { color:var(--blue); font-weight:700; }
+.code .fn { font-weight:700; }
+.key { color:var(--blue-d); font-size:9.5pt; margin-top:.8mm; padding-left:2.5mm; border-left:.8mm solid var(--blue); }
+.key b { font-weight:700; }
+.foot { margin-top:6mm; padding-top:2mm; border-top:.6pt solid var(--rule); font-size:8.5pt; color:var(--muted); }
+</style></head><body><div class="sheet">
+<div class="bar"><span>Practice Problems: Asymptotic Notation</span><span class="r"><span class="tag">With answers</span>Lecture 6</span></div>
+<div class="meta"><img src="../../lectures/theme/img/brac-logo.png" alt="BRAC University logo"><div class="t">CSE 221 – Algorithms<span>Zobayer Hasan (ZBYR) · Fall 2026 · Section 19</span></div></div>
+<p class="intro">These problems practice Lecture 6. Work them out on paper. In every proof, <b>state your constants</b> (<i>c</i>, or <i>c</i><sub>1</sub> and <i>c</i><sub>2</sub>, and <i>n</i><sub>0</sub>) and check that they work for <b>every</b> <i>n</i> ≥ <i>n</i><sub>0</sub>. Problems marked <span class="ch" style="margin:0">Challenge</span> go a step further than the lecture. Each problem is followed by a worked answer in blue: try the problem first, then check.</p>
+<div class="tb"><div class="h">Toolbox from the lecture</div><table>
+<tr><td><i>f</i> = O(<i>g</i>)</td><td>there are constants <i>c</i>, <i>n</i><sub>0</sub> &gt; 0 with <span class="m">0 ≤ <i>f</i>(<i>n</i>) ≤ <i>c</i> · <i>g</i>(<i>n</i>)</span> for all <i>n</i> ≥ <i>n</i><sub>0</sub> (like ≤)</td></tr>
+<tr><td><i>f</i> = Ω(<i>g</i>)</td><td>there are constants <i>c</i>, <i>n</i><sub>0</sub> &gt; 0 with <span class="m">0 ≤ <i>c</i> · <i>g</i>(<i>n</i>) ≤ <i>f</i>(<i>n</i>)</span> for all <i>n</i> ≥ <i>n</i><sub>0</sub> (like ≥)</td></tr>
+<tr><td><i>f</i> = Θ(<i>g</i>)</td><td>both at once: <span class="m"><i>c</i><sub>1</sub> · <i>g</i>(<i>n</i>) ≤ <i>f</i>(<i>n</i>) ≤ <i>c</i><sub>2</sub> · <i>g</i>(<i>n</i>)</span> for all <i>n</i> ≥ <i>n</i><sub>0</sub> (like =)</td></tr>
+<tr><td><i>f</i> = o(<i>g</i>), ω(<i>g</i>)</td><td>strict versions (like &lt; and &gt;): the inequality must hold for <b>every</b> constant <i>c</i> &gt; 0</td></tr>
+</table></div>
+<h2><b>A</b>Prove it with the definitions</h2><p class="lead">Find the constants, or show that no constants can work.</p><ol class="q"><li>Show that <span class="m">3<i>n</i> + 7 = O(<i>n</i>)</span>.<div class="key">For <i>n</i> ≥ 1, 7 ≤ 7<i>n</i>, so 3<i>n</i> + 7 ≤ 10<i>n</i>: <b><i>c</i> = 10, <i>n</i><sub>0</sub> = 1</b>. (Also <i>c</i> = 4, <i>n</i><sub>0</sub> = 7, since 7 ≤ <i>n</i> from <i>n</i> = 7 on.)</div></li><li>Show that <span class="m">20<i>n</i><sup>2</sup> + 2<i>n</i> + 5 = O(<i>n</i><sup>2</sup>)</span> using <i>c</i> = 21. What is the smallest <i>n</i><sub>0</sub> that works with this <i>c</i>?<div class="key">We need <i>n</i><sup>2</sup> ≥ 2<i>n</i> + 5. At <i>n</i> = 3: 9 &lt; 11 fails. At <i>n</i> = 4: 16 ≥ 13 holds, and <i>n</i><sup>2</sup> grows faster than 2<i>n</i> + 5 from there on. Smallest <b><i>n</i><sub>0</sub> = 4</b>.</div></li><li>Show that <span class="m">1000<i>n</i><sup>2</sup> + 1000<i>n</i> = O(<i>n</i><sup>2</sup>)</span>. Give two different pairs (<i>c</i>, <i>n</i><sub>0</sub>) that work.<div class="key"><b><i>c</i> = 2000, <i>n</i><sub>0</sub> = 1</b>, since 1000<i>n</i> ≤ 1000<i>n</i><sup>2</sup> for <i>n</i> ≥ 1. Or <b><i>c</i> = 1001, <i>n</i><sub>0</sub> = 1000</b>, since 1000<i>n</i> ≤ <i>n</i><sup>2</sup> exactly when <i>n</i> ≥ 1000. (<i>c</i> = 1001 with <i>n</i><sub>0</sub> = 1 fails: at <i>n</i> = 1, 2000 &gt; 1001.)</div></li><li>Show that <span class="m">2<i>n</i><sup>2</sup> − 7<i>n</i> + 3 = Ω(<i>n</i><sup>2</sup>)</span>.<div class="key">For <i>n</i> ≥ 7, 7<i>n</i> ≤ <i>n</i><sup>2</sup>, so 2<i>n</i><sup>2</sup> − 7<i>n</i> + 3 ≥ 2<i>n</i><sup>2</sup> − <i>n</i><sup>2</sup> + 3 ≥ <i>n</i><sup>2</sup>: <b><i>c</i> = 1, <i>n</i><sub>0</sub> = 7</b>. (Also 2<i>n</i><sup>2</sup> − 7<i>n</i> + 3 ≥ 0 from <i>n</i> = 3 on, as the definition needs.)</div></li><li>Show that <span class="m">20<i>n</i><sup>3</sup> + 7<i>n</i> + 1000 = Θ(<i>n</i><sup>3</sup>)</span>.<div class="key">Floor: dropping the positive terms, ≥ 20<i>n</i><sup>3</sup> for <i>n</i> ≥ 1. Ceiling: for <i>n</i> ≥ 1, 7<i>n</i> ≤ 7<i>n</i><sup>3</sup> and 1000 ≤ 1000<i>n</i><sup>3</sup>, so ≤ 1027<i>n</i><sup>3</sup>. <b><i>c</i><sub>1</sub> = 20, <i>c</i><sub>2</sub> = 1027, <i>n</i><sub>0</sub> = 1</b>. (A tighter ceiling: <i>c</i><sub>2</sub> = 21 works from <i>n</i><sub>0</sub> = 11, not 10: at <i>n</i> = 10, 1000 &lt; 1070.)</div></li><li>Show that <span class="m">2<sup><i>n</i></sup> + <i>n</i><sup>2</sup> = O(2<sup><i>n</i></sup>)</span>.<div class="key"><i>n</i><sup>2</sup> ≤ 2<sup><i>n</i></sup> for every <i>n</i> ≥ 4 (16 = 16 at <i>n</i> = 4; after that 2<sup><i>n</i></sup> doubles while <i>n</i><sup>2</sup> grows by a factor of at most 25/16 &lt; 2). So 2<sup><i>n</i></sup> + <i>n</i><sup>2</sup> ≤ 2 · 2<sup><i>n</i></sup>: <b><i>c</i> = 2, <i>n</i><sub>0</sub> = 4</b>. (At <i>n</i> = 3: 17 &gt; 16.)</div></li><li>Show that <span class="m"><i>n</i><sup>3</sup> ≠ O(<i>n</i><sup>2</sup>)</span>.<div class="key">Suppose <i>n</i><sup>3</sup> ≤ <i>c</i> · <i>n</i><sup>2</sup> for all <i>n</i> ≥ <i>n</i><sub>0</sub>. Dividing by <i>n</i><sup>2</sup>: <i>n</i> ≤ <i>c</i> for all <i>n</i> ≥ <i>n</i><sub>0</sub>. This fails at <i>n</i> = max(<i>n</i><sub>0</sub>, ⌈<i>c</i>⌉ + 1). So no pair works.</div></li><li>Show that <span class="m"><i>n</i> ≠ Ω(<i>n</i> log <i>n</i>)</span>.<div class="key">Suppose <i>n</i> ≥ <i>c</i> · <i>n</i> log <i>n</i> for all <i>n</i> ≥ <i>n</i><sub>0</sub>. Dividing by <i>n</i>: log <i>n</i> ≤ 1/<i>c</i>, which fails once <i>n</i> &gt; 2<sup>1/<i>c</i></sup>. So no pair works.</div></li><li>Is <span class="m">2<sup><i>n</i> + 1</sup> = O(2<sup><i>n</i></sup>)</span>? Is <span class="m">2<sup>2<i>n</i></sup> = O(2<sup><i>n</i></sup>)</span>? Prove both answers. (CLRS Exercise 3.1-4)<div class="key"><b>Yes</b>: 2<sup><i>n</i> + 1</sup> = 2 · 2<sup><i>n</i></sup>, so <i>c</i> = 2, <i>n</i><sub>0</sub> = 1. <b>No</b>: 2<sup>2<i>n</i></sup> ≤ <i>c</i> · 2<sup><i>n</i></sup> means 2<sup><i>n</i></sup> ≤ <i>c</i>, which fails once <i>n</i> &gt; log<sub>2</sub> <i>c</i>.</div></li><li>For functions <i>f</i>, <i>g</i> ≥ 0, prove that <span class="m">max(<i>f</i>(<i>n</i>), <i>g</i>(<i>n</i>)) = Θ(<i>f</i>(<i>n</i>) + <i>g</i>(<i>n</i>))</span>. (CLRS Exercise 3.1-1) <span class="ch">Challenge</span><div class="key">The larger of two non-negative numbers is at least half their sum and at most the sum: ½(<i>f</i> + <i>g</i>) ≤ max(<i>f</i>, <i>g</i>) ≤ <i>f</i> + <i>g</i>. So <b><i>c</i><sub>1</sub> = 1/2, <i>c</i><sub>2</sub> = 1, <i>n</i><sub>0</sub> = 1</b>.</div></li></ol><h2><b>B</b>O, Ω or Θ?</h2><p class="lead">For each pair, tick every statement that is true. More than one can be true, and log means log<sub>2</sub>.</p><table class="cmp"><thead><tr><th></th><th><i>f</i>(<i>n</i>)</th><th><i>g</i>(<i>n</i>)</th><th><i>f</i> = O(<i>g</i>)</th><th><i>f</i> = Ω(<i>g</i>)</th><th><i>f</i> = Θ(<i>g</i>)</th><th style=text-align:left>why</th></tr></thead><tbody><tr><td>(a)</td><td class="f">log <i>n</i><sup>2</sup></td><td class="f">log <i>n</i> + 5</td><td><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td style="text-align:left;color:var(--blue-d);font-size:9pt">log <i>n</i><sup>2</sup> = 2 log <i>n</i></td></tr><tr><td>(b)</td><td class="f"><i>n</i></td><td class="f">log <i>n</i><sup>2</sup></td><td></td><td><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td></td><td style="text-align:left;color:var(--blue-d);font-size:9pt">ratio <i>n</i> / (2 log <i>n</i>) grows</td></tr><tr><td>(c)</td><td class="f">log log <i>n</i></td><td class="f">log <i>n</i></td><td><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td></td><td></td><td style="text-align:left;color:var(--blue-d);font-size:9pt">substitute <i>m</i> = log <i>n</i>: log <i>m</i> vs <i>m</i></td></tr><tr><td>(d)</td><td class="f"><i>n</i></td><td class="f">log<sup>2</sup> <i>n</i></td><td></td><td><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td></td><td style="text-align:left;color:var(--blue-d);font-size:9pt">any power of <i>n</i> beats any power of log <i>n</i></td></tr><tr><td>(e)</td><td class="f"><i>n</i> log <i>n</i> + <i>n</i></td><td class="f">log <i>n</i></td><td></td><td><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td></td><td style="text-align:left;color:var(--blue-d);font-size:9pt">ratio is about <i>n</i></td></tr><tr><td>(f)</td><td class="f">10</td><td class="f">log 10</td><td><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td style="text-align:left;color:var(--blue-d);font-size:9pt">both are constants</td></tr><tr><td>(g)</td><td class="f">2<i>n</i></td><td class="f">10<i>n</i><sup>2</sup></td><td><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td></td><td></td><td style="text-align:left;color:var(--blue-d);font-size:9pt">ratio 1/(5<i>n</i>) shrinks to 0</td></tr><tr><td>(h)</td><td class="f">2<sup><i>n</i></sup></td><td class="f">3<sup><i>n</i></sup></td><td><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td></td><td></td><td style="text-align:left;color:var(--blue-d);font-size:9pt">ratio (2/3)<sup><i>n</i></sup> shrinks to 0</td></tr><tr><td>(i)</td><td class="f">√<i>n</i></td><td class="f">log <i>n</i></td><td></td><td><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td></td><td style="text-align:left;color:var(--blue-d);font-size:9pt">a power of <i>n</i> beats log <i>n</i></td></tr><tr><td>(j)</td><td class="f"><i>n</i><sup>1.01</sup></td><td class="f"><i>n</i> log<sup>2</sup> <i>n</i></td><td></td><td><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td></td><td style="text-align:left;color:var(--blue-d);font-size:9pt">compare <i>n</i><sup>0.01</sup> with log<sup>2</sup> <i>n</i>: the power wins, eventually</td></tr><tr><td>(k)</td><td class="f"><i>n</i>!</td><td class="f">2<sup><i>n</i></sup></td><td></td><td><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td></td><td style="text-align:left;color:var(--blue-d);font-size:9pt"><i>n</i>! = ω(2<sup><i>n</i></sup>), CLRS eq. 3.19</td></tr><tr><td>(l)</td><td class="f">2<sup>log<sub>2</sub> <i>n</i></sup></td><td class="f"><i>n</i></td><td><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td><svg class="tick" viewBox="0 0 16 16"><path d="M3 8.5l3.3 3.3L13 4.6"/></svg></td><td style="text-align:left;color:var(--blue-d);font-size:9pt">they are equal: 2<sup>log<sub>2</sub> <i>n</i></sup> = <i>n</i></td></tr></tbody></table><h2><b>C</b>Order by growth</h2><p class="lead">List these from slowest-growing to fastest-growing. Put functions that are Θ of each other in the same group.</p><p class="fl"><i>n</i><sup>2</sup>, 2<sup><i>n</i></sup>, <i>n</i> log <i>n</i>, log<sub>2</sub> <i>n</i>, √<i>n</i>, <i>n</i>!, 100, <i>n</i><sup>3</sup>, log<sub>2</sub>(<i>n</i><sup>2</sup>), 3<i>n</i> + 5, <i>n</i><sup>1.5</sup>, 2<sup><i>n</i> + 1</sup>, log<sub>10</sub> <i>n</i></p><div class="key">100 &nbsp;≺&nbsp; { log<sub>2</sub> <i>n</i>, log<sub>10</sub> <i>n</i>, log<sub>2</sub>(<i>n</i><sup>2</sup>) } &nbsp;≺&nbsp; √<i>n</i> &nbsp;≺&nbsp; 3<i>n</i> + 5 &nbsp;≺&nbsp; <i>n</i> log <i>n</i> &nbsp;≺&nbsp; <i>n</i><sup>1.5</sup> &nbsp;≺&nbsp; <i>n</i><sup>2</sup> &nbsp;≺&nbsp; <i>n</i><sup>3</sup> &nbsp;≺&nbsp; { 2<sup><i>n</i></sup>, 2<sup><i>n</i> + 1</sup> } &nbsp;≺&nbsp; <i>n</i>!. The three logs differ only by constant factors; 2<sup><i>n</i> + 1</sup> = 2 · 2<sup><i>n</i></sup>.</div><h2><b>D</b>Simplify</h2><p class="lead">Give the simplest <i>g</i>(<i>n</i>) with <i>f</i>(<i>n</i>) = Θ(<i>g</i>(<i>n</i>)), using the rules from the lecture.</p><ol class="q" type="a"><li><span class="m">5<i>n</i><sup>3</sup> + 2<i>n</i><sup>2</sup> log <i>n</i> + 1000</span><div class="key">Θ(<i>n</i><sup>3</sup>): the sum keeps its largest term.</div></li><li><span class="m">(<i>n</i> + 3)(<i>n</i> log <i>n</i> + 1)</span><div class="key">Θ(<i>n</i><sup>2</sup> log <i>n</i>): Θ(<i>n</i>) · Θ(<i>n</i> log <i>n</i>).</div></li><li><span class="m">log(<i>n</i><sup>3</sup>) + log(5<i>n</i>)</span><div class="key">Θ(log <i>n</i>): 3 log <i>n</i> + log 5 + log <i>n</i>.</div></li><li><span class="m">3<sup><i>n</i></sup> + <i>n</i><sup>100</sup></span><div class="key">Θ(3<sup><i>n</i></sup>): any exponential beats any polynomial.</div></li><li><span class="m">(<i>n</i><sup>2</sup> + <i>n</i>) / (<i>n</i> + 1)</span><div class="key">Θ(<i>n</i>): it equals <i>n</i>(<i>n</i> + 1)/(<i>n</i> + 1) = <i>n</i>.</div></li><li><span class="m">4<sup>log<sub>2</sub> <i>n</i></sup></span><div class="key">Θ(<i>n</i><sup>2</sup>): 4<sup>log<sub>2</sub> <i>n</i></sup> = (2<sup>log<sub>2</sub> <i>n</i></sup>)<sup>2</sup> = <i>n</i><sup>2</sup>.</div></li><li><span class="m"><i>n</i><sup>2</sup>/log <i>n</i> + <i>n</i>√<i>n</i></span><div class="key">Θ(<i>n</i><sup>2</sup>/log <i>n</i>): their ratio is √<i>n</i>/log <i>n</i>, which grows.</div></li><li><span class="m"><i>m</i><sup>2</sup> + <i>n</i> log <i>n</i> (two input sizes <i>m</i> and <i>n</i>)</span><div class="key">Θ(<i>m</i><sup>2</sup> + <i>n</i> log <i>n</i>): neither term can be dropped without knowing how <i>m</i> and <i>n</i> compare.</div></li></ol><h2><b>E</b>Analyze the loops</h2><p class="lead">Give a Θ bound on the running time of each procedure, in terms of <i>n</i>. Every simple step takes Θ(1). Arrays are 0-indexed, as in the slides.</p><div class="cg"><div><div class="lb">1. <span class="fn">TWO-LOOPS</span> </div><div class="code"><pre><span class="ln">1</span><span class="fn">TWO-LOOPS</span>(n)
+<span class="ln">2</span>    s = 0
+<span class="ln">3</span>    <span class="kw">for</span> i = 0 <span class="kw">to</span> n − 1
+<span class="ln">4</span>        s = s + i
+<span class="ln">5</span>    <span class="kw">for</span> j = 0 <span class="kw">to</span> n − 1
+<span class="ln">6</span>        s = s + 2 · j
+<span class="ln">7</span>    <span class="kw">return</span> s</pre></div><div class="key"><b>Θ(<i>n</i>)</b>: two loops one after another, <i>n</i> + <i>n</i> iterations.</div></div><div><div class="lb">2. <span class="fn">NESTED</span> </div><div class="code"><pre><span class="ln">1</span><span class="fn">NESTED</span>(n)
+<span class="ln">2</span>    count = 0
+<span class="ln">3</span>    <span class="kw">for</span> i = 0 <span class="kw">to</span> n − 1
+<span class="ln">4</span>        <span class="kw">for</span> j = 0 <span class="kw">to</span> n − 1
+<span class="ln">5</span>            count = count + 1
+<span class="ln">6</span>    <span class="kw">return</span> count</pre></div><div class="key"><b>Θ(<i>n</i><sup>2</sup>)</b>: <i>n</i> · <i>n</i> iterations.</div></div><div><div class="lb">3. <span class="fn">UPPER-TRIANGLE</span> </div><div class="code"><pre><span class="ln">1</span><span class="fn">UPPER-TRIANGLE</span>(n)
+<span class="ln">2</span>    count = 0
+<span class="ln">3</span>    <span class="kw">for</span> i = 0 <span class="kw">to</span> n − 1
+<span class="ln">4</span>        <span class="kw">for</span> j = i <span class="kw">to</span> n − 1
+<span class="ln">5</span>            count = count + 1
+<span class="ln">6</span>    <span class="kw">return</span> count</pre></div><div class="key"><b>Θ(<i>n</i><sup>2</sup>)</b>: <i>n</i> + (<i>n</i> − 1) + … + 1 = <i>n</i>(<i>n</i> + 1)/2.</div></div><div><div class="lb">4. <span class="fn">TRIANGLE-THEN-FILL</span> </div><div class="code"><pre><span class="ln">1</span><span class="fn">TRIANGLE-THEN-FILL</span>(A, n)
+<span class="ln">2</span>    count = 0
+<span class="ln">3</span>    <span class="kw">for</span> j = 0 <span class="kw">to</span> n − 1
+<span class="ln">4</span>        <span class="kw">for</span> i = 0 <span class="kw">to</span> j
+<span class="ln">5</span>            count = count + 1
+<span class="ln">6</span>    <span class="kw">for</span> k = 0 <span class="kw">to</span> n − 1
+<span class="ln">7</span>        A[k] = k
+<span class="ln">8</span>    <span class="kw">return</span> count</pre></div><div class="key"><b>Θ(<i>n</i><sup>2</sup>)</b>: <i>n</i>(<i>n</i> + 1)/2 + <i>n</i>; the sum keeps the larger part.</div></div><div><div class="lb">5. <span class="fn">HALVING</span> </div><div class="code"><pre><span class="ln">1</span><span class="fn">HALVING</span>(n)
+<span class="ln">2</span>    count = 0
+<span class="ln">3</span>    k = n
+<span class="ln">4</span>    <span class="kw">while</span> k ≥ 1
+<span class="ln">5</span>        count = count + 1
+<span class="ln">6</span>        k = ⌊k / 2⌋
+<span class="ln">7</span>    <span class="kw">return</span> count</pre></div><div class="key"><b>Θ(log <i>n</i>)</b>: <i>k</i> halves each time, so ⌊log<sub>2</sub> <i>n</i>⌋ + 1 iterations.</div></div><div><div class="lb">6. <span class="fn">LOG-INSIDE</span> </div><div class="code"><pre><span class="ln">1</span><span class="fn">LOG-INSIDE</span>(n)
+<span class="ln">2</span>    count = 0
+<span class="ln">3</span>    <span class="kw">for</span> i = 0 <span class="kw">to</span> n − 1
+<span class="ln">4</span>        k = 1
+<span class="ln">5</span>        <span class="kw">while</span> k &lt; n
+<span class="ln">6</span>            k = 2 · k
+<span class="ln">7</span>            count = count + 1
+<span class="ln">8</span>    <span class="kw">return</span> count</pre></div><div class="key"><b>Θ(<i>n</i> log <i>n</i>)</b>: each of the <i>n</i> outer iterations runs the inner loop ⌈log<sub>2</sub> <i>n</i>⌉ times.</div></div><div><div class="lb">7. <span class="fn">HALVING-INNER</span> </div><div class="code"><pre><span class="ln">1</span><span class="fn">HALVING-INNER</span>(n)
+<span class="ln">2</span>    count = 0
+<span class="ln">3</span>    k = n
+<span class="ln">4</span>    <span class="kw">while</span> k ≥ 1
+<span class="ln">5</span>        <span class="kw">for</span> j = 0 <span class="kw">to</span> k − 1
+<span class="ln">6</span>            count = count + 1
+<span class="ln">7</span>        k = ⌊k / 2⌋
+<span class="ln">8</span>    <span class="kw">return</span> count</pre></div><div class="key"><b>Θ(<i>n</i>)</b>: <i>n</i> + <i>n</i>/2 + <i>n</i>/4 + … is between <i>n</i> and 2<i>n</i> (a geometric series), not <i>n</i> log <i>n</i>.</div></div><div><div class="lb">8. <span class="fn">SQUARE-ROOT</span> </div><div class="code"><pre><span class="ln">1</span><span class="fn">SQUARE-ROOT</span>(n)
+<span class="ln">2</span>    count = 0
+<span class="ln">3</span>    i = 1
+<span class="ln">4</span>    <span class="kw">while</span> i · i ≤ n
+<span class="ln">5</span>        i = i + 1
+<span class="ln">6</span>        count = count + 1
+<span class="ln">7</span>    <span class="kw">return</span> count</pre></div><div class="key"><b>Θ(√<i>n</i>)</b>: the loop stops once <i>i</i> &gt; √<i>n</i>, after ⌊√<i>n</i>⌋ iterations.</div></div><div><div class="lb">9. <span class="fn">THREE-LEVELS</span> </div><div class="code"><pre><span class="ln">1</span><span class="fn">THREE-LEVELS</span>(n)
+<span class="ln">2</span>    count = 0
+<span class="ln">3</span>    <span class="kw">for</span> i = 0 <span class="kw">to</span> n − 1
+<span class="ln">4</span>        <span class="kw">for</span> j = 0 <span class="kw">to</span> i
+<span class="ln">5</span>            <span class="kw">for</span> k = 0 <span class="kw">to</span> j
+<span class="ln">6</span>                count = count + 1
+<span class="ln">7</span>    <span class="kw">return</span> count</pre></div><div class="key"><b>Θ(<i>n</i><sup>3</sup>)</b>: the count is <i>n</i>(<i>n</i> + 1)(<i>n</i> + 2)/6, about <i>n</i><sup>3</sup>/6.</div></div><div><div class="lb">10. <span class="fn">BRANCH</span> · Give the best case and the worst case.</div><div class="code"><pre><span class="ln">1</span><span class="fn">BRANCH</span>(A, n)
+<span class="ln">2</span>    <span class="kw">if</span> A[0] == 0
+<span class="ln">3</span>        <span class="kw">return</span> 0
+<span class="ln">4</span>    s = 0
+<span class="ln">5</span>    <span class="kw">for</span> i = 0 <span class="kw">to</span> n − 1
+<span class="ln">6</span>        s = s + A[i]
+<span class="ln">7</span>    <span class="kw">return</span> s</pre></div><div class="key">Best case <b>Θ(1)</b> (<i>A</i>[0] = 0); worst case <b>Θ(<i>n</i>)</b>. On every input the time is O(<i>n</i>) and Ω(1).</div></div><div><div class="lb">11. <span class="fn">HAS-DUPLICATE</span> · Give the best case and the worst case.</div><div class="code"><pre><span class="ln">1</span><span class="fn">HAS-DUPLICATE</span>(A, n)
+<span class="ln">2</span>    <span class="kw">for</span> i = 0 <span class="kw">to</span> n − 1
+<span class="ln">3</span>        <span class="kw">for</span> j = i + 1 <span class="kw">to</span> n − 1
+<span class="ln">4</span>            <span class="kw">if</span> A[i] == A[j]
+<span class="ln">5</span>                <span class="kw">return</span> TRUE
+<span class="ln">6</span>    <span class="kw">return</span> FALSE</pre></div><div class="key">Best case <b>Θ(1)</b> (<i>A</i>[0] == <i>A</i>[1]); worst case <b>Θ(<i>n</i><sup>2</sup>)</b> (no duplicates: <i>n</i>(<i>n</i> − 1)/2 comparisons).</div></div><div><div class="lb">12. <span class="fn">HALVE-EACH</span> · <span class="ch" style="margin:0">Challenge</span></div><div class="code"><pre><span class="ln">1</span><span class="fn">HALVE-EACH</span>(n)
+<span class="ln">2</span>    count = 0
+<span class="ln">3</span>    <span class="kw">for</span> i = 1 <span class="kw">to</span> n
+<span class="ln">4</span>        j = i
+<span class="ln">5</span>        <span class="kw">while</span> j &gt; 1
+<span class="ln">6</span>            j = ⌊j / 2⌋
+<span class="ln">7</span>            count = count + 1
+<span class="ln">8</span>    <span class="kw">return</span> count</pre></div><div class="key"><b>Θ(<i>n</i> log <i>n</i>)</b>: the inner loop runs ⌊log<sub>2</sub> <i>i</i>⌋ times. That is at most log<sub>2</sub> <i>n</i> for every <i>i</i>, and at least log<sub>2</sub> <i>n</i> − 2 for each of the <i>n</i>/2 largest <i>i</i>.</div></div></div><p class="foot">Definitions and page numbers follow CLRS, 3rd edition, §3.1 (pp. 43–53) and §3.2 (pp. 55–58). Lecture 6 slides 11–37 cover every tool you need.</p></div></body></html>
