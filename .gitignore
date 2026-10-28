@@ -15,6 +15,7 @@ _drive/
 # Instructor-only files: reference solutions and unreleased quiz papers (never publish)
 assignments/*/instructor/
 quizzes/*/instructor/
+support/
 
 # Office lock files (e.g. while Fall26_Lesson_Plans.xlsx is open)
 .~lock.*#
