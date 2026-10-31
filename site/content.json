@@ -15,7 +15,8 @@
     { "dir": "Lecture03", "released": true, "topics": "Comparison sorting; bubble, insertion and selection sort with best- and worst-case analysis", "simulators": ["bubble_sort", "insertion_sort", "selection_sort"] },
     { "dir": "Lecture04", "released": true, "topics": "Divide and conquer, merge sort, quicksort and pivot choice, stable and in-place sorting, the comparison-sorting lower bound", "simulators": ["merge_sort", "quicksort"] },
     { "dir": "Lecture05", "released": true, "topics": "Sorting faster than n log n without comparisons; counting sort and radix sort", "simulators": ["counting_sort", "radix_sort"] },
-    { "dir": "Lecture06", "released": true, "topics": "Asymptotic notation: Big-O, Big-Omega and Big-Theta (with little-o and little-omega), asymptotic arithmetic, analyzing iterative code" }
+    { "dir": "Lecture06", "released": true, "topics": "Asymptotic notation: Big-O, Big-Omega and Big-Theta (with little-o and little-omega), asymptotic arithmetic, analyzing iterative code" },
+    { "dir": "Lecture07", "released": true, "topics": "Divide and conquer: the pattern and its recurrence, the maximum-subarray problem by brute force, divide and conquer, and a linear scan", "simulators": ["max_subarray"] }
   ],
 
   "simulators": [

@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FIND-MAXIMUM-SUBARRAY</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:14px 22px; }
+.codebox pre { font-size:19px; line-height:1.55; }
+.codebox .fn { font-weight:700; }
+.codebox .cm { color:var(--muted); }
+.codebox .an { color:var(--blue); font-weight:600; font-size:15px; letter-spacing:0.06em; text-transform:uppercase; font-family:var(--sans); }
+
+.cw { display:flex; justify-content:center; }
+.cb { position:relative; display:flex; }
+.codebox { padding:14px 26px; }
+.codebox pre { font-size:20px; line-height:31px; }
+.rgs { position:relative; width:170px; }
+.rg { position:absolute; left:16px; right:0; display:flex; align-items:center; gap:12px; }
+.rg i { display:block; width:10px; align-self:stretch; background:var(--c); border-radius:3px; }
+.rg span { font-size:19px; font-weight:700; color:var(--c); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">FIND-MAXIMUM-SUBARRAY</div>
+<div class="frame">
+<div class="cw"><div class="cb"><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">FIND-MAXIMUM-SUBARRAY</span>(A, lo, hi)
+<span class="ln">2</span>    <span class="kw">if</span> hi == lo
+<span class="ln">3</span>        <span class="kw">return</span> (lo, hi, A[lo])     <span class="cm">// base case: one element</span>
+<span class="ln">4</span>    mid = ⌊(lo + hi) / 2⌋
+<span class="ln">5</span>    (left-lo, left-hi, left-sum) =
+<span class="ln"></span>            FIND-MAXIMUM-SUBARRAY(A, lo, mid)
+<span class="ln">6</span>    (right-lo, right-hi, right-sum) =
+<span class="ln"></span>            FIND-MAXIMUM-SUBARRAY(A, mid + 1, hi)
+<span class="ln">7</span>    (cross-lo, cross-hi, cross-sum) =
+<span class="ln"></span>            FIND-MAX-CROSSING-SUBARRAY(A, lo, mid, hi)
+<span class="ln">8</span>    <span class="kw">if</span> left-sum ≥ right-sum <span class="kw">and</span> left-sum ≥ cross-sum
+<span class="ln">9</span>        <span class="kw">return</span> (left-lo, left-hi, left-sum)
+<span class="ln">10</span>    <span class="kw">elseif</span> right-sum ≥ left-sum <span class="kw">and</span> right-sum ≥ cross-sum
+<span class="ln">11</span>        <span class="kw">return</span> (right-lo, right-hi, right-sum)
+<span class="ln">12</span>    <span class="kw">else</span>
+<span class="ln">13</span>        <span class="kw">return</span> (cross-lo, cross-hi, cross-sum)</pre></div><div class="rgs"><div class="rg" style="top:48px;height:56px;--c:#2B5BAA"><i></i><span>base case</span></div><div class="rg" style="top:110px;height:25px;--c:#2E7D32"><i></i><span>divide</span></div><div class="rg" style="top:141px;height:118px;--c:#D9822B"><i></i><span>conquer</span></div><div class="rg" style="top:265px;height:242px;--c:#C62828"><i></i><span>combine</span></div></div></div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

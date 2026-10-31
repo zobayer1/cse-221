@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Divide and conquer: Θ(n log n)</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.rq { display:flex; justify-content:center; align-items:flex-start; gap:14px; font-family:var(--serif); font-size:38px; }
+.rq .pt { display:flex; flex-direction:column; align-items:center; }
+.rq .pt .u { padding:0 6px 4px; border-bottom:3px solid; }
+.rq .pt .l { font-family:var(--sans); font-size:15px; font-weight:700; margin-top:6px; text-align:center; line-height:1.3; }
+.rq .o .u, .rq .o .l { border-color:#D9822B; color:#B5651D; }
+.rq .r .u, .rq .r .l { border-color:#C62828; color:#C62828; }
+.rq .sol { padding-left:18px; color:var(--blue); font-weight:700; }
+.lk { margin-top:16px; text-align:center; font-size:20px; color:var(--muted); }
+.lk b { color:var(--ink); }
+table.tab { margin:28px auto 0; width:860px; font-size:20px; }
+table.tab th.m, table.tab td.m { text-align:right; }
+table.tab td.m { font-family:var(--serif); }
+table.tab tr.dc td { color:var(--blue); font-weight:700; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Divide and conquer: Θ(<i>n</i> log <i>n</i>)</div>
+<div class="frame">
+<div class="rq"><span><i>T</i>(<i>n</i>) = 2</span><div class="pt o"><span class="u"><i>T</i>(<i>n</i>/2)</span><span class="l">two halves<br>(lines 5–6)</span></div><span>+</span><div class="pt r"><span class="u">Θ(<i>n</i>)</span><span class="l">crossing scan<br>(line 7)</span></div><span class="sol">= Θ(<i>n</i> log <i>n</i>)</span></div><p class="lk">The <b>same recurrence as merge sort</b> (Lecture 4): log <i>n</i> levels, Θ(<i>n</i>) work on each level.</p><table class="tab"><tr><th>Method</th><th class="m">time</th><th class="m">additions for <i>n</i> = 10<sup>5</sup></th></tr><tr><td>MAX-SUBARRAY-BRUTE</td><td class="m">Θ(<i>n</i><sup>3</sup>)</td><td class="m">≈ 1.7 × 10<sup>14</sup></td></tr><tr><td>MAX-SUBARRAY-RUNNING</td><td class="m">Θ(<i>n</i><sup>2</sup>)</td><td class="m">≈ 5 × 10<sup>9</sup></td></tr><tr class="dc"><td>FIND-MAXIMUM-SUBARRAY</td><td class="m">Θ(<i>n</i> log <i>n</i>)</td><td class="m">≈ 1.7 × 10<sup>6</sup></td></tr></table>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

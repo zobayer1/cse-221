@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Answer: where the work happens</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+table.wk { width:100%; border-collapse:collapse; border-top:2px solid var(--ink); border-bottom:2px solid var(--ink); table-layout:fixed; }
+table.wk th { font-size:21px; font-weight:700; padding:10px 14px; border-bottom:1px solid var(--ink); text-align:center; }
+table.wk th:first-child { width:170px; }
+table.wk td { padding:12px 14px; text-align:center; border-top:1px solid var(--rule); vertical-align:middle; height:92px; }
+table.wk td.rh { text-align:left; font-weight:700; font-size:22px; }
+table.wk td.rh small { display:block; font-weight:400; font-size:15px; color:var(--muted); margin-top:2px; }
+
+table.wk td .d { display:block; font-size:18px; color:var(--muted); }
+table.wk td .c { display:block; font-family:var(--serif); font-size:24px; margin-top:2px; }
+table.wk td.w { background:var(--tint); }
+table.wk td.w .c { color:var(--blue); font-weight:700; }
+.nt { margin-top:22px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.nt p { font-size:18px; line-height:1.45; color:var(--muted); border-left:4px solid var(--blue); padding-left:12px; }
+.nt p b { color:var(--ink); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Answer: where the work happens</div>
+<div class="frame">
+<table class="wk"><tr><th></th><th>Binary search</th><th>Merge sort</th><th>Quicksort</th></tr><tr><td class="rh">Divide</td><td><span class="d">compare <i>x</i> with <i>A</i>[<i>mid</i>]</span><span class="c">Θ(1)</span></td><td><span class="d">compute <i>mid</i></span><span class="c">Θ(1)</span></td><td class="w"><span class="d">PARTITION</span><span class="c">Θ(<i>n</i>)</span></td></tr><tr><td class="rh">Conquer</td><td><span class="d">search one half</span><span class="c"><i>T</i>(<i>n</i>/2)</span></td><td><span class="d">sort both halves</span><span class="c">2<i>T</i>(<i>n</i>/2)</span></td><td><span class="d">sort both sides</span><span class="c"><i>T</i>(<i>k</i>) + <i>T</i>(<i>n</i> − <i>k</i> − 1)</span></td></tr><tr><td class="rh">Combine</td><td><span class="d">nothing</span><span class="c">Θ(1)</span></td><td class="w"><span class="d">MERGE</span><span class="c">Θ(<i>n</i>)</span></td><td><span class="d">nothing</span><span class="c">Θ(1)</span></td></tr></table><div class="nt"><p>Binary search does <b>Θ(1)</b> work per step and keeps only one half.</p><p>Merge sort works on the <b>way back up</b>: the split is free, the merge costs Θ(<i>n</i>).</p><p>Quicksort works on the <b>way down</b>: the partition costs Θ(<i>n</i>), the combine is free. Here <i>k</i> is the size of the left side.</p></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

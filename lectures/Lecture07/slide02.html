@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Today’s agenda</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ag { margin-top:44px; display:grid; grid-template-columns:repeat(3,1fr); gap:36px; }
+.ag .c { border-top:2px solid var(--ink); padding-top:14px; }
+.ag .c b { font-family:var(--serif); font-weight:700; font-size:40px; color:var(--blue); line-height:1; }
+.ag .c h3 { font-family:var(--serif); font-weight:700; font-size:32px; margin-top:12px; line-height:1.15; }
+.ag .c p { font-size:20px; color:var(--muted); margin-top:10px; line-height:1.45; min-height:58px; }
+.ag .c .t { display:inline-block; margin-top:16px; font-size:16px; font-weight:700; color:var(--blue); border:1.5px solid var(--blue); border-radius:999px; padding:2px 12px; }
+.agb { margin-top:36px; }
+.agb p { font-size:20px; color:var(--muted); line-height:1.5; }
+.agb p b { color:var(--ink); font-weight:700; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Today’s agenda</div>
+<div class="frame">
+<div class="ag"><div class="c"><b>1</b><h3>Divide and conquer</h3><p>The pattern behind binary search, merge sort and quicksort, and how to write down its cost.</p><span class="t">Divide · Conquer · Combine</span></div><div class="c"><b>2</b><h3>Maximum subarray</h3><p>Find the best stretch in a list of daily gains and losses, first by trying everything.</p><span class="t">Θ(<i>n</i><sup>3</sup>) → Θ(<i>n</i><sup>2</sup>)</span></div><div class="c"><b>3</b><h3>Faster, then fastest</h3><p>Divide and conquer brings it down to <span style="white-space:nowrap">Θ(<i>n</i> log <i>n</i>)</span>. One careful scan brings it to Θ(<i>n</i>).</p><span class="t">Θ(<i>n</i> log <i>n</i>) → Θ(<i>n</i>)</span></div></div><div class="agb"><p>Merge sort and quicksort (Lecture 4) were <b>divide and conquer</b>. Today we name the pattern and use it on a new problem.</p></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

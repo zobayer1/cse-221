@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Divide and conquer: the payoff</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ch { display:grid; grid-template-columns:auto auto 1fr; gap:10px 22px; align-items:center; }
+.ch .hd { font-size:14px; font-weight:700; color:var(--muted); letter-spacing:0.06em; text-transform:uppercase; border-bottom:2px solid var(--ink); padding-bottom:6px; }
+.ch .nm { font-size:19px; }
+.ch .tm { font-family:var(--serif); font-size:21px; text-align:right; }
+.ch .br { display:flex; align-items:center; gap:12px; }
+.ch .br i { display:block; height:26px; border-radius:3px; background:var(--grey); }
+.ch .br span { font-family:var(--serif); font-size:19px; white-space:nowrap; }
+.ch .d { color:var(--blue); font-weight:700; } .ch .br i.d { background:var(--blue); }
+.ch .s { color:var(--green); font-weight:700; } .ch .br i.s { background:var(--green); }
+.ch .lg { grid-column:1 / -1; font-size:15px; color:var(--muted); text-align:right; }
+.tk3 { margin-top:26px; display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+.tk3 > div { border-top:3px solid var(--blue); padding-top:10px; }
+.tk3 h3 { font-size:21px; font-weight:700; }
+.tk3 p { font-size:18px; line-height:1.45; color:var(--muted); margin-top:4px; }
+.tk3 p .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Divide and conquer: the payoff</div>
+<div class="frame">
+<div class="ch"><div class="hd">Method</div><div class="hd" style="text-align:right">Time</div><div class="hd">Additions for <span style="text-transform:none"><i>n</i> = 10<sup>5</sup></span> (log scale)</div><div class="nm b">MAX-SUBARRAY-BRUTE</div><div class="tm b">Θ(<i>n</i><sup>3</sup>)</div><div class="br"><i class="b" style="width:94.8%"></i><span>1.7 × 10<sup>14</sup></span></div><div class="nm b">MAX-SUBARRAY-RUNNING</div><div class="tm b">Θ(<i>n</i><sup>2</sup>)</div><div class="br"><i class="b" style="width:64.7%"></i><span>5 × 10<sup>9</sup></span></div><div class="nm d">FIND-MAXIMUM-SUBARRAY</div><div class="tm d">Θ(<i>n</i> log <i>n</i>)</div><div class="br"><i class="d" style="width:41.5%"></i><span>1.7 × 10<sup>6</sup></span></div><div class="nm s">MAX-SUBARRAY-SCAN</div><div class="tm s">Θ(<i>n</i>)</div><div class="br"><i class="s" style="width:33.3%"></i><span>10<sup>5</sup></span></div></div><div class="tk3"><div><h3>Worth the effort</h3><p>Divide and conquer is far faster than brute force. It needed one clever step, the crossing scan, and a little more code, but the payoff is large.</p></div><div><h3>One technique of several</h3><p>Divide and conquer is one of several powerful ways to design algorithms. A closer look at a problem can still beat it, as the scan does here.</p></div><div><h3>Analyzed with recurrences</h3><p>Its running time is a recurrence, here <span class="m"><i>T</i>(<i>n</i>) = 2<i>T</i>(<i>n</i>/2) + Θ(<i>n</i>)</span>, and it often leads to faster algorithms.</p></div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

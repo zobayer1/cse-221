@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAX-SUBARRAY-SCAN: Θ(n)</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:14px 22px; }
+.codebox pre { font-size:19px; line-height:1.55; }
+.codebox .fn { font-weight:700; }
+.codebox .cm { color:var(--muted); }
+.codebox .an { color:var(--blue); font-weight:600; font-size:15px; letter-spacing:0.06em; text-transform:uppercase; font-family:var(--sans); }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+
+.rw { display:grid; grid-template-columns:auto 1fr; gap:40px; align-items:center; }
+.codebox pre { font-size:19px; line-height:1.6; }
+.st > div { display:grid; grid-template-columns:110px 1fr; gap:10px; padding:10px 0; border-bottom:1px solid var(--rule); align-items:baseline; }
+.st .l { font-size:16px; font-weight:700; color:var(--blue); }
+.st .v { font-size:18px; color:var(--muted); line-height:1.4; }
+.st .v b { color:var(--ink); }
+.st .v .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">MAX-SUBARRAY-SCAN: Θ(<i>n</i>)</div>
+<div class="frame">
+<div class="rw"><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">MAX-SUBARRAY-SCAN</span>(A, n)
+<span class="ln">2</span>    best = −∞
+<span class="ln">3</span>    sum = 0
+<span class="ln">4</span>    start = 0
+<span class="ln">5</span>    <span class="kw">for</span> j = 0 <span class="kw">to</span> n − 1
+<span class="ln">6</span>        sum = sum + A[j]          <span class="cm">// sum of A[start..j]</span>
+<span class="ln">7</span>        <span class="kw">if</span> sum &gt; best
+<span class="ln">8</span>            best = sum
+<span class="ln">9</span>            best-i = start
+<span class="ln">10</span>            best-j = j
+<span class="ln">11</span>        <span class="kw">if</span> sum &lt; 0              <span class="cm">// a negative stretch never helps</span>
+<span class="ln">12</span>            sum = 0
+<span class="ln">13</span>            start = j + 1
+<span class="ln">14</span>    <span class="kw">return</span> (best-i, best-j, best)</pre></div><div><div class="k3">How it works</div><div class="st"><div><span class="l">Lines 6–10</span><span class="v">Extend the current stretch by <i>A</i>[<i>j</i>] and keep the best sum seen.</span></div><div><span class="l">Lines 11–13</span><span class="v">A negative sum is dropped: the next stretch starts at <i>j</i> + 1.</span></div><div><span class="l">Order</span><span class="v">Line 7 runs before line 11, so an all-negative array still returns its largest element.</span></div><div><span class="l">Cost</span><span class="v">One pass, Θ(1) per element: <b>Θ(<i>n</i>)</b>. For <span class="m"><i>n</i> = 10<sup>5</sup></span>, that is 10<sup>5</sup> additions.</span></div></div></div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

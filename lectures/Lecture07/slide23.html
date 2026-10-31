@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FIND-MAXIMUM-SUBARRAY: the three steps</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.st4 { display:grid; grid-template-columns:repeat(2,1fr); gap:26px 36px; }
+.st4 > div { border-top:4px solid var(--c); background:var(--tint-2); padding:14px 20px 16px; }
+.st4 h3 { font-size:24px; font-weight:700; color:var(--c); }
+.st4 h3 small { font-size:16px; font-weight:700; color:var(--muted); margin-left:10px; letter-spacing:0.04em; }
+.st4 p { font-size:20px; line-height:1.45; margin-top:6px; }
+.st4 p .m { font-family:var(--serif); white-space:nowrap; }
+.fc { margin-top:30px; font-size:20px; color:var(--muted); text-align:center; }
+.fc code { font-size:19px; background:var(--tint); padding:3px 10px; color:var(--ink); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">FIND-MAXIMUM-SUBARRAY: the three steps</div>
+<div class="frame">
+<div class="st4"><div style="--c:#2B5BAA"><h3>Base case<small>lines 2–3</small></h3><p>One element is its own best subarray: return it.</p></div><div style="--c:#2E7D32"><h3>Divide<small>line 4</small></h3><p>Split at the middle: <span class="m">Θ(1)</span>.</p></div><div style="--c:#D9822B"><h3>Conquer<small>lines 5–6</small></h3><p>Solve both halves recursively: <span class="m">2<i>T</i>(<i>n</i>/2)</span>.</p></div><div style="--c:#C62828"><h3>Combine<small>lines 7–13</small></h3><p>Find the best crossing subarray in <span class="m">Θ(<i>n</i>)</span>, then return the best of the three.</p></div></div><p class="fc">First call: <code>FIND-MAXIMUM-SUBARRAY(A, 0, n − 1)</code></p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Writing down the cost</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.rq { display:flex; justify-content:center; align-items:flex-start; gap:14px; font-family:var(--serif); font-size:40px; }
+.rq .pt { display:flex; flex-direction:column; align-items:center; }
+.rq .pt .u { padding:0 6px 4px; border-bottom:3px solid; }
+.rq .pt .l { font-family:var(--sans); font-size:15px; font-weight:700; margin-top:6px; text-align:center; line-height:1.3; }
+.rq .b .u, .rq .b .l { border-color:var(--blue); color:var(--blue); }
+.rq .o .u, .rq .o .l { border-color:#D9822B; color:#B5651D; }
+.rq .g .u, .rq .g .l { border-color:#2E7D32; color:#2E7D32; }
+.rq .r .u, .rq .r .l { border-color:#C62828; color:#C62828; }
+.bc { font-size:20px; color:var(--muted); text-align:center; margin-top:12px; }
+.bc .m { font-family:var(--serif); color:var(--ink); }
+table.tab { margin-top:26px; font-size:20px; }
+table.tab th { font-size:18px; }
+table.tab th.m { text-align:center; }
+table.tab td.m { font-family:var(--serif); text-align:center; }
+table.tab td.m b { color:var(--blue); }
+table.tab tr.wr td { color:var(--muted); }
+.nt { margin-top:16px; font-size:18px; color:var(--muted); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Writing down the cost</div>
+<div class="frame">
+<div class="rq"><span><i>T</i>(<i>n</i>) =</span><div class="pt b"><span class="u"><i>a</i></span><span class="l">number<br>of parts</span></div><span>·</span><div class="pt o"><span class="u"><i>T</i>(<i>n</i>/<i>b</i>)</span><span class="l">cost of one part<br>of size <i>n</i>/<i>b</i></span></div><span>+</span><div class="pt g"><span class="u"><i>D</i>(<i>n</i>)</span><span class="l">divide</span></div><span>+</span><div class="pt r"><span class="u"><i>C</i>(<i>n</i>)</span><span class="l">combine</span></div></div><p class="bc">and <span class="m"><i>T</i>(<i>n</i>) = Θ(1)</span> once <i>n</i> is small: the base case.</p><table class="tab"><tr><th>Algorithm</th><th class="m">parts</th><th class="m">part size</th><th class="m">divide + combine</th><th class="m">recurrence</th><th class="m">solution</th></tr><tr><td>Binary search</td><td class="m">1</td><td class="m"><i>n</i>/2</td><td class="m">Θ(1)</td><td class="m"><i>T</i>(<i>n</i>/2) + Θ(1)</td><td class="m"><b>Θ(log <i>n</i>)</b></td></tr><tr><td>Merge sort</td><td class="m">2</td><td class="m"><i>n</i>/2</td><td class="m">Θ(<i>n</i>)</td><td class="m">2<i>T</i>(<i>n</i>/2) + Θ(<i>n</i>)</td><td class="m"><b>Θ(<i>n</i> log <i>n</i>)</b></td></tr><tr><td>Quicksort, even split</td><td class="m">2</td><td class="m"><i>n</i>/2</td><td class="m">Θ(<i>n</i>)</td><td class="m">2<i>T</i>(<i>n</i>/2) + Θ(<i>n</i>)</td><td class="m"><b>Θ(<i>n</i> log <i>n</i>)</b></td></tr><tr class="wr"><td>Quicksort, worst split</td><td class="m">2</td><td class="m"><i>n</i> − 1 <span style="font-family:var(--sans)">and</span> 0</td><td class="m">Θ(<i>n</i>)</td><td class="m"><i>T</i>(<i>n</i> − 1) + Θ(<i>n</i>)</td><td class="m"><b>Θ(<i>n</i><sup>2</sup>)</b></td></tr></table><p class="nt">Lecture 4 unrolled these by hand. A general way to solve such recurrences comes in a later lecture.</p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

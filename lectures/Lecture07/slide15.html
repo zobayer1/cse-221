@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keep a running sum</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:14px 22px; }
+.codebox pre { font-size:19px; line-height:1.55; }
+.codebox .fn { font-weight:700; }
+.codebox .cm { color:var(--muted); }
+.codebox .an { color:var(--blue); font-weight:600; font-size:15px; letter-spacing:0.06em; text-transform:uppercase; font-family:var(--sans); }
+
+.rw { display:grid; grid-template-columns:1fr 460px; gap:40px; align-items:center; }
+.rs svg { display:block; }
+.rs p { font-size:18px; color:var(--muted); line-height:1.45; margin-top:8px; }
+.rs p b { color:var(--ink); }
+.rs .eq { font-family:var(--serif); font-size:22px; color:var(--ink); margin-top:10px; }
+.rs .eq b { color:var(--blue); }
+.cmp { margin-top:24px; display:grid; grid-template-columns:auto auto 1fr; gap:6px 28px; align-items:baseline; font-size:19px; }
+.cmp .m { font-family:var(--serif); }
+.cmp .h { font-weight:700; }
+.rs p.st { font-size:20px; color:var(--blue); font-weight:700; margin-top:12px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Keep a running sum</div>
+<div class="frame">
+<div class="rw"><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">MAX-SUBARRAY-RUNNING</span>(A, n)
+<span class="ln">2</span>    best = −∞
+<span class="ln">3</span>    <span class="kw">for</span> i = 0 <span class="kw">to</span> n − 1
+<span class="ln">4</span>        sum = 0
+<span class="ln">5</span>        <span class="kw">for</span> j = i <span class="kw">to</span> n − 1
+<span class="ln">6</span>            sum = sum + A[j]      <span class="cm">// sum of A[i..j]</span>
+<span class="ln">7</span>            <span class="kw">if</span> sum &gt; best
+<span class="ln">8</span>                best = sum
+<span class="ln">9</span>                best-i = i
+<span class="ln">10</span>                best-j = j
+<span class="ln">11</span>    <span class="kw">return</span> (best-i, best-j, best)</pre></div><div class="rs"><svg data-figure viewBox="0 0 466 120" width="466" height="120" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><text x="96.0" y="26" text-anchor="middle" font-size="16" fill="#2B5BAA" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">+1</text><rect x="70" y="40" width="52" height="52" fill="#fff" stroke="#000" stroke-width="1.5"/><text x="96.0" y="73" text-anchor="middle" font-size="20" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">1</text><text x="96.0" y="112" text-anchor="middle" font-size="14" fill="#555" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">2</text><text x="162.0" y="26" text-anchor="middle" font-size="16" fill="#2B5BAA" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">+2</text><rect x="136" y="40" width="52" height="52" fill="#fff" stroke="#000" stroke-width="1.5"/><text x="162.0" y="73" text-anchor="middle" font-size="20" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">3</text><text x="162.0" y="112" text-anchor="middle" font-size="14" fill="#555" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">3</text><path d="M123,66.0 h10 M129,62.0 l4,4 l-4,4" fill="none" stroke="#555" stroke-width="1.6"/><text x="228.0" y="26" text-anchor="middle" font-size="16" fill="#2B5BAA" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">−1</text><rect x="202" y="40" width="52" height="52" fill="#fff" stroke="#000" stroke-width="1.5"/><text x="228.0" y="73" text-anchor="middle" font-size="20" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">2</text><text x="228.0" y="112" text-anchor="middle" font-size="14" fill="#555" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">4</text><path d="M189,66.0 h10 M195,62.0 l4,4 l-4,4" fill="none" stroke="#555" stroke-width="1.6"/><text x="294.0" y="26" text-anchor="middle" font-size="16" fill="#2B5BAA" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">+4</text><rect x="268" y="40" width="52" height="52" fill="#2E7D32" stroke="#000" stroke-width="1.5"/><text x="294.0" y="73" text-anchor="middle" font-size="20" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">6</text><text x="294.0" y="112" text-anchor="middle" font-size="14" fill="#555" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">5</text><path d="M255,66.0 h10 M261,62.0 l4,4 l-4,4" fill="none" stroke="#555" stroke-width="1.6"/><text x="360.0" y="26" text-anchor="middle" font-size="16" fill="#2B5BAA" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">−7</text><rect x="334" y="40" width="52" height="52" fill="#fff" stroke="#000" stroke-width="1.5"/><text x="360.0" y="73" text-anchor="middle" font-size="20" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">−1</text><text x="360.0" y="112" text-anchor="middle" font-size="14" fill="#555" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">6</text><path d="M321,66.0 h10 M327,62.0 l4,4 l-4,4" fill="none" stroke="#555" stroke-width="1.6"/><text x="426.0" y="26" text-anchor="middle" font-size="16" fill="#2B5BAA" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">+2</text><rect x="400" y="40" width="52" height="52" fill="#fff" stroke="#000" stroke-width="1.5"/><text x="426.0" y="73" text-anchor="middle" font-size="20" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">1</text><text x="426.0" y="112" text-anchor="middle" font-size="14" fill="#555" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">7</text><path d="M387,66.0 h10 M393,62.0 l4,4 l-4,4" fill="none" stroke="#555" stroke-width="1.6"/><text x="58" y="73" text-anchor="end" font-size="16" fill="#555" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">i</tspan> = 2</text><text x="58" y="112" text-anchor="end" font-size="14" fill="#555" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">j</text></svg><p>Each sum is the one to its left plus <b>one</b> number: one addition per subarray.</p><p class="eq"><i>n</i>(<i>n</i> + 1) / 2 additions = <b>Θ(<i>n</i><sup>2</sup>)</b></p><div class="cmp"><span class="h">For <i>n</i> = 10<sup>5</sup></span><span></span><span></span><span>Brute force</span><span class="m">≈ 1.7 × 10<sup>14</sup></span><span class="muted">additions</span><span>Running sum</span><span class="m">≈ 5 × 10<sup>9</sup></span><span class="muted">additions</span></div><p class="st">Better, but still slow.</p></div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

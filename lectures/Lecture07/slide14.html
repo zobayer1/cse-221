@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brute force: how many steps?</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.rw { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); margin-bottom:12px; }
+.ct p { font-size:20px; line-height:1.5; }
+.ct .eq { font-family:var(--serif); font-size:27px; line-height:1.6; margin:12px 0; }
+.ct .eq b { color:var(--blue); }
+.ct .ex { font-size:19px; color:var(--muted); }
+.ct .ex .m { font-family:var(--serif); color:var(--ink); }
+.ws p { font-size:20px; line-height:1.5; }
+.ws .id { font-family:var(--serif); font-size:23px; background:var(--tint); border-left:5px solid var(--blue); padding:10px 16px; }
+.ws svg { display:block; margin:12px 0; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Brute force: how many steps?</div>
+<div class="frame">
+<div class="rw"><div class="ct"><div class="k3">Count line 7</div><p>A subarray of length <i>L</i> costs <i>L</i> additions, and there are <i>n</i> − <i>L</i> + 1 of them.</p><p class="eq">1 · <i>n</i> + 2 · (<i>n</i> − 1) + … + <i>n</i> · 1<br>= <i>n</i>(<i>n</i> + 1)(<i>n</i> + 2) / 6 = <b>Θ(<i>n</i><sup>3</sup>)</b></p><p class="ex">For <i>n</i> = 8: <span class="m">8 + 14 + 18 + 20 + 20 + 18 + 14 + 8 = 120</span> additions.</p></div><div class="ws"><div class="k3">Wasted work</div><p>Line 5 starts every sum from 0, even right after summing almost the same numbers:</p><svg data-figure viewBox="0 0 420 110" width="420" height="110" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><rect x="130" y="6" width="46" height="38" fill="#2B5BAA" stroke="#000" stroke-width="1.5"/><text x="153.0" y="31.6" text-anchor="middle" font-size="19" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">1</text><rect x="176" y="6" width="46" height="38" fill="#2B5BAA" stroke="#000" stroke-width="1.5"/><text x="199.0" y="31.6" text-anchor="middle" font-size="19" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">2</text><rect x="222" y="6" width="46" height="38" fill="#2B5BAA" stroke="#000" stroke-width="1.5"/><text x="245.0" y="31.6" text-anchor="middle" font-size="19" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">−1</text><rect x="268" y="6" width="46" height="38" fill="#fff" stroke="#000" stroke-width="1.5"/><text x="291.0" y="31.6" text-anchor="middle" font-size="19" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">4</text><text x="118" y="31" text-anchor="end" font-size="16" fill="#555" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">A</tspan>[2..4]</text><rect x="130" y="60" width="46" height="38" fill="#2B5BAA" stroke="#000" stroke-width="1.5"/><text x="153.0" y="85.7" text-anchor="middle" font-size="19" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">1</text><rect x="176" y="60" width="46" height="38" fill="#2B5BAA" stroke="#000" stroke-width="1.5"/><text x="199.0" y="85.7" text-anchor="middle" font-size="19" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">2</text><rect x="222" y="60" width="46" height="38" fill="#2B5BAA" stroke="#000" stroke-width="1.5"/><text x="245.0" y="85.7" text-anchor="middle" font-size="19" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">−1</text><rect x="268" y="60" width="46" height="38" fill="#2B5BAA" stroke="#000" stroke-width="1.5"/><text x="291.0" y="85.7" text-anchor="middle" font-size="19" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">4</text><text x="118" y="85" text-anchor="end" font-size="16" fill="#555" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">A</tspan>[2..5]</text><text x="328" y="31" font-size="17" fill="#555" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">= 2</text><text x="328" y="85" font-size="17" fill="#555" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">= 6</text></svg><p class="id">sum of <i>A</i>[<i>i</i>..<i>j</i>] = (sum of <i>A</i>[<i>i</i>..<i>j</i> − 1]) + <i>A</i>[<i>j</i>]</p></div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>
