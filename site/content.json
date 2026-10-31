@@ -28,7 +28,8 @@
     { "id": "merge_sort", "released": true, "title": "Merge Sort", "desc": "The array splitting down, then merging back up." },
     { "id": "quicksort", "released": true, "title": "Quicksort", "desc": "Each pivot partitioning its block; last-element and median-of-three pivots." },
     { "id": "counting_sort", "released": true, "title": "Counting Sort", "desc": "Counting keys into C, adding the counts up and placing each key into B; placing right to left keeps it stable." },
-    { "id": "radix_sort", "released": true, "title": "Radix Sort", "desc": "One stable counting sort per digit, from the ones digit up, and what goes wrong when a pass is not stable." }
+    { "id": "radix_sort", "released": true, "title": "Radix Sort", "desc": "One stable counting sort per digit, from the ones digit up, and what goes wrong when a pass is not stable." },
+    { "id": "max_subarray", "released": true, "title": "Maximum Subarray", "desc": "Divide and conquer: split in the middle, solve both halves, and grow the best crossing subarray out from the middle." }
   ],
 
   "quizzes": [
