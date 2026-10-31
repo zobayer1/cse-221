@@ -15,7 +15,7 @@
   {"term": "Off-by-one error", "def": "A bug from a loop bound or index that is one too large or too small, such as while lo < hi instead of lo ≤ hi. Pick one range convention and test the tiny cases.", "see": [["Lecture02", 16]]},
   {"term": "Ternary search", "def": "Splits the range into three with two cuts m1 and m2 and discards one or two thirds per step. Also finds the peak of a unimodal function.", "see": [["Lecture02", 20], ["Lecture02", 26]], "sim": "ternary_search"},
   {"term": "Unimodal function", "def": "A function that strictly rises and then strictly falls (one maximum), or falls and then rises (one minimum).", "see": [["Lecture02", 26]]},
-  {"term": "Divide and conquer", "def": "Divide a problem into smaller subproblems, solve them recursively, and combine their solutions.", "see": [["Lecture02", 11], ["Lecture04", 10]], "clrs": "§2.3.1"},
+  {"term": "Divide and conquer", "def": "Divide a problem into smaller subproblems, solve them recursively, and combine their solutions.", "see": [["Lecture02", 11], ["Lecture04", 10], ["Lecture07", 4]], "clrs": "§2.3.1"},
   {"term": "Comparison sort", "def": "A sort that orders elements using only comparisons between pairs of them (is A[i] ≤ A[j]?).", "see": [["Lecture03", 3]], "clrs": "§8.1"},
   {"term": "Bubble sort", "def": "Repeatedly swaps adjacent elements that are out of order, so each pass moves the largest remaining element to the end. O(n²).", "see": [["Lecture03", 5]], "clrs": "Problem 2-2", "sim": "bubble_sort"},
   {"term": "Insertion sort", "def": "Takes each element in turn and inserts it into its place in the sorted part to its left. O(n) best case, O(n²) worst case.", "see": [["Lecture03", 9]], "clrs": "§2.1", "sim": "insertion_sort"},
@@ -23,10 +23,11 @@
   {"term": "In-place sort", "def": "A sort that rearranges the elements inside the array itself, using only O(1) extra memory.", "see": [["Lecture04", 3]]},
   {"term": "Stable sort", "def": "A sort in which elements with equal keys keep their original order.", "see": [["Lecture04", 4]]},
   {"term": "Merge sort", "def": "Splits the array into halves, sorts each recursively, and merges the two sorted halves. O(n log n) in every case; stable, not in-place.", "see": [["Lecture04", 12]], "clrs": "§2.3", "sim": "merge_sort"},
-  {"term": "Recurrence", "def": "An equation that describes a running time in terms of the running time on smaller inputs, such as T(n) = 2T(n/2) + cn for merge sort.", "see": [["Lecture04", 15]], "clrs": "§2.3.2, §4.4"},
+  {"term": "Recurrence", "def": "An equation that describes a running time in terms of the running time on smaller inputs, such as T(n) = 2T(n/2) + cn for merge sort.", "see": [["Lecture04", 15], ["Lecture07", 7]], "clrs": "§2.3.2, §4.4"},
   {"term": "Pivot", "def": "The element that PARTITION places in its final position, with smaller elements to its left and larger ones to its right.", "see": [["Lecture04", 20], ["Lecture04", 21]], "clrs": "§7.1"},
   {"term": "Quicksort", "def": "Partitions the array around a pivot and sorts the two sides recursively. O(n log n) typically, O(n²) in the worst case; in-place, not stable.", "see": [["Lecture04", 23], ["Lecture04", 27]], "clrs": "§7.1–7.3", "sim": "quicksort"},
   {"term": "Median of three", "def": "A pivot rule: use the median of A[lo], A[mid] and A[hi]. Sorted and reversed inputs then split well.", "see": [["Lecture04", 30]]},
   {"term": "Decision tree", "def": "A binary tree of the comparisons a comparison sort makes, with one leaf for every possible ordering of the input.", "see": [["Lecture04", 35]], "clrs": "§8.1"},
-  {"term": "Sorting lower bound", "def": "Any comparison sort needs at least log₂(n!) comparisons in the worst case, which is Ω(n log n).", "see": [["Lecture04", 36], ["Lecture04", 37]], "clrs": "§8.1"}
+  {"term": "Sorting lower bound", "def": "Any comparison sort needs at least log₂(n!) comparisons in the worst case, which is Ω(n log n).", "see": [["Lecture04", 36], ["Lecture04", 37]], "clrs": "§8.1"},
+  {"term": "Maximum subarray", "def": "The nonempty, contiguous subarray A[i..j] with the largest sum. Divide and conquer finds it in Θ(n log n); one scan that drops negative stretches finds it in Θ(n).", "see": [["Lecture07", 10], ["Lecture07", 22]], "clrs": "§4.1", "sim": "max_subarray"}
 ]
