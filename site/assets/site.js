@@ -219,4 +219,7 @@
   };
 
   if (R[page]) R[page]();
+
+  // Our own service worker (sw.js) keeps the domain's other service worker from serving stale pages.
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function () {});
 })();
