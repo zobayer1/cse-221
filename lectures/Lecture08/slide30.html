@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Divide and conquer or dynamic programming?</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+table.tab { width:100%; font-size:20px; table-layout:fixed; }
+table.tab col.h { width:210px; }
+table.tab th { font-size:21px; text-align:left; }
+table.tab th.d { color:var(--blue); } table.tab th.p { color:var(--red); }
+table.tab td { padding-top:11px; padding-bottom:11px; vertical-align:top; line-height:1.4; }
+table.tab td.h { color:var(--muted); font-size:17px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; white-space:nowrap; padding-top:14px; }
+table.tab td.f { font-size:18px; }
+.cq { margin-top:26px; padding-left:18px; border-left:4px solid var(--rule); font-size:19px; line-height:1.5; color:var(--muted); font-style:italic; }
+.cq span { font-style:normal; white-space:nowrap; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Divide and conquer or dynamic programming?</div>
+<div class="frame">
+<table class="tab"><colgroup><col class="h"><col><col></colgroup><thead><tr><th></th><th class="d">Divide and conquer</th><th class="p">Dynamic programming</th></tr></thead><tbody><tr><td class="h">Subproblems</td><td><b>Disjoint</b>: no two problems share one</td><td><b>Overlapping</b>: different problems share them</td></tr><tr><td class="h">Each subproblem</td><td>comes up once, so it is solved once</td><td>comes up again and again</td></tr><tr><td class="h">Its answer</td><td>used once by its parent, then forgotten</td><td>saved in a table, so it is solved only once</td></tr><tr><td class="h">In this course</td><td><span class="f">MERGE-SORT, FIND-MAXIMUM-SUBARRAY, KARATSUBA, RANGE-MIN</span></td><td>a later lecture</td></tr></tbody></table><p class="cq">“… divide-and-conquer algorithms partition the problem into disjoint subproblems, solve the subproblems recursively, and then combine their solutions to solve the original problem. In contrast, dynamic programming applies when the subproblems overlap—that is, when subproblems share subsubproblems.” <span>CLRS, p. 359</span></p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

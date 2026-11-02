@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is it any faster?</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.rq { text-align:center; font-family:var(--serif); font-size:44px; }
+.rq .o { color:#B5651D; } .rq .r { color:#C62828; }
+.lb { margin-top:10px; display:flex; justify-content:center; gap:120px; font-size:16px; font-weight:700; }
+.lb .o { color:#B5651D; } .lb .r { color:#C62828; }
+.bq { margin-top:40px; text-align:center; font-family:var(--serif); font-size:36px; line-height:1.25; }
+.bq b { color:var(--blue); }
+.ch { margin-top:26px; display:flex; justify-content:center; gap:22px; }
+.ch span { font-family:var(--serif); font-size:26px; border:2px solid var(--rule); border-radius:8px; padding:8px 22px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Is it any faster?<span class="ftag">Discuss</span></div>
+<div class="frame">
+<p class="rq"><i>T</i>(<i>n</i>) = <span class="o">4<i>T</i>(<i>n</i>/2)</span> + <span class="r">Θ(<i>n</i>)</span></p><div class="lb"><span class="o">four half-size products</span><span class="r">split, shift and add</span></div><p class="bq">Is this <b>faster</b> than the grade-school Θ(<i>n</i><sup>2</sup>)?</p><div class="ch"><span>Θ(<i>n</i>)</span><span>Θ(<i>n</i> log <i>n</i>)</span><span>Θ(<i>n</i><sup>2</sup>)</span><span>Θ(<i>n</i><sup>3</sup>)</span></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

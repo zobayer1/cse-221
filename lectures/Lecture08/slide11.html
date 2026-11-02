@@ -1,0 +1,44 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Divide and conquer: four products</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:14px 22px; }
+.codebox pre { font-size:19px; line-height:1.55; }
+.codebox .fn { font-weight:700; }
+.codebox .cm { color:var(--muted); }
+.codebox sup { font-size:0.7em; line-height:0; }
+.codebox .w2 { display:inline-block; width:2ch; text-align:center; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+
+.cb { position:relative; display:flex; }
+.rgs { position:relative; width:118px; }
+.rg { position:absolute; left:12px; right:0; display:flex; align-items:center; gap:10px; }
+.rg i { display:block; width:9px; align-self:stretch; background:var(--c); border-radius:3px; }
+.rg span { font-size:17px; font-weight:700; color:var(--c); white-space:nowrap; }
+
+.rw { display:grid; grid-template-columns:auto 1fr; gap:28px; align-items:center; }
+.codebox { padding:14px 22px; }
+.codebox pre { font-size:17px; line-height:27px; }
+.st > div { display:grid; grid-template-columns:96px 1fr; gap:10px; padding:9px 0; border-bottom:1px solid var(--rule); align-items:baseline; }
+.st .l { font-size:16px; font-weight:700; color:var(--c); }
+.st .v { font-size:17px; color:var(--muted); line-height:1.4; }
+.st .v .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Divide and conquer: four products</div>
+<div class="frame">
+<div class="rw"><div class="cb"><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">MULTIPLY</span>(x, y, n)      <span class="cm">// at most n digits each</span>
+<span class="ln">2</span>    <span class="kw">if</span> n == 1
+<span class="ln">3</span>        <span class="kw">return</span> x · y               <span class="cm">// base case: one-digit product</span>
+<span class="ln">4</span>    k = ⌊n / 2⌋                    <span class="cm">// split off the last k digits</span>
+<span class="ln">5</span>    a = ⌊x / 10<sup>k</sup>⌋
+<span class="ln">6</span>    b = x mod 10<sup>k</sup>
+<span class="ln">7</span>    c = ⌊y / 10<sup>k</sup>⌋
+<span class="ln">8</span>    d = y mod 10<sup>k</sup>
+<span class="ln">9</span>    ac = <span class="fn">MULTIPLY</span>(a, c, n − k)
+<span class="ln">10</span>    ad = <span class="fn">MULTIPLY</span>(a, d, n − k)
+<span class="ln">11</span>    bc = <span class="fn">MULTIPLY</span>(b, c, n − k)
+<span class="ln">12</span>    bd = <span class="fn">MULTIPLY</span>(b, d, n − k)
+<span class="ln">13</span>    <span class="kw">return</span> ac · 10<sup>2k</sup> + (ad + bc) · 10<sup>k</sup> + bd</pre></div><div class="rgs"><div class="rg" style="top:44px;height:48px;--c:#2B5BAA"><i></i><span>base case</span></div><div class="rg" style="top:98px;height:129px;--c:#2E7D32"><i></i><span>divide</span></div><div class="rg" style="top:233px;height:102px;--c:#D9822B"><i></i><span>conquer</span></div><div class="rg" style="top:341px;height:21px;--c:#C62828"><i></i><span>combine</span></div></div></div><div><div class="k3">The steps</div><div class="st"><div style="--c:#2B5BAA"><span class="l">Base case</span><span class="v">Lines 2–3: one digit times one digit, <span class="m">Θ(1)</span>.</span></div><div style="--c:#2E7D32"><span class="l">Divide</span><span class="v">Lines 4–8 split off the last <i>k</i> digits: <span class="m">Θ(<i>n</i>)</span> digit copies.</span></div><div style="--c:#D9822B"><span class="l">Conquer</span><span class="v">Lines 9–12: <b>four</b> products of numbers with at most <span class="m"><i>n</i> − <i>k</i> = ⌈<i>n</i>/2⌉</span> digits.</span></div><div style="--c:#C62828"><span class="l">Combine</span><span class="v">Line 13: multiplying by 10<sup>2<i>k</i></sup> or 10<sup><i>k</i></sup> only pads zeros, so the shifts and sums are <span class="m">Θ(<i>n</i>)</span>.</span></div></div></div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

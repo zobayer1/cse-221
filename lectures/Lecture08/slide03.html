@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where we left off</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.st3 { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.st3 > div { border-top:4px solid var(--c); background:var(--tint-2); padding:12px 18px 14px; }
+.st3 h3 { font-size:23px; font-weight:700; color:var(--c); }
+.st3 p { font-size:19px; line-height:1.45; color:var(--muted); margin-top:4px; }
+.rq { margin-top:34px; text-align:center; font-family:var(--serif); font-size:34px; }
+.rq .g { color:#2E7D32; } .rq .o { color:#B5651D; } .rq .r { color:#C62828; }
+.ex { margin-top:12px; text-align:center; font-size:20px; color:var(--muted); }
+.ex .m { font-family:var(--serif); color:var(--ink); }
+.ex b { color:var(--blue); }
+.nx { margin-top:34px; text-align:center; font-family:var(--serif); font-size:30px; }
+.nx b { color:var(--blue); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Where we left off</div>
+<div class="frame">
+<div class="st3"><div style="--c:#2E7D32"><h3>Divide</h3><p>Split the problem into smaller problems of the same kind.</p></div><div style="--c:#D9822B"><h3>Conquer</h3><p>Solve them recursively; constant-size ones directly.</p></div><div style="--c:#C62828"><h3>Combine</h3><p>Join their answers into the answer for the whole.</p></div></div><p class="rq"><i>T</i>(<i>n</i>) = <i>a</i> · <span class="o"><i>T</i>(<i>n</i>/<i>b</i>)</span> + <span class="g"><i>D</i>(<i>n</i>)</span> + <span class="r"><i>C</i>(<i>n</i>)</span></p><p class="ex">Maximum subarray: <span class="m">2<i>T</i>(<i>n</i>/2) + Θ(<i>n</i>)</span> = <b>Θ(<i>n</i> log <i>n</i>)</b>, down from Θ(<i>n</i><sup>3</sup>) by brute force.</p><p class="nx">Today: can splitting make <b>multiplication</b> faster?</p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

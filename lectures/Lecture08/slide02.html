@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Today’s agenda</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ag { margin-top:44px; display:grid; grid-template-columns:repeat(3,1fr); gap:36px; }
+.ag .c { border-top:2px solid var(--ink); padding-top:14px; }
+.ag .c b { font-family:var(--serif); font-weight:700; font-size:40px; color:var(--blue); line-height:1; }
+.ag .c h3 { font-family:var(--serif); font-weight:700; font-size:32px; margin-top:12px; line-height:1.15; }
+.ag .c p { font-size:20px; color:var(--muted); margin-top:10px; line-height:1.45; min-height:58px; }
+.ag .c .t { display:inline-block; margin-top:16px; font-size:16px; font-weight:700; color:var(--blue); border:1.5px solid var(--blue); border-radius:999px; padding:2px 12px; }
+.agb { margin-top:36px; }
+.agb p { font-size:20px; color:var(--muted); line-height:1.5; }
+.agb p b { color:var(--ink); font-weight:700; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Today’s agenda</div>
+<div class="frame">
+<div class="ag"><div class="c"><b>1</b><h3>Multiplying big numbers</h3><p>Grade-school multiplication, then a first divide-and-conquer try.</p><span class="t">Θ(<i>n</i><sup>2</sup>)</span></div><div class="c"><b>2</b><h3>Karatsuba’s trick</h3><p>Three half-size products instead of four, and what that saves.</p><span class="t">Θ(<i>n</i><sup>log<sub>2</sub> 3</sup>)</span></div><div class="c"><b>3</b><h3>Range minimum queries (RMQ)</h3><p>Splitting a range in the middle, and what divide and conquer needs from its subproblems.</p><span class="t">Disjoint subproblems</span></div></div><div class="agb"><p>Lecture 7 built the pattern. Today: where it <b>pays off</b>, and when it <b>does not</b>.</p></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

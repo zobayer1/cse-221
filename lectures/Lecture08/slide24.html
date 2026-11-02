@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RANGE-MIN</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:14px 22px; }
+.codebox pre { font-size:19px; line-height:1.55; }
+.codebox .fn { font-weight:700; }
+.codebox .cm { color:var(--muted); }
+.codebox sup { font-size:0.7em; line-height:0; }
+.codebox .w2 { display:inline-block; width:2ch; text-align:center; }
+
+.cb { position:relative; display:flex; }
+.rgs { position:relative; width:118px; }
+.rg { position:absolute; left:12px; right:0; display:flex; align-items:center; gap:10px; }
+.rg i { display:block; width:9px; align-self:stretch; background:var(--c); border-radius:3px; }
+.rg span { font-size:17px; font-weight:700; color:var(--c); white-space:nowrap; }
+
+.cw { display:flex; justify-content:center; }
+.codebox { padding:14px 22px; }
+.codebox pre { font-size:18px; line-height:28px; }
+.nt { margin-top:18px; text-align:center; font-size:19px; color:var(--muted); }
+.nt .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">RANGE-MIN</div>
+<div class="frame">
+<div class="cw"><div class="cb"><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">RANGE-MIN</span>(A, lo, hi, i, j)    <span class="cm">// smallest value in A[i..j]; lo ≤ i ≤ j ≤ hi</span>
+<span class="ln">2</span>    <span class="kw">if</span> lo == hi                  <span class="cm">// one element: then i == j == lo</span>
+<span class="ln">3</span>        <span class="kw">return</span> A[lo]
+<span class="ln">4</span>    mid = ⌊(lo + hi) / 2⌋
+<span class="ln">5</span>    <span class="kw">if</span> j <span class="w2">≤</span> mid                  <span class="cm">// case 1: all in the left half</span>
+<span class="ln">6</span>        <span class="kw">return</span> <span class="fn">RANGE-MIN</span>(A, lo, mid, i, j)
+<span class="ln">7</span>    <span class="kw">elseif</span> i &gt; mid               <span class="cm">// case 2: all in the right half</span>
+<span class="ln">8</span>        <span class="kw">return</span> <span class="fn">RANGE-MIN</span>(A, mid + 1, hi, i, j)
+<span class="ln">9</span>    <span class="kw">else</span>                         <span class="cm">// case 3: split between the halves</span>
+<span class="ln">10</span>        left = <span class="fn">RANGE-MIN</span>(A, lo, mid, i, mid)
+<span class="ln">11</span>        right = <span class="fn">RANGE-MIN</span>(A, mid + 1, hi, mid + 1, j)
+<span class="ln">12</span>        <span class="kw">return</span> min(left, right)</pre></div><div class="rgs"><div class="rg" style="top:45px;height:50px;--c:#2B5BAA"><i></i><span>base case</span></div><div class="rg" style="top:101px;height:22px;--c:#2E7D32"><i></i><span>divide</span></div><div class="rg" style="top:129px;height:190px;--c:#D9822B"><i></i><span>conquer</span></div><div class="rg" style="top:325px;height:22px;--c:#C62828"><i></i><span>combine</span></div></div></div></div><p class="nt">Every call keeps <span class="m"><i>lo</i> ≤ <i>i</i> ≤ <i>j</i> ≤ <i>hi</i></span>: the query always lies inside the part being searched.</p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

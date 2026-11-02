@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Split each number in half</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.rw { display:grid; grid-template-columns:1fr auto; gap:44px; align-items:center; }
+.q { font-family:var(--serif); font-size:32px; margin-bottom:18px; }
+.q b { color:var(--blue); }
+.sp p { font-family:var(--serif); font-size:24px; line-height:1.6; }
+.sp p b { color:var(--blue); }
+.sp .lb { font-family:var(--sans); font-size:15px; font-weight:700; color:var(--muted); letter-spacing:0.06em; text-transform:uppercase; margin-top:16px; }
+.sp .lb:first-child { margin-top:0; }
+.sp .big { font-size:27px; }
+.sp .kk { font-family:var(--sans); font-size:19px; color:var(--muted); line-height:1.4; }
+.sp .kk .m { font-family:var(--serif); color:var(--ink); }
+.sp .ck { font-family:var(--sans); font-size:18px; color:var(--muted); }
+.sp .ck .m { font-family:var(--serif); color:var(--ink); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Split each number in half</div>
+<div class="frame">
+<div class="rw"><div class="sp"><p class="q">Multiply <b>2718</b> by <b>3141</b>.</p><p class="lb">Split each number in half</p><p class="kk">The low half gets the last <span class="m"><i>k</i> = ⌊<i>n</i>/2⌋ = 2</span> digits:</p><p><i>x</i> = 2718 = <b>27</b> · 10<sup>2</sup> + <b>18</b> = <i>a</i> · 10<sup><i>k</i></sup> + <i>b</i></p><p><i>y</i> = 3141 = <b>31</b> · 10<sup>2</sup> + <b>41</b> = <i>c</i> · 10<sup><i>k</i></sup> + <i>d</i></p><p class="lb">Multiply out: four half-size products</p><p class="big"><i>xy</i> = <i>ac</i> · 10<sup>2<i>k</i></sup> + (<i>ad</i> + <i>bc</i>) · 10<sup><i>k</i></sup> + <i>bd</i></p><p class="ck">Check: <span class="m">837 · 10<sup>4</sup> + (1107 + 558) · 10<sup>2</sup> + 738 = 8,537,238</span> = 2718 × 3141.</p></div><svg data-figure viewBox="0 0 520 308" width="520" height="308" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><text x="195.0" y="46" text-anchor="middle" font-size="22" fill="#2B5BAA" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">a</tspan> = 27</text><text x="405.0" y="46" text-anchor="middle" font-size="22" fill="#2B5BAA" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">b</tspan> = 18</text><text x="76" y="128.0" text-anchor="end" font-size="22" fill="#D9822B" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">c</tspan> = 31</text><text x="76" y="248.0" text-anchor="end" font-size="22" fill="#D9822B" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">d</tspan> = 41</text><rect x="90" y="60" width="210" height="120" fill="#E9EEF7" stroke="#000" stroke-width="1.6"/><text x="195.0" y="110" text-anchor="middle" font-size="26" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">ac</tspan> = 837</text><text x="195.0" y="146" text-anchor="middle" font-size="17" fill="#555" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">times 10<tspan dy="-8" font-size="13">4</tspan></text><rect x="300" y="60" width="210" height="120" fill="#F4F6FB" stroke="#000" stroke-width="1.6"/><text x="405.0" y="110" text-anchor="middle" font-size="26" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">bc</tspan> = 558</text><text x="405.0" y="146" text-anchor="middle" font-size="17" fill="#555" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">times 10<tspan dy="-8" font-size="13">2</tspan></text><rect x="90" y="180" width="210" height="120" fill="#F4F6FB" stroke="#000" stroke-width="1.6"/><text x="195.0" y="230" text-anchor="middle" font-size="26" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">ad</tspan> = 1107</text><text x="195.0" y="266" text-anchor="middle" font-size="17" fill="#555" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">times 10<tspan dy="-8" font-size="13">2</tspan></text><rect x="300" y="180" width="210" height="120" fill="#E9EEF7" stroke="#000" stroke-width="1.6"/><text x="405.0" y="230" text-anchor="middle" font-size="26" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">bd</tspan> = 738</text><text x="405.0" y="266" text-anchor="middle" font-size="17" fill="#555" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">times 1</text></svg></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>
