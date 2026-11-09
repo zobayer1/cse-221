@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Today’s agenda</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ag { display:grid; grid-template-columns:repeat(3,1fr); gap:36px; }
+.ag .c { border-top:2px solid var(--ink); padding-top:14px; }
+.ag .c b { font-family:var(--serif); font-weight:700; font-size:40px; color:var(--blue); line-height:1; }
+.ag .c h3 { font-family:var(--serif); font-weight:700; font-size:32px; margin-top:12px; line-height:1.15; }
+.ag .c p { font-size:22px; color:var(--muted); margin-top:10px; line-height:1.45; }
+.agb { margin-top:44px; font-size:22px; color:var(--muted); line-height:1.5; }
+.agb b { color:var(--ink); font-weight:700; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Today’s agenda</div>
+<div class="frame">
+<div class="ag"><div class="c"><b>1</b><h3>Graph vocabulary</h3><p>Vertices and edges, direction, weights, degrees, paths, connectivity and trees.</p></div><div class="c"><b>2</b><h3>Representing graphs</h3><p>Storing a graph in memory so an algorithm can work on it.</p></div><div class="c"><b>3</b><h3>Breadth-first search</h3><p>Exploring a graph level by level, starting from one vertex.</p></div></div>
+<p class="agb">You met graphs as a data structure. Today we <b>name the parts</b> precisely, then <b>run an algorithm</b> on them.</p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

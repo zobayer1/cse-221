@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BFS: space complexity</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+table.tab { font-size:25px; }
+table.tab th { font-size:24px; }
+table.tab td, table.tab th { padding:11px 12px; line-height:1.3; }
+table.tab td.m { font-family:var(--serif); font-size:28px; white-space:nowrap; }
+table.tab td.n1 { white-space:nowrap; }
+table.tab sup { font-size:0.65em; line-height:0; }
+ul.items { margin-top:34px; }
+ul.items > li { font-size:25px; margin:14px 0; line-height:1.35; }
+ul.items sup { font-size:0.65em; line-height:0; }
+.nw { white-space:nowrap; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">BFS: space complexity</div>
+<div class="frame">
+<table class="tab">
+<tr><th>Stored</th><th>Why</th><th class="c">Size</th></tr>
+<tr><td class="n1"><var>color</var>, <var>d</var>, <var>π</var></td><td>One entry per vertex</td><td class="c m"><var>O</var>(<var>V</var>)</td></tr>
+<tr class="sep"><td class="n1">Queue <var>Q</var></td><td>Holds at most |<var>V</var>| vertices</td><td class="c m"><var>O</var>(<var>V</var>)</td></tr>
+<tr class="sep"><td class="n1">The graph itself</td><td>Adjacency lists, or the edge list</td><td class="c m"><var>O</var>(<var>V</var> + <var>E</var>)</td></tr>
+<tr class="sep"><td colspan="2"><b>Total</b></td><td class="c m"><b><var>O</var>(<var>V</var> + <var>E</var>)</b></td></tr>
+</table>
+<ul class="items">
+<li>Beyond the input graph, BFS needs only <span class="nw"><var>O</var>(<var>V</var>) extra space.</span></li>
+<li><b>The complexity depends on the graph representation.</b> Stored as an adjacency matrix, the graph alone takes <span class="nw"><var>O</var>(<var>V</var><sup>2</sup>).</span></li>
+</ul>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

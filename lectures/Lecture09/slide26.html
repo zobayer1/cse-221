@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Comparing the three representations</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+table.tab { font-size:26px; }
+table.tab th, table.tab td { text-align:center; padding:9px 12px; }
+table.tab th:first-child, table.tab td:first-child { text-align:left; }
+table.tab td { font-family:var(--serif); font-size:29px; }
+table.tab td:first-child { font-family:var(--sans); font-size:26px; }
+table.tab sup { font-size:0.65em; line-height:0; }
+table.tab .bad { color:var(--red); } table.tab .good { color:var(--green); }
+ul.items { margin-top:30px; }
+ul.items > li { font-size:24px; margin:10px 0; }
+ul.items sup { font-size:0.65em; line-height:0; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Comparing the three representations</div>
+<div class="frame">
+<table class="tab"><tr><th rowspan="2">Representation</th><th rowspan="2">Space</th><th colspan="2">Traversal</th></tr>
+<tr><th>Neighbors of <var>u</var></th><th>Whole graph</th></tr>
+<tr><td>Adjacency matrix</td><td class="bad"><span class="rm">Θ</span>(<var>n</var><sup>2</sup>)</td><td class="bad"><span class="rm">Θ</span>(<var>n</var>)</td><td class="bad"><span class="rm">Θ</span>(<var>n</var><sup>2</sup>)</td></tr>
+<tr class="sep"><td>Adjacency list</td><td class="good"><span class="rm">Θ</span>(<var>n</var> + <var>m</var>)</td><td class="good"><span class="rm">Θ</span>(deg(<var>u</var>))</td><td class="good"><span class="rm">Θ</span>(<var>n</var> + <var>m</var>)</td></tr>
+<tr class="sep"><td>Edge list</td><td class="good"><span class="rm">Θ</span>(<var>n</var> + <var>m</var>)</td><td class="good"><span class="rm">Θ</span>(deg(<var>u</var>))</td><td class="good"><span class="rm">Θ</span>(<var>n</var> + <var>m</var>)</td></tr></table>
+<ul class="items">
+<li><b>Dense</b> graph, <var>m</var> = <span class="rm">Θ</span>(<var>n</var><sup>2</sup>): all three take <span class="rm">Θ</span>(<var>n</var><sup>2</sup>) space and whole-graph time.</li>
+<li><b>Sparse</b> graph, <var>m</var> much smaller than <var>n</var><sup>2</sup>: the two lists are far cheaper.</li>
+<li><b>Directed</b> graph: the same bounds, with outdeg(<var>u</var>) in place of deg(<var>u</var>).</li>
+</ul>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

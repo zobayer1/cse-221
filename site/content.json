@@ -17,7 +17,8 @@
     { "dir": "Lecture05", "released": true, "topics": "Sorting faster than n log n without comparisons; counting sort and radix sort", "simulators": ["counting_sort", "radix_sort"] },
     { "dir": "Lecture06", "released": true, "topics": "Asymptotic notation: Big-O, Big-Omega and Big-Theta (with little-o and little-omega), asymptotic arithmetic, analyzing iterative code" },
     { "dir": "Lecture07", "released": true, "topics": "Divide and conquer: the pattern and its recurrence, the maximum-subarray problem by brute force, divide and conquer, and a linear scan", "simulators": ["max_subarray"] },
-    { "dir": "Lecture08", "released": true, "topics": "Multiplying large numbers: grade-school, divide and conquer and Karatsuba; range minimum queries; the subproblem properties divide and conquer needs", "simulators": ["karatsuba", "rmq"] }
+    { "dir": "Lecture08", "released": true, "topics": "Multiplying large numbers: grade-school, divide and conquer and Karatsuba; range minimum queries; the subproblem properties divide and conquer needs", "simulators": ["karatsuba", "rmq"] },
+    { "dir": "Lecture09", "released": true, "topics": "Graph vocabulary: vertices, edges, directed and undirected graphs, self-loops, parallel edges, simple graphs, weighted graphs, degrees, paths, cycles, connectivity and trees; graph representation; breadth-first search, its cost, and what it finds", "simulators": ["bfs"] }
   ],
 
   "simulators": [
@@ -33,7 +34,8 @@
     { "id": "radix_sort", "released": true, "title": "Radix Sort", "desc": "One stable counting sort per digit, from the ones digit up, and what goes wrong when a pass is not stable." },
     { "id": "max_subarray", "released": true, "title": "Maximum Subarray", "desc": "Divide and conquer: split in the middle, solve both halves, and grow the best crossing subarray out from the middle." },
     { "id": "karatsuba", "released": true, "title": "Karatsuba Multiplication", "desc": "Split both numbers, make three half-size products instead of four, then shift and add." },
-    { "id": "rmq", "released": true, "title": "Range Minimum Query", "desc": "Split the search range in the middle and follow the query into the left half, the right half, or both." }
+    { "id": "rmq", "released": true, "title": "Range Minimum Query", "desc": "Split the search range in the middle and follow the query into the left half, the right half, or both." },
+    { "id": "bfs", "released": true, "title": "Breadth-First Search", "desc": "Discovering a graph layer by layer from a source with a queue: colors, distances and predecessors, on your own graphs." }
   ],
 
   "quizzes": [

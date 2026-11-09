@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The handshaking lemma</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.fm { font-family:var(--serif); font-size:42px; text-align:center; padding:6px 0; }
+.fm sub { font-size:0.5em; }
+.why { display:grid; grid-template-columns:auto minmax(0,1fr); gap:40px; align-items:center; margin-top:22px; }
+.why p { font-size:25px; line-height:1.4; }
+.ot { font-size:24px; line-height:1.45; margin-top:18px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">The handshaking lemma</div>
+<div class="frame">
+<div class="block"><div class="bt">For an undirected graph</div><div class="bb"><div class="fm">∑<sub><var>v</var>∈<var>V</var></sub> deg(<var>v</var>) = 2|<var>E</var>|</div></div></div>
+<div class="why"><svg data-figure viewBox="0 0 360 92" width="360" height="92" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><line x1="83" y1="62" x2="277" y2="62" stroke="#2B5BAA" stroke-width="3.6"/><circle cx="60" cy="62" r="23" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="60" y="70.5" text-anchor="middle" font-size="25" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">u</tspan></text><circle cx="300" cy="62" r="23" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="300" y="70.5" text-anchor="middle" font-size="25" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">v</tspan></text><text x="60" y="20" text-anchor="middle" font-size="25" fill="#2B5BAA" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-weight="700">+1</text><text x="300" y="20" text-anchor="middle" font-size="25" fill="#2B5BAA" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-weight="700">+1</text></svg><p>Every edge has <b>two endpoints</b>. It adds 1 to each one’s degree, so 2 to the total.</p></div>
+<p class="ot"><b>Adjacency lists</b> store each undirected edge twice, so the lists hold 2|<var>E</var>| entries in total.</p>
+</div>
+<div class="doodle" style="left:1030px;top:462px;width:195px"><svg viewBox="0 0 220 170" width="220" height="170" fill="none" stroke="#1a1a1a" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">
+<circle cx="62" cy="44" r="13"/><circle cx="57" cy="41" r="1.6" fill="#1a1a1a"/><circle cx="67" cy="41" r="1.6" fill="#1a1a1a"/><path d="M56 49 q6 5 12 0"/>
+<path d="M62 57 L62 104 M62 104 L50 152 M62 104 L74 152 M62 72 L44 92 M62 72 L110 88"/>
+<circle cx="158" cy="44" r="13"/><circle cx="153" cy="41" r="1.6" fill="#1a1a1a"/><circle cx="163" cy="41" r="1.6" fill="#1a1a1a"/><path d="M152 49 q6 5 12 0"/>
+<path d="M158 57 L158 104 M158 104 L146 152 M158 104 L170 152 M158 72 L176 92 M158 72 L110 88"/>
+<path d="M28 154 H192" stroke-width="2"/>
+<g stroke="none" font-weight="700" text-anchor="middle" fill="#2B5BAA" font-size="24"><text x="62" y="22">+1</text><text x="158" y="22">+1</text></g>
+</svg></div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>
