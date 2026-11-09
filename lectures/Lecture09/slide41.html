@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BFS: space complexity</title>
+<title>BFS: time complexity</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
 table.tab { font-size:25px; }
 table.tab th { font-size:24px; }
@@ -14,18 +14,18 @@ ul.items sup { font-size:0.65em; line-height:0; }
 .nw { white-space:nowrap; }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">BFS: space complexity</div>
+<div class="frametitle">BFS: time complexity</div>
 <div class="frame">
 <table class="tab">
-<tr><th>Stored</th><th>Why</th><th class="c">Size</th></tr>
-<tr><td class="n1"><var>color</var>, <var>d</var>, <var>π</var></td><td>One entry per vertex</td><td class="c m"><var>O</var>(<var>V</var>)</td></tr>
-<tr class="sep"><td class="n1">Queue <var>Q</var></td><td>Holds at most |<var>V</var>| vertices</td><td class="c m"><var>O</var>(<var>V</var>)</td></tr>
-<tr class="sep"><td class="n1">The graph itself</td><td>Adjacency lists, or the edge list</td><td class="c m"><var>O</var>(<var>V</var> + <var>E</var>)</td></tr>
-<tr class="sep"><td colspan="2"><b>Total</b></td><td class="c m"><b><var>O</var>(<var>V</var> + <var>E</var>)</b></td></tr>
+<tr><th>Work</th><th class="c">Lines</th><th>Why</th><th class="c">Cost</th></tr>
+<tr><td class="n1">Initialization</td><td class="c n1">2–10</td><td>Touches every vertex once</td><td class="c m"><var>O</var>(<var>V</var>)</td></tr>
+<tr class="sep"><td class="n1">Queue work</td><td class="c n1">12, 18, 19</td><td>Only a white vertex enters <var>Q</var>, so each vertex enters at most once</td><td class="c m"><var>O</var>(<var>V</var>)</td></tr>
+<tr class="sep"><td class="n1">Scanning lists</td><td class="c n1">13–17</td><td>Each list is scanned at most once. By the handshaking lemma, the lists hold 2<var>m</var> entries (<var>m</var> if directed)</td><td class="c m"><var>O</var>(<var>E</var>)</td></tr>
+<tr class="sep"><td colspan="3"><b>Total</b></td><td class="c m"><b><var>O</var>(<var>V</var> + <var>E</var>)</b></td></tr>
 </table>
 <ul class="items">
-<li>Beyond the input graph, BFS needs only <span class="nw"><var>O</var>(<var>V</var>) extra space.</span></li>
-<li><b>The complexity depends on the graph representation.</b> Stored as an adjacency matrix, the graph alone takes <span class="nw"><var>O</var>(<var>V</var><sup>2</sup>).</span></li>
+<li>Inside <var>O</var>, <var>V</var> means |<var>V</var>| = <var>n</var> and <var>E</var> means |<var>E</var>| = <var>m</var>.</li>
+<li><b>The complexity depends on the graph representation.</b> This bound holds for adjacency lists and the edge list. With an adjacency matrix, scanning alone costs <span class="nw"><var>O</var>(<var>V</var><sup>2</sup>).</span></li>
 </ul>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>
