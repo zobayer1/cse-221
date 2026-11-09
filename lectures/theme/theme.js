@@ -5,7 +5,8 @@
     author: 'Zobayer Hasan', initials: 'ZBYR',
     code: 'CSE 221', name: 'Algorithms',
     dept: 'Department of Computer Science and Engineering, BRAC University',
-    term: 'Fall 2026', section: 'Section 19'
+    term: 'Fall 2026', section: 'Section 19',
+    license: 'https://creativecommons.org/licenses/by-nc-sa/4.0/'
   };
   var DECK = window.DECK || {};
   var slide = document.querySelector('.slide');
@@ -24,7 +25,9 @@
     var f = document.createElement('div');
     f.className = 'footline';
     f.innerHTML =
-      '<span class="fl-a">' + COURSE.author + '</span>' +
+      '<span class="fl-a"><a class="fl-cc" href="' + COURSE.license + '" target="_blank" rel="license noopener" ' +
+        'title="Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International">' +
+        '<img src="../theme/img/cc-by-nc-sa.svg" alt="CC BY-NC-SA 4.0"></a><span>' + COURSE.author + '</span></span>' +
       '<span class="fl-b">' + COURSE.code + ' · ' + (DECK.label || '') + '</span>' +
       '<span class="fl-c"><span>' + COURSE.term + ' · ' + COURSE.section + '</span><span>' + page + ' / ' + (DECK.total || '') + '</span></span>';
     slide.appendChild(f);

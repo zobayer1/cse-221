@@ -39,7 +39,8 @@ body { display:flex; align-items:center; justify-content:center; height:100vh; o
 
 .footline { position:absolute; left:0; right:0; bottom:0; height:var(--foot-h); display:grid; grid-template-columns:1fr 1fr 1fr; font-size:14px; color:#fff; }
 .footline span { display:flex; align-items:center; padding:0 18px; white-space:nowrap; overflow:hidden; }
-.footline .fl-a { background:var(--ink); justify-content:flex-end; }
+.footline .fl-a { background:var(--ink); justify-content:space-between; }
+.footline .fl-cc img { display:block; height:20px; }
 .footline .fl-b { background:var(--blue); justify-content:center; }
 .footline .fl-c { background:var(--blue-d); justify-content:space-between; }
 
@@ -106,7 +107,7 @@ table.tab .c { text-align:center; }
 .titlepage .author { margin-top:34px; font-size:26px; }
 .titlepage .inst { margin-top:8px; font-size:20px; color:var(--muted); }
 .titlepage .date { margin-top:22px; font-size:22px; }
-.footline .fl-c > span { padding:0; }
+.footline .fl-a > span, .footline .fl-c > span { padding:0; }
 .titlepage .tbox .sub:empty { display:none; }
 
 /* CLRS-style pseudocode */
