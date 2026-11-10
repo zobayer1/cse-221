@@ -1,0 +1,73 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Three kinds of sums</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.hd { text-align:center; font-size:21px; color:var(--muted); margin-bottom:22px; }
+.hd .m { font-family:var(--serif); color:var(--ink); font-size:26px; margin-left:6px; }
+.hd sup { font-size:0.66em; line-height:0; }
+.c3 { display:grid; grid-template-columns:repeat(3,1fr); gap:30px; }
+.c3 > div { border-top:4px solid var(--blue); background:var(--tint-2); padding:12px 18px 14px; text-align:center; }
+.c3 h3 { font-size:22px; font-weight:700; }
+.c3 h3 .m { font-family:var(--serif); font-weight:400; }
+.c3 svg { display:block; margin:8px auto 4px; }
+.c3 .ex { font-family:var(--serif); font-size:21px; }
+.c3 sup { font-size:0.66em; line-height:0; }
+.c3 .w { margin-top:8px; font-size:20px; font-weight:700; color:var(--blue); }
+.c3 .g { margin-top:2px; font-size:16px; color:var(--muted); }
+.c3 .g .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; }
+.fm { margin-top:24px; text-align:center; font-size:19px; color:var(--muted); line-height:1.5; }
+.fm .m { font-family:var(--serif); color:var(--ink); font-size:22px; white-space:nowrap; }
+.fm sup { font-size:0.66em; line-height:0; }
+.fm b { color:var(--ink); }
+.fm .rf { font-size:14px; color:var(--grey); margin-left:12px; vertical-align:middle; }
+.fr { display:inline-flex; flex-direction:column; vertical-align:middle; text-align:center; font-size:0.85em; line-height:1.15; margin:0 2px; }
+.fr > span + span { border-top:1.5px solid var(--ink); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Three kinds of sums</div>
+<div class="frame">
+<p class="hd">A geometric sum: each term is <var>r</var> times the one before.<span class="m">1 + <i>r</i> + <i>r</i><sup>2</sup> + ⋯ + <i>r</i><sup><i>k</i></sup></span></p>
+<div class="c3">
+<div><h3>Shrinking: <span class="m"><i>r</i> &lt; 1</span></h3><svg data-figure viewBox="0 0 300 150" width="300" height="150" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><line x1="8" y1="124" x2="292" y2="124" stroke="#000" stroke-width="1.5"/>
+<rect x="17.0" y="8.0" width="36.0" height="116.0" fill="#2B5BAA"/>
+<text x="35.0" y="143.0" font-size="15" text-anchor="middle" fill="#555">1</text>
+<rect x="63.0" y="66.0" width="36.0" height="58.0" fill="#B4C7E7"/>
+<text x="81.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan></text>
+<rect x="109.0" y="95.0" width="36.0" height="29.0" fill="#B4C7E7"/>
+<text x="127.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan><tspan dy="-0.42em" font-size="70%">2</tspan></text>
+<rect x="155.0" y="109.5" width="36.0" height="14.5" fill="#B4C7E7"/>
+<text x="173.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan><tspan dy="-0.42em" font-size="70%">3</tspan></text>
+<rect x="201.0" y="116.8" width="36.0" height="7.2" fill="#B4C7E7"/>
+<text x="219.0" y="143.0" font-size="15" text-anchor="middle" fill="#555">⋯</text>
+<rect x="247.0" y="120.4" width="36.0" height="3.6" fill="#B4C7E7"/>
+<text x="265.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan><tspan dy="-0.42em" font-size="70%"><tspan font-style="italic">k</tspan></tspan></text></svg><p class="ex">1 + ½ + ¼ + ⋯ &lt; 2</p><p class="w">The first term wins</p><p class="g">The sum is less than <span class="m">1/(1 − <i>r</i>)</span>, a constant.</p></div>
+<div><h3>Level: <span class="m"><i>r</i> = 1</span></h3><svg data-figure viewBox="0 0 300 150" width="300" height="150" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><line x1="8" y1="124" x2="292" y2="124" stroke="#000" stroke-width="1.5"/>
+<rect x="17.0" y="8.0" width="36.0" height="116.0" fill="#2B5BAA"/>
+<text x="35.0" y="143.0" font-size="15" text-anchor="middle" fill="#555">1</text>
+<rect x="63.0" y="8.0" width="36.0" height="116.0" fill="#2B5BAA"/>
+<text x="81.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan></text>
+<rect x="109.0" y="8.0" width="36.0" height="116.0" fill="#2B5BAA"/>
+<text x="127.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan><tspan dy="-0.42em" font-size="70%">2</tspan></text>
+<rect x="155.0" y="8.0" width="36.0" height="116.0" fill="#2B5BAA"/>
+<text x="173.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan><tspan dy="-0.42em" font-size="70%">3</tspan></text>
+<rect x="201.0" y="8.0" width="36.0" height="116.0" fill="#2B5BAA"/>
+<text x="219.0" y="143.0" font-size="15" text-anchor="middle" fill="#555">⋯</text>
+<rect x="247.0" y="8.0" width="36.0" height="116.0" fill="#2B5BAA"/>
+<text x="265.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan><tspan dy="-0.42em" font-size="70%"><tspan font-style="italic">k</tspan></tspan></text></svg><p class="ex">1 + 1 + ⋯ + 1 = <i>k</i> + 1</p><p class="w">Every term counts</p><p class="g">One term × the number of terms.</p></div>
+<div><h3>Growing: <span class="m"><i>r</i> &gt; 1</span></h3><svg data-figure viewBox="0 0 300 150" width="300" height="150" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><line x1="8" y1="124" x2="292" y2="124" stroke="#000" stroke-width="1.5"/>
+<rect x="17.0" y="120.4" width="36.0" height="3.6" fill="#B4C7E7"/>
+<text x="35.0" y="143.0" font-size="15" text-anchor="middle" fill="#555">1</text>
+<rect x="63.0" y="116.8" width="36.0" height="7.2" fill="#B4C7E7"/>
+<text x="81.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan></text>
+<rect x="109.0" y="109.5" width="36.0" height="14.5" fill="#B4C7E7"/>
+<text x="127.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan><tspan dy="-0.42em" font-size="70%">2</tspan></text>
+<rect x="155.0" y="95.0" width="36.0" height="29.0" fill="#B4C7E7"/>
+<text x="173.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan><tspan dy="-0.42em" font-size="70%">3</tspan></text>
+<rect x="201.0" y="66.0" width="36.0" height="58.0" fill="#B4C7E7"/>
+<text x="219.0" y="143.0" font-size="15" text-anchor="middle" fill="#555">⋯</text>
+<rect x="247.0" y="8.0" width="36.0" height="116.0" fill="#2B5BAA"/>
+<text x="265.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan><tspan dy="-0.42em" font-size="70%"><tspan font-style="italic">k</tspan></tspan></text></svg><p class="ex">1 + 2 + ⋯ + 2<sup><i>k</i></sup> &lt; 2 · 2<sup><i>k</i></sup></p><p class="w">The last term wins</p><p class="g">The sum is less than <span class="m"><i>r</i>/(<i>r</i> − 1)</span> × the last term.</p></div>
+</div>
+<p class="fm">For <span class="m"><i>r</i> ≠ 1</span>: <span class="m">1 + <i>r</i> + ⋯ + <i>r</i><sup><i>k</i></sup> = <span class="fr"><span><i>r</i><sup><i>k</i>+1</sup> − 1</span><span><i>r</i> − 1</span></span></span><span class="rf">CLRS (A.5)</span><br>In a recursion tree, the level totals often form this sum: <b>find <var>r</var></b>, and you know which level wins.</p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

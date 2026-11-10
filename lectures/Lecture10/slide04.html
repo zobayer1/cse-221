@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From code to a recurrence</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.rw { display:grid; grid-template-columns:1fr 600px; gap:40px; align-items:center; }
+.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.rr > div { display:grid; grid-template-columns:170px 1fr; gap:12px; padding:11px 0; border-bottom:1px solid var(--rule); align-items:baseline; }
+.rr .c { font-size:19px; font-weight:700; }
+.rr .v { font-size:18px; color:var(--muted); line-height:1.4; }
+.rr .v .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; }
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:14px 20px; }
+.codebox pre { font-size:19px; line-height:1.7; }
+.codebox .fn { font-weight:700; }
+.codebox .an { color:var(--blue); font-family:var(--serif); font-size:19px; }
+.rc { margin-top:22px; text-align:center; font-family:var(--serif); font-size:30px; }
+.rc b { color:var(--blue); font-weight:400; }
+.rc .bc { font-size:24px; color:var(--muted); margin-left:22px; }
+.cn { margin-top:8px; text-align:center; font-size:16px; color:var(--muted); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">From code to a recurrence</div>
+<div class="frame">
+<div class="rw"><div><div class="k3">The rules</div><div class="rr">
+<div><span class="c">Base case</span><span class="v">Constant work: <span class="m"><i>T</i>(1) = <i>c</i></span>.</span></div>
+<div><span class="c">A recursive call</span><span class="v">On an input of size <span class="m"><i>m</i></span>, it costs <span class="m"><i>T</i>(<i>m</i>)</span>, whatever it does inside.</span></div>
+<div><span class="c">Everything else</span><span class="v">Count it as in Lecture 6: lines, loops, <b>if</b> / <b>else</b>.</span></div>
+<div><span class="c">Add them up</span><span class="v"><span class="m"><i>T</i>(<i>n</i>)</span> = (cost of the calls) + (all other work).</span></div>
+</div></div>
+<div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">FACTORIAL</span>(n)
+<span class="ln">2</span>    <span class="kw">if</span> n ≤ 1                     <span class="an">Θ(1)</span>
+<span class="ln">3</span>        <span class="kw">return</span> 1                 <span class="an">Θ(1)</span>
+<span class="ln">4</span>    <span class="kw">return</span> n · <span class="fn">FACTORIAL</span>(n − 1)  <span class="an"><i>T</i>(<i>n</i> − 1) + Θ(1)</span></pre></div>
+<p class="rc"><b><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i> − 1) + <i>c</i></b>,<span class="bc"><i>T</i>(1) = <i>c</i></span></p>
+<p class="cn"><i>c</i> stands for the constant work of one call (the Θ(1) lines).</p></div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

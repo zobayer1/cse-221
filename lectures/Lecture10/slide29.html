@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spot the mistake</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.pf { width:760px; margin:0 auto; border:2px solid var(--ink); border-radius:10px; padding:18px 30px 20px; }
+.pf .cl { font-size:22px; }
+.pf .cl b { font-weight:700; }
+.pf .m { font-family:var(--serif); font-size:25px; white-space:nowrap; }
+.pf .pr { margin-top:10px; font-size:20px; font-style:italic; color:var(--muted); }
+.eq { display:grid; grid-template-columns:auto auto; justify-content:start; column-gap:10px; font-family:var(--serif); font-size:26px; line-height:1.75; margin:6px 0 0 40px; }
+.eq .l { text-align:right; }
+.q { margin-top:30px; text-align:center; font-family:var(--serif); font-size:30px; line-height:1.35; }
+.q b { color:var(--blue); }
+.q .s { display:block; font-family:var(--sans); font-size:20px; color:var(--muted); margin-top:6px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Spot the mistake<span class="ftag">Discuss</span></div>
+<div class="frame">
+<div class="pf"><p class="cl"><b>Claim.</b> <span class="m"><i>T</i>(<i>n</i>) = 2<i>T</i>(<i>n</i>/2) + <i>n</i></span> is <span class="m">O(<i>n</i>)</span>.</p>
+<p class="pr">Proof. Guess <span class="m" style="font-style:normal"><i>T</i>(<i>n</i>) ≤ <i>cn</i></span> and substitute it for <span class="m" style="font-style:normal"><i>T</i>(<i>n</i>/2)</span>:</p>
+<div class="eq">
+<span class="l"><i>T</i>(<i>n</i>)</span><span>≤&ensp;2 · <i>c</i>(<i>n</i>/2) + <i>n</i></span>
+<span class="l"></span><span>=&ensp;<i>cn</i> + <i>n</i></span>
+<span class="l"></span><span>=&ensp;O(<i>n</i>)</span>
+</div></div>
+<p class="q">We know the answer is <b>Θ(<i>n</i> log <i>n</i>)</b>. Where is the mistake?<span class="s">Every line of algebra is correct.</span></p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

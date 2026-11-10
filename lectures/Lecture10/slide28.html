@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Example 2: the base case and the constants</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.rw { display:grid; grid-template-columns:1fr 420px; gap:36px; align-items:center; }
+.k3 { font-size:14px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.st { display:grid; grid-template-columns:34px 1fr; gap:10px; padding:11px 0; border-bottom:1px solid var(--rule); align-items:baseline; }
+.st .n { font-family:var(--serif); font-size:23px; font-weight:700; color:var(--blue); }
+.st p { font-size:19px; line-height:1.45; }
+.st p .s { color:var(--muted); }
+.st .m { font-family:var(--serif); white-space:nowrap; font-size:22px; }
+.st .m b { color:var(--blue); font-weight:400; }
+.st .no { color:var(--red); font-weight:700; }
+.st sub { font-size:0.66em; line-height:0; }
+table.tab { font-size:21px; }
+table.tab td, table.tab th { padding:7px 10px; text-align:center; font-family:var(--serif); }
+table.tab th { font-weight:400; }
+table.tab td.p { color:var(--blue); }
+.cap { margin-top:8px; font-size:16px; color:var(--muted); text-align:center; }
+.lb { margin-top:22px; }
+.lb .bb { font-size:18px; line-height:1.45; }
+.lb .m { font-family:var(--serif); white-space:nowrap; font-size:20px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Example 2: the base case and the constants</div>
+<div class="frame">
+<div class="rw"><div><div class="k3">Finish the proof</div>
+<div class="st"><span class="n">1</span><p><b>Try <span class="m"><i>n</i> = 1</span>.</b> <span class="s"><span class="m"><i>T</i>(1) = 1</span>, but <span class="m"><i>c</i> · 1 · log 1 = 0</span>, and 1 ≤ 0 is false.</span> <span class="no">It fails.</span></p></div>
+<div class="st"><span class="n">2</span><p><b>Big-O only needs large <var>n</var></b> <span class="s">(Lecture 6). Start at <span class="m"><i>n</i><sub>0</sub> = 2</span>:</span><br><span class="m"><i>T</i>(2) = 2<i>T</i>(1) + 2 = 4 ≤ <i>c</i> · 2 · log 2 = 2<i>c</i></span><span class="s">, so</span> <span class="m"><i>c</i> ≥ 2</span>.</p></div>
+<div class="st"><span class="n">3</span><p><b>The step covers the rest.</b> <span class="s">For <span class="m"><i>n</i> ≥ 4</span> it uses size <span class="m"><i>n</i>/2 ≥ 2</span>, which is already proved.</span></p></div>
+<div class="st"><span class="n">4</span><p><b>Pick <span class="m"><i>c</i> = 2</span></b> <span class="s">(≥ 1 for the step, ≥ 2 for the base):</span> <span class="m"><b><i>T</i>(<i>n</i>) ≤ 2<i>n</i> log <i>n</i></b></span> <span class="s">for all</span> <span class="m"><i>n</i> ≥ 2</span><span class="s">, so</span> <span class="m"><b><i>T</i>(<i>n</i>) = O(<i>n</i> log <i>n</i>)</b></span>.</p></div>
+</div>
+<div><table class="tab"><tr><th><i>n</i></th><td>2</td><td>4</td><td>8</td><td>16</td></tr><tr class="sep"><th><i>T</i>(<i>n</i>)</th><td>4</td><td>12</td><td>32</td><td>80</td></tr><tr class="sep"><th>2<i>n</i> log <i>n</i></th><td class="p">4</td><td class="p">16</td><td class="p">48</td><td class="p">128</td></tr></table>
+<p class="cap">Check with numbers: <var>T</var>(<var>n</var>) stays below the bound.</p>
+<div class="block example lb"><div class="bt">The lower bound, too</div><div class="bb">The same steps with ≥ work for <span class="m"><i>c</i> = 1</span>, even from <span class="m"><i>n</i> = 1</span>. So <span class="m"><i>T</i>(<i>n</i>) = Ω(<i>n</i> log <i>n</i>)</span>, and <span class="m"><i>T</i>(<i>n</i>) = <b>Θ(<i>n</i> log <i>n</i>)</b></span>.</div></div></div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

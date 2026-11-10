@@ -1,0 +1,176 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSE 221 Recurrences Practice</title>
+<style>
+@font-face { font-family:'CMU Sans Serif'; font-weight:400; src:url(../../lectures/theme/fonts/cmu-sans-serif-500-roman.woff2) format('woff2'); }
+@font-face { font-family:'CMU Sans Serif'; font-style:italic; font-weight:400; src:url(../../lectures/theme/fonts/cmu-sans-serif-500-italic.woff2) format('woff2'); }
+@font-face { font-family:'CMU Sans Serif'; font-weight:700; src:url(../../lectures/theme/fonts/cmu-sans-serif-700-roman.woff2) format('woff2'); }
+@font-face { font-family:'CMU Serif'; font-weight:400; src:url(../../lectures/theme/fonts/cmu-serif-500-roman.woff2) format('woff2'); }
+@font-face { font-family:'CMU Serif'; font-style:italic; font-weight:400; src:url(../../lectures/theme/fonts/cmu-serif-500-italic.woff2) format('woff2'); }
+@font-face { font-family:'CMU Serif'; font-weight:700; src:url(../../lectures/theme/fonts/cmu-serif-700-roman.woff2) format('woff2'); }
+@font-face { font-family:'CMU Typewriter Text'; font-weight:400; src:url(../../lectures/theme/fonts/cmu-typewriter-text-500-roman.woff2) format('woff2'); }
+@font-face { font-family:'CMU Typewriter Text'; font-weight:700; src:url(../../lectures/theme/fonts/cmu-typewriter-text-700-roman.woff2) format('woff2'); }
+@font-face { font-family:'KaTeX_Main'; font-weight:400; src:url(../../lectures/theme/fonts/KaTeX_Main-Regular.woff2) format('woff2'); }
+@font-face { font-family:'KaTeX_Size1'; font-weight:400; src:url(../../lectures/theme/fonts/KaTeX_Size1-Regular.woff2) format('woff2'); }
+:root { --blue:#2B5BAA; --blue-d:#1F4A8F; --tint:#E9EEF7; --tint-2:#F4F6FB; --ink:#000; --muted:#555; --grey:#A7A9AC; --rule:#C9CCD1; --red:#C62828; --green:#2E7D32;
+  --sans:'CMU Sans Serif','KaTeX_Main','KaTeX_Size1',sans-serif; --serif:'CMU Serif','KaTeX_Main','KaTeX_Size1',serif; --mono:'CMU Typewriter Text','KaTeX_Main','KaTeX_Size1',monospace; }
+@page { size:A4; margin:14mm 15mm 14mm; }
+* { box-sizing:border-box; margin:0; padding:0; }
+html { background:#d9dbde; }
+body { font-family:var(--sans); color:var(--ink); font-size:10.5pt; line-height:1.45; }
+.sheet { width:210mm; min-height:297mm; margin:10mm auto; background:#fff; padding:14mm 15mm; box-shadow:0 2px 10px rgba(0,0,0,.2); }
+@media print { html { background:#fff; } .sheet { width:auto; min-height:0; margin:0; padding:0; box-shadow:none; } }
+i, .m { font-family:var(--serif); }
+i { font-style:italic; }
+.m { white-space:nowrap; }
+sup, sub { line-height:0; }
+.bar { background:var(--blue); color:#fff; display:flex; justify-content:space-between; align-items:center; padding:2.2mm 5mm; font-size:15pt; }
+.bar .r { font-size:10.5pt; display:flex; gap:3mm; align-items:center; }
+.bar .tag { background:#000; color:#fff; font-size:8pt; font-weight:700; letter-spacing:.08em; padding:.6mm 2mm; text-transform:uppercase; }
+.meta { display:flex; gap:4mm; align-items:center; padding:2.5mm 0 3mm; border-bottom:.8pt solid var(--ink); }
+.meta img { height:10mm; }
+.meta .t { font-family:var(--serif); font-size:12pt; font-weight:700; line-height:1.2; }
+.meta .t span { display:block; font-family:var(--sans); font-weight:400; font-size:9pt; color:var(--muted); }
+.intro { margin-top:3mm; }
+.tb { margin:3mm 0 1mm; background:var(--tint-2); border-left:1.6mm solid var(--blue); padding:2mm 4mm; font-size:9.5pt; break-inside:avoid; }
+.tb .h { font-weight:700; color:var(--blue); font-size:8.5pt; letter-spacing:.08em; text-transform:uppercase; margin-bottom:.8mm; }
+.tb table { border-collapse:collapse; width:100%; }
+.tb td { padding:.6mm 2mm .6mm 0; vertical-align:baseline; }
+.tb td:first-child { width:30mm; color:var(--blue); font-weight:700; white-space:nowrap; }
+h2 { font-family:var(--serif); font-size:13pt; margin:6mm 0 1mm; padding-bottom:1mm; border-bottom:.8pt solid var(--ink); break-after:avoid; }
+h2 b { color:var(--blue); margin-right:2mm; }
+.lead { color:var(--muted); font-size:9.5pt; margin-bottom:1.5mm; }
+ol.q { margin-left:7mm; }
+ol.q > li { margin:1.6mm 0; padding-left:1mm; break-inside:avoid; }
+ol.q > li::marker { font-weight:700; color:var(--blue); }
+.ch { font-size:8pt; font-weight:700; color:var(--red); letter-spacing:.06em; text-transform:uppercase; margin-left:1.5mm; }
+table.cmp { border-collapse:collapse; width:100%; margin-top:1mm; }
+table.cmp th, table.cmp td { padding:.8mm 2mm; text-align:center; border-bottom:.4pt solid var(--rule); }
+table.cmp thead th { border-top:.8pt solid var(--ink); border-bottom:.6pt solid var(--ink); font-weight:700; }
+table.cmp tbody tr:last-child td { border-bottom:.8pt solid var(--ink); }
+table.cmp td.f { font-family:var(--serif); font-size:11pt; text-align:left; white-space:nowrap; }
+table.cmp td.a { color:var(--blue-d); font-family:var(--serif); }
+table.cmp td.s { color:var(--blue-d); font-family:var(--serif); font-weight:700; white-space:nowrap; text-align:left; }
+table.cmp td.w { color:var(--blue-d); font-size:9pt; text-align:left; }
+.cg { display:grid; grid-template-columns:1fr 1fr; gap:3mm 5mm; margin-top:1.5mm; }
+.cg > div { break-inside:avoid; }
+.cg .lb { font-weight:700; color:var(--blue); margin-bottom:.6mm; }
+.cg .lb .ch { font-weight:700; }
+.code { background:var(--tint); border-left:1.2mm solid var(--blue); padding:1.6mm 3mm; }
+.code pre { font-family:var(--mono); font-size:9pt; line-height:1.5; white-space:pre; }
+.code .ln { color:var(--grey); display:inline-block; width:5mm; }
+.code .kw { color:var(--blue); font-weight:700; }
+.code .fn { font-weight:700; }
+.key { color:var(--blue-d); font-size:9.5pt; margin-top:.8mm; padding-left:2.5mm; border-left:.8mm solid var(--blue); }
+.key b { font-weight:700; }
+.key .d { display:block; font-family:var(--serif); font-size:10pt; line-height:1.7; }
+.foot { margin-top:4mm; padding-top:2mm; border-top:.6pt solid var(--rule); font-size:8.5pt; color:var(--muted); }
+</style></head><body><div class="sheet">
+<div class="bar"><span>Practice Problems: Recurrences</span><span class="r"><span class="tag">With answers</span>Lecture 10</span></div>
+<div class="meta"><img src="../../lectures/theme/img/brac-logo.png" alt="BRAC University logo"><div class="t">CSE 221 – Algorithms<span>Zobayer Hasan (ZBYR) · Fall 2026 · Section 19</span></div></div>
+<p class="intro">These problems practice Lecture 10. Work them out on paper and <b>show your steps</b>: the pattern after <i>k</i> steps, the level totals, or the constants of a proof. Take <i>n</i> to be a power of the number it is divided by, so every size is a whole number, and read log as log<sub>2</sub> unless a base is shown. Problems marked <span class="ch" style="margin:0">Challenge</span> go a step further than the lecture. Each problem is followed by a worked answer in blue: try the problem first, then check.</p>
+<div class="tb"><div class="h">Toolbox from the lecture</div><table>
+<tr><td>From code</td><td><i>T</i>(<i>n</i>) = (one <i>T</i>(<i>m</i>) for each recursive call on size <i>m</i>) + (all other work in the call), plus a base case such as <span class="m"><i>T</i>(1) = <i>c</i></span>.</td></tr>
+<tr><td>Unrolling</td><td>Expand <i>T</i> with its own rule, spot the pattern after <i>k</i> steps, pick <i>k</i> so the size reaches the base case, then add up.</td></tr>
+<tr><td>Sums</td><td><span class="m">1 + 2 + ⋯ + <i>n</i> = <i>n</i>(<i>n</i> + 1)/2</span>. &nbsp;<span class="m">1 + <i>r</i> + ⋯ + <i>r</i><sup><i>k</i></sup> = (<i>r</i><sup><i>k</i>+1</sup> − 1)/(<i>r</i> − 1)</span>: if <i>r</i> &lt; 1 the first term wins, if <i>r</i> = 1 every term counts, if <i>r</i> &gt; 1 the last term wins.</td></tr>
+<tr><td>Recursion tree</td><td>For <span class="m"><i>aT</i>(<i>n</i>/<i>b</i>) + <i>f</i>(<i>n</i>)</span>, depth <i>i</i> has <i>a</i><sup><i>i</i></sup> calls of size <i>n</i>/<i>b</i><sup><i>i</i></sup>. The leaves are at depth log<sub><i>b</i></sub> <i>n</i>, and there are <span class="m"><i>a</i><sup>log<sub><i>b</i></sub> <i>n</i></sup> = <i>n</i><sup>log<sub><i>b</i></sub> <i>a</i></sup></span> of them.</td></tr>
+<tr><td>Substitution</td><td>Guess the form, then prove it by induction. The step must end with <b>exactly</b> the guessed form, with the <b>same</b> constant.</td></tr>
+<tr><td>Master theorem</td><td>For <span class="m"><i>T</i>(<i>n</i>) = <i>aT</i>(<i>n</i>/<i>b</i>) + Θ(<i>n</i><sup><i>k</i></sup>)</span>: if <i>a</i> &gt; <i>b</i><sup><i>k</i></sup>, Θ(<i>n</i><sup>log<sub><i>b</i></sub> <i>a</i></sup>); if <i>a</i> = <i>b</i><sup><i>k</i></sup>, Θ(<i>n</i><sup><i>k</i></sup> log <i>n</i>); if <i>a</i> &lt; <i>b</i><sup><i>k</i></sup>, Θ(<i>n</i><sup><i>k</i></sup>).</td></tr>
+</table></div>
+
+<h2><b>A</b>From code to a recurrence</h2><p class="lead">Write a recurrence for the running time of each procedure, with a base case. Then solve it with any method from the lecture. Every simple step takes Θ(1), and arrays are 0-indexed, as in the slides.</p>
+<div class="cg"><div><div class="lb">1. <span class="fn">SUM-REC</span></div><div class="code"><pre><span class="ln">1</span><span class="fn">SUM-REC</span>(A, n)
+<span class="ln">2</span>    <span class="kw">if</span> n == 0
+<span class="ln">3</span>        <span class="kw">return</span> 0
+<span class="ln">4</span>    <span class="kw">return</span> <span class="fn">SUM-REC</span>(A, n − 1) + A[n − 1]</pre></div><div class="key"><b><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i> − 1) + <i>c</i></b>, <i>T</i>(0) = <i>c</i>. Unrolling gives <i>T</i>(<i>n</i> − <i>k</i>) + <i>kc</i>; with <i>k</i> = <i>n</i>, <i>T</i>(<i>n</i>) = <i>c</i>(<i>n</i> + 1) = <b>Θ(<i>n</i>)</b>.</div></div>
+<div><div class="lb">2. <span class="fn">REVERSE-REC</span> · size <span class="m"><i>n</i> = <i>hi</i> − <i>lo</i> + 1</span></div><div class="code"><pre><span class="ln">1</span><span class="fn">REVERSE-REC</span>(A, lo, hi)
+<span class="ln">2</span>    <span class="kw">if</span> lo ≥ hi
+<span class="ln">3</span>        <span class="kw">return</span>
+<span class="ln">4</span>    exchange A[lo] with A[hi]
+<span class="ln">5</span>    <span class="fn">REVERSE-REC</span>(A, lo + 1, hi − 1)</pre></div><div class="key">Each call removes two elements: <b><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i> − 2) + <i>c</i></b>, <i>T</i>(0) = <i>T</i>(1) = <i>c</i>. That is about <i>n</i>/2 calls of constant work: <b>Θ(<i>n</i>)</b>.</div></div>
+<div><div class="lb">3. <span class="fn">COUNT-DIGITS</span> · <i>n</i> is a number, not an array size</div><div class="code"><pre><span class="ln">1</span><span class="fn">COUNT-DIGITS</span>(n)
+<span class="ln">2</span>    <span class="kw">if</span> n &lt; 10
+<span class="ln">3</span>        <span class="kw">return</span> 1
+<span class="ln">4</span>    <span class="kw">return</span> 1 + <span class="fn">COUNT-DIGITS</span>(⌊n/10⌋)</pre></div><div class="key"><b><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i>/10) + <i>c</i></b>. The value drops by a factor of 10 per call, so there are about log<sub>10</sub> <i>n</i> + 1 calls: <b>Θ(log <i>n</i>)</b>, one call per digit.</div></div>
+<div><div class="lb">4. <span class="fn">POWER-SLOW</span></div><div class="code"><pre><span class="ln">1</span><span class="fn">POWER-SLOW</span>(x, n)
+<span class="ln">2</span>    <span class="kw">if</span> n == 0
+<span class="ln">3</span>        <span class="kw">return</span> 1
+<span class="ln">4</span>    p = <span class="fn">POWER-SLOW</span>(x, ⌊n/2⌋)
+<span class="ln">5</span>    p = p · <span class="fn">POWER-SLOW</span>(x, ⌊n/2⌋)
+<span class="ln">6</span>    <span class="kw">if</span> n mod 2 == 0
+<span class="ln">7</span>        <span class="kw">return</span> p
+<span class="ln">8</span>    <span class="kw">return</span> p · x</pre></div><div class="key">Two calls on half the size: <b><i>T</i>(<i>n</i>) = 2<i>T</i>(<i>n</i>/2) + <i>c</i></b>. Here <i>a</i> = 2 &gt; <i>b</i><sup>0</sup> = 1, so the leaves win: <b>Θ(<i>n</i>)</b>. The lecture’s POWER saves the result in <i>h</i> and makes one call: Θ(log <i>n</i>).</div></div>
+<div><div class="lb">5. <span class="fn">INVERSIONS-SLOW</span> · counts pairs <span class="m"><i>i</i> &lt; <i>j</i></span> with <span class="m"><i>A</i>[<i>i</i>] &gt; <i>A</i>[<i>j</i>]</span></div><div class="code"><pre><span class="ln">1</span><span class="fn">INVERSIONS-SLOW</span>(A, lo, hi)
+<span class="ln">2</span>    <span class="kw">if</span> lo ≥ hi
+<span class="ln">3</span>        <span class="kw">return</span> 0
+<span class="ln">4</span>    mid = ⌊(lo + hi)/2⌋
+<span class="ln">5</span>    left = <span class="fn">INVERSIONS-SLOW</span>(A, lo, mid)
+<span class="ln">6</span>    right = <span class="fn">INVERSIONS-SLOW</span>(A, mid + 1, hi)
+<span class="ln">7</span>    count = left + right
+<span class="ln">8</span>    <span class="kw">for</span> i = lo <span class="kw">to</span> mid
+<span class="ln">9</span>        <span class="kw">for</span> j = mid + 1 <span class="kw">to</span> hi
+<span class="ln">10</span>            <span class="kw">if</span> A[i] &gt; A[j]
+<span class="ln">11</span>                count = count + 1
+<span class="ln">12</span>    <span class="kw">return</span> count</pre></div><div class="key">The double loop makes (<i>n</i>/2) · (<i>n</i>/2) = <i>n</i><sup>2</sup>/4 checks: <b><i>T</i>(<i>n</i>) = 2<i>T</i>(<i>n</i>/2) + Θ(<i>n</i><sup>2</sup>)</b>. Here <i>a</i> = 2 &lt; 2<sup>2</sup>, so the root wins: <b>Θ(<i>n</i><sup>2</sup>)</b>, no better than checking every pair. A Θ(<i>n</i>) combine step would give Θ(<i>n</i> log <i>n</i>).</div></div>
+<div><div class="lb">6. <span class="fn">STOOGE-SORT</span> · a real, famously slow sort <span class="ch">Challenge</span></div><div class="code"><pre><span class="ln">1</span><span class="fn">STOOGE-SORT</span>(A, lo, hi)
+<span class="ln">2</span>    <span class="kw">if</span> A[lo] &gt; A[hi]
+<span class="ln">3</span>        exchange A[lo] with A[hi]
+<span class="ln">4</span>    <span class="kw">if</span> lo + 1 ≥ hi
+<span class="ln">5</span>        <span class="kw">return</span>
+<span class="ln">6</span>    third = ⌊(hi − lo + 1)/3⌋
+<span class="ln">7</span>    <span class="fn">STOOGE-SORT</span>(A, lo, hi − third)
+<span class="ln">8</span>    <span class="fn">STOOGE-SORT</span>(A, lo + third, hi)
+<span class="ln">9</span>    <span class="fn">STOOGE-SORT</span>(A, lo, hi − third)</pre></div><div class="key">Three calls, each on two thirds: <b><i>T</i>(<i>n</i>) = 3<i>T</i>(2<i>n</i>/3) + <i>c</i></b>. So <i>a</i> = 3, <i>b</i> = 3/2, <i>k</i> = 0, and 3 &gt; (3/2)<sup>0</sup> = 1: <b>Θ(<i>n</i><sup>log<sub>3/2</sub> 3</sup>) ≈ Θ(<i>n</i><sup>2.71</sup>)</b>, slower than insertion sort’s Θ(<i>n</i><sup>2</sup>).</div></div></div>
+
+<h2><b>B</b>Unrolling</h2><p class="lead">Solve each recurrence by unrolling. Write the pattern after <i>k</i> steps, choose <i>k</i>, and give an exact answer or a Θ bound.</p><ol class="q">
+<li><span class="m"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i> − 1) + 2</span>, &nbsp;<span class="m"><i>T</i>(0) = 0</span><div class="key">After <i>k</i> steps: <i>T</i>(<i>n</i> − <i>k</i>) + 2<i>k</i>. With <i>k</i> = <i>n</i>: <b><i>T</i>(<i>n</i>) = 2<i>n</i></b>.</div></li>
+<li><span class="m"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i> − 1) + <i>n</i><sup>2</sup></span>, &nbsp;<span class="m"><i>T</i>(0) = 0</span><div class="key">Unrolling to the base case leaves <span class="m">1<sup>2</sup> + 2<sup>2</sup> + ⋯ + <i>n</i><sup>2</sup> = <i>n</i>(<i>n</i> + 1)(2<i>n</i> + 1)/6</span> (CLRS A.3): <b>Θ(<i>n</i><sup>3</sup>)</b>. Without the formula: the <i>n</i> terms are each at most <i>n</i><sup>2</sup>, and the top half are each at least (<i>n</i>/2)<sup>2</sup>, so the sum is between <i>n</i><sup>3</sup>/8 and <i>n</i><sup>3</sup>.</div></li>
+<li><span class="m"><i>T</i>(<i>n</i>) = 3<i>T</i>(<i>n</i> − 1) + 1</span>, &nbsp;<span class="m"><i>T</i>(0) = 0</span><div class="key"><span class="d"><i>T</i>(<i>n</i>) = 3<i>T</i>(<i>n</i> − 1) + 1 = 9<i>T</i>(<i>n</i> − 2) + 3 + 1 = 27<i>T</i>(<i>n</i> − 3) + 9 + 3 + 1 = 3<sup><i>k</i></sup><i>T</i>(<i>n</i> − <i>k</i>) + (3<sup><i>k</i></sup> − 1)/2.</span>With <i>k</i> = <i>n</i>: <b><i>T</i>(<i>n</i>) = (3<sup><i>n</i></sup> − 1)/2 = Θ(3<sup><i>n</i></sup>)</b>. Check: <i>T</i>(3) = 13 = (27 − 1)/2.</div></li>
+<li><span class="m"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i>/2) + <i>n</i><sup>2</sup></span>, &nbsp;<span class="m"><i>T</i>(1) = 1</span><div class="key">After <i>k</i> steps: <span class="m"><i>T</i>(<i>n</i>/2<sup><i>k</i></sup>) + <i>n</i><sup>2</sup>(1 + 1/4 + ⋯ + 1/4<sup><i>k</i>−1</sup>)</span>. The sum is less than 4/3 (ratio 1/4), and the first term alone is <i>n</i><sup>2</sup>: <b>Θ(<i>n</i><sup>2</sup>)</b>. Exactly, <i>T</i>(<i>n</i>) = (4<i>n</i><sup>2</sup> − 1)/3.</div></li>
+<li><span class="m"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i>/3) + 1</span>, &nbsp;<span class="m"><i>T</i>(1) = 1</span><div class="key">After <i>k</i> steps: <i>T</i>(<i>n</i>/3<sup><i>k</i></sup>) + <i>k</i>. The size reaches 1 at <i>k</i> = log<sub>3</sub> <i>n</i>: <b><i>T</i>(<i>n</i>) = log<sub>3</sub> <i>n</i> + 1 = Θ(log <i>n</i>)</b>, like ternary search.</div></li>
+<li><span class="m"><i>T</i>(<i>n</i>) = 2<i>T</i>(<i>n</i>/2) + 1</span>, &nbsp;<span class="m"><i>T</i>(1) = 1</span><div class="key">After <i>k</i> steps: <span class="m">2<sup><i>k</i></sup><i>T</i>(<i>n</i>/2<sup><i>k</i></sup>) + (1 + 2 + ⋯ + 2<sup><i>k</i>−1</sup>) = 2<sup><i>k</i></sup><i>T</i>(<i>n</i>/2<sup><i>k</i></sup>) + 2<sup><i>k</i></sup> − 1</span>. With <i>k</i> = log <i>n</i>, 2<sup><i>k</i></sup> = <i>n</i>: <b><i>T</i>(<i>n</i>) = 2<i>n</i> − 1 = Θ(<i>n</i>)</b>.</div></li>
+<li><span class="m"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i> − 1) + log <i>n</i></span>, &nbsp;<span class="m"><i>T</i>(1) = 0</span> <span class="ch">Challenge</span><div class="key">Unrolling leaves <span class="m">log 2 + log 3 + ⋯ + log <i>n</i> = log(<i>n</i>!)</span>, which grows like <i>n</i> log <i>n</i> (Lecture 4). Directly: each of the <i>n</i> terms is at most log <i>n</i>, and the top half are each at least log(<i>n</i>/2), so the sum is between (<i>n</i>/2) log(<i>n</i>/2) and <i>n</i> log <i>n</i>: <b>Θ(<i>n</i> log <i>n</i>)</b>.</div></li>
+</ol>
+
+<h2><b>C</b>Recursion trees</h2><p class="lead">Draw the first three levels of the tree and add up each level. Find the ratio <i>r</i> between levels (if there is one), decide which level wins, and give a Θ bound.</p><ol class="q">
+<li><span class="m"><i>T</i>(<i>n</i>) = 3<i>T</i>(<i>n</i>/2) + <i>n</i></span><div class="key">Level <i>i</i>: 3<sup><i>i</i></sup> calls costing <i>n</i>/2<sup><i>i</i></sup> each, so <span class="m"><i>n</i>(3/2)<sup><i>i</i></sup></span>: <i>n</i>, 3<i>n</i>/2, 9<i>n</i>/4, … The ratio <i>r</i> = 3/2 &gt; 1, so the leaves win: 3<sup>log <i>n</i></sup> = <i>n</i><sup>log 3</sup> leaves. <b>Θ(<i>n</i><sup>log<sub>2</sub> 3</sup>) ≈ Θ(<i>n</i><sup>1.585</sup>)</b>, Karatsuba’s recurrence.</div></li>
+<li><span class="m"><i>T</i>(<i>n</i>) = 4<i>T</i>(<i>n</i>/2) + <i>n</i><sup>2</sup></span><div class="key">Level <i>i</i>: 4<sup><i>i</i></sup> · (<i>n</i>/2<sup><i>i</i></sup>)<sup>2</sup> = <i>n</i><sup>2</sup>. Every level costs the same (<i>r</i> = 1), and there are log <i>n</i> + 1 levels: <b>Θ(<i>n</i><sup>2</sup> log <i>n</i>)</b>.</div></li>
+<li><span class="m"><i>T</i>(<i>n</i>) = 2<i>T</i>(<i>n</i>/4) + <i>n</i></span><div class="key">Level <i>i</i>: 2<sup><i>i</i></sup> · <i>n</i>/4<sup><i>i</i></sup> = <i>n</i>/2<sup><i>i</i></sup>: <i>n</i>, <i>n</i>/2, <i>n</i>/4, … The ratio <i>r</i> = 1/2, so the root wins and the total is less than 2<i>n</i>: <b>Θ(<i>n</i>)</b>.</div></li>
+<li><span class="m"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i>/4) + <i>T</i>(3<i>n</i>/4) + <i>n</i></span><div class="key">Sizes on a full level add up to <i>n</i>, so every full level costs <i>n</i>. The shortest path reaches size 1 at depth log<sub>4</sub> <i>n</i>, the longest at log<sub>4/3</sub> <i>n</i>. So <span class="m"><i>n</i> log<sub>4</sub> <i>n</i> ≤ <i>T</i>(<i>n</i>) ≤ <i>n</i>(log<sub>4/3</sub> <i>n</i> + 1)</span>: <b>Θ(<i>n</i> log <i>n</i>)</b>.</div></li>
+<li><span class="m"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i>/2) + <i>T</i>(<i>n</i>/4) + <i>n</i></span><div class="key">A node of size <i>m</i> has children of sizes <i>m</i>/2 and <i>m</i>/4, which cost 3<i>m</i>/4 together. Level totals: <i>n</i>, 3<i>n</i>/4, 9<i>n</i>/16, … The ratio <i>r</i> = 3/4, so the root wins: <span class="m"><i>n</i> ≤ <i>T</i>(<i>n</i>) &lt; 4<i>n</i></span>, <b>Θ(<i>n</i>)</b>.</div></li>
+<li><span class="m"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i>/3) + <i>T</i>(2<i>n</i>/3) + <i>n</i><sup>2</sup></span> <span class="ch">Challenge</span><div class="key">A node of size <i>m</i> costs <i>m</i><sup>2</sup>; its children cost (<i>m</i>/3)<sup>2</sup> + (2<i>m</i>/3)<sup>2</sup> = 5<i>m</i><sup>2</sup>/9. Level totals: <i>n</i><sup>2</sup>, 5<i>n</i><sup>2</sup>/9, 25<i>n</i><sup>2</sup>/81, … With <i>r</i> = 5/9 the root wins: <b>Θ(<i>n</i><sup>2</sup>)</b>. With <i>n</i> instead of <i>n</i><sup>2</sup> (Lecture 10, slide 22), every level ties.</div></li>
+</ol>
+
+<h2><b>D</b>The substitution method</h2><p class="lead">Prove each claim by induction. Write the base case and the inductive step, and state the constants you choose.</p><ol class="q">
+<li>For <span class="m"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i> − 1) + <i>n</i></span>, <span class="m"><i>T</i>(1) = 1</span>, prove that <span class="m"><i>T</i>(<i>n</i>) = <i>n</i>(<i>n</i> + 1)/2</span> for all <i>n</i> ≥ 1.<div class="key"><b>Base:</b> <i>T</i>(1) = 1 = 1 · 2/2. <b>Step:</b> assume <i>T</i>(<i>n</i> − 1) = (<i>n</i> − 1)<i>n</i>/2. Then <i>T</i>(<i>n</i>) = (<i>n</i> − 1)<i>n</i>/2 + <i>n</i> = <i>n</i>(<i>n</i> − 1 + 2)/2 = <i>n</i>(<i>n</i> + 1)/2.</div></li>
+<li>Prove the answer you found in B3: <span class="m"><i>T</i>(<i>n</i>) = (3<sup><i>n</i></sup> − 1)/2</span> for <span class="m"><i>T</i>(<i>n</i>) = 3<i>T</i>(<i>n</i> − 1) + 1</span>, <span class="m"><i>T</i>(0) = 0</span>.<div class="key"><b>Base:</b> (3<sup>0</sup> − 1)/2 = 0 = <i>T</i>(0). <b>Step:</b> assume <i>T</i>(<i>n</i> − 1) = (3<sup><i>n</i>−1</sup> − 1)/2. Then <i>T</i>(<i>n</i>) = 3(3<sup><i>n</i>−1</sup> − 1)/2 + 1 = (3<sup><i>n</i></sup> − 3 + 2)/2 = (3<sup><i>n</i></sup> − 1)/2.</div></li>
+<li>For <span class="m"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i>/2) + 1</span>, <span class="m"><i>T</i>(1) = 1</span>, prove that <span class="m"><i>T</i>(<i>n</i>) ≤ <i>c</i> log <i>n</i></span> for some <i>c</i> and all <i>n</i> ≥ <i>n</i><sub>0</sub>. Which <i>n</i><sub>0</sub> do you need?<div class="key"><b>Step:</b> <i>T</i>(<i>n</i>) ≤ <i>c</i> log(<i>n</i>/2) + 1 = <i>c</i> log <i>n</i> − <i>c</i> + 1 ≤ <i>c</i> log <i>n</i> when <i>c</i> ≥ 1. <b>Base:</b> <i>n</i> = 1 fails, since <i>c</i> log 1 = 0 &lt; 1. Start at <b><i>n</i><sub>0</sub> = 2</b>: <i>T</i>(2) = 2 ≤ <i>c</i> · 1 needs <i>c</i> ≥ 2. So <b><i>c</i> = 2</b> works for every <i>n</i> ≥ 2: <i>T</i>(<i>n</i>) = O(log <i>n</i>).</div></li>
+<li>Spot the mistake. “<i>Claim:</i> <span class="m"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i> − 1) + <i>n</i></span> is O(<i>n</i>). <i>Proof:</i> guess <i>T</i>(<i>n</i>) ≤ <i>cn</i>. Then <i>T</i>(<i>n</i>) ≤ <i>c</i>(<i>n</i> − 1) + <i>n</i> = <i>cn</i> + (<i>n</i> − <i>c</i>) = O(<i>n</i>).”<div class="key">The step had to end with <i>T</i>(<i>n</i>) ≤ <i>cn</i>, but it ended with <i>cn</i> + (<i>n</i> − <i>c</i>), which is <b>more</b> than <i>cn</i> once <i>n</i> &gt; <i>c</i>. The proof fails, and the claim is false: by D1, <i>T</i>(<i>n</i>) is Θ(<i>n</i><sup>2</sup>).</div></li>
+<li>Prove correctly that <span class="m"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i> − 1) + <i>n</i></span>, <span class="m"><i>T</i>(1) = 1</span>, is O(<i>n</i><sup>2</sup>). (CLRS Exercise 4.3-1)<div class="key">Guess <i>T</i>(<i>n</i>) ≤ <i>cn</i><sup>2</sup>. <b>Step:</b> <i>T</i>(<i>n</i>) ≤ <i>c</i>(<i>n</i> − 1)<sup>2</sup> + <i>n</i> = <i>cn</i><sup>2</sup> − (2<i>c</i> − 1)<i>n</i> + <i>c</i>. With <i>c</i> = 1 this is <i>n</i><sup>2</sup> − <i>n</i> + 1 ≤ <i>n</i><sup>2</sup> for <i>n</i> ≥ 1. <b>Base:</b> <i>T</i>(1) = 1 ≤ 1 · 1<sup>2</sup>. So <b><i>c</i> = 1, <i>n</i><sub>0</sub> = 1</b>.</div></li>
+<li>For <span class="m"><i>T</i>(<i>n</i>) = 4<i>T</i>(<i>n</i>/2) + <i>n</i></span>, <span class="m"><i>T</i>(1) = 1</span>: (a) show that the guess <i>T</i>(<i>n</i>) ≤ <i>cn</i><sup>2</sup> does not go through the step; (b) prove the stronger guess <span class="m"><i>T</i>(<i>n</i>) ≤ <i>cn</i><sup>2</sup> − <i>dn</i></span> instead. <span class="ch">Challenge</span><div class="key">(a) 4<i>c</i>(<i>n</i>/2)<sup>2</sup> + <i>n</i> = <i>cn</i><sup>2</sup> + <i>n</i>, more than <i>cn</i><sup>2</sup>: the step fails, by just <i>n</i>. (b) 4[<i>c</i>(<i>n</i>/2)<sup>2</sup> − <i>d</i>(<i>n</i>/2)] + <i>n</i> = <i>cn</i><sup>2</sup> − 2<i>dn</i> + <i>n</i> ≤ <i>cn</i><sup>2</sup> − <i>dn</i> when <i>d</i> ≥ 1. Base: <i>T</i>(1) = 1 ≤ <i>c</i> − <i>d</i>, so <b><i>c</i> = 2, <i>d</i> = 1</b>. Subtracting a smaller term makes the induction stronger, not weaker (CLRS pp. 85–86). In fact <i>T</i>(<i>n</i>) = 2<i>n</i><sup>2</sup> − <i>n</i> exactly.</div></li>
+</ol>
+
+<h2 style="break-before:page"><b>E</b>The master theorem</h2><p class="lead">For each recurrence, find <i>a</i>, <i>b</i> and <i>k</i>, compare <i>a</i> with <i>b</i><sup><i>k</i></sup>, and give the case and the answer. If the master theorem does not apply, say why and solve it another way. Rows (a)–(d) are CLRS Exercise 4.5-1.</p>
+<table class="cmp"><thead><tr><th></th><th style="text-align:left">Recurrence</th><th><i>a</i></th><th><i>b</i></th><th><i>k</i></th><th>Compare</th><th>Case</th><th style="text-align:left"><i>T</i>(<i>n</i>)</th></tr></thead><tbody>
+<tr><td>(a)</td><td class="f">2<i>T</i>(<i>n</i>/4) + 1</td><td class="a">2</td><td class="a">4</td><td class="a">0</td><td class="a">2 &gt; 1</td><td class="a">1</td><td class="s">Θ(<i>n</i><sup>log<sub>4</sub> 2</sup>) = Θ(√<i>n</i>)</td></tr>
+<tr><td>(b)</td><td class="f">2<i>T</i>(<i>n</i>/4) + √<i>n</i></td><td class="a">2</td><td class="a">4</td><td class="a">1/2</td><td class="a">2 = 4<sup>1/2</sup></td><td class="a">2</td><td class="s">Θ(√<i>n</i> log <i>n</i>)</td></tr>
+<tr><td>(c)</td><td class="f">2<i>T</i>(<i>n</i>/4) + <i>n</i></td><td class="a">2</td><td class="a">4</td><td class="a">1</td><td class="a">2 &lt; 4</td><td class="a">3</td><td class="s">Θ(<i>n</i>)</td></tr>
+<tr><td>(d)</td><td class="f">2<i>T</i>(<i>n</i>/4) + <i>n</i><sup>2</sup></td><td class="a">2</td><td class="a">4</td><td class="a">2</td><td class="a">2 &lt; 16</td><td class="a">3</td><td class="s">Θ(<i>n</i><sup>2</sup>)</td></tr>
+<tr><td>(e)</td><td class="f"><i>T</i>(<i>n</i>/2) + <i>n</i></td><td class="a">1</td><td class="a">2</td><td class="a">1</td><td class="a">1 &lt; 2</td><td class="a">3</td><td class="s">Θ(<i>n</i>)</td></tr>
+<tr><td>(f)</td><td class="f">5<i>T</i>(<i>n</i>/5) + <i>n</i></td><td class="a">5</td><td class="a">5</td><td class="a">1</td><td class="a">5 = 5</td><td class="a">2</td><td class="s">Θ(<i>n</i> log <i>n</i>)</td></tr>
+<tr><td>(g)</td><td class="f">3<i>T</i>(<i>n</i>/3) + <i>n</i>/2</td><td class="a">3</td><td class="a">3</td><td class="a">1</td><td class="a">3 = 3</td><td class="a">2</td><td class="s">Θ(<i>n</i> log <i>n</i>)</td></tr>
+<tr><td>(h)</td><td class="f">16<i>T</i>(<i>n</i>/4) + <i>n</i><sup>2</sup></td><td class="a">16</td><td class="a">4</td><td class="a">2</td><td class="a">16 = 16</td><td class="a">2</td><td class="s">Θ(<i>n</i><sup>2</sup> log <i>n</i>)</td></tr>
+<tr><td>(i)</td><td class="f">27<i>T</i>(<i>n</i>/3) + <i>n</i><sup>2</sup></td><td class="a">27</td><td class="a">3</td><td class="a">2</td><td class="a">27 &gt; 9</td><td class="a">1</td><td class="s">Θ(<i>n</i><sup>log<sub>3</sub> 27</sup>) = Θ(<i>n</i><sup>3</sup>)</td></tr>
+<tr><td>(j)</td><td class="f">7<i>T</i>(<i>n</i>/2) + <i>n</i><sup>2</sup></td><td class="a">7</td><td class="a">2</td><td class="a">2</td><td class="a">7 &gt; 4</td><td class="a">1</td><td class="s">Θ(<i>n</i><sup>log<sub>2</sub> 7</sup>) ≈ Θ(<i>n</i><sup>2.81</sup>)</td></tr>
+<tr><td>(k)</td><td class="f">4<i>T</i>(<i>n</i>/2) + <i>n</i><sup>2</sup>√<i>n</i></td><td class="a">4</td><td class="a">2</td><td class="a">5/2</td><td class="a">4 &lt; 2<sup>2.5</sup> ≈ 5.66</td><td class="a">3</td><td class="s">Θ(<i>n</i><sup>2.5</sup>)</td></tr>
+<tr><td>(l)</td><td class="f"><i>T</i>(<i>n</i> − 1) + <i>n</i></td><td colspan="5" class="w">Does not apply: the size shrinks by subtracting. Unroll: <i>n</i> + (<i>n</i> − 1) + ⋯ + 1.</td><td class="s">Θ(<i>n</i><sup>2</sup>)</td></tr>
+<tr><td>(m)</td><td class="f"><i>T</i>(<i>n</i>/3) + <i>T</i>(2<i>n</i>/3) + <i>n</i></td><td colspan="5" class="w">Does not apply: calls of different sizes. Recursion tree: every full level costs <i>n</i>.</td><td class="s">Θ(<i>n</i> log <i>n</i>)</td></tr>
+<tr><td>(n)</td><td class="f">2<i>T</i>(<i>n</i>/2) + <i>n</i> log <i>n</i></td><td colspan="5" class="w">Does not apply: <i>n</i> log <i>n</i> beats <i>n</i><sup>log<sub>2</sub> 2</sup> = <i>n</i> only by log <i>n</i>. Tree: level <i>i</i> costs <i>n</i>(log <i>n</i> − <i>i</i>).</td><td class="s">Θ(<i>n</i> log<sup>2</sup> <i>n</i>)</td></tr>
+</tbody></table>
+
+<h2><b>F</b>Design questions</h2><p class="lead">Write the recurrence first, then use it to answer the question.</p><ol class="q">
+<li>Karatsuba splits each <i>n</i>-digit number into 2 parts and makes 3 products of half the size. The Toom–Cook method (Toom-3) splits each number into 3 parts and makes 5 products of a third of the size, with Θ(<i>n</i>) extra work. Which is faster for large <i>n</i>?<div class="key">Toom-3: <b><i>T</i>(<i>n</i>) = 5<i>T</i>(<i>n</i>/3) + Θ(<i>n</i>)</b>, and 5 &gt; 3, so Θ(<i>n</i><sup>log<sub>3</sub> 5</sup>) ≈ Θ(<i>n</i><sup>1.465</sup>). Karatsuba is Θ(<i>n</i><sup>log<sub>2</sub> 3</sup>) ≈ Θ(<i>n</i><sup>1.585</sup>). <b>Toom-3 grows more slowly</b>, though its larger constants make it pay off only for very large numbers.</div></li>
+<li>A friend splits merge sort into <b>three</b> thirds and merges three sorted lists in Θ(<i>n</i>). Is it asymptotically faster than merge sort?<div class="key"><b><i>T</i>(<i>n</i>) = 3<i>T</i>(<i>n</i>/3) + Θ(<i>n</i>)</b>, and 3 = 3<sup>1</sup>: case 2, Θ(<i>n</i> log <i>n</i>). <b>No</b>: fewer levels (log<sub>3</sub> <i>n</i> instead of log<sub>2</sub> <i>n</i>) change only the constant factor.</div></li>
+<li>Strassen’s method multiplies two <i>n</i> × <i>n</i> matrices with 7 products of size <i>n</i>/2, in Θ(<i>n</i><sup>log<sub>2</sub> 7</sup>) ≈ Θ(<i>n</i><sup>2.81</sup>). A new method would split into pieces of size <i>n</i>/4 and spend Θ(<i>n</i><sup>2</sup>) to divide and combine. What is the largest number of products <i>a</i> it can make and still be asymptotically faster than Strassen? (CLRS Exercise 4.5-2) <span class="ch">Challenge</span><div class="key"><i>T</i>(<i>n</i>) = <i>aT</i>(<i>n</i>/4) + Θ(<i>n</i><sup>2</sup>). For <i>a</i> &gt; 16 this is Θ(<i>n</i><sup>log<sub>4</sub> <i>a</i></sup>), and we need log<sub>4</sub> <i>a</i> &lt; log<sub>2</sub> 7 = log<sub>4</sub> 49. So <i>a</i> &lt; 49: <b><i>a</i> = 48</b>. (At <i>a</i> = 49 the two are equal.)</div></li>
+</ol>
+<p class="foot">Methods and page numbers follow CLRS, 3rd edition: §4.3 (pp. 83–88), §4.4 (pp. 88–93), §4.5 (pp. 93–97) and Appendix A.1 (pp. 1145–1147). Lecture 10 covers every tool you need; problems marked Challenge go further.</p></div></body></html>

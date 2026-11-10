@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The master theorem on this course</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.rc { text-align:center; font-size:20px; color:var(--muted); margin-bottom:16px; }
+.rc b { color:var(--ink); }
+.rc .m { font-family:var(--serif); color:var(--ink); font-size:22px; white-space:nowrap; }
+table.tab { font-size:20px; }
+table.tab th { font-size:17px; }
+table.tab td, table.tab th { padding:7px 11px; }
+table.tab td.m { font-family:var(--serif); font-size:22px; white-space:nowrap; }
+table.tab td.c, table.tab th.c { text-align:center; }
+table.tab td.s { font-family:var(--serif); font-size:22px; white-space:nowrap; color:var(--blue); font-weight:700; }
+table.tab td.d { color:var(--muted); font-size:16px; }
+sup, sub { font-size:0.66em; line-height:0; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">The master theorem on this course</div>
+<div class="frame">
+<p class="rc"><b>Recipe:</b> read <span class="m"><i>a</i></span>, <span class="m"><i>b</i></span>, <span class="m"><i>k</i></span>; compare <span class="m"><i>a</i></span> with <span class="m"><i>b</i><sup><i>k</i></sup></span>; write down the case.</p>
+<table class="tab">
+<tr><th>Algorithm</th><th>Recurrence</th><th class="c"><var>a</var></th><th class="c"><var>b</var><sup><var>k</var></sup></th><th class="c">Case</th><th>Solution</th></tr>
+<tr><td>Binary search <span class="d">(Lecture 2)</span></td><td class="m"><i>T</i>(<i>n</i>/2) + Θ(1)</td><td class="m c">1</td><td class="m c">2<sup>0</sup> = 1</td><td class="c">2</td><td class="s">Θ(log <i>n</i>)</td></tr>
+<tr class="sep"><td>Ternary search <span class="d">(Lecture 2)</span></td><td class="m"><i>T</i>(<i>n</i>/3) + Θ(1)</td><td class="m c">1</td><td class="m c">3<sup>0</sup> = 1</td><td class="c">2</td><td class="s">Θ(log <i>n</i>)</td></tr>
+<tr class="sep"><td>Merge sort, max subarray <span class="d">(Lectures 4, 7)</span></td><td class="m">2<i>T</i>(<i>n</i>/2) + Θ(<i>n</i>)</td><td class="m c">2</td><td class="m c">2<sup>1</sup> = 2</td><td class="c">2</td><td class="s">Θ(<i>n</i> log <i>n</i>)</td></tr>
+<tr class="sep"><td>MAX-REC</td><td class="m">2<i>T</i>(<i>n</i>/2) + Θ(1)</td><td class="m c">2</td><td class="m c">2<sup>0</sup> = 1</td><td class="c">1</td><td class="s">Θ(<i>n</i><sup>log<sub>2</sub> 2</sup>) = Θ(<i>n</i>)</td></tr>
+<tr class="sep"><td>Four half-size products <span class="d">(Lecture 8)</span></td><td class="m">4<i>T</i>(<i>n</i>/2) + Θ(<i>n</i>)</td><td class="m c">4</td><td class="m c">2<sup>1</sup> = 2</td><td class="c">1</td><td class="s">Θ(<i>n</i><sup>log<sub>2</sub> 4</sup>) = Θ(<i>n</i><sup>2</sup>)</td></tr>
+<tr class="sep"><td>Karatsuba <span class="d">(Lecture 8)</span></td><td class="m">3<i>T</i>(<i>n</i>/2) + Θ(<i>n</i>)</td><td class="m c">3</td><td class="m c">2<sup>1</sup> = 2</td><td class="c">1</td><td class="s">Θ(<i>n</i><sup>log<sub>2</sub> 3</sup>) ≈ Θ(<i>n</i><sup>1.585</sup>)</td></tr>
+<tr class="sep"><td>Root-heavy tree <span class="d">(slide 19)</span></td><td class="m">2<i>T</i>(<i>n</i>/2) + Θ(<i>n</i><sup>2</sup>)</td><td class="m c">2</td><td class="m c">2<sup>2</sup> = 4</td><td class="c">3</td><td class="s">Θ(<i>n</i><sup>2</sup>)</td></tr>
+</table>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

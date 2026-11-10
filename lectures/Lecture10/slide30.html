@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Answer: prove the exact form</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.c2 { display:grid; grid-template-columns:1fr 1fr; gap:34px; align-items:start; }
+.k3 { font-size:14px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); margin-bottom:12px; }
+.c2 p { font-size:19px; color:var(--muted); line-height:1.45; }
+.c2 p b { color:var(--ink); }
+.c2 .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; font-size:22px; }
+.c2 p.bg { margin:14px 0; text-align:center; font-family:var(--serif); font-size:34px; color:var(--ink); }
+.bg .r { color:var(--red); }
+.bg svg.cross { color:var(--red); margin-left:10px; }
+table.tab { font-size:21px; width:auto; margin:0 auto; }
+table.tab td.v { text-align:left; white-space:nowrap; min-width:190px; }
+table.tab td, table.tab th { padding:4px 18px; text-align:center; font-family:var(--serif); }
+table.tab th { font-family:var(--sans); font-size:17px; font-weight:700; }
+table.tab td.p { color:var(--red); }
+.c2 p.af { margin-top:12px; }
+.rl { margin-top:28px; }
+.rl .bb { font-size:20px; line-height:1.45; }
+.rl .m { font-family:var(--serif); white-space:nowrap; font-size:22px; }
+.rl .s { color:var(--muted); font-size:17px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Answer: prove the exact form</div>
+<div class="frame">
+<div class="c2"><div><div class="k3">The step did not close</div>
+<p>The guess was <span class="m"><i>T</i>(<i>n</i>) ≤ <i>cn</i></span>, with <b>one fixed</b> <var>c</var>. The step ended with</p>
+<p class="bg"><i>cn</i> + <i>n</i> <span class="r">&gt;</span> <i>cn</i><svg class="cross" viewBox="0 0 24 24"><path d="M5 5 L19 19 M19 5 L5 19"/></svg></p>
+<p>which is <b>more</b> than <span class="m"><i>cn</i></span>. Writing “= O(<var>n</var>)” hid the failure.</p></div>
+<div><div class="k3">The constant keeps growing</div>
+<table class="tab"><tr><th>Size</th><th>Bound on <var>T</var></th></tr><tr><td>1</td><td class="v"><i>c</i> · 1</td></tr><tr><td>2</td><td class="v">(<i>c</i> + 1) · 2</td></tr><tr><td>4</td><td class="v">(<i>c</i> + 2) · 4</td></tr><tr><td>⋮</td><td class="v">⋮</td></tr><tr><td><i>n</i></td><td class="v p">(<i>c</i> + log <i>n</i>) · <i>n</i></td></tr></table>
+<p class="af">Each doubling adds 1 to the “constant”. After log <var>n</var> doublings it is <span class="m"><i>c</i> + log <i>n</i></span>, which is <b>not a constant</b>: the bound is really <span class="m"><i>cn</i> + <i>n</i> log <i>n</i></span>.</p></div></div>
+<div class="block alert rl"><div class="bt">The rule</div><div class="bb">End the inductive step with <b>exactly</b> the guessed form, <span class="m"><i>T</i>(<i>n</i>) ≤ <i>cn</i></span>, with the <b>same</b> <var>c</var>. Never switch to O( ) in the middle of an induction. <span class="s">(CLRS p. 86, “Avoiding pitfalls”)</span></div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

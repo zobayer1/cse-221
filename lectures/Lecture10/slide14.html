@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unrolling: six recurrences to remember</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+table.tab { font-size:21px; }
+table.tab th { font-size:19px; }
+table.tab td, table.tab th { padding:9px 14px; }
+table.tab td.m { font-family:var(--serif); font-size:24px; white-space:nowrap; }
+table.tab td.s { font-family:var(--serif); font-size:24px; white-space:nowrap; color:var(--blue); font-weight:700; }
+table.tab td.d { color:var(--muted); font-size:19px; }
+table.tab td.lv { font-family:var(--serif); font-size:21px; white-space:nowrap; }
+table.tab sup { font-size:0.68em; line-height:0; }
+table.tab tr.grp td { padding-top:16px; }
+.ky { margin-top:24px; display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+.ky p { font-size:19px; color:var(--muted); line-height:1.45; border-top:2px solid var(--ink); padding-top:10px; }
+.ky p b { color:var(--ink); }
+.ky .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Unrolling: six recurrences to remember</div>
+<div class="frame">
+<table class="tab">
+<tr><th>Recurrence</th><th>Example</th><th>Levels</th><th>Solution</th></tr>
+<tr><td class="m"><i>T</i>(<i>n</i> − 1) + <i>c</i></td><td>FACTORIAL, linear search <span class="d">(Lecture 2)</span></td><td class="lv"><i>n</i></td><td class="s">Θ(<i>n</i>)</td></tr>
+<tr class="sep"><td class="m"><i>T</i>(<i>n</i> − 1) + <i>cn</i></td><td>BUBBLE-SORT-REC, quicksort’s worst case <span class="d">(Lecture 4)</span></td><td class="lv"><i>n</i></td><td class="s">Θ(<i>n</i><sup>2</sup>)</td></tr>
+<tr class="sep"><td class="m">2<i>T</i>(<i>n</i> − 1) + <i>c</i></td><td>HANOI</td><td class="lv"><i>n</i></td><td class="s">Θ(2<sup><i>n</i></sup>)</td></tr>
+<tr class="sep"><td class="m"><i>T</i>(<i>n</i>/2) + <i>c</i></td><td>POWER, binary search <span class="d">(Lecture 2)</span></td><td class="lv">log <i>n</i></td><td class="s">Θ(log <i>n</i>)</td></tr>
+<tr class="sep"><td class="m"><i>T</i>(<i>n</i>/2) + <i>cn</i></td><td>binary search that copies its half</td><td class="lv">log <i>n</i></td><td class="s">Θ(<i>n</i>)</td></tr>
+<tr class="sep"><td class="m">2<i>T</i>(<i>n</i>/2) + <i>cn</i></td><td>merge sort <span class="d">(Lecture 4)</span></td><td class="lv">log <i>n</i></td><td class="s">Θ(<i>n</i> log <i>n</i>)</td></tr>
+</table>
+<div class="ky"><p><b>Subtract 1:</b> about <span class="m"><i>n</i></span> levels before the base case. <b>Halve:</b> only <span class="m">log <i>n</i></span> levels.</p><p><b>Two calls</b> double the number of calls at every level. With one call, unrolling stays a single line; with two or more, draw a <b>tree</b>.</p></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

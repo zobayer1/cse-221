@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Answer: solve these</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+table.tab { font-size:21px; }
+table.tab th { font-size:18px; }
+table.tab td, table.tab th { padding:10px 12px; }
+table.tab td.lt { font-family:var(--serif); font-weight:700; color:var(--blue); width:36px; }
+table.tab td.m { font-family:var(--serif); font-size:23px; white-space:nowrap; }
+table.tab td.c, table.tab th.c { text-align:center; }
+table.tab td.s { font-family:var(--serif); font-size:23px; white-space:nowrap; color:var(--blue); font-weight:700; }
+sup, sub { font-size:0.66em; line-height:0; }
+.nb { margin-top:26px; display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+.nb p { font-size:19px; color:var(--muted); line-height:1.45; border-top:2px solid var(--ink); padding-top:10px; }
+.nb p b { color:var(--ink); }
+.nb .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; font-size:21px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Answer: solve these</div>
+<div class="frame">
+<table class="tab">
+<tr><th></th><th>Recurrence</th><th class="c"><var>a</var></th><th class="c"><var>b</var></th><th class="c"><var>k</var></th><th class="c">Compare</th><th class="c">Case</th><th>Solution</th></tr>
+<tr><td class="lt">A</td><td class="m">9<i>T</i>(<i>n</i>/3) + <i>n</i></td><td class="m c">9</td><td class="m c">3</td><td class="m c">1</td><td class="m c">9 &gt; 3<sup>1</sup></td><td class="c">1</td><td class="s">Θ(<i>n</i><sup>log<sub>3</sub> 9</sup>) = Θ(<i>n</i><sup>2</sup>)</td></tr>
+<tr class="sep"><td class="lt">B</td><td class="m"><i>T</i>(2<i>n</i>/3) + 1</td><td class="m c">1</td><td class="m c">3/2</td><td class="m c">0</td><td class="m c">1 = (3/2)<sup>0</sup></td><td class="c">2</td><td class="s">Θ(log <i>n</i>)</td></tr>
+<tr class="sep"><td class="lt">C</td><td class="m">3<i>T</i>(<i>n</i>/4) + <i>n</i><sup>2</sup></td><td class="m c">3</td><td class="m c">4</td><td class="m c">2</td><td class="m c">3 &lt; 4<sup>2</sup></td><td class="c">3</td><td class="s">Θ(<i>n</i><sup>2</sup>)</td></tr>
+<tr class="sep"><td class="lt">D</td><td class="m">8<i>T</i>(<i>n</i>/2) + <i>n</i><sup>3</sup></td><td class="m c">8</td><td class="m c">2</td><td class="m c">3</td><td class="m c">8 = 2<sup>3</sup></td><td class="c">2</td><td class="s">Θ(<i>n</i><sup>3</sup> log <i>n</i>)</td></tr>
+</table>
+<div class="nb"><p><b>B has <span class="m"><i>b</i> = 3/2</span>.</b> Each call gets size <span class="m">2<i>n</i>/3 = <i>n</i>/(3/2)</span>. The theorem only needs <span class="m"><i>b</i> &gt; 1</span>, not a whole number.</p><p><b>Only case 1’s answer has <var>a</var> in it.</b> In cases 2 and 3 the answer comes from <span class="m"><i>n</i><sup><i>k</i></sup></span>, the root’s work. In case 1 it is the number of leaves.</p></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

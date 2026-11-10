@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unrolling: halving</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.hd { text-align:center; font-size:21px; color:var(--muted); margin-bottom:18px; }
+.hd .m { font-family:var(--serif); color:var(--ink); font-size:26px; margin-left:8px; }
+.rw { display:grid; grid-template-columns:1fr 360px; gap:28px; align-items:center; }
+.eq > span { white-space:nowrap; }
+.un { background:var(--tint); border-left:5px solid var(--blue); padding:14px 22px 16px; }
+.k3 { font-size:14px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:6px; }
+.eq { display:grid; grid-template-columns:auto auto 1fr; column-gap:10px; font-family:var(--serif); font-size:24px; line-height:1.75; align-items:baseline; }
+.eq .l { text-align:right; }
+.eq .n { font-family:var(--sans); font-size:15px; color:var(--muted); padding-left:14px; white-space:nowrap; }
+.eq .x { color:var(--blue); }
+.eq b { color:var(--blue); font-weight:700; }
+.eq sup { font-size:0.68em; line-height:0; }
+.eq .rule { grid-column:1 / -1; border-top:1px solid var(--grey); margin:6px 0 2px; }
+.eq .bc { grid-column:1 / -1; font-family:var(--sans); font-size:18px; color:var(--muted); }
+.eq .bc .m { font-family:var(--serif); color:var(--ink); font-size:21px; }
+.bx { border:2px solid var(--ink); border-radius:10px; padding:12px 18px 16px; }
+.bx .k3 { color:var(--muted); }
+.ch { display:flex; align-items:center; justify-content:center; gap:4px; margin:12px 0 4px; }
+.ch .v { font-family:var(--serif); font-size:23px; border:2px solid var(--blue); border-radius:6px; background:var(--tint); min-width:38px; text-align:center; padding:2px 5px; }
+.ch .v.e { background:var(--blue); color:#fff; }
+.ch .a { display:flex; flex-direction:column; align-items:center; font-size:13px; color:var(--muted); line-height:1.1; }
+.ch .a b { font-family:var(--serif); font-size:22px; color:var(--ink); font-weight:400; }
+.bx p { font-size:17px; color:var(--muted); line-height:1.45; margin-top:8px; }
+.bx p .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; font-size:19px; }
+.bx sup, .ft sup { font-size:0.68em; line-height:0; }
+.ft { margin-top:20px; text-align:center; font-size:17px; color:var(--muted); line-height:1.45; }
+.ft .m { font-family:var(--serif); color:var(--ink); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Unrolling: halving</div>
+<div class="frame">
+<p class="hd">POWER:<span class="m"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i>/2) + <i>c</i>,&ensp;<i>T</i>(1) = <i>c</i></span></p>
+<div class="rw"><div class="un"><div class="k3">Unroll it</div><div class="eq">
+<span class="l"><i>T</i>(<i>n</i>)</span><span>=&ensp;<span class="x"><i>T</i>(<i>n</i>/2)</span> + <i>c</i></span><span></span>
+<span class="l"></span><span>=&ensp;<span class="x"><i>T</i>(<i>n</i>/4) + <i>c</i></span> + <i>c</i></span><span class="n">rule for <var>T</var>(<var>n</var>/2)</span>
+<span class="l"></span><span>=&ensp;<i>T</i>(<i>n</i>/8) + 3<i>c</i></span><span></span>
+<span class="l"></span><span>=&ensp;<i>T</i>(<i>n</i>/2<sup><i>k</i></sup>) + <i>kc</i></span><span class="n">after <var>k</var> steps</span>
+<span class="rule"></span>
+<span class="bc">Base case: <span class="m"><i>n</i>/2<sup><i>k</i></sup> = 1, so <i>k</i> = log <i>n</i></span> &nbsp;(see the box)</span>
+<span class="l"><i>T</i>(<i>n</i>)</span><span>=&ensp;<i>T</i>(1) + <i>c</i> log <i>n</i> = <i>c</i>(log <i>n</i> + 1) = <b>Θ(log <i>n</i>)</b></span><span></span>
+</div></div>
+<div class="bx"><div class="k3">How many halvings?</div>
+<div class="ch"><span class="v">16</span><span class="a"><b>→</b>1</span><span class="v">8</span><span class="a"><b>→</b>2</span><span class="v">4</span><span class="a"><b>→</b>3</span><span class="v">2</span><span class="a"><b>→</b>4</span><span class="v e">1</span></div>
+<p>Four halvings take 16 down to 1, and <span class="m">log<sub>2</sub> 16 = 4</span>.</p>
+<p>In general <span class="m"><i>n</i>/2<sup><i>k</i></sup> = 1</span> when <span class="m">2<sup><i>k</i></sup> = <i>n</i></span>, that is, <span class="m"><i>k</i> = log<sub>2</sub> <i>n</i></span>. For <span class="m"><i>n</i> = 10<sup>9</sup></span> that is only about 30.</p></div></div>
+<p class="ft">The same recurrence as binary search (Lecture 2). Here <var>n</var> is a power of 2, so every <span class="m"><i>n</i>/2<sup><i>k</i></sup></span> is a whole number;<br>floors such as <span class="m">⌊<i>n</i>/2⌋</span> do not change the Θ answer.</p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

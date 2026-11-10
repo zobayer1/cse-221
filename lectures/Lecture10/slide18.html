@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Where is the work?</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.tp { font-size:22px; color:var(--muted); text-align:center; margin-bottom:24px; line-height:1.45; }
+.tp b { color:var(--ink); }
+.c3 { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+.c3 > div { border-top:4px solid var(--blue); background:var(--tint-2); padding:14px 20px 18px; }
+.c3 .lt { font-family:var(--serif); font-size:26px; font-weight:700; color:var(--blue); }
+.c3 .nm { font-size:16px; color:var(--muted); margin-left:8px; }
+.c3 .rq { font-family:var(--serif); font-size:27px; margin:8px 0 14px; white-space:nowrap; }
+.c3 .rq sup { font-size:0.66em; line-height:0; }
+.bl { display:grid; grid-template-columns:auto 1fr; gap:10px 12px; font-size:19px; align-items:end; }
+.bl span:nth-child(odd) { color:var(--muted); }
+.bl i.u { display:block; border-bottom:1.5px solid var(--ink); height:24px; }
+.q { margin-top:30px; text-align:center; font-family:var(--serif); font-size:30px; }
+.q b { color:var(--blue); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Where is the work?<span class="ftag">Discuss</span></div>
+<div class="frame">
+<p class="tp">Draw the first three levels of each tree and <b>add up each level</b>. Is each level total <var>r</var> times the one above?</p>
+<div class="c3">
+<div><span class="lt">A</span><p class="rq"><i>T</i>(<i>n</i>) = 2<i>T</i>(<i>n</i>/2) + <i>cn</i><sup>2</sup></p><div class="bl"><span>Level 0</span><i class="u"></i><span>Level 1</span><i class="u"></i><span>Level 2</span><i class="u"></i><span><var>r</var> =</span><i class="u"></i></div></div>
+<div><span class="lt">B</span><p class="rq"><i>T</i>(<i>n</i>) = 4<i>T</i>(<i>n</i>/2) + <i>cn</i></p><div class="bl"><span>Level 0</span><i class="u"></i><span>Level 1</span><i class="u"></i><span>Level 2</span><i class="u"></i><span><var>r</var> =</span><i class="u"></i></div></div>
+<div><span class="lt">C</span><span class="nm">MAX-REC</span><p class="rq"><i>T</i>(<i>n</i>) = 2<i>T</i>(<i>n</i>/2) + <i>c</i></p><div class="bl"><span>Level 0</span><i class="u"></i><span>Level 1</span><i class="u"></i><span>Level 2</span><i class="u"></i><span><var>r</var> =</span><i class="u"></i></div></div>
+</div>
+<p class="q">Which level wins: the <b>root</b>, <b>every level</b>, or the <b>leaves</b>?</p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

@@ -1,0 +1,58 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unrolling: halving, with a copy</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.hd { text-align:center; font-size:21px; color:var(--muted); }
+.hd .m { font-family:var(--serif); color:var(--ink); font-size:26px; margin-left:8px; }
+.sb { text-align:center; font-size:17px; color:var(--muted); margin:4px 0 16px; }
+.sb .m { font-family:var(--serif); color:var(--ink); }
+.rw { display:grid; grid-template-columns:1fr 390px; gap:32px; align-items:center; }
+.un { background:var(--tint); border-left:5px solid var(--blue); padding:12px 22px 14px; }
+.k3 { font-size:14px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:4px; }
+.eq { display:grid; grid-template-columns:auto auto 1fr; column-gap:10px; font-family:var(--serif); font-size:21px; line-height:1.65; align-items:baseline; }
+.eq .l { text-align:right; }
+.eq .n { font-family:var(--sans); font-size:15px; color:var(--muted); padding-left:12px; }
+.eq .x { color:var(--blue); }
+.eq b { color:var(--blue); font-weight:700; }
+.eq sup { font-size:0.68em; line-height:0; }
+.eq .rule { grid-column:1 / -1; border-top:1px solid var(--grey); margin:5px 0 2px; }
+.eq .bc { grid-column:1 / -1; font-family:var(--sans); font-size:18px; color:var(--muted); }
+.eq .bc .m { font-family:var(--serif); color:var(--ink); font-size:21px; }
+.bx { border:2px solid var(--ink); border-radius:10px; padding:12px 16px 14px; }
+.bx .k3 { color:var(--muted); }
+.bx svg { display:block; margin:10px auto 2px; }
+.bx p { font-size:17px; color:var(--muted); line-height:1.45; margin-top:6px; }
+.bx p .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; font-size:19px; }
+.bx sup { font-size:0.68em; line-height:0; }
+.ft { margin-top:16px; }
+.ft .bb { font-size:18px; line-height:1.45; }
+.ft .m { font-family:var(--serif); white-space:nowrap; font-size:20px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Unrolling: halving, with a copy</div>
+<div class="frame">
+<p class="hd">Binary search that <b style="color:var(--ink)">copies</b> the half it keeps:<span class="m"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i>/2) + <i>cn</i>,&ensp;<i>T</i>(1) = <i>c</i></span></p>
+<p class="sb">Copying the half into a new array, as slicing <span style="font-family:var(--mono);color:var(--ink)">A[lo:mid]</span> does in Python, costs Θ(<var>n</var>) per call.</p>
+<div class="rw"><div class="un"><div class="k3">Unroll it</div><div class="eq">
+<span class="l"><i>T</i>(<i>n</i>)</span><span>=&ensp;<span class="x"><i>T</i>(<i>n</i>/2)</span> + <i>cn</i></span><span></span>
+<span class="l"></span><span>=&ensp;<span class="x"><i>T</i>(<i>n</i>/4) + <i>cn</i>/2</span> + <i>cn</i></span><span class="n">the rule for <var>T</var>(<var>n</var>/2)</span>
+<span class="l"></span><span>=&ensp;<i>T</i>(<i>n</i>/8) + <i>cn</i>/4 + <i>cn</i>/2 + <i>cn</i></span><span></span>
+<span class="l"></span><span>=&ensp;<i>T</i>(<i>n</i>/2<sup><i>k</i></sup>) + <i>cn</i>(1 + ½ + ¼ + ⋯ + 1/2<sup><i>k</i>−1</sup>)</span><span class="n">after <var>k</var> steps</span>
+<span class="rule"></span>
+<span class="bc">Base case: <span class="m"><i>n</i>/2<sup><i>k</i></sup> = 1, so <i>k</i> = log <i>n</i></span></span>
+<span class="l"><i>T</i>(<i>n</i>)</span><span>=&ensp;<i>c</i> + <i>cn</i>(1 + ½ + ¼ + ⋯ + 2/<i>n</i>)</span><span></span>
+<span class="l"></span><span>&lt;&ensp;<i>c</i> + 2<i>cn</i></span><span class="n">see the box</span>
+<span class="bc">The first copy alone costs <span class="m"><i>cn</i></span>, so <span class="m"><i>cn</i> ≤ <i>T</i>(<i>n</i>) &lt; <i>c</i> + 2<i>cn</i></span>: <span class="m" style="color:var(--blue);font-weight:700"><i>T</i>(<i>n</i>) = Θ(<i>n</i>)</span></span>
+</div></div>
+<div class="bx"><div class="k3">Why is the sum less than 2?</div>
+<svg data-figure viewBox="0 0 360 58" width="356" height="58" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">
+<rect x="4" y="6" width="340" height="28" fill="#fff" stroke="#555" stroke-width="1.5" stroke-dasharray="5 4"/>
+<rect x="4" y="6" width="170" height="28" fill="#2B5BAA"/><rect x="174" y="6" width="85" height="28" fill="#5A80C0"/><rect x="259" y="6" width="42.5" height="28" fill="#8AA8DA"/><rect x="301.5" y="6" width="21.25" height="28" fill="#B4C7E7"/><rect x="322.75" y="6" width="10.6" height="28" fill="#D3DEF0"/><rect x="333.4" y="6" width="5.3" height="28" fill="#E9EEF7"/>
+<g font-size="18" text-anchor="middle"><text x="89" y="26" fill="#fff">1</text><text x="216.5" y="26" fill="#fff">½</text><text x="280" y="26" fill="#000">¼</text></g>
+<text x="4" y="53" font-size="16" fill="#555">0</text><text x="344" y="53" font-size="16" text-anchor="end" fill="#555">2</text>
+</svg>
+<p>Each piece fills <b style="color:var(--ink)">half of the gap</b> that is left, so the pieces never reach 2.</p>
+<p>Exactly: <span class="m">1 + ½ + ⋯ + 1/2<sup><i>k</i>−1</sup> = 2 − 1/2<sup><i>k</i>−1</sup></span> (CLRS A.5).</p></div></div>
+<div class="block alert ft"><div class="bt">The copy costs more than the search</div><div class="bb">Copying turns binary search from <span class="m">Θ(log <i>n</i>)</span> into <span class="m">Θ(<i>n</i>)</span>, no faster than linear search. Pass <var>lo</var> and <var>hi</var> instead, as in BINARY-SEARCH-REC (Lecture 2).</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>
