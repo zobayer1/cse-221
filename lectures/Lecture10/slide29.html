@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finding a cycle: pseudocode</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.pc { display:grid; grid-template-columns:auto auto; gap:40px; justify-content:center; align-items:start; }
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:12px 22px; }
+.codebox pre { font-size:21px; line-height:1.4; }
+.codebox .fn { font-weight:700; }
+.codebox .cm { color:var(--muted); }
+.codebox .hl { background:#F8E6E6; display:inline-block; width:100%; }
+.cap { font-size:21px; line-height:1.4; margin-top:14px; color:var(--muted); max-width:540px; }
+.cap b { color:var(--ink); }
+.bot { margin-top:26px; font-size:23px; text-align:center; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Finding a cycle: pseudocode</div>
+<div class="frame">
+<div class="pc"><div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">HAS-CYCLE</span>(G)
+<span class="ln">2</span>    <span class="kw">for</span> each vertex u ∈ G.V
+<span class="ln">3</span>        u.color = WHITE
+<span class="ln">4</span>    <span class="kw">for</span> each vertex u ∈ G.V
+<span class="ln">5</span>        <span class="kw">if</span> u.color == WHITE
+<span class="ln">6</span>            <span class="kw">if</span> CYCLE-VISIT(G, u)
+<span class="ln">7</span>                <span class="kw">return</span> TRUE
+<span class="ln">8</span>    <span class="kw">return</span> FALSE</pre></div>
+<p class="cap">Same outer loop as DFS: try every vertex that is still white.</p></div>
+<div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">CYCLE-VISIT</span>(G, u)
+<span class="ln">2</span>    u.color = GRAY
+<span class="ln">3</span>    <span class="kw">for</span> each v ∈ G.Adj[u]
+<span class="hl"><span class="ln">4</span>        <span class="kw">if</span> v.color == GRAY   <span class="cm">// back edge</span></span>
+<span class="hl"><span class="ln">5</span>            <span class="kw">return</span> TRUE</span>
+<span class="ln">6</span>        <span class="kw">elseif</span> v.color == WHITE
+<span class="ln">7</span>            <span class="kw">if</span> CYCLE-VISIT(G, v)
+<span class="ln">8</span>                <span class="kw">return</span> TRUE
+<span class="ln">9</span>    u.color = BLACK
+<span class="ln">10</span>    <span class="kw">return</span> FALSE</pre></div>
+<p class="cap">DFS-VISIT without the times, plus <b>one test</b> (lines 4–5): stop at the first gray neighbor.</p></div></div>
+<p class="bot">Time: <var>O</var>(<var>V</var> + <var>E</var>), the same as DFS. It can stop early, as soon as it finds a back edge.</p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

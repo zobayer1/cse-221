@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DFS: colors and data</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.c2 { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:56px; }
+.c2 ul.items { margin-top:6px; }
+.c2 ul.items > li { font-size:24px; margin:10px 0; line-height:1.35; }
+.ls { font-size:24px; line-height:1.35; margin-top:6px; }
+.ls > div { display:flex; align-items:center; gap:14px; margin:10px 0; }
+.sw { flex:none; width:30px; height:30px; border-radius:50%; border:2px solid #000; }
+.sw.w { background:#fff; } .sw.g { background:#A7A9AC; } .sw.b { background:#000; }
+.nt { margin-top:40px; font-size:23px; text-align:center; color:var(--muted); }
+.nt b { color:var(--red); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">DFS: colors and data</div>
+<div class="frame">
+<div class="c2"><div>
+<div class="subhd">Each vertex <var>u</var> keeps</div>
+<ul class="items">
+<li><var>u.color</var>: WHITE, GRAY or BLACK</li>
+<li><var>u.π</var>: predecessor, the vertex that discovered <var>u</var></li>
+<li><var>u.d</var>: discovery time, when <var>u</var> turns gray</li>
+<li><var>u.f</var>: finish time, when <var>u</var> turns black</li>
+</ul></div><div>
+<div class="subhd">Colors</div>
+<div class="ls"><div><span class="sw w"></span><span><b>WHITE</b>: not discovered yet</span></div><div><span class="sw g"></span><span><b>GRAY</b>: discovered at <var>u.d</var>, still exploring its edges</span></div><div><span class="sw b"></span><span><b>BLACK</b>: finished at <var>u.f</var>, every edge explored</span></div></div>
+</div></div>
+<p class="nt">Careful: in BFS, <var>v.d</var> was a <b>distance</b>. In DFS, <var>u.d</var> is a <b>time</b>.</p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

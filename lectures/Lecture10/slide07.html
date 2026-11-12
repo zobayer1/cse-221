@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DFS: pseudocode</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.pc { display:grid; grid-template-columns:auto auto; gap:40px; justify-content:center; align-items:start; }
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:12px 22px; }
+.codebox pre { font-size:21px; line-height:1.4; }
+.codebox .fn { font-weight:700; }
+.codebox .cm { color:var(--muted); }
+.cap { font-size:21px; line-height:1.4; margin-top:14px; color:var(--muted); max-width:560px; }
+.cap b { color:var(--ink); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">DFS: pseudocode</div>
+<div class="frame">
+<div class="pc"><div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">DFS</span>(G)
+<span class="ln">2</span>    <span class="kw">for</span> each vertex u ∈ G.V
+<span class="ln">3</span>        u.color = WHITE
+<span class="ln">4</span>        u.π = NIL
+<span class="ln">5</span>    time = 0
+<span class="ln">6</span>    <span class="kw">for</span> each vertex u ∈ G.V
+<span class="ln">7</span>        <span class="kw">if</span> u.color == WHITE
+<span class="ln">8</span>            DFS-VISIT(G, u)</pre></div>
+<p class="cap">Paint every vertex white, then start a new search from each vertex that is <b>still white</b>.</p></div>
+<div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">DFS-VISIT</span>(G, u)
+<span class="ln">2</span>    time = time + 1     <span class="cm">// u is discovered</span>
+<span class="ln">3</span>    u.d = time
+<span class="ln">4</span>    u.color = GRAY
+<span class="ln">5</span>    <span class="kw">for</span> each v ∈ G.Adj[u]  <span class="cm">// explore (u, v)</span>
+<span class="ln">6</span>        <span class="kw">if</span> v.color == WHITE
+<span class="ln">7</span>            v.π = u
+<span class="ln">8</span>            DFS-VISIT(G, v)
+<span class="ln">9</span>    u.color = BLACK     <span class="cm">// u is finished</span>
+<span class="ln">10</span>    time = time + 1
+<span class="ln">11</span>    u.f = time</pre></div>
+<p class="cap">Discover <var>u</var>, go <b>deeper</b> into each white neighbor, then finish <var>u</var>. Returning from line 8 is the <b>backtrack</b>.</p></div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

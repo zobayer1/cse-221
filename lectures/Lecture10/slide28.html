@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why a back edge means a cycle</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.thm .bb { font-size:27px; text-align:center; }
+.pf { margin-top:26px; }
+.pf .block { margin-top:18px; font-size:23px; }
+.pf .bb { line-height:1.4; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Why a back edge means a cycle</div>
+<div class="frame">
+<div class="block thm"><div class="bt">Lemma 22.11 (CLRS)</div><div class="bb">A directed graph has a cycle <b>if and only if</b> DFS finds a back edge.</div></div>
+<div class="pf"><div class="block"><div class="bt">Back edge ⇒ cycle</div><div class="bb">Let (<var>u</var>, <var>v</var>) be a back edge. Then <var>v</var> is an ancestor of <var>u</var>, so the tree has a path from <var>v</var> to <var>u</var>. The edge (<var>u</var>, <var>v</var>) closes it into a cycle.</div></div>
+<div class="block"><div class="bt">Cycle ⇒ back edge</div><div class="bb">Let <var>v</var> be the first vertex of the cycle that DFS discovers, and <var>u</var> the vertex just before <var>v</var> on the cycle. When <var>v</var> turns gray, the rest of the cycle is white and reachable from <var>v</var>, so DFS reaches <var>u</var> before <var>v</var> finishes. When it explores (<var>u</var>, <var>v</var>), <var>v</var> is still gray: a back edge.</div></div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

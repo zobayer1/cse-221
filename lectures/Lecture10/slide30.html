@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finding a cycle in an undirected graph</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.ud { display:grid; grid-template-columns:auto minmax(0,1fr); gap:36px; align-items:center; }
+.key { font-size:19px; color:var(--muted); text-align:center; margin-top:2px; }
+.lead { font-size:23px; line-height:1.4; }
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:10px 18px; margin-top:16px; }
+.codebox pre { font-size:21px; line-height:1.4; }
+.nw { white-space:nowrap; }
+.codebox .ne { font-family:var(--serif); }
+.sm { font-size:19px; color:var(--muted); margin-top:8px; }
+.nt { margin-top:20px; font-size:22px; line-height:1.4; }
+.bot { margin-top:22px; font-size:23px; text-align:center; }
+.bot b { color:var(--blue); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Finding a cycle in an undirected graph</div>
+<div class="frame">
+<div class="ud"><div><svg data-figure viewBox="0 0 560 295" width="540" height="284.5" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><polygon points="210,222 350,70 350,222" fill="#F8E6E6" stroke="none"/><line x1="70" y1="70" x2="210" y2="70" stroke="#000" stroke-width="2.4"/><line x1="70" y1="70" x2="70" y2="222" stroke="#000" stroke-width="2.4"/><line x1="210" y1="70" x2="210" y2="222" stroke="#2B5BAA" stroke-width="5"/><line x1="210" y1="222" x2="350" y2="70" stroke="#2B5BAA" stroke-width="5"/><line x1="210" y1="222" x2="350" y2="222" stroke="#C62828" stroke-width="3.4" stroke-dasharray="9 5"/><line x1="350" y1="70" x2="350" y2="222" stroke="#2B5BAA" stroke-width="5"/><line x1="350" y1="70" x2="490" y2="70" stroke="#000" stroke-width="2.4"/><line x1="350" y1="222" x2="490" y2="222" stroke="#000" stroke-width="2.4"/><line x1="490" y1="70" x2="490" y2="222" stroke="#000" stroke-width="2.4"/><circle cx="350" cy="222" r="33" fill="none" stroke="#2B5BAA" stroke-width="3.5"/><circle cx="70" cy="70" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="70" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">r</tspan></text><circle cx="210" cy="70" r="27" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="210" y="76.3" text-anchor="middle" font-size="19" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">1/</text><text x="210" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">s</tspan></text><circle cx="350" cy="70" r="27" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="350" y="76.3" text-anchor="middle" font-size="19" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">3/</text><text x="350" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">t</tspan></text><circle cx="490" cy="70" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="490" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">u</tspan></text><circle cx="70" cy="222" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="70" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">v</tspan></text><circle cx="210" cy="222" r="27" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="210" y="228.3" text-anchor="middle" font-size="19" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">2/</text><text x="210" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">w</tspan></text><circle cx="350" cy="222" r="27" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="350" y="228.3" text-anchor="middle" font-size="19" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">4/</text><text x="350" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">x</tspan></text><circle cx="490" cy="222" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="490" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">y</tspan></text></svg><div class="key">Our run at time 4: <var>x</var> scans <var>w</var>.</div></div><div>
+<p class="lead">The parent <var>u.π</var> is always a gray neighbor of <var>u</var>: that is the tree edge, seen from the other end. <b>Skip it.</b></p>
+<div class="codebox"><pre class="code"><span class="ln">4</span>        <span class="kw">if</span> v.color == GRAY <span class="kw">and</span> v <span class="ne">≠</span> u.π</pre></div>
+<p class="sm">Also set <var>v.π</var> = <var>u</var> before each call, as DFS does.</p>
+<p class="nt">At <var>x</var>, neighbor <var>w</var> is gray and <var>w</var> ≠ <var>x.π</var> = <var>t</var>. <span class="nw">Cycle: <var>w</var> → <var>t</var> → <var>x</var> → <var>w</var>.</span></p>
+</div></div>
+<p class="bot">Last class, BFS found cycles in <b>undirected</b> graphs only. DFS works for <b>directed</b> graphs too.</p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

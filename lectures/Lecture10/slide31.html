@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Application: topological sort</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.tp { display:grid; grid-template-columns:auto minmax(0,1fr); gap:36px; align-items:center; }
+.key { font-size:19px; color:var(--muted); text-align:center; margin-top:2px; }
+.key b { color:var(--ink); }
+.lead { font-size:23px; line-height:1.4; }
+.tp .block { margin-top:20px; font-size:23px; }
+.nt { margin-top:18px; font-size:21px; color:var(--muted); line-height:1.4; }
+.nt b { color:var(--ink); }
+.q { margin-top:18px; font-size:24px; font-weight:700; color:var(--blue); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Application: topological sort<span class="ftag">Think</span></div>
+<div class="frame">
+<div class="tp"><div><svg data-figure viewBox="20 -8 625 285" width="575" height="262.2" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><defs><marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="context-stroke"/></marker></defs><line x1="110" y1="139.4" x2="205" y2="90.6" stroke="#000" stroke-width="2.4" marker-end="url(#ah3)"/><line x1="110" y1="157.7" x2="380" y2="142.3" stroke="#000" stroke-width="2.4" marker-end="url(#ah3)"/><line x1="285" y1="86" x2="380" y2="124" stroke="#000" stroke-width="2.4" marker-end="url(#ah3)"/><line x1="108.7" y1="181" x2="206.3" y2="234" stroke="#000" stroke-width="2.4" marker-end="url(#ah3)"/><line x1="460" y1="154.9" x2="555" y2="190.1" stroke="#000" stroke-width="2.4" marker-end="url(#ah3)"/><line x1="285" y1="249.3" x2="555" y2="210.7" stroke="#000" stroke-width="2.4" marker-end="url(#ah3)"/><line x1="285" y1="58.6" x2="380" y2="31.4" stroke="#000" stroke-width="2.4" marker-end="url(#ah3)"/><rect x="32" y="141" width="76" height="38" rx="6" fill="#F4F6FB" stroke="#000" stroke-width="2"/><text x="70" y="167" text-anchor="middle" font-size="21" fill="#000" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">core</text><rect x="207" y="51" width="76" height="38" rx="6" fill="#F4F6FB" stroke="#000" stroke-width="2"/><text x="245" y="77" text-anchor="middle" font-size="21" fill="#000" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">json</text><rect x="207" y="236" width="76" height="38" rx="6" fill="#F4F6FB" stroke="#000" stroke-width="2"/><text x="245" y="262" text-anchor="middle" font-size="21" fill="#000" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">ui</text><rect x="382" y="121" width="76" height="38" rx="6" fill="#F4F6FB" stroke="#000" stroke-width="2"/><text x="420" y="147" text-anchor="middle" font-size="21" fill="#000" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">http</text><rect x="382" y="1" width="76" height="38" rx="6" fill="#F4F6FB" stroke="#000" stroke-width="2"/><text x="420" y="27" text-anchor="middle" font-size="21" fill="#000" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">cli</text><rect x="557" y="186" width="76" height="38" rx="6" fill="#F4F6FB" stroke="#000" stroke-width="2"/><text x="595" y="212" text-anchor="middle" font-size="21" fill="#000" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">app</text></svg><div class="key">Arrow <var>u</var> → <var>v</var>: <var>v</var> needs <var>u</var>, so install <var>u</var> <b>first</b>.</div></div><div>
+<p class="lead">Now the dependencies have <b>no cycle</b>. In what order do we install the packages?</p>
+<div class="block"><div class="bt">Topological sort</div><div class="bb">An order of <b>all</b> the vertices such that for every edge (<var>u</var>, <var>v</var>), <var>u</var> comes <b>before</b> <var>v</var>.</div></div>
+<p class="nt">It exists only when <var>G</var> has no cycle: <var>G</var> must be a <b>DAG</b> (Directed Acyclic Graph).</p>
+<p class="q">Find an install order. Is it the only one?</p>
+</div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>
