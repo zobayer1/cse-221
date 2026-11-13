@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unrolling a recurrence</title>
+<title>The iteration method</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
 .hd { text-align:center; font-size:21px; color:var(--muted); margin-bottom:18px; }
 .hd .m { font-family:var(--serif); color:var(--ink); font-size:26px; margin-left:8px; }
@@ -23,7 +23,7 @@
 .aka { margin-top:14px; font-size:16px; color:var(--muted); line-height:1.4; }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">Unrolling a recurrence</div>
+<div class="frametitle">The iteration method</div>
 <div class="frame">
 <p class="hd">FACTORIAL:<span class="m"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i> − 1) + <i>c</i>,&ensp;<i>T</i>(1) = <i>c</i></span></p>
 <div class="rw"><div class="un"><div class="k3">Unroll it</div><div class="eq">
@@ -40,6 +40,6 @@
 <div class="st"><b>2</b><span><b style="font-family:var(--sans);font-size:19px;color:var(--ink)">Spot the pattern</b> after <span class="m"><i>k</i></span> steps.</span></div>
 <div class="st"><b>3</b><span><b style="font-family:var(--sans);font-size:19px;color:var(--ink)">Pick <span class="m"><i>k</i></span></b> so that the size reaches the base case.</span></div>
 <div class="st"><b>4</b><span><b style="font-family:var(--sans);font-size:19px;color:var(--ink)">Add up</b> what is left.</span></div>
-<p class="aka">Also called the <b style="color:var(--ink)">iteration method</b> or <b style="color:var(--ink)">back-substitution</b>.</p></div></div>
+<p class="aka">Also called <b style="color:var(--ink)">unrolling</b> or <b style="color:var(--ink)">back-substitution</b>.</p></div></div>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

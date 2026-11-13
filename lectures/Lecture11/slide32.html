@@ -1,74 +1,34 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The master theorem: three cases</title>
+<title>The full master theorem</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.hd { text-align:center; font-size:21px; color:var(--muted); margin-bottom:18px; }
-.hd .m { font-family:var(--serif); color:var(--ink); font-size:25px; margin-left:8px; }
-.c3 { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-.c3 > div { border-top:4px solid var(--blue); background:var(--tint-2); padding:12px 18px 14px; }
-.c3 h3 { font-size:21px; font-weight:700; text-align:center; }
-.c3 h3 .m { font-family:var(--serif); font-weight:400; }
-.c3 svg { display:block; margin:6px auto 2px; width:240px !important; height:auto !important; }
-.c3 .w { text-align:center; font-size:18px; font-weight:700; color:var(--blue); margin-bottom:8px; }
-.c3 .e { font-family:var(--serif); font-size:20px; line-height:1.6; }
-.c3 .e b { color:var(--blue); font-weight:400; }
-.c3 .e .s { font-family:var(--sans); font-size:15px; color:var(--muted); }
-.c3 .e.r { font-size:22px; border-top:1px solid var(--grey); margin-top:6px; padding-top:6px; text-align:center; }
+.block .bb { padding:12px 24px 16px; }
+.block .st { font-size:20px; line-height:1.5; }
+.block .m { font-family:var(--serif); font-size:22px; white-space:nowrap; }
+.cs { display:grid; grid-template-columns:34px 1fr; gap:10px; padding:9px 0; border-bottom:1px solid var(--rule); align-items:baseline; font-size:20px; line-height:1.5; }
+.cs:last-child { border-bottom:none; }
+.cs .n { font-family:var(--serif); font-weight:700; color:var(--blue); font-size:22px; }
+.cs b.r { color:var(--blue); font-weight:400; }
 sup, sub { font-size:0.66em; line-height:0; }
+.mt3 { margin-top:22px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.mt3 > div { border-top:2px solid var(--ink); padding-top:8px; }
+.mt3 h3 { font-size:17px; font-weight:700; }
+.mt3 p { font-size:17px; color:var(--muted); line-height:1.45; margin-top:3px; }
+.mt3 .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; font-size:19px; }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">The master theorem: three cases</div>
+<div class="frametitle">The full master theorem</div>
 <div class="frame">
-<p class="hd">Slide 17’s three kinds of sums, with <span class="m"><i>r</i> = <i>a</i>/<i>b</i><sup><i>k</i></sup></span> and <span class="m"><i>L</i> = log<sub><i>b</i></sub> <i>n</i></span>:</p>
-<div class="c3">
-<div><h3>Leaves win: <span class="m"><i>a</i> &gt; <i>b</i><sup><i>k</i></sup></span></h3><svg data-figure viewBox="0 0 300 150" width="300" height="150" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><line x1="8" y1="124" x2="292" y2="124" stroke="#000" stroke-width="1.5"/>
-<rect x="17.0" y="120.4" width="36.0" height="3.6" fill="#B4C7E7"/>
-<text x="35.0" y="143.0" font-size="15" text-anchor="middle" fill="#555">1</text>
-<rect x="63.0" y="116.8" width="36.0" height="7.2" fill="#B4C7E7"/>
-<text x="81.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan></text>
-<rect x="109.0" y="109.5" width="36.0" height="14.5" fill="#B4C7E7"/>
-<text x="127.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan><tspan dy="-0.42em" font-size="70%">2</tspan></text>
-<rect x="155.0" y="95.0" width="36.0" height="29.0" fill="#B4C7E7"/>
-<text x="173.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan><tspan dy="-0.42em" font-size="70%">3</tspan></text>
-<rect x="201.0" y="66.0" width="36.0" height="58.0" fill="#B4C7E7"/>
-<text x="219.0" y="143.0" font-size="15" text-anchor="middle" fill="#555">⋯</text>
-<rect x="247.0" y="8.0" width="36.0" height="116.0" fill="#2B5BAA"/>
-<text x="265.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan><tspan dy="-0.42em" font-size="70%"><tspan font-style="italic">k</tspan></tspan></text></svg><p class="w">The last level wins</p>
-<p class="e"><span class="s">Last level:</span> <i>cn</i><sup><i>k</i></sup> · <i>r</i><sup><i>L</i></sup> = <i>cn</i><sup><i>k</i></sup> · <i>a</i><sup><i>L</i></sup> / <i>n</i><sup><i>k</i></sup></p>
-<p class="e">= <i>c</i> · <i>a</i><sup><i>L</i></sup> = <i>c</i> · <i>n</i><sup>log<sub><i>b</i></sub> <i>a</i></sup> <span class="s">(<var>b</var><sup><var>L</var></sup> = <var>n</var>; slide 16)</span></p>
-<p class="e r"><i>T</i>(<i>n</i>) = <b>Θ(<i>n</i><sup>log<sub><i>b</i></sub> <i>a</i></sup>)</b></p></div>
-<div><h3>A tie: <span class="m"><i>a</i> = <i>b</i><sup><i>k</i></sup></span></h3><svg data-figure viewBox="0 0 300 150" width="300" height="150" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><line x1="8" y1="124" x2="292" y2="124" stroke="#000" stroke-width="1.5"/>
-<rect x="17.0" y="8.0" width="36.0" height="116.0" fill="#2B5BAA"/>
-<text x="35.0" y="143.0" font-size="15" text-anchor="middle" fill="#555">1</text>
-<rect x="63.0" y="8.0" width="36.0" height="116.0" fill="#2B5BAA"/>
-<text x="81.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan></text>
-<rect x="109.0" y="8.0" width="36.0" height="116.0" fill="#2B5BAA"/>
-<text x="127.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan><tspan dy="-0.42em" font-size="70%">2</tspan></text>
-<rect x="155.0" y="8.0" width="36.0" height="116.0" fill="#2B5BAA"/>
-<text x="173.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan><tspan dy="-0.42em" font-size="70%">3</tspan></text>
-<rect x="201.0" y="8.0" width="36.0" height="116.0" fill="#2B5BAA"/>
-<text x="219.0" y="143.0" font-size="15" text-anchor="middle" fill="#555">⋯</text>
-<rect x="247.0" y="8.0" width="36.0" height="116.0" fill="#2B5BAA"/>
-<text x="265.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan><tspan dy="-0.42em" font-size="70%"><tspan font-style="italic">k</tspan></tspan></text></svg><p class="w">Every level counts</p>
-<p class="e"><i>L</i> + 1 levels, each <i>cn</i><sup><i>k</i></sup>:</p>
-<p class="e"><i>cn</i><sup><i>k</i></sup>(log<sub><i>b</i></sub> <i>n</i> + 1)</p>
-<p class="e r"><i>T</i>(<i>n</i>) = <b>Θ(<i>n</i><sup><i>k</i></sup> log <i>n</i>)</b></p></div>
-<div><h3>Root wins: <span class="m"><i>a</i> &lt; <i>b</i><sup><i>k</i></sup></span></h3><svg data-figure viewBox="0 0 300 150" width="300" height="150" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><line x1="8" y1="124" x2="292" y2="124" stroke="#000" stroke-width="1.5"/>
-<rect x="17.0" y="8.0" width="36.0" height="116.0" fill="#2B5BAA"/>
-<text x="35.0" y="143.0" font-size="15" text-anchor="middle" fill="#555">1</text>
-<rect x="63.0" y="66.0" width="36.0" height="58.0" fill="#B4C7E7"/>
-<text x="81.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan></text>
-<rect x="109.0" y="95.0" width="36.0" height="29.0" fill="#B4C7E7"/>
-<text x="127.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan><tspan dy="-0.42em" font-size="70%">2</tspan></text>
-<rect x="155.0" y="109.5" width="36.0" height="14.5" fill="#B4C7E7"/>
-<text x="173.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan><tspan dy="-0.42em" font-size="70%">3</tspan></text>
-<rect x="201.0" y="116.8" width="36.0" height="7.2" fill="#B4C7E7"/>
-<text x="219.0" y="143.0" font-size="15" text-anchor="middle" fill="#555">⋯</text>
-<rect x="247.0" y="120.4" width="36.0" height="3.6" fill="#B4C7E7"/>
-<text x="265.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan><tspan dy="-0.42em" font-size="70%"><tspan font-style="italic">k</tspan></tspan></text></svg><p class="w">The first level wins</p>
-<p class="e"><i>cn</i><sup><i>k</i></sup> ≤ <i>T</i>(<i>n</i>) &lt; <i>cn</i><sup><i>k</i></sup> · <span style="white-space:nowrap">1/(1 − <i>r</i>)</span></p>
-<p class="e"><span class="s">and 1/(1 − <var>r</var>) is a constant</span></p>
-<p class="e r"><i>T</i>(<i>n</i>) = <b>Θ(<i>n</i><sup><i>k</i></sup>)</b></p></div>
+<div class="block"><div class="bt">Theorem 4.1 in CLRS</div><div class="bb">
+<p class="st">Let <span class="m"><i>a</i> ≥ 1</span> and <span class="m"><i>b</i> &gt; 1</span> be constants and <span class="m"><i>T</i>(<i>n</i>) = <i>aT</i>(<i>n</i>/<i>b</i>) + <i>f</i>(<i>n</i>)</span>. Compare <span class="m"><i>f</i>(<i>n</i>)</span> with <span class="m"><i>n</i><sup>log<sub><i>b</i></sub> <i>a</i></sup></span>:</p>
+<div class="cs"><span class="n">1</span><span>If <span class="m"><i>f</i>(<i>n</i>) = O(<i>n</i><sup>log<sub><i>b</i></sub> <i>a</i> − <i>ε</i></sup>)</span> for some constant <span class="m"><i>ε</i> &gt; 0</span>, then <span class="m"><b class="r"><i>T</i>(<i>n</i>) = Θ(<i>n</i><sup>log<sub><i>b</i></sub> <i>a</i></sup>)</b></span>.</span></div>
+<div class="cs"><span class="n">2</span><span>If <span class="m"><i>f</i>(<i>n</i>) = Θ(<i>n</i><sup>log<sub><i>b</i></sub> <i>a</i></sup>)</span>, then <span class="m"><b class="r"><i>T</i>(<i>n</i>) = Θ(<i>n</i><sup>log<sub><i>b</i></sub> <i>a</i></sup> log <i>n</i>)</b></span>.</span></div>
+<div class="cs"><span class="n">3</span><span>If <span class="m"><i>f</i>(<i>n</i>) = Ω(<i>n</i><sup>log<sub><i>b</i></sub> <i>a</i> + <i>ε</i></sup>)</span> for some constant <span class="m"><i>ε</i> &gt; 0</span>, and <span class="m"><i>a f</i>(<i>n</i>/<i>b</i>) ≤ <i>c f</i>(<i>n</i>)</span> for some constant <span class="m"><i>c</i> &lt; 1</span> and all large <var>n</var>, then <span class="m"><b class="r"><i>T</i>(<i>n</i>) = Θ(<i>f</i>(<i>n</i>))</b></span>.</span></div>
+</div></div>
+<div class="mt3">
+<div><h3>Same idea</h3><p>The larger of <span class="m"><i>f</i>(<i>n</i>)</span> (the root) and <span class="m"><i>n</i><sup>log<sub><i>b</i></sub> <i>a</i></sup></span> (the leaves) wins. A tie adds a log.</p></div>
+<div><h3>Our version is a special case</h3><p>With <span class="m"><i>f</i>(<i>n</i>) = Θ(<i>n</i><sup><i>k</i></sup>)</span>, take <span class="m"><i>ε</i> = |log<sub><i>b</i></sub> <i>a</i> − <i>k</i>|</span>. In case 3, <span class="m"><i>a</i>(<i>n</i>/<i>b</i>)<sup><i>k</i></sup> = (<i>a</i>/<i>b</i><sup><i>k</i></sup>) <i>n</i><sup><i>k</i></sup></span> with <span class="m"><i>a</i>/<i>b</i><sup><i>k</i></sup> &lt; 1</span>.</p></div>
+<div><h3>Bigger by a power of <var>n</var></h3><p>Cases 1 and 3 need <span class="m"><i>f</i>(<i>n</i>)</span> to differ from <span class="m"><i>n</i><sup>log<sub><i>b</i></sub> <i>a</i></sup></span> by a factor <span class="m"><i>n</i><sup><i>ε</i></sup></span>. A factor of only log <var>n</var> is not enough.</p></div>
 </div>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

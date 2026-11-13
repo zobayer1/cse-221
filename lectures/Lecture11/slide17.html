@@ -19,7 +19,7 @@
 .fm .m { font-family:var(--serif); color:var(--ink); font-size:22px; white-space:nowrap; }
 .fm sup { font-size:0.66em; line-height:0; }
 .fm b { color:var(--ink); }
-.fm .rf { font-size:14px; color:var(--grey); margin-left:12px; vertical-align:middle; }
+.fm .rf { font-size:14px; color:var(--grey); margin-left:36px; vertical-align:middle; }
 .fr { display:inline-flex; flex-direction:column; vertical-align:middle; text-align:center; font-size:0.85em; line-height:1.15; margin:0 2px; }
 .fr > span + span { border-top:1.5px solid var(--ink); }
 </style></head>
@@ -68,6 +68,6 @@
 <rect x="247.0" y="8.0" width="36.0" height="116.0" fill="#2B5BAA"/>
 <text x="265.0" y="143.0" font-size="15" text-anchor="middle" fill="#555"><tspan font-style="italic">r</tspan><tspan dy="-0.42em" font-size="70%"><tspan font-style="italic">k</tspan></tspan></text></svg><p class="ex">1 + 2 + ⋯ + 2<sup><i>k</i></sup> &lt; 2 · 2<sup><i>k</i></sup></p><p class="w">The last term wins</p><p class="g">The sum is less than <span class="m"><i>r</i>/(<i>r</i> − 1)</span> × the last term.</p></div>
 </div>
-<p class="fm">For <span class="m"><i>r</i> ≠ 1</span>: <span class="m">1 + <i>r</i> + ⋯ + <i>r</i><sup><i>k</i></sup> = <span class="fr"><span><i>r</i><sup><i>k</i>+1</sup> − 1</span><span><i>r</i> − 1</span></span></span><span class="rf">CLRS (A.5)</span><br>In a recursion tree, the level totals often form this sum: <b>find <var>r</var></b>, and you know which level wins.</p>
+<p class="fm">For <span class="m"><i>r</i> ≠ 1</span>: <span class="m">1 + <i>r</i> + ⋯ + <i>r</i><sup><i>k</i></sup> = <span class="fr"><span><i>r</i><sup><i>k</i>+1</sup> − 1</span><span><i>r</i> − 1</span></span></span><span class="rf">(CLRS A.5)</span><br>In a recursion tree, the level totals often form this sum: <b>find <var>r</var></b>, and you know which level wins.</p>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

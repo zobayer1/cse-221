@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unrolling: halving, with a copy</title>
+<title>Iteration method: halving, with a copy</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
 .hd { text-align:center; font-size:21px; color:var(--muted); }
 .hd .m { font-family:var(--serif); color:var(--ink); font-size:26px; margin-left:8px; }
@@ -29,7 +29,7 @@
 .ft .m { font-family:var(--serif); white-space:nowrap; font-size:20px; }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">Unrolling: halving, with a copy</div>
+<div class="frametitle">Iteration method: halving, with a copy</div>
 <div class="frame">
 <p class="hd">Binary search that <b style="color:var(--ink)">copies</b> the half it keeps:<span class="m"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i>/2) + <i>cn</i>,&ensp;<i>T</i>(1) = <i>c</i></span></p>
 <p class="sb">Copying the half into a new array, as slicing <span style="font-family:var(--mono);color:var(--ink)">A[lo:mid]</span> does in Python, costs Θ(<var>n</var>) per call.</p>
@@ -53,6 +53,6 @@
 </svg>
 <p>Each piece fills <b style="color:var(--ink)">half of the gap</b> that is left, so the pieces never reach 2.</p>
 <p>Exactly: <span class="m">1 + ½ + ⋯ + 1/2<sup><i>k</i>−1</sup> = 2 − 1/2<sup><i>k</i>−1</sup></span> (CLRS A.5).</p></div></div>
-<div class="block alert ft"><div class="bt">The copy costs more than the search</div><div class="bb">Copying turns binary search from <span class="m">Θ(log <i>n</i>)</span> into <span class="m">Θ(<i>n</i>)</span>, no faster than linear search. Pass <var>lo</var> and <var>hi</var> instead, as in BINARY-SEARCH-REC (Lecture 2).</div></div>
+<div class="block alert ft"><div class="bt">The copy costs more than the search</div><div class="bb">Copying turns binary search from <span class="m">Θ(log <i>n</i>)</span> into <span class="m">Θ(<i>n</i>)</span>, no faster than linear search. Pass <var>lo</var> and <var>hi</var> instead (BINARY-SEARCH-REC, Lecture 2).</div></div>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

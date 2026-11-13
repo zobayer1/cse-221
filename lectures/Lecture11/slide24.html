@@ -1,28 +1,49 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The substitution method</title>
+<title>Example 1: HANOI moves, exactly</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.tp { font-size:22px; color:var(--muted); text-align:center; line-height:1.45; margin-bottom:28px; }
-.tp b { color:var(--ink); }
-.c2 { display:grid; grid-template-columns:1fr 1fr; gap:30px; }
-.c2 > div { border-top:4px solid var(--blue); background:var(--tint-2); padding:14px 22px 18px; }
-.c2 .n { font-family:var(--serif); font-size:36px; font-weight:700; color:var(--blue); line-height:1; }
-.c2 h3 { font-family:var(--serif); font-size:28px; font-weight:700; margin-top:8px; }
-.c2 p { font-size:19px; color:var(--muted); line-height:1.45; margin-top:8px; }
-.c2 p b { color:var(--ink); }
-.c2 .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; font-size:21px; }
-.nm { margin-top:28px; text-align:center; font-family:var(--serif); font-size:26px; }
-.nm b { color:var(--blue); }
-.nm .s { font-family:var(--sans); font-size:18px; color:var(--muted); }
+.hd { text-align:center; font-size:21px; color:var(--muted); margin-bottom:22px; }
+.hd .m { font-family:var(--serif); color:var(--ink); font-size:26px; margin-left:8px; }
+.rw { display:grid; grid-template-columns:400px 1fr; gap:40px; align-items:center; }
+.k3 { font-size:14px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px; }
+table.tab { font-size:22px; }
+table.tab td, table.tab th { padding:7px 10px; text-align:center; }
+table.tab th { font-family:var(--serif); font-weight:400; font-style:italic; }
+table.tab td { font-family:var(--serif); }
+table.tab td.p { color:var(--blue); }
+table.tab sup { font-size:0.66em; line-height:0; }
+.gs { margin-top:14px; font-size:19px; color:var(--muted); line-height:1.45; }
+.gs .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; font-size:22px; }
+.gs b { color:var(--blue); }
+.gs sup { font-size:0.66em; line-height:0; }
+.pf { background:var(--tint); border-left:5px solid var(--blue); padding:14px 24px 16px; }
+.pf .rw2 { font-size:19px; color:var(--muted); margin:2px 0 6px; }
+.pf .rw2 b { color:var(--ink); }
+.pf .rw2 .m { font-family:var(--serif); color:var(--ink); font-size:22px; white-space:nowrap; }
+.pf sup { font-size:0.66em; line-height:0; }
+.eq { display:grid; grid-template-columns:auto auto 1fr; column-gap:10px; font-family:var(--serif); font-size:23px; line-height:1.7; align-items:baseline; }
+.eq .l { text-align:right; }
+.eq .x { color:var(--blue); }
+.eq .n { font-family:var(--sans); font-size:15px; color:var(--muted); padding-left:14px; }
+.eq b { color:var(--blue); font-weight:400; }
+.pf .sp { border-top:1px solid var(--grey); margin:8px 0; }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">The substitution method</div>
+<div class="frametitle">Example 1: HANOI moves, exactly</div>
 <div class="frame">
-<p class="tp">A recursion tree gives a <b>good guess</b>, but we were sloppy: <var>n</var> a power of 2, floors dropped, “⋯” in the middle.<br>To be sure, we <b>prove</b> the guess.</p>
-<div class="c2">
-<div><span class="n">1</span><h3>Guess the form of the answer</h3><p>For example <span class="m"><i>T</i>(<i>n</i>) ≤ <i>cn</i> log <i>n</i></span>. Guesses come from a <b>recursion tree</b>, from <b>unrolling</b>, from a recurrence you have <b>seen before</b>, or from a <b>table of small values</b>.</p></div>
-<div><span class="n">2</span><h3>Prove it by induction</h3><p>Assume the guess for smaller inputs and <b>substitute</b> it into the recurrence. Then find the constants <span class="m"><i>c</i></span> and <span class="m"><i>n</i><sub>0</sub></span> that make it work, as in Lecture 6.</p></div>
-</div>
-<p class="nm">The guess is <b>substituted</b> for <i>T</i> on smaller inputs: <span class="s">hence the name (CLRS §4.3).</span></p>
+<p class="hd">Moves for <var>n</var> disks (two towers of <var>n</var> − 1, plus one):<span class="m"><i>M</i>(<i>n</i>) = 2<i>M</i>(<i>n</i> − 1) + 1,&ensp;<i>M</i>(0) = 0</span></p>
+<div class="rw"><div><div class="k3">1. Guess from small values</div>
+<table class="tab"><tr><th>n</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr><tr class="sep"><th>M</th><td>0</td><td>1</td><td>3</td><td>7</td><td>15</td><td>31</td></tr><tr class="sep"><th>M + 1</th><td class="p">1</td><td class="p">2</td><td class="p">4</td><td class="p">8</td><td class="p">16</td><td class="p">32</td></tr></table>
+<p class="gs">One more than <i>M</i> is a power of 2. Guess:<br><span class="m"><b><i>M</i>(<i>n</i>) = 2<sup><i>n</i></sup> − 1</b></span></p></div>
+<div class="pf"><div class="k3">2. Prove it by induction</div>
+<p class="rw2"><b>Base case.</b> <span class="m"><i>M</i>(0) = 0 = 2<sup>0</sup> − 1</span>. <svg class="tick" viewBox="0 0 24 24"><path d="M4 13 l5 5 l11 -12"/></svg></p>
+<div class="sp"></div>
+<p class="rw2"><b>Inductive step.</b> Assume <span class="m"><i>M</i>(<i>n</i> − 1) = 2<sup><i>n</i>−1</sup> − 1</span>. Then</p>
+<div class="eq">
+<span class="l"><i>M</i>(<i>n</i>)</span><span>=&ensp;2<span class="x"><i>M</i>(<i>n</i> − 1)</span> + 1</span><span></span>
+<span class="l"></span><span>=&ensp;2<span class="x">(2<sup><i>n</i>−1</sup> − 1)</span> + 1</span><span class="n">substitute the guess</span>
+<span class="l"></span><span>=&ensp;2<sup><i>n</i></sup> − 2 + 1</span><span></span>
+<span class="l"></span><span>=&ensp;<b>2<sup><i>n</i></sup> − 1</b>&ensp;<svg class="tick" viewBox="0 0 24 24" style="color:var(--blue)"><path d="M4 13 l5 5 l11 -12"/></svg></span><span class="n">the guess, for size <var>n</var></span>
+</div></div></div>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

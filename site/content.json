@@ -20,7 +20,7 @@
     { "dir": "Lecture08", "released": true, "topics": "Multiplying large numbers: grade-school, divide and conquer and Karatsuba; range minimum queries; the subproblem properties divide and conquer needs", "simulators": ["karatsuba", "rmq"] },
     { "dir": "Lecture09", "released": true, "topics": "Graph vocabulary: vertices, edges, directed and undirected graphs, self-loops, parallel edges, simple graphs, weighted graphs, degrees, paths, cycles, connectivity and trees; graph representation; breadth-first search, its cost, and what it finds", "simulators": ["bfs"] },
     { "dir": "Lecture10", "released": true, "topics": "Depth-first search: going deep and backing up, compared with BFS; colors, discovery and finish times, a step-by-step run and its cost; the depth-first forest and tree, back, forward and cross edges; finding cycles; topological sort of a DAG", "simulators": ["dfs", "toposort"] },
-    { "dir": "Lecture11", "released": true, "topics": "Recurrences from recursive code; solving them by unrolling, recursion trees, the substitution method and the master theorem" }
+    { "dir": "Lecture11", "released": true, "topics": "Recurrences from recursive code; solving them by the iteration method, recursion trees, the substitution method and the master theorem" }
   ],
 
   "simulators": [

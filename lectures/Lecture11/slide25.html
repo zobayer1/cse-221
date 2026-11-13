@@ -1,44 +1,43 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Induction in one slide</title>
+<title>Example 2: merge sort, the inductive step</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.fg { display:flex; justify-content:center; }
-.c2 { margin-top:18px; display:grid; grid-template-columns:1fr 1fr; gap:30px; }
-.c2 .block .bb { font-size:20px; line-height:1.45; }
-.c2 .m { font-family:var(--serif); white-space:nowrap; font-size:22px; }
-.nt { margin-top:22px; text-align:center; font-size:19px; color:var(--muted); line-height:1.45; }
-.nt b { color:var(--ink); }
-.nt .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; }
+.hd { text-align:center; font-size:21px; color:var(--muted); }
+.hd .m { font-family:var(--serif); color:var(--ink); font-size:26px; margin-left:8px; }
+.gu { margin:14px auto 22px; text-align:center; }
+.gu span { display:inline-block; border:2px solid var(--blue); border-radius:8px; padding:6px 20px; font-size:20px; color:var(--muted); }
+.gu .m { font-family:var(--serif); font-size:26px; color:var(--blue); margin-left:8px; }
+.rw { display:grid; grid-template-columns:1fr 330px; gap:32px; align-items:center; }
+.pf { background:var(--tint); border-left:5px solid var(--blue); padding:14px 24px 16px; }
+.k3 { font-size:14px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:6px; }
+.pf .as { font-size:19px; color:var(--muted); margin-bottom:6px; }
+.pf .as .m { font-family:var(--serif); color:var(--ink); font-size:22px; white-space:nowrap; }
+.eq { display:grid; grid-template-columns:auto auto 1fr; column-gap:10px; font-family:var(--serif); font-size:24px; line-height:1.75; align-items:baseline; }
+.eq .l { text-align:right; }
+.eq .x { color:var(--blue); }
+.eq .n { font-family:var(--sans); font-size:15px; color:var(--muted); padding-left:14px; }
+.eq b { color:var(--blue); font-weight:400; }
+.sd .bx { border:2px solid var(--ink); border-radius:10px; padding:12px 18px 14px; }
+.sd .bx + .bx { margin-top:16px; }
+.sd .k3 { color:var(--muted); }
+.sd p { font-size:18px; color:var(--muted); line-height:1.45; }
+.sd p b { color:var(--ink); }
+.sd .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; font-size:20px; }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">Induction in one slide</div>
+<div class="frametitle">Example 2: merge sort, the inductive step</div>
 <div class="frame">
-<div class="fg"><svg data-figure viewBox="0 0 880 210" width="880" height="210" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><defs><marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#C62828"/></marker></defs><rect x="70" y="54" width="20" height="96" rx="3" fill="#2B5BAA" stroke="#1F4A8F" stroke-width="2" transform="rotate(58 90 150)"/>
-<text x="80.0" y="176.0" font-size="19" text-anchor="middle" fill="#000">1</text>
-<rect x="136" y="54" width="20" height="96" rx="3" fill="#2B5BAA" stroke="#1F4A8F" stroke-width="2" transform="rotate(38 156 150)"/>
-<text x="146.0" y="176.0" font-size="19" text-anchor="middle" fill="#000">2</text>
-<rect x="202" y="54" width="20" height="96" rx="3" fill="#2B5BAA" stroke="#1F4A8F" stroke-width="2" transform="rotate(14 222 150)"/>
-<text x="212.0" y="176.0" font-size="19" text-anchor="middle" fill="#000">3</text>
-<rect x="268" y="54" width="20" height="96" rx="3" fill="#fff" stroke="#000" stroke-width="2" transform="rotate(0 288 150)"/>
-<text x="278.0" y="176.0" font-size="19" text-anchor="middle" fill="#000">4</text>
-<rect x="334" y="54" width="20" height="96" rx="3" fill="#fff" stroke="#000" stroke-width="2" transform="rotate(0 354 150)"/>
-<text x="344.0" y="176.0" font-size="19" text-anchor="middle" fill="#000">5</text>
-<rect x="400" y="54" width="20" height="96" rx="3" fill="#fff" stroke="#000" stroke-width="2" transform="rotate(0 420 150)"/>
-<text x="410.0" y="176.0" font-size="19" text-anchor="middle" fill="#000">6</text>
-<text x="476.0" y="110.0" font-size="28" text-anchor="middle" fill="#555">⋯</text>
-<rect x="562" y="54" width="20" height="96" rx="3" fill="#fff" stroke="#000" stroke-width="2" transform="rotate(0 582 150)"/>
-<text x="572.0" y="176.0" font-size="19" text-anchor="middle" fill="#000"><tspan font-style="italic">n</tspan> − 1</text>
-<rect x="628" y="54" width="20" height="96" rx="3" fill="#fff" stroke="#000" stroke-width="2" transform="rotate(0 648 150)"/>
-<text x="638.0" y="176.0" font-size="19" text-anchor="middle" fill="#000"><tspan font-style="italic">n</tspan></text>
-<line x1="50" y1="150" x2="840" y2="150" stroke="#000" stroke-width="2"/>
-<path d="M66 46 q -6 30 22 50" fill="none" stroke="#C62828" stroke-width="2" marker-end="url(#ar)"/>
-<text x="30.0" y="38.0" font-size="18" text-anchor="start" fill="#C62828" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1" font-weight="700">base case: the first one falls</text>
-<path d="M360 38 q 22 -26 52 -6" fill="none" stroke="#C62828" stroke-width="2" marker-end="url(#ar)"/>
-<text x="424.0" y="32.0" font-size="18" text-anchor="start" fill="#C62828" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1" font-weight="700">inductive step: each one knocks over the next</text></svg></div>
-<div class="c2">
-<div class="block"><div class="bt">Base case</div><div class="bb">Show the claim for the <b>smallest</b> size, such as <span class="m"><i>n</i> = 0</span> or <span class="m"><i>n</i> = 2</span>.</div></div>
-<div class="block"><div class="bt">Inductive step</div><div class="bb"><b>Assume</b> the claim for every size smaller than <var>n</var>. <b>Show</b> it for <var>n</var>.</div></div>
-</div>
-<p class="nt">Then the claim holds for every size. With <span class="m"><i>T</i>(<i>n</i>/2)</span> in the recurrence, the step uses size <span class="m"><i>n</i>/2</span>, not <span class="m"><i>n</i> − 1</span>:<br>that is why we assume <b>every</b> smaller size (strong induction).</p>
+<p class="hd">MERGE-SORT, with <var>n</var> a power of 2:<span class="m"><i>T</i>(<i>n</i>) = 2<i>T</i>(<i>n</i>/2) + <i>n</i>,&ensp;<i>T</i>(1) = 1</span></p>
+<p class="gu"><span>Guess, from the recursion tree:<span class="m"><i>T</i>(<i>n</i>) ≤ <i>cn</i> log <i>n</i></span></span></p>
+<div class="rw"><div class="pf"><div class="k3">Inductive step</div>
+<p class="as">Assume the guess for size <var>n</var>/2: <span class="m"><i>T</i>(<i>n</i>/2) ≤ <i>c</i>(<i>n</i>/2) log(<i>n</i>/2)</span>.</p>
+<div class="eq">
+<span class="l"><i>T</i>(<i>n</i>)</span><span>=&ensp;2<span class="x"><i>T</i>(<i>n</i>/2)</span> + <i>n</i></span><span></span>
+<span class="l"></span><span>≤&ensp;2 · <span class="x"><i>c</i>(<i>n</i>/2) log(<i>n</i>/2)</span> + <i>n</i></span><span class="n">substitute the guess</span>
+<span class="l"></span><span>=&ensp;<i>cn</i>(log <i>n</i> − 1) + <i>n</i></span><span class="n">log(<var>n</var>/2) = log <var>n</var> − 1</span>
+<span class="l"></span><span>=&ensp;<i>cn</i> log <i>n</i> − <i>cn</i> + <i>n</i></span><span></span>
+<span class="l"></span><span>≤&ensp;<b><i>cn</i> log <i>n</i></b></span><span class="n">if <var>c</var> ≥ 1, since then −<var>cn</var> + <var>n</var> ≤ 0</span>
+</div></div>
+<div class="sd"><div class="bx"><div class="k3">The goal</div><p>End with <b>exactly</b> the guessed form, <span class="m"><i>cn</i> log <i>n</i></span>, with the <b>same</b> <var>c</var>.</p></div><div class="bx"><div class="k3">Why minus 1?</div><p><span class="m">log(<i>n</i>/2) = log <i>n</i> − log 2</span>, and <span class="m">log 2 = 1</span> in base 2.</p></div></div></div>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

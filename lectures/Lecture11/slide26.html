@@ -1,49 +1,32 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Example 1: HANOI moves, exactly</title>
+<title>The master theorem</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.hd { text-align:center; font-size:21px; color:var(--muted); margin-bottom:22px; }
-.hd .m { font-family:var(--serif); color:var(--ink); font-size:26px; margin-left:8px; }
-.rw { display:grid; grid-template-columns:400px 1fr; gap:40px; align-items:center; }
-.k3 { font-size:14px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:8px; }
-table.tab { font-size:22px; }
-table.tab td, table.tab th { padding:7px 10px; text-align:center; }
-table.tab th { font-family:var(--serif); font-weight:400; font-style:italic; }
-table.tab td { font-family:var(--serif); }
-table.tab td.p { color:var(--blue); }
-table.tab sup { font-size:0.66em; line-height:0; }
-.gs { margin-top:14px; font-size:19px; color:var(--muted); line-height:1.45; }
-.gs .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; font-size:22px; }
-.gs b { color:var(--blue); }
-.gs sup { font-size:0.66em; line-height:0; }
-.pf { background:var(--tint); border-left:5px solid var(--blue); padding:14px 24px 16px; }
-.pf .rw2 { font-size:19px; color:var(--muted); margin:2px 0 6px; }
-.pf .rw2 b { color:var(--ink); }
-.pf .rw2 .m { font-family:var(--serif); color:var(--ink); font-size:22px; white-space:nowrap; }
-.pf sup { font-size:0.66em; line-height:0; }
-.eq { display:grid; grid-template-columns:auto auto 1fr; column-gap:10px; font-family:var(--serif); font-size:23px; line-height:1.7; align-items:baseline; }
-.eq .l { text-align:right; }
-.eq .x { color:var(--blue); }
-.eq .n { font-family:var(--sans); font-size:15px; color:var(--muted); padding-left:14px; }
-.eq b { color:var(--blue); font-weight:400; }
-.pf .sp { border-top:1px solid var(--grey); margin:8px 0; }
+.rc { text-align:center; font-size:21px; color:var(--muted); margin-bottom:18px; }
+.rc b { color:var(--ink); }
+.rc .m { font-family:var(--serif); color:var(--ink); font-size:24px; white-space:nowrap; }
+table.tab { font-size:21px; }
+table.tab th { font-size:18px; }
+table.tab td, table.tab th { padding:12px 14px; }
+table.tab td.c, table.tab th.c { text-align:center; }
+table.tab td.m { font-family:var(--serif); font-size:25px; white-space:nowrap; }
+table.tab td.s { font-family:var(--serif); font-size:26px; white-space:nowrap; color:var(--blue); font-weight:700; }
+table.tab td.w { color:var(--muted); font-size:19px; }
+sup, sub { font-size:0.66em; line-height:0; }
+.nt { margin-top:26px; text-align:center; font-size:20px; color:var(--muted); line-height:1.5; }
+.nt b { color:var(--ink); }
+.nt .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; font-size:22px; }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">Example 1: HANOI moves, exactly</div>
+<div class="frametitle">The master theorem</div>
 <div class="frame">
-<p class="hd">Moves for <var>n</var> disks (two towers of <var>n</var> − 1, plus one):<span class="m"><i>M</i>(<i>n</i>) = 2<i>M</i>(<i>n</i> − 1) + 1,&ensp;<i>M</i>(0) = 0</span></p>
-<div class="rw"><div><div class="k3">1. Guess from small values</div>
-<table class="tab"><tr><th>n</th><td>0</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr><tr class="sep"><th>M</th><td>0</td><td>1</td><td>3</td><td>7</td><td>15</td><td>31</td></tr><tr class="sep"><th>M + 1</th><td class="p">1</td><td class="p">2</td><td class="p">4</td><td class="p">8</td><td class="p">16</td><td class="p">32</td></tr></table>
-<p class="gs">One more than <i>M</i> is a power of 2. Guess:<br><span class="m"><b><i>M</i>(<i>n</i>) = 2<sup><i>n</i></sup> − 1</b></span></p></div>
-<div class="pf"><div class="k3">2. Prove it by induction</div>
-<p class="rw2"><b>Base case.</b> <span class="m"><i>M</i>(0) = 0 = 2<sup>0</sup> − 1</span>. <svg class="tick" viewBox="0 0 24 24"><path d="M4 13 l5 5 l11 -12"/></svg></p>
-<div class="sp"></div>
-<p class="rw2"><b>Inductive step.</b> Assume <span class="m"><i>M</i>(<i>n</i> − 1) = 2<sup><i>n</i>−1</sup> − 1</span>. Then</p>
-<div class="eq">
-<span class="l"><i>M</i>(<i>n</i>)</span><span>=&ensp;2<span class="x"><i>M</i>(<i>n</i> − 1)</span> + 1</span><span></span>
-<span class="l"></span><span>=&ensp;2<span class="x">(2<sup><i>n</i>−1</sup> − 1)</span> + 1</span><span class="n">substitute the guess</span>
-<span class="l"></span><span>=&ensp;2<sup><i>n</i></sup> − 2 + 1</span><span></span>
-<span class="l"></span><span>=&ensp;<b>2<sup><i>n</i></sup> − 1</b>&ensp;<svg class="tick" viewBox="0 0 24 24" style="color:var(--blue)"><path d="M4 13 l5 5 l11 -12"/></svg></span><span class="n">the guess, for size <var>n</var></span>
-</div></div></div>
+<p class="rc"><b>Master theorem.</b> Let <span class="m"><i>a</i> ≥ 1</span>, <span class="m"><i>b</i> &gt; 1</span> and <span class="m"><i>k</i> ≥ 0</span> be constants, and <span class="m"><i>T</i>(<i>n</i>) = <i>aT</i>(<i>n</i>/<i>b</i>) + Θ(<i>n</i><sup><i>k</i></sup>)</span>. Then:</p>
+<table class="tab">
+<tr><th class="c">Case</th><th class="c">Compare</th><th>Solution</th><th>Who wins</th></tr>
+<tr><td class="c">1</td><td class="m c"><i>a</i> &gt; <i>b</i><sup><i>k</i></sup></td><td class="s">Θ(<i>n</i><sup>log<sub><i>b</i></sub> <i>a</i></sup>)</td><td class="w">the leaves</td></tr>
+<tr class="sep"><td class="c">2</td><td class="m c"><i>a</i> = <i>b</i><sup><i>k</i></sup></td><td class="s">Θ(<i>n</i><sup><i>k</i></sup> log <i>n</i>)</td><td class="w">every level</td></tr>
+<tr class="sep"><td class="c">3</td><td class="m c"><i>a</i> &lt; <i>b</i><sup><i>k</i></sup></td><td class="s">Θ(<i>n</i><sup><i>k</i></sup>)</td><td class="w">the root</td></tr>
+</table>
+<p class="nt">Compare <span class="m"><i>a</i></span> (how fast the calls multiply) with <span class="m"><i>b</i><sup><i>k</i></sup></span> (how fast the work per call shrinks).<br>Same thing with logs: compare <span class="m"><i>k</i></span> with <span class="m">log<sub><i>b</i></sub> <i>a</i></span>. The cases are numbered as in CLRS.</p>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>
