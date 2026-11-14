@@ -1,38 +1,35 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DFS: pseudocode</title>
+<title>BFS step by step (1)</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.pc { display:grid; grid-template-columns:auto auto; gap:40px; justify-content:center; align-items:start; }
-.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:12px 22px; }
-.codebox pre { font-size:21px; line-height:1.4; }
-.codebox .fn { font-weight:700; }
-.codebox .cm { color:var(--muted); }
-.cap { font-size:21px; line-height:1.4; margin-top:14px; color:var(--muted); max-width:560px; }
-.cap b { color:var(--ink); }
+.st { display:grid; grid-template-columns:auto minmax(0,1fr); gap:36px; align-items:center; }
+.qr { display:flex; align-items:center; gap:16px; }
+.ql { font-family:var(--serif); font-size:30px; }
+.qr .cells { --w:56px; --h:46px; --fs:26px; }
+.cells > span.q { background:#C9CCD1; }
+.cells.em > span { border:none; background:none; font-family:var(--serif); }
+.fr { font-size:16px; color:var(--muted); width:56px; text-align:center; height:21px; }
+.dr { display:flex; height:27px; }
+.dr span { width:56px; margin-left:-1.5px; text-align:center; font-family:var(--serif); font-size:21px; color:var(--muted); }
+.dr span:first-child { margin-left:0; }
+table.tab { margin-top:22px; font-size:24px; table-layout:fixed; }
+table.tab th, table.tab td { text-align:center; padding:5px 4px; }
+table.tab th { font-family:var(--serif); font-weight:400; }
+table.tab td { font-family:var(--serif); }
+table.tab td.m { color:#9a9da2; }
+table.tab td.nil { color:#9a9da2; font-size:14px; }
+table.tab td.ch { color:var(--blue); font-weight:700; }
+.key { font-size:19px; color:var(--muted); text-align:center; margin-top:2px; }
+.cp { margin-top:20px; }
+.cp .bb { min-height:60px; display:flex; align-items:center; font-size:25px; line-height:1.3; }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">DFS: pseudocode</div>
+<div class="frametitle">BFS step by step (1)</div>
 <div class="frame">
-<div class="pc"><div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">DFS</span>(G)
-<span class="ln">2</span>    <span class="kw">for</span> each vertex u ∈ G.V
-<span class="ln">3</span>        u.color = WHITE
-<span class="ln">4</span>        u.π = NIL
-<span class="ln">5</span>    time = 0
-<span class="ln">6</span>    <span class="kw">for</span> each vertex u ∈ G.V
-<span class="ln">7</span>        <span class="kw">if</span> u.color == WHITE
-<span class="ln">8</span>            DFS-VISIT(G, u)</pre></div>
-<p class="cap">Paint every vertex white, then start a new search from each vertex that is <b>still white</b>.</p></div>
-<div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">DFS-VISIT</span>(G, u)
-<span class="ln">2</span>    time = time + 1     <span class="cm">// u is discovered</span>
-<span class="ln">3</span>    u.d = time
-<span class="ln">4</span>    u.color = GRAY
-<span class="ln">5</span>    <span class="kw">for</span> each v ∈ G.Adj[u]  <span class="cm">// explore (u, v)</span>
-<span class="ln">6</span>        <span class="kw">if</span> v.color == WHITE
-<span class="ln">7</span>            v.π = u
-<span class="ln">8</span>            DFS-VISIT(G, v)
-<span class="ln">9</span>    u.color = BLACK     <span class="cm">// u is finished</span>
-<span class="ln">10</span>    time = time + 1
-<span class="ln">11</span>    u.f = time</pre></div>
-<p class="cap">Discover <var>u</var>, go <b>deeper</b> into each white neighbor, then finish <var>u</var>. Returning from line 8 is the <b>backtrack</b>.</p></div></div>
+<div class="st"><div><svg data-figure viewBox="0 0 560 295" width="540" height="284.5" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><line x1="70" y1="70" x2="210" y2="70" stroke="#000" stroke-width="2.4"/><line x1="70" y1="70" x2="70" y2="222" stroke="#000" stroke-width="2.4"/><line x1="210" y1="70" x2="210" y2="222" stroke="#000" stroke-width="2.4"/><line x1="210" y1="222" x2="350" y2="70" stroke="#000" stroke-width="2.4"/><line x1="210" y1="222" x2="350" y2="222" stroke="#000" stroke-width="2.4"/><line x1="350" y1="70" x2="350" y2="222" stroke="#000" stroke-width="2.4"/><line x1="350" y1="70" x2="490" y2="70" stroke="#000" stroke-width="2.4"/><line x1="350" y1="222" x2="490" y2="222" stroke="#000" stroke-width="2.4"/><line x1="490" y1="70" x2="490" y2="222" stroke="#000" stroke-width="2.4"/><circle cx="70" cy="70" r="26" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="70" y="78.8" text-anchor="middle" font-size="26" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">∞</text><text x="70" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">r</tspan></text><circle cx="210" cy="70" r="26" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="210" y="78.8" text-anchor="middle" font-size="26" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">0</text><text x="210" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">s</tspan></text><circle cx="350" cy="70" r="26" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="350" y="78.8" text-anchor="middle" font-size="26" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">∞</text><text x="350" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">t</tspan></text><circle cx="490" cy="70" r="26" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="490" y="78.8" text-anchor="middle" font-size="26" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">∞</text><text x="490" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">u</tspan></text><circle cx="70" cy="222" r="26" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="70" y="230.8" text-anchor="middle" font-size="26" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">∞</text><text x="70" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">v</tspan></text><circle cx="210" cy="222" r="26" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="210" y="230.8" text-anchor="middle" font-size="26" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">∞</text><text x="210" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">w</tspan></text><circle cx="350" cy="222" r="26" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="350" y="230.8" text-anchor="middle" font-size="26" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">∞</text><text x="350" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">x</tspan></text><circle cx="490" cy="222" r="26" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="490" y="230.8" text-anchor="middle" font-size="26" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">∞</text><text x="490" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">y</tspan></text></svg><div class="key">Number in a vertex: its <var>d</var>. Blue edge: joins a vertex to its <var>π</var>.</div></div><div>
+<div class="qr"><div class="ql"><var>Q</var></div><div><div class="fr">front</div><div class="cells"><span class="q"><var>s</var></span></div><div class="dr"><span>0</span></div></div></div>
+<table class="tab"><tr><th></th><th><var>r</var></th><th><var>s</var></th><th><var>t</var></th><th><var>u</var></th><th><var>v</var></th><th><var>w</var></th><th><var>x</var></th><th><var>y</var></th></tr><tr><td><var>d</var></td><td class="m">∞</td><td class="v">0</td><td class="m">∞</td><td class="m">∞</td><td class="m">∞</td><td class="m">∞</td><td class="m">∞</td><td class="m">∞</td></tr><tr><td><var>π</var></td><td class="nil">NIL</td><td class="nil">NIL</td><td class="nil">NIL</td><td class="nil">NIL</td><td class="nil">NIL</td><td class="nil">NIL</td><td class="nil">NIL</td><td class="nil">NIL</td></tr></table>
+</div></div>
+<div class="block cp"><div class="bb"><div><b>Initialize (lines 2–10):</b> <var>s</var> is gray with <var>s.d</var> = 0. All other vertices are white. <var>Q</var> holds <var>s</var>.</div></div></div>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

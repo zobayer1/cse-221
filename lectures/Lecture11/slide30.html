@@ -1,32 +1,28 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Solve these</title>
+<title>Finding a cycle in an undirected graph</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.tp { font-size:22px; color:var(--muted); text-align:center; margin-bottom:24px; }
-.tp b { color:var(--ink); }
-.c4 { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
-.c4 > div { border-top:4px solid var(--blue); background:var(--tint-2); padding:12px 16px 16px; }
-.c4 .lt { font-family:var(--serif); font-size:26px; font-weight:700; color:var(--blue); }
-.c4 .rq { font-family:var(--serif); font-size:24px; margin:6px 0 14px; white-space:nowrap; }
-.c4 sup { font-size:0.66em; line-height:0; }
-.bl { display:grid; grid-template-columns:auto 1fr; gap:12px 10px; font-size:18px; align-items:end; }
-.bl span { color:var(--muted); white-space:nowrap; }
-.bl .m { font-family:var(--serif); color:var(--muted); }
-.bl i.u { display:block; border-bottom:1.5px solid var(--ink); height:22px; }
-.q { margin-top:30px; text-align:center; font-family:var(--serif); font-size:26px; }
-.q b { color:var(--blue); }
-.q .s { display:block; font-family:var(--sans); font-size:18px; color:var(--muted); margin-top:6px; }
+.ud { display:grid; grid-template-columns:auto minmax(0,1fr); gap:36px; align-items:center; }
+.key { font-size:19px; color:var(--muted); text-align:center; margin-top:2px; }
+.lead { font-size:23px; line-height:1.4; }
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:10px 18px; margin-top:16px; }
+.codebox pre { font-size:21px; line-height:1.4; }
+.nw { white-space:nowrap; }
+.codebox .ne { font-family:var(--serif); }
+.sm { font-size:19px; color:var(--muted); margin-top:8px; }
+.nt { margin-top:20px; font-size:22px; line-height:1.4; }
+.bot { margin-top:22px; font-size:23px; text-align:center; }
+.bot b { color:var(--blue); }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">Solve these<span class="ftag">Discuss</span></div>
+<div class="frametitle">Finding a cycle in an undirected graph</div>
 <div class="frame">
-<p class="tp">Use the master theorem: find <var>a</var>, <var>b</var> and <var>k</var>, then <b>compare <var>a</var> with <var>b</var><sup style="font-size:0.66em;line-height:0"><var>k</var></sup></b>.</p>
-<div class="c4">
-<div><span class="lt">A</span><p class="rq"><i>T</i>(<i>n</i>) = 9<i>T</i>(<i>n</i>/3) + <i>n</i></p><div class="bl"><span class="m"><i>a</i>, <i>b</i>, <i>k</i></span><i class="u"></i><span>Case</span><i class="u"></i><span class="m"><i>T</i>(<i>n</i>)</span><i class="u"></i></div></div>
-<div><span class="lt">B</span><p class="rq"><i>T</i>(<i>n</i>) = <i>T</i>(2<i>n</i>/3) + 1</p><div class="bl"><span class="m"><i>a</i>, <i>b</i>, <i>k</i></span><i class="u"></i><span>Case</span><i class="u"></i><span class="m"><i>T</i>(<i>n</i>)</span><i class="u"></i></div></div>
-<div><span class="lt">C</span><p class="rq"><i>T</i>(<i>n</i>) = 3<i>T</i>(<i>n</i>/4) + <i>n</i><sup>2</sup></p><div class="bl"><span class="m"><i>a</i>, <i>b</i>, <i>k</i></span><i class="u"></i><span>Case</span><i class="u"></i><span class="m"><i>T</i>(<i>n</i>)</span><i class="u"></i></div></div>
-<div><span class="lt">D</span><p class="rq"><i>T</i>(<i>n</i>) = 8<i>T</i>(<i>n</i>/2) + <i>n</i><sup>3</sup></p><div class="bl"><span class="m"><i>a</i>, <i>b</i>, <i>k</i></span><i class="u"></i><span>Case</span><i class="u"></i><span class="m"><i>T</i>(<i>n</i>)</span><i class="u"></i></div></div>
-</div>
-<p class="q">Which one has a <b>fraction</b> for <var>b</var>?<span class="s">Hint: the size of each call is <var>n</var>/<var>b</var>.</span></p>
+<div class="ud"><div><svg data-figure viewBox="0 0 560 295" width="540" height="284.5" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><polygon points="210,222 350,70 350,222" fill="#F8E6E6" stroke="none"/><line x1="70" y1="70" x2="210" y2="70" stroke="#000" stroke-width="2.4"/><line x1="70" y1="70" x2="70" y2="222" stroke="#000" stroke-width="2.4"/><line x1="210" y1="70" x2="210" y2="222" stroke="#2B5BAA" stroke-width="5"/><line x1="210" y1="222" x2="350" y2="70" stroke="#2B5BAA" stroke-width="5"/><line x1="210" y1="222" x2="350" y2="222" stroke="#C62828" stroke-width="3.4" stroke-dasharray="9 5"/><line x1="350" y1="70" x2="350" y2="222" stroke="#2B5BAA" stroke-width="5"/><line x1="350" y1="70" x2="490" y2="70" stroke="#000" stroke-width="2.4"/><line x1="350" y1="222" x2="490" y2="222" stroke="#000" stroke-width="2.4"/><line x1="490" y1="70" x2="490" y2="222" stroke="#000" stroke-width="2.4"/><circle cx="350" cy="222" r="33" fill="none" stroke="#2B5BAA" stroke-width="3.5"/><circle cx="70" cy="70" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="70" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">r</tspan></text><circle cx="210" cy="70" r="27" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="210" y="76.3" text-anchor="middle" font-size="19" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">1/</text><text x="210" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">s</tspan></text><circle cx="350" cy="70" r="27" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="350" y="76.3" text-anchor="middle" font-size="19" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">3/</text><text x="350" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">t</tspan></text><circle cx="490" cy="70" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="490" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">u</tspan></text><circle cx="70" cy="222" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="70" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">v</tspan></text><circle cx="210" cy="222" r="27" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="210" y="228.3" text-anchor="middle" font-size="19" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">2/</text><text x="210" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">w</tspan></text><circle cx="350" cy="222" r="27" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="350" y="228.3" text-anchor="middle" font-size="19" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">4/</text><text x="350" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">x</tspan></text><circle cx="490" cy="222" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="490" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">y</tspan></text></svg><div class="key">Our run at time 4: <var>x</var> scans <var>w</var>.</div></div><div>
+<p class="lead">The parent <var>u.π</var> is always a gray neighbor of <var>u</var>: that is the tree edge, seen from the other end. <b>Skip it.</b></p>
+<div class="codebox"><pre class="code"><span class="ln">4</span>        <span class="kw">if</span> v.color == GRAY <span class="kw">and</span> v <span class="ne">≠</span> u.π</pre></div>
+<p class="sm">Also set <var>v.π</var> = <var>u</var> before each call, as DFS does.</p>
+<p class="nt">At <var>x</var>, neighbor <var>w</var> is gray and <var>w</var> ≠ <var>x.π</var> = <var>t</var>. <span class="nw">Cycle: <var>w</var> → <var>t</var> → <var>x</var> → <var>w</var>.</span></p>
+</div></div>
+<p class="bot">Last class, BFS found cycles in <b>undirected</b> graphs only. DFS works for <b>directed</b> graphs too.</p>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

@@ -1,0 +1,50 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading a recursion tree</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.hd { text-align:center; font-size:21px; color:var(--muted); margin-bottom:20px; }
+.hd .m { font-family:var(--serif); color:var(--ink); font-size:27px; margin:0 6px; }
+.rw { display:grid; grid-template-columns:1fr 470px; gap:30px; align-items:center; }
+table.tab { font-size:20px; }
+table.tab th { font-size:18px; }
+table.tab td, table.tab th { padding:6px 10px; }
+table.tab td.m { font-family:var(--serif); font-size:23px; white-space:nowrap; }
+table.tab td.w { color:var(--blue); }
+table.tab sup, table.tab sub { font-size:0.66em; line-height:0; }
+table.tab tr.dt td { color:var(--muted); padding:0 12px; line-height:1.1; }
+table.tab tr.lf td { border-top:1px solid var(--rule); }
+.sm { margin-top:16px; font-family:var(--serif); font-size:23px; text-align:center; }
+.sm sup, .sm sub { font-size:0.66em; line-height:0; }
+.sm .s { font-family:var(--sans); font-size:18px; color:var(--muted); }
+.bx { border:2px solid var(--ink); border-radius:10px; padding:12px 18px 14px; }
+.bx .k3 { font-size:14px; font-weight:700; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; }
+.bx .k3 + p { margin-top:4px; }
+.bx p { font-size:18px; color:var(--muted); line-height:1.4; }
+.bx .e { font-family:var(--serif); font-size:21px; color:var(--ink); line-height:1.75; margin:4px 0 2px; }
+.bx .e b { color:var(--blue); font-weight:400; }
+.bx sup, .bx sub { font-size:0.66em; line-height:0; }
+.bx .sp { border-top:1px solid var(--grey); margin:12px 0 10px; }
+.bx .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Reading a recursion tree</div>
+<div class="frame">
+<p class="hd">Divide and conquer:<span class="m"><i>T</i>(<i>n</i>) = <i>aT</i>(<i>n</i>/<i>b</i>) + <i>f</i>(<i>n</i>)</span>: <var>a</var> calls, each on size <var>n</var>/<var>b</var>, plus <var>f</var>(<var>n</var>) other work.</p>
+<div class="rw"><div><table class="tab">
+<tr><th>Depth</th><th>Calls</th><th>Size of each</th><th>Work at this level</th></tr>
+<tr><td class="m">0</td><td class="m">1</td><td class="m"><i>n</i></td><td class="m w"><i>f</i>(<i>n</i>)</td></tr>
+<tr><td class="m">1</td><td class="m"><i>a</i></td><td class="m"><i>n</i>/<i>b</i></td><td class="m w"><i>a</i> · <i>f</i>(<i>n</i>/<i>b</i>)</td></tr>
+<tr><td class="m">2</td><td class="m"><i>a</i><sup>2</sup></td><td class="m"><i>n</i>/<i>b</i><sup>2</sup></td><td class="m w"><i>a</i><sup>2</sup> · <i>f</i>(<i>n</i>/<i>b</i><sup>2</sup>)</td></tr>
+<tr class="dt"><td class="m">⋮</td><td class="m">⋮</td><td class="m">⋮</td><td class="m">⋮</td></tr>
+<tr><td class="m"><i>i</i></td><td class="m"><i>a</i><sup><i>i</i></sup></td><td class="m"><i>n</i>/<i>b</i><sup><i>i</i></sup></td><td class="m w"><i>a</i><sup><i>i</i></sup> · <i>f</i>(<i>n</i>/<i>b</i><sup><i>i</i></sup>)</td></tr>
+<tr class="dt"><td class="m">⋮</td><td class="m">⋮</td><td class="m">⋮</td><td class="m">⋮</td></tr>
+<tr class="lf"><td class="m">log<sub><i>b</i></sub> <i>n</i></td><td class="m"><i>a</i><sup>log<sub><i>b</i></sub> <i>n</i></sup></td><td class="m">1</td><td class="m w"><i>a</i><sup>log<sub><i>b</i></sub> <i>n</i></sup> · <i>c</i> <span style="font-family:var(--sans);font-size:16px;color:var(--muted)">(leaves)</span></td></tr>
+</table>
+<p class="sm"><i>T</i>(<i>n</i>) = <span class="s">add up the last column</span></p></div>
+<div class="bx"><div class="k3">How deep?</div><p>The size reaches 1 when <span class="m"><i>n</i>/<i>b</i><sup><i>i</i></sup> = 1</span>, that is, at depth <span class="m"><i>i</i> = log<sub><i>b</i></sub> <i>n</i></span>.</p>
+<div class="sp"></div>
+<div class="k3">How many leaves?</div><p>Swap the base and the exponent:</p>
+<p class="e"><i>a</i><sup>log<sub><i>b</i></sub> <i>n</i></sup> = (<i>b</i><sup>log<sub><i>b</i></sub> <i>a</i></sup>)<sup>log<sub><i>b</i></sub> <i>n</i></sup> = (<i>b</i><sup>log<sub><i>b</i></sub> <i>n</i></sup>)<sup>log<sub><i>b</i></sub> <i>a</i></sup> = <b><i>n</i><sup>log<sub><i>b</i></sub> <i>a</i></sup></b></p>
+<p>Check: <span class="m"><i>a</i> = 4, <i>b</i> = 2, <i>n</i> = 16</span> gives <span class="m">4<sup>4</sup> = 256 = 16<sup>2</sup></span>. Karatsuba (Lecture 8): <span class="m">3<sup>log<sub>2</sub> <i>n</i></sup> = <i>n</i><sup>log<sub>2</sub> 3</sup></span>.</p></div></div>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

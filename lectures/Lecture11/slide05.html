@@ -1,38 +1,28 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Write the recurrence: BUBBLE-SORT-REC</title>
+<title>BFS vs DFS</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.rw { display:grid; grid-template-columns:600px 1fr; gap:40px; align-items:center; }
-.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:12px 20px; }
-.codebox pre { font-size:19px; line-height:1.65; }
-.codebox .fn { font-weight:700; }
-.codebox .an { color:var(--blue); font-family:var(--serif); font-size:18px; }
-.pic { margin-top:16px; }
-.pic svg { width:100% !important; height:auto !important; }
-.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
-.rr > div { display:grid; grid-template-columns:150px 1fr auto; gap:12px; padding:10px 0; border-bottom:1px solid var(--rule); align-items:baseline; }
-.rr .c { font-size:18px; font-weight:700; }
-.rr .v { font-size:18px; color:var(--muted); line-height:1.4; }
-.rr .t { font-family:var(--serif); font-size:23px; color:var(--blue); white-space:nowrap; }
-.m { font-family:var(--serif); white-space:nowrap; }
-.v .m { color:var(--ink); }
-.rc { margin-top:20px; text-align:center; font-family:var(--serif); font-size:31px; }
-.rc b { color:var(--blue); font-weight:400; }
-.rc .bc { font-size:24px; color:var(--muted); margin-left:18px; }
-.nt { margin-top:16px; font-size:17px; color:var(--muted); line-height:1.45; border-left:3px solid var(--grey); padding-left:12px; }
-.nt b { color:var(--ink); }
-.nt .m { color:var(--ink); }
-.sv { margin-top:10px; font-size:16px; color:var(--muted); text-align:center; }
+table.tab { font-size:24px; }
+table.tab th { font-size:25px; color:var(--blue); }
+table.tab td, table.tab th { padding:11px 16px; line-height:1.3; }
+table.tab td:first-child { font-weight:700; white-space:nowrap; }
+table.tab tr + tr td { border-top:1px solid var(--rule); }
+table.tab tr:nth-child(2) td { border-top:none; }
+.ds { font-size:20px; color:var(--muted); }
+.bot { margin-top:28px; font-size:25px; text-align:center; }
+.bot b { color:var(--blue); }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">Write the recurrence: BUBBLE-SORT-REC</div>
+<div class="frametitle">BFS vs DFS</div>
 <div class="frame">
-<div class="rw"><div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">BUBBLE-SORT-REC</span>(A, n)
-<span class="ln">2</span>    <span class="kw">if</span> n ≤ 1                             <span class="an">Θ(1)</span>
-<span class="ln">3</span>        <span class="kw">return</span>                           <span class="an">Θ(1)</span>
-<span class="ln">4</span>    <span class="kw">for</span> i = 0 <span class="kw">to</span> n − 2                   <span class="an"><i>n</i> − 1 times</span>
-<span class="ln">5</span>        <span class="kw">if</span> A[i] &gt; A[i + 1]               <span class="an">Θ(1)</span>
-<span class="ln">6</span>            exchange A[i] with A[i + 1]  <span class="an">Θ(1)</span>
-<span class="ln">7</span>    <span class="fn">BUBBLE-SORT-REC</span>(A, n − 1)            <span class="an"><i>T</i>(<i>n</i> − 1)</span></pre></div></div><div><div class="k3">Count the cost</div><div class="rr"><div><span class="c">Recursive calls</span><span class="v">1 call, on <span class="m"><i>n</i> − 1</span> elements</span><span class="t"><i>T</i>(<i>n</i> − 1)</span></div><div><span class="c">Other work</span><span class="v">one pass: <span class="m"><i>n</i> − 1</span> steps of Θ(1)</span><span class="t"><i>cn</i></span></div><div><span class="c">Base case</span><span class="v"><span class="m"><i>n</i> ≤ 1</span>: just the test</span><span class="t"><i>T</i>(1) = <i>c</i></span></div></div><p class="rc"><b><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i> − 1) + <i>cn</i></b>,<span class="bc"><i>T</i>(1) = <i>c</i></span></p><p class="nt"><b>One pass</b> moves the largest element to the end, as in bubble sort (Lecture 3). The call then sorts the first <span class="m"><i>n</i> − 1</span>.</p><p class="nt"><b>Watch the size:</b> each call <b>subtracts</b> one element.</p><p class="sv">Solved on slide 10: Θ(<var>n</var><sup style="font-size:.66em;line-height:0">2</sup>).</p></div></div>
+<table class="tab">
+<tr><th></th><th>Breadth-first search</th><th>Depth-first search</th></tr>
+<tr><td>Picture</td><td>ripples from a stone in a pond</td><td>a walker in a maze, with chalk</td></tr>
+<tr><td>Order</td><td>nearest first, layer by layer</td><td>as deep as possible, then back up</td></tr>
+<tr><td>Gray vertices</td><td>one or two layers</td><td>one path, from <var>s</var> to the current vertex</td></tr>
+<tr><td>Next, explore from</td><td>the gray vertex discovered <b>earliest</b><br><span class="ds">a queue: first in, first out</span></td><td>the gray vertex discovered <b>most recently</b><br><span class="ds">a stack: last in, first out</span></td></tr>
+<tr><td>Tree path from <var>s</var></td><td>the fewest edges: a shortest path</td><td>not always the shortest</td></tr>
+</table>
+<p class="bot">Both discover <b>every</b> vertex reachable from <var>s</var>. They differ only in <b>which vertex they explore from next</b>.</p>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

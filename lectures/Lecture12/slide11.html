@@ -1,0 +1,60 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Iteration method: doubling at every step</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.hd { text-align:center; font-size:21px; color:var(--muted); margin-bottom:18px; }
+.hd .m { font-family:var(--serif); color:var(--ink); font-size:26px; margin-left:8px; }
+.rw { display:grid; grid-template-columns:1fr 330px; gap:36px; align-items:center; }
+.un { background:var(--tint); border-left:5px solid var(--blue); padding:14px 22px 16px; }
+.k3 { font-size:14px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:6px; }
+.eq { display:grid; grid-template-columns:auto auto 1fr; column-gap:10px; font-family:var(--serif); font-size:23px; line-height:1.72; align-items:baseline; }
+.eq .l { text-align:right; }
+.eq .n { font-family:var(--sans); font-size:15px; color:var(--muted); padding-left:14px; }
+.eq .x { color:var(--blue); }
+.eq b { color:var(--blue); font-weight:700; }
+.eq sup { font-size:0.68em; line-height:0; }
+.eq .rule { grid-column:1 / -1; border-top:1px solid var(--grey); margin:6px 0 2px; }
+.eq .bc { grid-column:1 / -1; font-family:var(--sans); font-size:18px; color:var(--muted); }
+.eq .bc .m { font-family:var(--serif); color:var(--ink); font-size:21px; }
+.bx { border:2px solid var(--ink); border-radius:10px; padding:12px 18px 14px; }
+.bx .k3 { color:var(--muted); }
+.bx .q { font-family:var(--serif); font-size:21px; margin-bottom:8px; }
+.bx sup { font-size:0.68em; line-height:0; }
+.bin { display:grid; grid-template-columns:auto auto auto; column-gap:12px; justify-content:center; font-size:20px; line-height:1.45; }
+.bin .b { font-family:var(--mono); letter-spacing:0.12em; text-align:right; }
+.bin .d { font-family:var(--serif); text-align:right; color:var(--muted); }
+.bin .o { font-family:var(--mono); color:var(--muted); }
+.bin .ln2 { grid-column:1 / -1; border-top:1.5px solid var(--ink); margin:2px 0; }
+.bin .hi { color:var(--blue); font-weight:700; }
+.bx p { font-size:16px; color:var(--muted); line-height:1.4; margin-top:8px; }
+.tv { margin-top:20px; text-align:center; font-size:18px; color:var(--muted); }
+.tv b { color:#B86E00; letter-spacing:0.06em; text-transform:uppercase; font-size:14px; margin-right:8px; }
+.tv .m { font-family:var(--serif); color:var(--ink); }
+.tv sup { font-size:0.68em; line-height:0; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Iteration method: doubling at every step</div>
+<div class="frame">
+<p class="hd">HANOI:<span class="m"><i>T</i>(<i>n</i>) = 2<i>T</i>(<i>n</i> − 1) + <i>c</i>,&ensp;<i>T</i>(0) = <i>c</i></span></p>
+<div class="rw"><div class="un"><div class="k3">Unroll it</div><div class="eq">
+<span class="l"><i>T</i>(<i>n</i>)</span><span>=&ensp;2<span class="x"><i>T</i>(<i>n</i> − 1)</span> + <i>c</i></span><span></span>
+<span class="l"></span><span>=&ensp;2[<span class="x">2<i>T</i>(<i>n</i> − 2) + <i>c</i></span>] + <i>c</i> = 4<i>T</i>(<i>n</i> − 2) + 2<i>c</i> + <i>c</i></span><span></span>
+<span class="l"></span><span>=&ensp;8<i>T</i>(<i>n</i> − 3) + 4<i>c</i> + 2<i>c</i> + <i>c</i></span><span></span>
+<span class="l"></span><span>=&ensp;2<sup><i>k</i></sup><i>T</i>(<i>n</i> − <i>k</i>) + <i>c</i>(2<sup><i>k</i>−1</sup> + ⋯ + 2 + 1)</span><span class="n">after <var>k</var> steps</span>
+<span class="l"></span><span>=&ensp;2<sup><i>k</i></sup><i>T</i>(<i>n</i> − <i>k</i>) + <i>c</i>(2<sup><i>k</i></sup> − 1)</span><span class="n">see the box</span>
+<span class="rule"></span>
+<span class="bc">Base case: <span class="m"><i>n</i> − <i>k</i> = 0, so <i>k</i> = <i>n</i></span></span>
+<span class="l"><i>T</i>(<i>n</i>)</span><span>=&ensp;2<sup><i>n</i></sup><i>c</i> + <i>c</i>(2<sup><i>n</i></sup> − 1) = <i>c</i>(2<sup><i>n</i>+1</sup> − 1) = <b>Θ(2<sup><i>n</i></sup>)</b></span><span></span>
+</div></div>
+<div class="bx"><div class="k3">Why is it 2<sup style="text-transform:none"><var>k</var></sup> − 1?</div><p class="q">1 + 2 + 4 + 8 in binary:</p><div class="bin">
+<span class="o"></span><span class="b">0001</span><span class="d">1</span>
+<span class="o"></span><span class="b">0010</span><span class="d">2</span>
+<span class="o"></span><span class="b">0100</span><span class="d">4</span>
+<span class="o">+</span><span class="b">1000</span><span class="d">8</span>
+<span class="ln2"></span>
+<span class="o"></span><span class="b hi">1111</span><span class="d">15</span>
+<span class="o">+1</span><span class="b">10000</span><span class="d">16</span>
+</div><p>Four ones, plus 1, carry all the way: 2<sup>4</sup>. So 1 + 2 + ⋯ + 2<sup><var>k</var>−1</sup> = 2<sup><var>k</var></sup> − 1.</p></div></div>
+<p class="tv"><b>Trivia</b>64 disks take <span class="m">2<sup>64</sup> − 1</span> moves. At one move per second, that is about 585 billion years.</p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

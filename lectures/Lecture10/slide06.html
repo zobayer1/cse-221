@@ -1,31 +1,48 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DFS: colors and data</title>
+<title>BFS: pseudocode</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.c2 { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:56px; }
-.c2 ul.items { margin-top:6px; }
-.c2 ul.items > li { font-size:24px; margin:10px 0; line-height:1.35; }
-.ls { font-size:24px; line-height:1.35; margin-top:6px; }
+.rw { display:grid; grid-template-columns:auto minmax(0,1fr); gap:48px; align-items:center; }
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:12px 22px; }
+.codebox pre { font-size:20px; line-height:1.36; }
+.codebox .fn { font-weight:700; }
+.codebox .ne { font-family:var(--serif); }
+.ls { font-size:24px; line-height:1.35; }
 .ls > div { display:flex; align-items:center; gap:14px; margin:10px 0; }
 .sw { flex:none; width:30px; height:30px; border-radius:50%; border:2px solid #000; }
 .sw.w { background:#fff; } .sw.g { background:#A7A9AC; } .sw.b { background:#000; }
-.nt { margin-top:40px; font-size:23px; text-align:center; color:var(--muted); }
-.nt b { color:var(--red); }
+.rw ul.items { margin-top:26px; }
+.rw ul.items > li { font-size:24px; margin:10px 0; line-height:1.3; }
+.rw ul.items code { font-family:var(--serif); font-style:italic; }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">DFS: colors and data</div>
+<div class="frametitle">BFS: pseudocode</div>
 <div class="frame">
-<div class="c2"><div>
-<div class="subhd">Each vertex <var>u</var> keeps</div>
+<div class="rw"><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">BFS</span>(G, s)
+<span class="ln">2</span>    <span class="kw">for</span> each vertex u ∈ G.V − {s}
+<span class="ln">3</span>        u.color = WHITE
+<span class="ln">4</span>        u.d = ∞
+<span class="ln">5</span>        u.π = NIL
+<span class="ln">6</span>    s.color = GRAY
+<span class="ln">7</span>    s.d = 0
+<span class="ln">8</span>    s.π = NIL
+<span class="ln">9</span>    Q = ∅
+<span class="ln">10</span>    ENQUEUE(Q, s)
+<span class="ln">11</span>    <span class="kw">while</span> Q <span class="ne">≠</span> ∅
+<span class="ln">12</span>        u = DEQUEUE(Q)
+<span class="ln">13</span>        <span class="kw">for</span> each v ∈ G.Adj[u]
+<span class="ln">14</span>            <span class="kw">if</span> v.color == WHITE
+<span class="ln">15</span>                v.color = GRAY
+<span class="ln">16</span>                v.d = u.d + 1
+<span class="ln">17</span>                v.π = u
+<span class="ln">18</span>                ENQUEUE(Q, v)
+<span class="ln">19</span>        u.color = BLACK</pre></div><div>
+<div class="ls"><div><span class="sw w"></span><span><b>WHITE</b>: not discovered yet</span></div><div><span class="sw g"></span><span><b>GRAY</b>: discovered, waiting in <var>Q</var> (the frontier)</span></div><div><span class="sw b"></span><span><b>BLACK</b>: all its neighbors have been scanned</span></div></div>
 <ul class="items">
-<li><var>u.color</var>: WHITE, GRAY or BLACK</li>
-<li><var>u.π</var>: predecessor, the vertex that discovered <var>u</var></li>
-<li><var>u.d</var>: discovery time, when <var>u</var> turns gray</li>
-<li><var>u.f</var>: finish time, when <var>u</var> turns black</li>
-</ul></div><div>
-<div class="subhd">Colors</div>
-<div class="ls"><div><span class="sw w"></span><span><b>WHITE</b>: not discovered yet</span></div><div><span class="sw g"></span><span><b>GRAY</b>: discovered at <var>u.d</var>, still exploring its edges</span></div><div><span class="sw b"></span><span><b>BLACK</b>: finished at <var>u.f</var>, every edge explored</span></div></div>
-</div></div>
-<p class="nt">Careful: in BFS, <var>v.d</var> was a <b>distance</b>. In DFS, <var>u.d</var> is a <b>time</b>.</p>
+<li><var>v.d</var>: distance from <var>s</var>, ∞ until discovered</li>
+<li><var>v.π</var>: predecessor, the vertex that discovered <var>v</var></li>
+<li><var>Q</var>: a first-in, first-out queue of gray vertices</li>
+<li><var>G.Adj</var>[<var>u</var>]: the adjacency list of <var>u</var></li>
+</ul></div></div>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

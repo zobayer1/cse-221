@@ -1,37 +1,31 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Write the recurrence: HANOI</title>
+<title>DFS: colors and data</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.rw { display:grid; grid-template-columns:1fr 560px; gap:40px; align-items:center; }
-.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:12px 20px; }
-.codebox pre { font-size:20px; line-height:1.65; }
-.codebox .fn { font-weight:700; }
-.codebox .an { color:var(--blue); font-family:var(--serif); font-size:19px; }
-.pic { margin-top:16px; }
-.pic svg { width:100% !important; height:auto !important; }
-.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
-.rr > div { display:grid; grid-template-columns:150px 1fr auto; gap:12px; padding:10px 0; border-bottom:1px solid var(--rule); align-items:baseline; }
-.rr .c { font-size:18px; font-weight:700; }
-.rr .v { font-size:18px; color:var(--muted); line-height:1.4; }
-.rr .t { font-family:var(--serif); font-size:23px; color:var(--blue); white-space:nowrap; }
-.m { font-family:var(--serif); white-space:nowrap; }
-.v .m { color:var(--ink); }
-.rc { margin-top:20px; text-align:center; font-family:var(--serif); font-size:31px; }
-.rc b { color:var(--blue); font-weight:400; }
-.rc .bc { font-size:24px; color:var(--muted); margin-left:18px; }
-.nt { margin-top:16px; font-size:17px; color:var(--muted); line-height:1.45; border-left:3px solid var(--grey); padding-left:12px; }
-.nt b { color:var(--ink); }
-.nt .m { color:var(--ink); }
-.sv { margin-top:10px; font-size:16px; color:var(--muted); text-align:center; }
+.c2 { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:56px; }
+.c2 ul.items { margin-top:6px; }
+.c2 ul.items > li { font-size:24px; margin:10px 0; line-height:1.35; }
+.ls { font-size:24px; line-height:1.35; margin-top:6px; }
+.ls > div { display:flex; align-items:center; gap:14px; margin:10px 0; }
+.sw { flex:none; width:30px; height:30px; border-radius:50%; border:2px solid #000; }
+.sw.w { background:#fff; } .sw.g { background:#A7A9AC; } .sw.b { background:#000; }
+.nt { margin-top:40px; font-size:23px; text-align:center; color:var(--muted); }
+.nt b { color:var(--red); }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">Write the recurrence: HANOI</div>
+<div class="frametitle">DFS: colors and data</div>
 <div class="frame">
-<div class="rw"><div><div class="k3">Count the cost</div><div class="rr"><div><span class="c">Recursive calls</span><span class="v">2 calls, each on <span class="m"><i>n</i> − 1</span> disks</span><span class="t">2<i>T</i>(<i>n</i> − 1)</span></div><div><span class="c">Other work</span><span class="v">the test and one move</span><span class="t"><i>c</i></span></div><div><span class="c">Base case</span><span class="v"><span class="m"><i>n</i> = 0</span>: no disks, just the test</span><span class="t"><i>T</i>(0) = <i>c</i></span></div></div><p class="rc"><b><i>T</i>(<i>n</i>) = 2<i>T</i>(<i>n</i> − 1) + <i>c</i></b>,<span class="bc"><i>T</i>(0) = <i>c</i></span></p><p class="nt">To move <var>n</var> disks: move the top <span class="m"><i>n</i> − 1</span> out of the way, move the biggest disk, then put the <span class="m"><i>n</i> − 1</span> back on top of it.</p><p class="sv">Solved on slide 11: Θ(2<sup style="font-size:.66em;line-height:0"><var>n</var></sup>).</p></div><div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">HANOI</span>(n, src, dst, tmp)
-<span class="ln">2</span>    <span class="kw">if</span> n == 0                     <span class="an">Θ(1)</span>
-<span class="ln">3</span>        <span class="kw">return</span>                    <span class="an">Θ(1)</span>
-<span class="ln">4</span>    <span class="fn">HANOI</span>(n − 1, src, tmp, dst)   <span class="an"><i>T</i>(<i>n</i> − 1)</span>
-<span class="ln">5</span>    move disk n from src to dst   <span class="an">Θ(1)</span>
-<span class="ln">6</span>    <span class="fn">HANOI</span>(n − 1, tmp, dst, src)   <span class="an"><i>T</i>(<i>n</i> − 1)</span></pre></div><div class="pic"><svg data-figure viewBox="0 0 600 154" width="600" height="154" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><line x1="4" y1="80" x2="186" y2="80" stroke="#000" stroke-width="2"/><line x1="32" y1="22" x2="32" y2="80" stroke="#555" stroke-width="3" stroke-linecap="round"/><text x="32" y="99" font-size="16" text-anchor="middle" fill="#555" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">src</text><line x1="95" y1="22" x2="95" y2="80" stroke="#555" stroke-width="3" stroke-linecap="round"/><text x="95" y="99" font-size="16" text-anchor="middle" fill="#555" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">tmp</text><line x1="158" y1="22" x2="158" y2="80" stroke="#555" stroke-width="3" stroke-linecap="round"/><text x="158" y="99" font-size="16" text-anchor="middle" fill="#555" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">dst</text><rect x="2.0" y="69" width="60" height="11" rx="3" fill="#fff" stroke="#000" stroke-width="1.5"/><rect x="72.0" y="71" width="46" height="9" rx="3" fill="#2B5BAA" stroke="#1F4A8F" stroke-width="1.5"/><rect x="77.0" y="62" width="36" height="9" rx="3" fill="#2B5BAA" stroke="#1F4A8F" stroke-width="1.5"/><rect x="82.0" y="53" width="26" height="9" rx="3" fill="#2B5BAA" stroke="#1F4A8F" stroke-width="1.5"/><text x="95.0" y="124" font-size="17" text-anchor="middle" fill="#2B5BAA" font-weight="700" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">1. line 4:</text><text x="95.0" y="145" font-size="17" text-anchor="middle" fill="#000" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">n</tspan> − 1 disks to tmp</text><line x1="209" y1="80" x2="391" y2="80" stroke="#000" stroke-width="2"/><line x1="237" y1="22" x2="237" y2="80" stroke="#555" stroke-width="3" stroke-linecap="round"/><text x="237" y="99" font-size="16" text-anchor="middle" fill="#555" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">src</text><line x1="300" y1="22" x2="300" y2="80" stroke="#555" stroke-width="3" stroke-linecap="round"/><text x="300" y="99" font-size="16" text-anchor="middle" fill="#555" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">tmp</text><line x1="363" y1="22" x2="363" y2="80" stroke="#555" stroke-width="3" stroke-linecap="round"/><text x="363" y="99" font-size="16" text-anchor="middle" fill="#555" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">dst</text><rect x="277.0" y="71" width="46" height="9" rx="3" fill="#fff" stroke="#000" stroke-width="1.5"/><rect x="282.0" y="62" width="36" height="9" rx="3" fill="#fff" stroke="#000" stroke-width="1.5"/><rect x="287.0" y="53" width="26" height="9" rx="3" fill="#fff" stroke="#000" stroke-width="1.5"/><rect x="333.0" y="69" width="60" height="11" rx="3" fill="#2B5BAA" stroke="#1F4A8F" stroke-width="1.5"/><text x="300.0" y="124" font-size="17" text-anchor="middle" fill="#2B5BAA" font-weight="700" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">2. line 5:</text><text x="300.0" y="145" font-size="17" text-anchor="middle" fill="#000" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">disk <tspan font-style="italic" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">n</tspan> to dst</text><line x1="414" y1="80" x2="596" y2="80" stroke="#000" stroke-width="2"/><line x1="442" y1="22" x2="442" y2="80" stroke="#555" stroke-width="3" stroke-linecap="round"/><text x="442" y="99" font-size="16" text-anchor="middle" fill="#555" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">src</text><line x1="505" y1="22" x2="505" y2="80" stroke="#555" stroke-width="3" stroke-linecap="round"/><text x="505" y="99" font-size="16" text-anchor="middle" fill="#555" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">tmp</text><line x1="568" y1="22" x2="568" y2="80" stroke="#555" stroke-width="3" stroke-linecap="round"/><text x="568" y="99" font-size="16" text-anchor="middle" fill="#555" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">dst</text><rect x="538.0" y="69" width="60" height="11" rx="3" fill="#fff" stroke="#000" stroke-width="1.5"/><rect x="545.0" y="60" width="46" height="9" rx="3" fill="#2B5BAA" stroke="#1F4A8F" stroke-width="1.5"/><rect x="550.0" y="51" width="36" height="9" rx="3" fill="#2B5BAA" stroke="#1F4A8F" stroke-width="1.5"/><rect x="555.0" y="42" width="26" height="9" rx="3" fill="#2B5BAA" stroke="#1F4A8F" stroke-width="1.5"/><text x="505.0" y="124" font-size="17" text-anchor="middle" fill="#2B5BAA" font-weight="700" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">3. line 6:</text><text x="505.0" y="145" font-size="17" text-anchor="middle" fill="#000" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">n</tspan> − 1 disks onto dst</text></svg></div></div></div>
+<div class="c2"><div>
+<div class="subhd">Each vertex <var>u</var> keeps</div>
+<ul class="items">
+<li><var>u.color</var>: WHITE, GRAY or BLACK</li>
+<li><var>u.π</var>: predecessor, the vertex that discovered <var>u</var></li>
+<li><var>u.d</var>: discovery time, when <var>u</var> turns gray</li>
+<li><var>u.f</var>: finish time, when <var>u</var> turns black</li>
+</ul></div><div>
+<div class="subhd">Colors</div>
+<div class="ls"><div><span class="sw w"></span><span><b>WHITE</b>: not discovered yet</span></div><div><span class="sw g"></span><span><b>GRAY</b>: discovered at <var>u.d</var>, still exploring its edges</span></div><div><span class="sw b"></span><span><b>BLACK</b>: finished at <var>u.f</var>, every edge explored</span></div></div>
+</div></div>
+<p class="nt">Careful: in BFS, <var>v.d</var> was a <b>distance</b>. In DFS, <var>u.d</var> is a <b>time</b>.</p>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

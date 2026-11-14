@@ -1,32 +1,40 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The master theorem on this course</title>
+<title>Finding a cycle: pseudocode</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.rc { text-align:center; font-size:20px; color:var(--muted); margin-bottom:16px; }
-.rc b { color:var(--ink); }
-.rc .m { font-family:var(--serif); color:var(--ink); font-size:22px; white-space:nowrap; }
-table.tab { font-size:20px; }
-table.tab th { font-size:17px; }
-table.tab td, table.tab th { padding:7px 11px; }
-table.tab td.m { font-family:var(--serif); font-size:22px; white-space:nowrap; }
-table.tab td.c, table.tab th.c { text-align:center; }
-table.tab td.s { font-family:var(--serif); font-size:22px; white-space:nowrap; color:var(--blue); font-weight:700; }
-table.tab td.d { color:var(--muted); font-size:16px; }
-sup, sub { font-size:0.66em; line-height:0; }
+.pc { display:grid; grid-template-columns:auto auto; gap:40px; justify-content:center; align-items:start; }
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:12px 22px; }
+.codebox pre { font-size:21px; line-height:1.4; }
+.codebox .fn { font-weight:700; }
+.codebox .cm { color:var(--muted); }
+.codebox .hl { background:#F8E6E6; display:inline-block; width:100%; }
+.cap { font-size:21px; line-height:1.4; margin-top:14px; color:var(--muted); max-width:540px; }
+.cap b { color:var(--ink); }
+.bot { margin-top:26px; font-size:23px; text-align:center; }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">The master theorem on this course</div>
+<div class="frametitle">Finding a cycle: pseudocode</div>
 <div class="frame">
-<p class="rc"><b>Recipe:</b> read <span class="m"><i>a</i></span>, <span class="m"><i>b</i></span>, <span class="m"><i>k</i></span>; compare <span class="m"><i>a</i></span> with <span class="m"><i>b</i><sup><i>k</i></sup></span>; write down the case.</p>
-<table class="tab">
-<tr><th>Algorithm</th><th>Recurrence</th><th class="c"><var>a</var></th><th class="c"><var>b</var><sup><var>k</var></sup></th><th class="c">Case</th><th>Solution</th></tr>
-<tr><td>Binary search <span class="d">(Lecture 2)</span></td><td class="m"><i>T</i>(<i>n</i>/2) + Θ(1)</td><td class="m c">1</td><td class="m c">2<sup>0</sup> = 1</td><td class="c">2</td><td class="s">Θ(log <i>n</i>)</td></tr>
-<tr class="sep"><td>Ternary search <span class="d">(Lecture 2)</span></td><td class="m"><i>T</i>(<i>n</i>/3) + Θ(1)</td><td class="m c">1</td><td class="m c">3<sup>0</sup> = 1</td><td class="c">2</td><td class="s">Θ(log <i>n</i>)</td></tr>
-<tr class="sep"><td>Merge sort, max subarray <span class="d">(Lectures 4, 7)</span></td><td class="m">2<i>T</i>(<i>n</i>/2) + Θ(<i>n</i>)</td><td class="m c">2</td><td class="m c">2<sup>1</sup> = 2</td><td class="c">2</td><td class="s">Θ(<i>n</i> log <i>n</i>)</td></tr>
-<tr class="sep"><td>MAX-REC</td><td class="m">2<i>T</i>(<i>n</i>/2) + Θ(1)</td><td class="m c">2</td><td class="m c">2<sup>0</sup> = 1</td><td class="c">1</td><td class="s">Θ(<i>n</i><sup>log<sub>2</sub> 2</sup>) = Θ(<i>n</i>)</td></tr>
-<tr class="sep"><td>Four half-size products <span class="d">(Lecture 8)</span></td><td class="m">4<i>T</i>(<i>n</i>/2) + Θ(<i>n</i>)</td><td class="m c">4</td><td class="m c">2<sup>1</sup> = 2</td><td class="c">1</td><td class="s">Θ(<i>n</i><sup>log<sub>2</sub> 4</sup>) = Θ(<i>n</i><sup>2</sup>)</td></tr>
-<tr class="sep"><td>Karatsuba <span class="d">(Lecture 8)</span></td><td class="m">3<i>T</i>(<i>n</i>/2) + Θ(<i>n</i>)</td><td class="m c">3</td><td class="m c">2<sup>1</sup> = 2</td><td class="c">1</td><td class="s">Θ(<i>n</i><sup>log<sub>2</sub> 3</sup>) ≈ Θ(<i>n</i><sup>1.585</sup>)</td></tr>
-<tr class="sep"><td>Root-heavy tree <span class="d">(slide 18)</span></td><td class="m">2<i>T</i>(<i>n</i>/2) + Θ(<i>n</i><sup>2</sup>)</td><td class="m c">2</td><td class="m c">2<sup>2</sup> = 4</td><td class="c">3</td><td class="s">Θ(<i>n</i><sup>2</sup>)</td></tr>
-</table>
+<div class="pc"><div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">HAS-CYCLE</span>(G)
+<span class="ln">2</span>    <span class="kw">for</span> each vertex u ∈ G.V
+<span class="ln">3</span>        u.color = WHITE
+<span class="ln">4</span>    <span class="kw">for</span> each vertex u ∈ G.V
+<span class="ln">5</span>        <span class="kw">if</span> u.color == WHITE
+<span class="ln">6</span>            <span class="kw">if</span> CYCLE-VISIT(G, u)
+<span class="ln">7</span>                <span class="kw">return</span> TRUE
+<span class="ln">8</span>    <span class="kw">return</span> FALSE</pre></div>
+<p class="cap">Same outer loop as DFS: try every vertex that is still white.</p></div>
+<div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">CYCLE-VISIT</span>(G, u)
+<span class="ln">2</span>    u.color = GRAY
+<span class="ln">3</span>    <span class="kw">for</span> each v ∈ G.Adj[u]
+<span class="hl"><span class="ln">4</span>        <span class="kw">if</span> v.color == GRAY   <span class="cm">// back edge</span></span>
+<span class="hl"><span class="ln">5</span>            <span class="kw">return</span> TRUE</span>
+<span class="ln">6</span>        <span class="kw">elseif</span> v.color == WHITE
+<span class="ln">7</span>            <span class="kw">if</span> CYCLE-VISIT(G, v)
+<span class="ln">8</span>                <span class="kw">return</span> TRUE
+<span class="ln">9</span>    u.color = BLACK
+<span class="ln">10</span>    <span class="kw">return</span> FALSE</pre></div>
+<p class="cap">DFS-VISIT without the times, plus <b>one test</b> (lines 4–5): stop at the first gray neighbor.</p></div></div>
+<p class="bot">Time: <var>O</var>(<var>V</var> + <var>E</var>), the same as DFS. It can stop early, as soon as it finds a back edge.</p>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

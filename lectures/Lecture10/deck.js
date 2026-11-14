@@ -1,1 +1,1 @@
-window.DECK = { title: 'Depth-First Search', num: 'Lecture 10', label: 'Lecture 10: Depth-First Search', total: 37 };
+window.DECK = { title: 'Breadth-First Search', num: 'Lecture 10', label: 'Lecture 10: Breadth-First Search', total: 30 };

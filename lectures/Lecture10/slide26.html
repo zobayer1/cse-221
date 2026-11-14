@@ -1,29 +1,43 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Homework: solution</title>
+<title>Bipartite test: pseudocode</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.hw { display:grid; grid-template-columns:auto minmax(0,1fr); gap:40px; align-items:center; }
-table.tab { font-size:22px; }
-table.tab td, table.tab th { padding:7px 10px; }
-table.tab td:first-child { white-space:nowrap; }
-table.tab tr + tr td { border-top:1px solid var(--rule); }
-table.tab tr:nth-child(2) td { border-top:none; }
-.ln { display:inline-block; width:34px; height:0; vertical-align:middle; margin-right:10px; border-top:4px solid; }
-.ln.dashed { border-top-style:dashed; border-top-width:3px; }
-.ln.tree { border-color:#2B5BAA; } .ln.back { border-color:#C62828; } .ln.forward { border-color:#2E7D32; } .ln.cross { border-color:#B86E00; }
-.hw ul.items { margin-top:18px; }
-.hw ul.items > li { font-size:21px; margin:8px 0; line-height:1.35; }
+.rw { display:grid; grid-template-columns:auto minmax(0,1fr); gap:44px; align-items:center; }
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:12px 22px; }
+.codebox pre { font-size:20px; line-height:1.36; }
+.codebox .fn { font-weight:700; }
+.codebox .ne { font-family:var(--serif); }
+.codebox .cm { color:var(--muted); }
+.codebox .hl { background:#F8E6E6; display:inline-block; width:100%; }
+.rw ul.items > li { font-size:23px; margin:14px 0; line-height:1.35; }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">Homework: solution</div>
+<div class="frametitle">Bipartite test: pseudocode</div>
 <div class="frame">
-<div class="hw"><div><svg data-figure viewBox="0 0 450 475" width="432" height="456" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.2" markerHeight="4.2" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="context-stroke"/></marker></defs><path d="M104 110 L205 110" fill="none" stroke="#2B5BAA" stroke-width="4.2" marker-end="url(#ah)"/><path d="M98.9 95.2 C150 22 310 22 361.1 95.2" fill="none" stroke="#2E7D32" stroke-width="3.2" stroke-dasharray="9 5" marker-end="url(#ah)"/><path d="M80 134 L80 225" fill="none" stroke="#2B5BAA" stroke-width="4.2" marker-end="url(#ah)"/><path d="M254 110 L355 110" fill="none" stroke="#2B5BAA" stroke-width="4.2" marker-end="url(#ah)"/><path d="M380 134 L380 225" fill="none" stroke="#2B5BAA" stroke-width="4.2" marker-end="url(#ah)"/><path d="M362.5 233.6 L248.3 127.1" fill="none" stroke="#C62828" stroke-width="3.2" stroke-dasharray="9 5" marker-end="url(#ah)"/><path d="M104 250 L355 250" fill="none" stroke="#B86E00" stroke-width="3.2" stroke-dasharray="9 5" marker-end="url(#ah)"/><path d="M80 366 L80 275" fill="none" stroke="#B86E00" stroke-width="3.2" stroke-dasharray="9 5" marker-end="url(#ah)"/><path d="M104 390 L205 390" fill="none" stroke="#2B5BAA" stroke-width="4.2" marker-end="url(#ah)"/><path d="M247.5 373.6 L361.7 267.1" fill="none" stroke="#B86E00" stroke-width="3.2" stroke-dasharray="9 5" marker-end="url(#ah)"/><path d="M219.9 411.8 C196 468 264 468 240.1 411.8" fill="none" stroke="#C62828" stroke-width="3.2" stroke-dasharray="9 5" marker-end="url(#ah)"/><circle cx="80" cy="110" r="24" fill="#000" stroke="#000" stroke-width="2.2"/><text x="80" y="116" text-anchor="middle" font-size="18" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">1/10</text><text x="46" y="119" text-anchor="end" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">a</text><circle cx="230" cy="110" r="24" fill="#000" stroke="#000" stroke-width="2.2"/><text x="230" y="116" text-anchor="middle" font-size="18" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">2/7</text><text x="230" y="166" text-anchor="middle" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">b</text><circle cx="380" cy="110" r="24" fill="#000" stroke="#000" stroke-width="2.2"/><text x="380" y="116" text-anchor="middle" font-size="18" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">3/6</text><text x="414" y="119" text-anchor="start" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">c</text><circle cx="380" cy="250" r="24" fill="#000" stroke="#000" stroke-width="2.2"/><text x="380" y="256" text-anchor="middle" font-size="18" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">4/5</text><text x="414" y="259" text-anchor="start" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">d</text><circle cx="80" cy="250" r="24" fill="#000" stroke="#000" stroke-width="2.2"/><text x="80" y="256" text-anchor="middle" font-size="18" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">8/9</text><text x="46" y="259" text-anchor="end" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">e</text><circle cx="80" cy="390" r="24" fill="#000" stroke="#000" stroke-width="2.2"/><text x="80" y="396" text-anchor="middle" font-size="18" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">11/14</text><text x="46" y="399" text-anchor="end" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">f</text><circle cx="230" cy="390" r="24" fill="#000" stroke="#000" stroke-width="2.2"/><text x="230" y="396" text-anchor="middle" font-size="18" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">12/13</text><text x="264" y="399" text-anchor="start" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">g</text></svg></div><div>
-<table class="tab"><tr><th>Type</th><th>Edges</th><th class="c">#</th></tr><tr><td><span class="ln tree"></span><b>Tree</b></td><td>(<var>a</var>, <var>b</var>), (<var>a</var>, <var>e</var>), (<var>b</var>, <var>c</var>), (<var>c</var>, <var>d</var>), (<var>f</var>, <var>g</var>)</td><td class="c">5</td></tr><tr><td><span class="ln back dashed"></span><b>Back</b></td><td>(<var>d</var>, <var>b</var>), (<var>g</var>, <var>g</var>)</td><td class="c">2</td></tr><tr><td><span class="ln forward dashed"></span><b>Forward</b></td><td>(<var>a</var>, <var>c</var>)</td><td class="c">1</td></tr><tr><td><span class="ln cross dashed"></span><b>Cross</b></td><td>(<var>e</var>, <var>d</var>), (<var>f</var>, <var>e</var>), (<var>g</var>, <var>d</var>)</td><td class="c">3</td></tr></table>
+<div class="rw"><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">BIPARTITE</span>(G, s)
+<span class="ln">2</span>    <span class="kw">for</span> each vertex u ∈ G.V − {s}
+<span class="ln">3</span>        u.color = WHITE
+<span class="ln">4</span>        u.d = ∞
+<span class="ln">5</span>    s.color = GRAY
+<span class="ln">6</span>    s.d = 0
+<span class="ln">7</span>    Q = ∅
+<span class="ln">8</span>    ENQUEUE(Q, s)
+<span class="ln">9</span>    <span class="kw">while</span> Q <span class="ne">≠</span> ∅
+<span class="ln">10</span>        u = DEQUEUE(Q)
+<span class="ln">11</span>        <span class="kw">for</span> each v ∈ G.Adj[u]
+<span class="ln">12</span>            <span class="kw">if</span> v.color == WHITE
+<span class="ln">13</span>                v.color = GRAY
+<span class="ln">14</span>                v.d = u.d + 1
+<span class="ln">15</span>                ENQUEUE(Q, v)
+<span class="hl"><span class="ln">16</span>            <span class="kw">elseif</span> v.d == u.d   <span class="cm">// same layer</span></span>
+<span class="hl"><span class="ln">17</span>                <span class="kw">return</span> FALSE</span>
+<span class="ln">18</span>        u.color = BLACK
+<span class="hl"><span class="ln">19</span>    <span class="kw">return</span> TRUE</span></pre></div><div>
 <ul class="items">
-<li>DFS-VISIT(<var>a</var>) leaves <var>f</var> and <var>g</var> white, so line 6 starts a <b>second tree</b> at <var>f</var>.</li>
-<li>(<var>f</var>, <var>e</var>) and (<var>g</var>, <var>d</var>) are cross edges <b>between</b> the two trees. (<var>e</var>, <var>d</var>) crosses inside the first tree.</li>
-<li>The self-loop (<var>g</var>, <var>g</var>) finds <var>g</var> gray: a <b>back</b> edge.</li>
-</ul>
-</div></div>
+<li><b>Lines 16–17:</b> <var>v</var> is already discovered, in <var>u</var>’s layer. Edge (<var>u</var>, <var>v</var>) stays inside one layer: <b>not bipartite</b>.</li>
+<li><b>Line 19:</b> no edge stays inside a layer, so even <var>d</var> and odd <var>d</var> bicolor the graph: <b>bipartite</b>.</li>
+<li>The two colors are even and odd <var>d</var>, not WHITE, GRAY and BLACK.</li>
+<li><b>Time: <var>O</var>(<var>V</var> + <var>E</var>)</b>, as BFS. Test each component.</li>
+</ul></div></div>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

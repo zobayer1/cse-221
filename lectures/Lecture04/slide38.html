@@ -1,38 +1,37 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Using the simulators</title>
+<title>What we learned today</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.code { font-family:var(--mono); }
-.kw { font-weight:700; color:var(--blue); }
-.ln { color:var(--grey); display:inline-block; width:2.2em; user-select:none; }
-
-.smw { margin-top:20px; display:grid; grid-template-columns:1fr 560px; gap:28px; flex:1; min-height:0; }
-.ss { display:grid; grid-template-columns:44px 1fr; gap:12px; padding:14px 0; border-bottom:1px solid var(--grey); align-items:baseline; }
-.ss:first-child { border-top:2px solid var(--ink); }
-.ss b { font-family:var(--serif); font-weight:700; font-size:28px; color:var(--blue); }
-.ss h3 { font-size:22px; font-weight:700; }
-.ss p { font-size:17px; color:var(--muted); margin-top:4px; line-height:1.45; }
-.ss code { font-family:var(--mono); font-size:15px; color:var(--ink); background:var(--tint); padding:1px 6px; }
-.ss kbd { font-family:var(--mono); font-size:14px; border:1px solid var(--line,#D5D8DC); border-bottom-width:2px; border-radius:4px; padding:0 6px; background:#fff; color:var(--ink); }
-.files { margin-top:6px; display:flex; flex-direction:column; gap:3px; }
-.stack { position:relative; }
-.stack img { position:absolute; width:440px; border-radius:6px; box-shadow:0 10px 24px rgba(0,0,0,.18), 0 0 0 1px rgba(0,0,0,.12); background:#fff; }
-.stack img:nth-child(1) { left:0; top:0; transform:rotate(-4deg); }
-.stack img:nth-child(2) { left:60px; top:96px; transform:rotate(2deg); }
-.stack img:nth-child(3) { left:118px; top:192px; transform:rotate(-1deg); }
+.ew { margin-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:48px; flex:1; min-height:0; }
+.ew .k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
+.tk { display:grid; grid-template-columns:30px 1fr; gap:10px; padding:13px 0; border-bottom:1px solid var(--grey); align-items:baseline; }
+.tk b { font-family:var(--serif); font-weight:700; font-size:22px; color:var(--blue); }
+.tk h3 { font-size:20px; font-weight:700; }
+.tk p { font-size:17px; color:var(--muted); margin-top:3px; line-height:1.4; }
+.qa { background:var(--tint); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px; box-shadow:inset 0 6px 0 var(--blue); }
+.qa h3 { font-family:var(--serif); font-weight:700; font-size:56px; line-height:1; margin-bottom:20px; }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">Using the simulators</div>
+<div class="frametitle">What we learned today</div>
 <div class="frame">
 
-<div class="smw">
-  <div>
-    <div class="ss"><b>1</b><div><h3>Download the HTML file</h3><p>One file for each algorithm:</p>
-      <div class="files"><code>merge_sort_simulator.html</code><code>quicksort_simulator.html</code></div></div></div>
-    <div class="ss"><b>2</b><div><h3>Open it in your browser</h3><p>Double-click it, or drag it into Chrome, Firefox or Edge. No installation and no internet needed.</p></div></div>
-    <div class="ss"><b>3</b><div><h3>Step through it</h3><p>For quicksort, pick a pivot rule first. Then use <kbd>→</kbd> and <kbd>←</kbd>, or <kbd>Space</kbd> to play. Try every preset.</p></div></div>
+<div class="ew">
+  <div><div class="k3">Takeaways</div>
+    <div class="tk"><b>1</b><div><h3>Merge sort: O(<i>n</i> log <i>n</i>) always</h3><p>Split in half, merge sorted halves. Stable, but O(<i>n</i>) extra space.</p></div></div>
+    <div class="tk"><b>2</b><div><h3>Quicksort: O(<i>n</i> log <i>n</i>) average, O(<i>n</i><sup>2</sup>) worst</h3><p>Partition around a pivot. In-place, but not stable.</p></div></div>
+    <div class="tk"><b>3</b><div><h3>Random pivot: no input is bad every time</h3><p>The staircase becomes astronomically unlikely.</p></div></div>
+    <div class="tk"><b>4</b><div><h3>Comparison sorts need Ω(<i>n</i> log <i>n</i>)</h3><p>A decision tree needs <i>n</i>! leaves, so its height is at least log(<i>n</i>!).</p></div></div>
   </div>
-  <div class="stack" aria-hidden="true"><img src="thumbs/sim-merge.jpg" alt="Merge sort simulator"><img src="thumbs/sim-quick.jpg" alt="Quicksort simulator, last-element pivot"><img src="thumbs/sim-quick-median.jpg" alt="Quicksort simulator, median-of-three pivot"></div>
+  <div class="qa"><h3>Questions?</h3><svg viewBox="0 0 340 230" width="400" height="270" fill="none" stroke="#1a1a1a" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">
+<circle cx="60" cy="130" r="13"/><path d="M54 127 l3 1 M66 127 l-3 1 M55 136 q5 4 10 0"/>
+<path d="M60 143 L60 180 M60 180 L50 216 M60 180 L70 216 M60 152 L44 166 M60 152 L76 120 L80 96"/>
+<circle cx="170" cy="120" r="14"/><path d="M164 117 q2 -3 4 0 M173 117 q2 -3 4 0 M164 126 q6 6 12 0 z"/>
+<path d="M170 134 L170 176 M170 176 L159 216 M170 176 L181 216 M170 144 L150 126 L144 90 M170 144 L190 126 L196 90"/>
+<circle cx="280" cy="130" r="13"/><path d="M274 128 h4 M282 128 h4 M276 137 h8"/>
+<path d="M280 143 L280 180 M280 180 L270 216 M280 180 L290 216 M280 152 L296 166 M280 152 L264 130"/>
+<path d="M300 112 q4 -10 14 -10" stroke-width="1.8"/>
+<g stroke="none" font-weight="700" text-anchor="middle"><text x="84" y="84" font-size="32" fill="#2B5BAA">?</text><text x="170" y="74" font-size="40" fill="#C62828">?</text><text x="318" y="96" font-size="26" fill="#2B5BAA">?</text></g>
+</svg></div>
 </div>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The substitution method</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.tp { font-size:22px; color:var(--muted); text-align:center; line-height:1.45; margin-bottom:28px; }
+.tp b { color:var(--ink); }
+.c2 { display:grid; grid-template-columns:1fr 1fr; gap:30px; }
+.c2 > div { border-top:4px solid var(--blue); background:var(--tint-2); padding:14px 22px 18px; }
+.c2 .n { font-family:var(--serif); font-size:36px; font-weight:700; color:var(--blue); line-height:1; }
+.c2 h3 { font-family:var(--serif); font-size:28px; font-weight:700; margin-top:8px; }
+.c2 p { font-size:19px; color:var(--muted); line-height:1.45; margin-top:8px; }
+.c2 p b { color:var(--ink); }
+.c2 .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; font-size:21px; }
+.nm { margin-top:28px; text-align:center; font-family:var(--serif); font-size:26px; }
+.nm b { color:var(--blue); }
+.nm .s { font-family:var(--sans); font-size:18px; color:var(--muted); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">The substitution method</div>
+<div class="frame">
+<p class="tp">A recursion tree gives a <b>good guess</b>, but we were sloppy: <var>n</var> a power of 2, floors dropped, “⋯” in the middle.<br>To be sure, we <b>prove</b> the guess.</p>
+<div class="c2">
+<div><span class="n">1</span><h3>Guess the form of the answer</h3><p>For example <span class="m"><i>T</i>(<i>n</i>) ≤ <i>cn</i> log <i>n</i></span>. Guesses come from a <b>recursion tree</b>, from the <b>iteration method</b>, from a recurrence you have <b>seen before</b>, or from a <b>table of small values</b>.</p></div>
+<div><span class="n">2</span><h3>Prove it by induction</h3><p>Assume the guess for smaller inputs and <b>substitute</b> it into the recurrence. Then find the constants <span class="m"><i>c</i></span> and <span class="m"><i>n</i><sub>0</sub></span> that make it work, as in Lecture 6.</p></div>
+</div>
+<p class="nm">The guess is <b>substituted</b> for <i>T</i> on smaller inputs: <span class="s">hence the name (CLRS §4.3).</span></p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

@@ -1,0 +1,55 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Iteration method: a pass before each call</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.hd { text-align:center; font-size:21px; color:var(--muted); margin-bottom:18px; }
+.hd .m { font-family:var(--serif); color:var(--ink); font-size:26px; margin-left:8px; }
+.rw { display:grid; grid-template-columns:1fr 330px; gap:36px; align-items:center; }
+.un { background:var(--tint); border-left:5px solid var(--blue); padding:14px 22px 16px; }
+.k3 { font-size:14px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:6px; }
+.eq { display:grid; grid-template-columns:auto auto 1fr; column-gap:10px; font-family:var(--serif); font-size:23px; line-height:1.72; align-items:baseline; }
+.eq .l { text-align:right; }
+.eq .n { font-family:var(--sans); font-size:15px; color:var(--muted); padding-left:14px; }
+.eq .x { color:var(--blue); }
+.eq b { color:var(--blue); font-weight:700; }
+.eq .rule { grid-column:1 / -1; border-top:1px solid var(--grey); margin:6px 0 2px; }
+.eq .bc { grid-column:1 / -1; font-family:var(--sans); font-size:18px; color:var(--muted); }
+.eq .bc .m { font-family:var(--serif); color:var(--ink); font-size:21px; }
+.fr { display:inline-flex; flex-direction:column; vertical-align:middle; text-align:center; font-size:0.9em; line-height:1.15; margin:0 2px; }
+.fr > span + span { border-top:1.5px solid var(--ink); }
+.pic { text-align:center; }
+.pic p { font-size:17px; color:var(--muted); line-height:1.4; margin-top:8px; }
+.pic p .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; }
+.nt { margin-top:18px; text-align:center; font-size:17px; color:var(--muted); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Iteration method: a pass before each call</div>
+<div class="frame">
+<p class="hd">BUBBLE-SORT-REC:<span class="m"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i> − 1) + <i>cn</i>,&ensp;<i>T</i>(1) = <i>c</i></span></p>
+<div class="rw"><div class="un"><div class="k3">Unroll it</div><div class="eq">
+<span class="l"><i>T</i>(<i>n</i>)</span><span>=&ensp;<span class="x"><i>T</i>(<i>n</i> − 1)</span> + <i>cn</i></span><span></span>
+<span class="l"></span><span>=&ensp;<span class="x"><i>T</i>(<i>n</i> − 2) + <i>c</i>(<i>n</i> − 1)</span> + <i>cn</i></span><span class="n">the rule for <var>T</var>(<var>n</var> − 1)</span>
+<span class="l"></span><span>=&ensp;<i>T</i>(<i>n</i> − 3) + <i>c</i>(<i>n</i> − 2) + <i>c</i>(<i>n</i> − 1) + <i>cn</i></span><span></span>
+<span class="l"></span><span>=&ensp;<i>T</i>(<i>n</i> − <i>k</i>) + <i>c</i>[(<i>n</i> − <i>k</i> + 1) + ⋯ + (<i>n</i> − 1) + <i>n</i>]</span><span class="n">after <var>k</var> steps</span>
+<span class="rule"></span>
+<span class="bc">Base case: <span class="m"><i>k</i> = <i>n</i> − 1</span></span>
+<span class="l"><i>T</i>(<i>n</i>)</span><span>=&ensp;<i>T</i>(1) + <i>c</i>[2 + 3 + ⋯ + <i>n</i>]</span><span></span>
+<span class="l"></span><span>=&ensp;<i>c</i>[1 + 2 + 3 + ⋯ + <i>n</i>]</span><span class="n"><var>T</var>(1) = <var>c</var> · 1</span>
+<span class="l"></span><span>=&ensp;<i>c</i> · <span class="fr"><span><i>n</i>(<i>n</i> + 1)</span><span>2</span></span> = <b>Θ(<i>n</i><sup>2</sup>)</b></span><span></span>
+</div></div>
+<div class="pic"><svg data-figure viewBox="20 0 210 232" width="262" height="290" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">
+<g stroke-width="1.5">
+<rect x="64" y="14" width="30" height="30" fill="#E9EEF7" stroke="#8AA8DA"/><rect x="64" y="44" width="30" height="30" fill="#E9EEF7" stroke="#8AA8DA"/><rect x="64" y="74" width="30" height="30" fill="#E9EEF7" stroke="#8AA8DA"/><rect x="64" y="104" width="30" height="30" fill="#E9EEF7" stroke="#8AA8DA"/><rect x="64" y="134" width="30" height="30" fill="#E9EEF7" stroke="#8AA8DA"/><rect x="64" y="164" width="30" height="30" fill="#2B5BAA" stroke="#1F4A8F"/>
+<rect x="94" y="14" width="30" height="30" fill="#E9EEF7" stroke="#8AA8DA"/><rect x="94" y="44" width="30" height="30" fill="#E9EEF7" stroke="#8AA8DA"/><rect x="94" y="74" width="30" height="30" fill="#E9EEF7" stroke="#8AA8DA"/><rect x="94" y="104" width="30" height="30" fill="#E9EEF7" stroke="#8AA8DA"/><rect x="94" y="134" width="30" height="30" fill="#2B5BAA" stroke="#1F4A8F"/><rect x="94" y="164" width="30" height="30" fill="#2B5BAA" stroke="#1F4A8F"/>
+<rect x="124" y="14" width="30" height="30" fill="#E9EEF7" stroke="#8AA8DA"/><rect x="124" y="44" width="30" height="30" fill="#E9EEF7" stroke="#8AA8DA"/><rect x="124" y="74" width="30" height="30" fill="#E9EEF7" stroke="#8AA8DA"/><rect x="124" y="104" width="30" height="30" fill="#2B5BAA" stroke="#1F4A8F"/><rect x="124" y="134" width="30" height="30" fill="#2B5BAA" stroke="#1F4A8F"/><rect x="124" y="164" width="30" height="30" fill="#2B5BAA" stroke="#1F4A8F"/>
+<rect x="154" y="14" width="30" height="30" fill="#E9EEF7" stroke="#8AA8DA"/><rect x="154" y="44" width="30" height="30" fill="#E9EEF7" stroke="#8AA8DA"/><rect x="154" y="74" width="30" height="30" fill="#2B5BAA" stroke="#1F4A8F"/><rect x="154" y="104" width="30" height="30" fill="#2B5BAA" stroke="#1F4A8F"/><rect x="154" y="134" width="30" height="30" fill="#2B5BAA" stroke="#1F4A8F"/><rect x="154" y="164" width="30" height="30" fill="#2B5BAA" stroke="#1F4A8F"/>
+<rect x="184" y="14" width="30" height="30" fill="#E9EEF7" stroke="#8AA8DA"/><rect x="184" y="44" width="30" height="30" fill="#2B5BAA" stroke="#1F4A8F"/><rect x="184" y="74" width="30" height="30" fill="#2B5BAA" stroke="#1F4A8F"/><rect x="184" y="104" width="30" height="30" fill="#2B5BAA" stroke="#1F4A8F"/><rect x="184" y="134" width="30" height="30" fill="#2B5BAA" stroke="#1F4A8F"/><rect x="184" y="164" width="30" height="30" fill="#2B5BAA" stroke="#1F4A8F"/>
+</g>
+<g font-size="20" fill="#000" text-anchor="middle"><text x="79" y="215">1</text><text x="109" y="215">2</text><text x="139" y="215">3</text><text x="169" y="215">4</text><text x="199" y="215">5</text></g>
+<text transform="translate(48 104) rotate(-90)" text-anchor="middle" font-size="19" fill="#555"><tspan font-style="italic">n</tspan> + 1</text>
+<path d="M56 16 v176" stroke="#555" stroke-width="1.2" fill="none"/>
+</svg>
+<p>Blue: 1 + 2 + ⋯ + <var>n</var>. Add a flipped copy (light) and get an <span class="m"><i>n</i> × (<i>n</i> + 1)</span> rectangle, so the sum is <span class="m"><i>n</i>(<i>n</i> + 1)/2</span>.</p></div></div>
+<p class="nt">The same sum as bubble sort’s comparisons (Lecture 3) and quicksort’s worst case (Lecture 4).</p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

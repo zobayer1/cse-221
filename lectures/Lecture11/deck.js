@@ -1,1 +1,1 @@
-window.DECK = { title: 'Recursive Time Complexity', num: 'Lecture 11', label: 'Lecture 11: Recursive Time Complexity', total: 36 };
+window.DECK = { title: 'Depth-First Search', num: 'Lecture 11', label: 'Lecture 11: Depth-First Search', total: 39 };

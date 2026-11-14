@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solve these</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+.tp { font-size:22px; color:var(--muted); text-align:center; margin-bottom:24px; }
+.tp b { color:var(--ink); }
+.c4 { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+.c4 > div { border-top:4px solid var(--blue); background:var(--tint-2); padding:12px 16px 16px; }
+.c4 .lt { font-family:var(--serif); font-size:26px; font-weight:700; color:var(--blue); }
+.c4 .rq { font-family:var(--serif); font-size:24px; margin:6px 0 14px; white-space:nowrap; }
+.c4 sup { font-size:0.66em; line-height:0; }
+.bl { display:grid; grid-template-columns:auto 1fr; gap:12px 10px; font-size:18px; align-items:end; }
+.bl span { color:var(--muted); white-space:nowrap; }
+.bl .m { font-family:var(--serif); color:var(--muted); }
+.bl i.u { display:block; border-bottom:1.5px solid var(--ink); height:22px; }
+.q { margin-top:30px; text-align:center; font-family:var(--serif); font-size:26px; }
+.q b { color:var(--blue); }
+.q .s { display:block; font-family:var(--sans); font-size:18px; color:var(--muted); margin-top:6px; }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Solve these<span class="ftag">Discuss</span></div>
+<div class="frame">
+<p class="tp">Use the master theorem: find <var>a</var>, <var>b</var> and <var>k</var>, then <b>compare <var>a</var> with <var>b</var><sup style="font-size:0.66em;line-height:0"><var>k</var></sup></b>.</p>
+<div class="c4">
+<div><span class="lt">A</span><p class="rq"><i>T</i>(<i>n</i>) = 9<i>T</i>(<i>n</i>/3) + <i>n</i></p><div class="bl"><span class="m"><i>a</i>, <i>b</i>, <i>k</i></span><i class="u"></i><span>Case</span><i class="u"></i><span class="m"><i>T</i>(<i>n</i>)</span><i class="u"></i></div></div>
+<div><span class="lt">B</span><p class="rq"><i>T</i>(<i>n</i>) = <i>T</i>(2<i>n</i>/3) + 1</p><div class="bl"><span class="m"><i>a</i>, <i>b</i>, <i>k</i></span><i class="u"></i><span>Case</span><i class="u"></i><span class="m"><i>T</i>(<i>n</i>)</span><i class="u"></i></div></div>
+<div><span class="lt">C</span><p class="rq"><i>T</i>(<i>n</i>) = 3<i>T</i>(<i>n</i>/4) + <i>n</i><sup>2</sup></p><div class="bl"><span class="m"><i>a</i>, <i>b</i>, <i>k</i></span><i class="u"></i><span>Case</span><i class="u"></i><span class="m"><i>T</i>(<i>n</i>)</span><i class="u"></i></div></div>
+<div><span class="lt">D</span><p class="rq"><i>T</i>(<i>n</i>) = 8<i>T</i>(<i>n</i>/2) + <i>n</i><sup>3</sup></p><div class="bl"><span class="m"><i>a</i>, <i>b</i>, <i>k</i></span><i class="u"></i><span>Case</span><i class="u"></i><span class="m"><i>T</i>(<i>n</i>)</span><i class="u"></i></div></div>
+</div>
+<p class="q">Which one has a <b>fraction</b> for <var>b</var>?<span class="s">Hint: the size of each call is <var>n</var>/<var>b</var>.</span></p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

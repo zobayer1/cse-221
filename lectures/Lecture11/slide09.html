@@ -1,45 +1,35 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The iteration method</title>
+<title>DFS step by step (2)</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.hd { text-align:center; font-size:21px; color:var(--muted); margin-bottom:18px; }
-.hd .m { font-family:var(--serif); color:var(--ink); font-size:26px; margin-left:8px; }
-.rw { display:grid; grid-template-columns:1fr 400px; gap:40px; align-items:center; }
-.un { background:var(--tint); border-left:5px solid var(--blue); padding:14px 24px 16px; }
-.un .k3, .rp .k3 { font-size:14px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:6px; }
-.eq { display:grid; grid-template-columns:auto auto 1fr; column-gap:10px; font-family:var(--serif); font-size:24px; line-height:1.75; align-items:baseline; }
-.eq .l { text-align:right; }
-.eq .n { font-family:var(--sans); font-size:15px; color:var(--muted); padding-left:18px; }
-.eq .x { color:var(--blue); }
-.eq b { color:var(--blue); font-weight:700; }
-.eq .rule { grid-column:1 / -1; border-top:1px solid var(--grey); margin:6px 0 2px; }
-.eq .bc { grid-column:1 / -1; font-family:var(--sans); font-size:18px; color:var(--muted); }
-.eq .bc .m { font-family:var(--serif); color:var(--ink); font-size:21px; }
-.rp .k3 { padding-bottom:8px; border-bottom:2px solid var(--ink); margin-bottom:0; }
-.st { display:grid; grid-template-columns:34px 1fr; gap:10px; padding:11px 0; border-bottom:1px solid var(--rule); align-items:baseline; }
-.st b { font-family:var(--serif); font-size:24px; color:var(--blue); }
-.st span { font-size:19px; line-height:1.4; }
-.st .m { font-family:var(--serif); white-space:nowrap; }
-.aka { margin-top:14px; font-size:16px; color:var(--muted); line-height:1.4; }
+.st { display:grid; grid-template-columns:auto minmax(0,1fr); gap:36px; align-items:center; }
+.qr { display:flex; align-items:flex-end; gap:16px; }
+.ql { font-size:24px; font-weight:700; padding-bottom:9px; }
+.qr .cells { --w:56px; --h:46px; --fs:26px; }
+.cells > span.q { background:#C9CCD1; }
+.cells.em > span { border:none; background:none; font-family:var(--serif); }
+.tp { display:flex; height:23px; }
+.tp span { width:56px; margin-left:-1.5px; text-align:center; font-size:16px; color:var(--muted); }
+.tp span:first-child { margin-left:0; }
+.tm { margin-left:auto; font-family:var(--serif); font-size:26px; padding-bottom:8px; }
+table.tab { margin-top:22px; font-size:24px; table-layout:fixed; }
+table.tab th, table.tab td { text-align:center; padding:5px 4px; }
+table.tab th { font-family:var(--serif); font-weight:400; }
+table.tab td { font-family:var(--serif); }
+table.tab td.m { color:#9a9da2; }
+table.tab td.nil { color:#9a9da2; font-size:14px; }
+table.tab td.ch { color:var(--blue); font-weight:700; }
+.key { font-size:19px; color:var(--muted); text-align:center; margin-top:2px; }
+.cp { margin-top:20px; }
+.cp .bb { min-height:60px; display:flex; align-items:center; font-size:25px; line-height:1.3; }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">The iteration method</div>
+<div class="frametitle">DFS step by step (2)</div>
 <div class="frame">
-<p class="hd">FACTORIAL:<span class="m"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i> − 1) + <i>c</i>,&ensp;<i>T</i>(1) = <i>c</i></span></p>
-<div class="rw"><div class="un"><div class="k3">Unroll it</div><div class="eq">
-<span class="l"><i>T</i>(<i>n</i>)</span><span>=&ensp;<span class="x"><i>T</i>(<i>n</i> − 1)</span> + <i>c</i></span><span></span>
-<span class="l"></span><span>=&ensp;<span class="x"><i>T</i>(<i>n</i> − 2) + <i>c</i></span> + <i>c</i></span><span class="n">use the rule again on <var>T</var>(<var>n</var> − 1)</span>
-<span class="l"></span><span>=&ensp;<i>T</i>(<i>n</i> − 3) + 3<i>c</i></span><span></span>
-<span class="l"></span><span>=&ensp;<i>T</i>(<i>n</i> − <i>k</i>) + <i>kc</i></span><span class="n">after <var>k</var> steps</span>
-<span class="rule"></span>
-<span class="bc">Base case: <span class="m"><i>n</i> − <i>k</i> = 1, so <i>k</i> = <i>n</i> − 1</span></span>
-<span class="l"><i>T</i>(<i>n</i>)</span><span>=&ensp;<i>T</i>(1) + (<i>n</i> − 1)<i>c</i> = <i>cn</i> = <b>Θ(<i>n</i>)</b></span><span></span>
+<div class="st"><div><svg data-figure viewBox="0 0 560 295" width="540" height="284.5" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><line x1="70" y1="70" x2="210" y2="70" stroke="#000" stroke-width="2.4"/><line x1="70" y1="70" x2="70" y2="222" stroke="#000" stroke-width="2.4"/><line x1="210" y1="70" x2="210" y2="222" stroke="#000" stroke-width="2.4"/><line x1="210" y1="222" x2="350" y2="70" stroke="#000" stroke-width="2.4"/><line x1="210" y1="222" x2="350" y2="222" stroke="#000" stroke-width="2.4"/><line x1="350" y1="70" x2="350" y2="222" stroke="#000" stroke-width="2.4"/><line x1="350" y1="70" x2="490" y2="70" stroke="#000" stroke-width="2.4"/><line x1="350" y1="222" x2="490" y2="222" stroke="#000" stroke-width="2.4"/><line x1="490" y1="70" x2="490" y2="222" stroke="#000" stroke-width="2.4"/><circle cx="210" cy="70" r="33" fill="none" stroke="#2B5BAA" stroke-width="3.5"/><circle cx="70" cy="70" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="70" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">r</tspan></text><circle cx="210" cy="70" r="27" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="210" y="76.3" text-anchor="middle" font-size="19" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">1/</text><text x="210" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">s</tspan></text><circle cx="350" cy="70" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="350" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">t</tspan></text><circle cx="490" cy="70" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="490" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">u</tspan></text><circle cx="70" cy="222" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="70" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">v</tspan></text><circle cx="210" cy="222" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="210" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">w</tspan></text><circle cx="350" cy="222" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="350" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">x</tspan></text><circle cx="490" cy="222" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="490" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">y</tspan></text></svg><div class="key">In a vertex: <var>d</var>/<var>f</var>. Blue edge: joins a vertex to its <var>π</var>. Ring: the vertex being visited.</div></div><div>
+<div class="qr"><div class="ql">Stack</div><div><div class="tp"><span>top</span></div><div class="cells"><span class="q"><var>s</var></span></div></div><div class="tm"><var>time</var> = 1</div></div>
+<table class="tab"><tr><th></th><th><var>r</var></th><th><var>s</var></th><th><var>t</var></th><th><var>u</var></th><th><var>v</var></th><th><var>w</var></th><th><var>x</var></th><th><var>y</var></th></tr><tr><td><var>d</var></td><td class="m">–</td><td class="v ch">1</td><td class="m">–</td><td class="m">–</td><td class="m">–</td><td class="m">–</td><td class="m">–</td><td class="m">–</td></tr><tr><td><var>f</var></td><td class="m">–</td><td class="m">–</td><td class="m">–</td><td class="m">–</td><td class="m">–</td><td class="m">–</td><td class="m">–</td><td class="m">–</td></tr><tr><td><var>π</var></td><td class="nil">NIL</td><td class="nil">NIL</td><td class="nil">NIL</td><td class="nil">NIL</td><td class="nil">NIL</td><td class="nil">NIL</td><td class="nil">NIL</td><td class="nil">NIL</td></tr></table>
 </div></div>
-<div class="rp"><div class="k3">The recipe</div>
-<div class="st"><b>1</b><span><b style="font-family:var(--sans);font-size:19px;color:var(--ink)">Expand:</b> replace <span class="m"><i>T</i>(<i>n</i> − 1)</span> using the same rule.</span></div>
-<div class="st"><b>2</b><span><b style="font-family:var(--sans);font-size:19px;color:var(--ink)">Spot the pattern</b> after <span class="m"><i>k</i></span> steps.</span></div>
-<div class="st"><b>3</b><span><b style="font-family:var(--sans);font-size:19px;color:var(--ink)">Pick <span class="m"><i>k</i></span></b> so that the size reaches the base case.</span></div>
-<div class="st"><b>4</b><span><b style="font-family:var(--sans);font-size:19px;color:var(--ink)">Add up</b> what is left.</span></div>
-<p class="aka">Also called <b style="color:var(--ink)">unrolling</b> or <b style="color:var(--ink)">back-substitution</b>.</p></div></div>
+<div class="block cp"><div class="bb"><div><b>Discover <var>s</var> at time 1.</b> Scan <var>Adj</var>[<var>s</var>] = <var>w</var>, <var>r</var>. <var>w</var> is white: go deeper.</div></div></div>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

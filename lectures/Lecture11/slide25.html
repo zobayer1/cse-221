@@ -1,43 +1,25 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Example 2: merge sort, the inductive step</title>
+<title>Homework: types of edges</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.hd { text-align:center; font-size:21px; color:var(--muted); }
-.hd .m { font-family:var(--serif); color:var(--ink); font-size:26px; margin-left:8px; }
-.gu { margin:14px auto 22px; text-align:center; }
-.gu span { display:inline-block; border:2px solid var(--blue); border-radius:8px; padding:6px 20px; font-size:20px; color:var(--muted); }
-.gu .m { font-family:var(--serif); font-size:26px; color:var(--blue); margin-left:8px; }
-.rw { display:grid; grid-template-columns:1fr 330px; gap:32px; align-items:center; }
-.pf { background:var(--tint); border-left:5px solid var(--blue); padding:14px 24px 16px; }
-.k3 { font-size:14px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:6px; }
-.pf .as { font-size:19px; color:var(--muted); margin-bottom:6px; }
-.pf .as .m { font-family:var(--serif); color:var(--ink); font-size:22px; white-space:nowrap; }
-.eq { display:grid; grid-template-columns:auto auto 1fr; column-gap:10px; font-family:var(--serif); font-size:24px; line-height:1.75; align-items:baseline; }
-.eq .l { text-align:right; }
-.eq .x { color:var(--blue); }
-.eq .n { font-family:var(--sans); font-size:15px; color:var(--muted); padding-left:14px; }
-.eq b { color:var(--blue); font-weight:400; }
-.sd .bx { border:2px solid var(--ink); border-radius:10px; padding:12px 18px 14px; }
-.sd .bx + .bx { margin-top:16px; }
-.sd .k3 { color:var(--muted); }
-.sd p { font-size:18px; color:var(--muted); line-height:1.45; }
-.sd p b { color:var(--ink); }
-.sd .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; font-size:20px; }
+.hw { display:grid; grid-template-columns:auto minmax(0,1fr); gap:40px; align-items:center; }
+.lead { font-size:23px; line-height:1.4; }
+.adj { display:grid; grid-template-columns:repeat(2,max-content); grid-template-rows:repeat(4,auto); grid-auto-flow:column; gap:4px 48px; margin:14px 0 6px 18px; font-family:var(--serif); font-size:23px; }
+.hw ol.items { margin-top:14px; }
+.hw ol.items > li { font-size:23px; margin:10px 0; }
+.hint { margin-top:14px; font-size:20px; color:var(--muted); }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">Example 2: merge sort, the inductive step</div>
+<div class="frametitle">Homework: types of edges<span class="ftag ink">No submission</span></div>
 <div class="frame">
-<p class="hd">MERGE-SORT, with <var>n</var> a power of 2:<span class="m"><i>T</i>(<i>n</i>) = 2<i>T</i>(<i>n</i>/2) + <i>n</i>,&ensp;<i>T</i>(1) = 1</span></p>
-<p class="gu"><span>Guess, from the recursion tree:<span class="m"><i>T</i>(<i>n</i>) ≤ <i>cn</i> log <i>n</i></span></span></p>
-<div class="rw"><div class="pf"><div class="k3">Inductive step</div>
-<p class="as">Assume the guess for size <var>n</var>/2: <span class="m"><i>T</i>(<i>n</i>/2) ≤ <i>c</i>(<i>n</i>/2) log(<i>n</i>/2)</span>.</p>
-<div class="eq">
-<span class="l"><i>T</i>(<i>n</i>)</span><span>=&ensp;2<span class="x"><i>T</i>(<i>n</i>/2)</span> + <i>n</i></span><span></span>
-<span class="l"></span><span>≤&ensp;2 · <span class="x"><i>c</i>(<i>n</i>/2) log(<i>n</i>/2)</span> + <i>n</i></span><span class="n">substitute the guess</span>
-<span class="l"></span><span>=&ensp;<i>cn</i>(log <i>n</i> − 1) + <i>n</i></span><span class="n">log(<var>n</var>/2) = log <var>n</var> − 1</span>
-<span class="l"></span><span>=&ensp;<i>cn</i> log <i>n</i> − <i>cn</i> + <i>n</i></span><span></span>
-<span class="l"></span><span>≤&ensp;<b><i>cn</i> log <i>n</i></b></span><span class="n">if <var>c</var> ≥ 1, since then −<var>cn</var> + <var>n</var> ≤ 0</span>
+<div class="hw"><div><svg data-figure viewBox="0 0 450 475" width="432" height="456" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.2" markerHeight="4.2" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="context-stroke"/></marker></defs><path d="M104 110 L205 110" fill="none" stroke="#000" stroke-width="2.6" marker-end="url(#ah)"/><path d="M98.9 95.2 C150 22 310 22 361.1 95.2" fill="none" stroke="#000" stroke-width="2.6" marker-end="url(#ah)"/><path d="M80 134 L80 225" fill="none" stroke="#000" stroke-width="2.6" marker-end="url(#ah)"/><path d="M254 110 L355 110" fill="none" stroke="#000" stroke-width="2.6" marker-end="url(#ah)"/><path d="M380 134 L380 225" fill="none" stroke="#000" stroke-width="2.6" marker-end="url(#ah)"/><path d="M362.5 233.6 L248.3 127.1" fill="none" stroke="#000" stroke-width="2.6" marker-end="url(#ah)"/><path d="M104 250 L355 250" fill="none" stroke="#000" stroke-width="2.6" marker-end="url(#ah)"/><path d="M80 366 L80 275" fill="none" stroke="#000" stroke-width="2.6" marker-end="url(#ah)"/><path d="M104 390 L205 390" fill="none" stroke="#000" stroke-width="2.6" marker-end="url(#ah)"/><path d="M247.5 373.6 L361.7 267.1" fill="none" stroke="#000" stroke-width="2.6" marker-end="url(#ah)"/><path d="M219.9 411.8 C196 468 264 468 240.1 411.8" fill="none" stroke="#000" stroke-width="2.6" marker-end="url(#ah)"/><path d="M80 32 L80 83" stroke="#2B5BAA" stroke-width="3.2" marker-end="url(#ah)"/><text x="80" y="26" text-anchor="middle" font-size="20" font-weight="700" fill="#2B5BAA" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">start</text><circle cx="80" cy="110" r="24" fill="#fff" stroke="#2B5BAA" stroke-width="3.5"/><text x="46" y="119" text-anchor="end" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">a</text><circle cx="230" cy="110" r="24" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="230" y="166" text-anchor="middle" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">b</text><circle cx="380" cy="110" r="24" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="414" y="119" text-anchor="start" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">c</text><circle cx="380" cy="250" r="24" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="414" y="259" text-anchor="start" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">d</text><circle cx="80" cy="250" r="24" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="46" y="259" text-anchor="end" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">e</text><circle cx="80" cy="390" r="24" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="46" y="399" text-anchor="end" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">f</text><circle cx="230" cy="390" r="24" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="264" y="399" text-anchor="start" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">g</text></svg></div><div>
+<p class="lead">Run DFS(<var>G</var>) on this directed graph. Line 6 tries the vertices in alphabetical order, and each adjacency list is alphabetical:</p>
+<div class="adj"><div><var>Adj</var>[<var>a</var>] = <var>b</var>, <var>c</var>, <var>e</var></div><div><var>Adj</var>[<var>b</var>] = <var>c</var></div><div><var>Adj</var>[<var>c</var>] = <var>d</var></div><div><var>Adj</var>[<var>d</var>] = <var>b</var></div><div><var>Adj</var>[<var>e</var>] = <var>d</var></div><div><var>Adj</var>[<var>f</var>] = <var>e</var>, <var>g</var></div><div><var>Adj</var>[<var>g</var>] = <var>d</var>, <var>g</var></div></div>
+<ol class="items">
+<li>Find <var>d</var>/<var>f</var> for every vertex.</li>
+<li>Classify all 11 edges as <b>tree</b>, <b>back</b>, <b>forward</b> or <b>cross</b>.</li>
+</ol>
+<p class="hint">Hint: when DFS first explores (<var>u</var>, <var>v</var>), look at the color of <var>v</var>.</p>
 </div></div>
-<div class="sd"><div class="bx"><div class="k3">The goal</div><p>End with <b>exactly</b> the guessed form, <span class="m"><i>cn</i> log <i>n</i></span>, with the <b>same</b> <var>c</var>.</p></div><div class="bx"><div class="k3">Why minus 1?</div><p><span class="m">log(<i>n</i>/2) = log <i>n</i> − log 2</span>, and <span class="m">log 2 = 1</span> in base 2.</p></div></div></div>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

@@ -1,35 +1,31 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DFS step by step (11)</title>
+<title>BFS: space complexity</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.st { display:grid; grid-template-columns:auto minmax(0,1fr); gap:36px; align-items:center; }
-.qr { display:flex; align-items:flex-end; gap:16px; }
-.ql { font-size:24px; font-weight:700; padding-bottom:9px; }
-.qr .cells { --w:56px; --h:46px; --fs:26px; }
-.cells > span.q { background:#C9CCD1; }
-.cells.em > span { border:none; background:none; font-family:var(--serif); }
-.tp { display:flex; height:23px; }
-.tp span { width:56px; margin-left:-1.5px; text-align:center; font-size:16px; color:var(--muted); }
-.tp span:first-child { margin-left:0; }
-.tm { margin-left:auto; font-family:var(--serif); font-size:26px; padding-bottom:8px; }
-table.tab { margin-top:22px; font-size:24px; table-layout:fixed; }
-table.tab th, table.tab td { text-align:center; padding:5px 4px; }
-table.tab th { font-family:var(--serif); font-weight:400; }
-table.tab td { font-family:var(--serif); }
-table.tab td.m { color:#9a9da2; }
-table.tab td.nil { color:#9a9da2; font-size:14px; }
-table.tab td.ch { color:var(--blue); font-weight:700; }
-.key { font-size:19px; color:var(--muted); text-align:center; margin-top:2px; }
-.cp { margin-top:20px; }
-.cp .bb { min-height:60px; display:flex; align-items:center; font-size:25px; line-height:1.3; }
+table.tab { font-size:25px; }
+table.tab th { font-size:24px; }
+table.tab td, table.tab th { padding:11px 12px; line-height:1.3; }
+table.tab td.m { font-family:var(--serif); font-size:28px; white-space:nowrap; }
+table.tab td.n1 { white-space:nowrap; }
+table.tab sup { font-size:0.65em; line-height:0; }
+ul.items { margin-top:34px; }
+ul.items > li { font-size:25px; margin:14px 0; line-height:1.35; }
+ul.items sup { font-size:0.65em; line-height:0; }
+.nw { white-space:nowrap; }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">DFS step by step (11)</div>
+<div class="frametitle">BFS: space complexity</div>
 <div class="frame">
-<div class="st"><div><svg data-figure viewBox="0 0 560 295" width="540" height="284.5" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><line x1="70" y1="70" x2="210" y2="70" stroke="#2B5BAA" stroke-width="5"/><line x1="70" y1="70" x2="70" y2="222" stroke="#2B5BAA" stroke-width="5"/><line x1="210" y1="70" x2="210" y2="222" stroke="#2B5BAA" stroke-width="5"/><line x1="210" y1="222" x2="350" y2="70" stroke="#2B5BAA" stroke-width="5"/><line x1="210" y1="222" x2="350" y2="222" stroke="#000" stroke-width="2.4"/><line x1="350" y1="70" x2="350" y2="222" stroke="#2B5BAA" stroke-width="5"/><line x1="350" y1="70" x2="490" y2="70" stroke="#000" stroke-width="2.4"/><line x1="350" y1="222" x2="490" y2="222" stroke="#2B5BAA" stroke-width="5"/><line x1="490" y1="70" x2="490" y2="222" stroke="#2B5BAA" stroke-width="5"/><circle cx="70" cy="70" r="33" fill="none" stroke="#2B5BAA" stroke-width="3.5"/><circle cx="70" cy="70" r="27" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="70" y="76.3" text-anchor="middle" font-size="19" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">12/</text><text x="70" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">r</tspan></text><circle cx="210" cy="70" r="27" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="210" y="76.3" text-anchor="middle" font-size="19" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">1/</text><text x="210" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">s</tspan></text><circle cx="350" cy="70" r="27" fill="#000" stroke="#000" stroke-width="2.2"/><text x="350" y="76.3" text-anchor="middle" font-size="19" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">3/10</text><text x="350" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">t</tspan></text><circle cx="490" cy="70" r="27" fill="#000" stroke="#000" stroke-width="2.2"/><text x="490" y="76.3" text-anchor="middle" font-size="19" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">6/7</text><text x="490" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">u</tspan></text><circle cx="70" cy="222" r="27" fill="#000" stroke="#000" stroke-width="2.2"/><text x="70" y="228.3" text-anchor="middle" font-size="19" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">13/14</text><text x="70" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">v</tspan></text><circle cx="210" cy="222" r="27" fill="#000" stroke="#000" stroke-width="2.2"/><text x="210" y="228.3" text-anchor="middle" font-size="19" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">2/11</text><text x="210" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">w</tspan></text><circle cx="350" cy="222" r="27" fill="#000" stroke="#000" stroke-width="2.2"/><text x="350" y="228.3" text-anchor="middle" font-size="19" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">4/9</text><text x="350" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">x</tspan></text><circle cx="490" cy="222" r="27" fill="#000" stroke="#000" stroke-width="2.2"/><text x="490" y="228.3" text-anchor="middle" font-size="19" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">5/8</text><text x="490" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">y</tspan></text></svg><div class="key">In a vertex: <var>d</var>/<var>f</var>. Blue edge: joins a vertex to its <var>π</var>. Ring: the vertex being visited.</div></div><div>
-<div class="qr"><div class="ql">Stack</div><div><div class="tp"><span></span><span>top</span></div><div class="cells"><span class="q"><var>s</var></span><span class="q"><var>r</var></span></div></div><div class="tm"><var>time</var> = 14</div></div>
-<table class="tab"><tr><th></th><th><var>r</var></th><th><var>s</var></th><th><var>t</var></th><th><var>u</var></th><th><var>v</var></th><th><var>w</var></th><th><var>x</var></th><th><var>y</var></th></tr><tr><td><var>d</var></td><td class="v">12</td><td class="v">1</td><td class="v">3</td><td class="v">6</td><td class="v ch">13</td><td class="v">2</td><td class="v">4</td><td class="v">5</td></tr><tr><td><var>f</var></td><td class="m">–</td><td class="m">–</td><td class="v">10</td><td class="v">7</td><td class="v ch">14</td><td class="v">11</td><td class="v">9</td><td class="v">8</td></tr><tr><td><var>π</var></td><td class="v"><var>s</var></td><td class="nil">NIL</td><td class="v"><var>w</var></td><td class="v"><var>y</var></td><td class="v ch"><var>r</var></td><td class="v"><var>s</var></td><td class="v"><var>t</var></td><td class="v"><var>x</var></td></tr></table>
-</div></div>
-<div class="block cp"><div class="bb"><div><b>Discover <var>v</var> at time 13.</b> <var>Adj</var>[<var>v</var>] = <var>r</var>, which is gray. <b><var>v</var> finishes at 14</b>, and DFS backtracks to <var>r</var>.</div></div></div>
+<table class="tab">
+<tr><th>Stored</th><th>Why</th><th class="c">Size</th></tr>
+<tr><td class="n1"><var>color</var>, <var>d</var>, <var>π</var></td><td>One entry per vertex</td><td class="c m"><var>O</var>(<var>V</var>)</td></tr>
+<tr class="sep"><td class="n1">Queue <var>Q</var></td><td>Holds at most |<var>V</var>| vertices</td><td class="c m"><var>O</var>(<var>V</var>)</td></tr>
+<tr class="sep"><td class="n1">The graph itself</td><td>Adjacency lists, or the edge list</td><td class="c m"><var>O</var>(<var>V</var> + <var>E</var>)</td></tr>
+<tr class="sep"><td colspan="2"><b>Total</b></td><td class="c m"><b><var>O</var>(<var>V</var> + <var>E</var>)</b></td></tr>
+</table>
+<ul class="items">
+<li>Beyond the input graph, BFS needs only <span class="nw"><var>O</var>(<var>V</var>) extra space.</span></li>
+<li><b>The complexity depends on the graph representation.</b> Stored as an adjacency matrix, the graph alone takes <span class="nw"><var>O</var>(<var>V</var><sup>2</sup>).</span></li>
+</ul>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

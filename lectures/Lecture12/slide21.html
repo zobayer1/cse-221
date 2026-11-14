@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Root, every level, or leaves</title>
+<link rel="stylesheet" href="../theme/theme.css"><style>
+table.tab { font-size:21px; }
+table.tab th { font-size:19px; }
+table.tab td, table.tab th { padding:10px 12px; }
+table.tab td.m { font-family:var(--serif); font-size:23px; white-space:nowrap; }
+table.tab td.c { text-align:center; }
+table.tab td.s { font-family:var(--serif); font-size:24px; white-space:nowrap; color:var(--blue); font-weight:700; }
+table.tab sup, table.tab sub { font-size:0.66em; line-height:0; }
+table.tab td.wn { font-weight:700; }
+.c3 { margin-top:28px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.c3 > div { border-top:4px solid var(--blue); background:var(--tint-2); padding:10px 16px 12px; }
+.c3 h3 { font-size:19px; font-weight:700; }
+.c3 p { font-family:var(--serif); font-size:23px; margin-top:4px; }
+.c3 p b { color:var(--blue); font-weight:400; }
+.c3 sup, .c3 sub { font-size:0.66em; line-height:0; }
+.c3 .w { display:block; font-size:16px; color:var(--muted); margin-top:2px; }
+.nt { margin-top:18px; text-align:center; font-size:19px; color:var(--muted); }
+.nt b { color:var(--ink); }
+</style></head>
+<body><div class="slide">
+<div class="frametitle">Root, every level, or leaves</div>
+<div class="frame">
+<table class="tab">
+<tr><th>Recurrence</th><th>Level totals</th><th class="c">Ratio <var>r</var></th><th>Winner</th><th>Solution</th></tr>
+<tr><td class="m">2<i>T</i>(<i>n</i>/2) + <i>cn</i><sup>2</sup></td><td class="m"><i>cn</i><sup>2</sup>, <i>cn</i><sup>2</sup>/2, <i>cn</i><sup>2</sup>/4, …</td><td class="m c">½</td><td class="wn">the root</td><td class="s">Θ(<i>n</i><sup>2</sup>)</td></tr>
+<tr class="sep"><td class="m">2<i>T</i>(<i>n</i>/2) + <i>cn</i></td><td class="m"><i>cn</i>, <i>cn</i>, <i>cn</i>, …</td><td class="m c">1</td><td class="wn">every level</td><td class="s">Θ(<i>n</i> log <i>n</i>)</td></tr>
+<tr class="sep"><td class="m">4<i>T</i>(<i>n</i>/2) + <i>cn</i></td><td class="m"><i>cn</i>, 2<i>cn</i>, 4<i>cn</i>, …</td><td class="m c">2</td><td class="wn">the leaves</td><td class="s">Θ(<i>n</i><sup>2</sup>)</td></tr>
+<tr class="sep"><td class="m">2<i>T</i>(<i>n</i>/2) + <i>c</i></td><td class="m"><i>c</i>, 2<i>c</i>, 4<i>c</i>, …</td><td class="m c">2</td><td class="wn">the leaves</td><td class="s">Θ(<i>n</i>)</td></tr>
+</table>
+<div class="c3"><div><h3>Root wins</h3><p><i>T</i>(<i>n</i>) = <b>Θ(<i>f</i>(<i>n</i>))</b></p><span class="w">the work at the root</span></div><div><h3>Every level the same</h3><p><i>T</i>(<i>n</i>) = <b>Θ(<i>f</i>(<i>n</i>) log <i>n</i>)</b></p><span class="w">one level × the number of levels</span></div><div><h3>Leaves win</h3><p><i>T</i>(<i>n</i>) = <b>Θ(<i>n</i><sup>log<sub><i>b</i></sub> <i>a</i></sup>)</b></p><span class="w">the number of leaves</span></div></div>
+<p class="nt">Here <var>f</var>(<var>n</var>) is the work at the root of <span style="font-family:var(--serif);color:var(--ink)"><i>T</i>(<i>n</i>) = <i>aT</i>(<i>n</i>/<i>b</i>) + <i>f</i>(<i>n</i>)</span>. Later today, the <b>master theorem</b> picks the winner straight from <var>a</var>, <var>b</var> and <var>f</var>(<var>n</var>).</p>
+</div>
+</div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

@@ -1,38 +1,38 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Write the recurrence: POWER</title>
+<title>DFS: pseudocode</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.rw { display:grid; grid-template-columns:560px 1fr; gap:40px; align-items:center; }
-.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:12px 20px; }
-.codebox pre { font-size:20px; line-height:1.65; }
+.pc { display:grid; grid-template-columns:auto auto; gap:40px; justify-content:center; align-items:start; }
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:12px 22px; }
+.codebox pre { font-size:21px; line-height:1.4; }
 .codebox .fn { font-weight:700; }
-.codebox .an { color:var(--blue); font-family:var(--serif); font-size:19px; }
-.pic { margin-top:16px; }
-.pic svg { width:100% !important; height:auto !important; }
-.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
-.rr > div { display:grid; grid-template-columns:150px 1fr auto; gap:12px; padding:10px 0; border-bottom:1px solid var(--rule); align-items:baseline; }
-.rr .c { font-size:18px; font-weight:700; }
-.rr .v { font-size:18px; color:var(--muted); line-height:1.4; }
-.rr .t { font-family:var(--serif); font-size:23px; color:var(--blue); white-space:nowrap; }
-.m { font-family:var(--serif); white-space:nowrap; }
-.v .m { color:var(--ink); }
-.rc { margin-top:20px; text-align:center; font-family:var(--serif); font-size:31px; }
-.rc b { color:var(--blue); font-weight:400; }
-.rc .bc { font-size:24px; color:var(--muted); margin-left:18px; }
-.nt { margin-top:16px; font-size:17px; color:var(--muted); line-height:1.45; border-left:3px solid var(--grey); padding-left:12px; }
-.nt b { color:var(--ink); }
-.nt .m { color:var(--ink); }
-.sv { margin-top:10px; font-size:16px; color:var(--muted); text-align:center; }
+.codebox .cm { color:var(--muted); }
+.cap { font-size:21px; line-height:1.4; margin-top:14px; color:var(--muted); max-width:560px; }
+.cap b { color:var(--ink); }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">Write the recurrence: POWER</div>
+<div class="frametitle">DFS: pseudocode</div>
 <div class="frame">
-<div class="rw"><div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">POWER</span>(x, n)
-<span class="ln">2</span>    <span class="kw">if</span> n == 0               <span class="an">Θ(1)</span>
-<span class="ln">3</span>        <span class="kw">return</span> 1            <span class="an">Θ(1)</span>
-<span class="ln">4</span>    h = <span class="fn">POWER</span>(x, ⌊n/2⌋)     <span class="an"><i>T</i>(<i>n</i>/2)</span>
-<span class="ln">5</span>    <span class="kw">if</span> n mod 2 == 0         <span class="an">Θ(1)</span>
-<span class="ln">6</span>        <span class="kw">return</span> h · h        <span class="an">Θ(1)</span>
-<span class="ln">7</span>    <span class="kw">return</span> h · h · x        <span class="an">Θ(1)</span></pre></div></div><div><div class="k3">Count the cost</div><div class="rr"><div><span class="c">Recursive calls</span><span class="v">1 call, on <span class="m">⌊<i>n</i>/2⌋</span></span><span class="t"><i>T</i>(<i>n</i>/2)</span></div><div><span class="c">Other work</span><span class="v">a test and one or two multiplications</span><span class="t"><i>c</i></span></div><div><span class="c">Base case</span><span class="v">constant work at the bottom</span><span class="t"><i>T</i>(1) = <i>c</i></span></div></div><p class="rc"><b><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i>/2) + <i>c</i></b>,<span class="bc"><i>T</i>(1) = <i>c</i></span></p><p class="nt">For <span class="m"><i>x</i><sup style="font-size:.66em;line-height:0">13</sup></span> the calls get <span class="m"><i>n</i> = 13, 6, 3, 1, 0</span>: the exponent is halved each time.</p><p class="nt"><b>POWER saves <span class="m"><i>h</i></span>.</b> Writing <span class="m">POWER(<i>x</i>, ⌊<i>n</i>/2⌋) · POWER(<i>x</i>, ⌊<i>n</i>/2⌋)</span> instead would make two calls: <span class="m">2<i>T</i>(<i>n</i>/2) + <i>c</i></span>, like MAX-REC on the next slide.</p><p class="sv">Solved on slide 12: Θ(log <var>n</var>).</p></div></div>
+<div class="pc"><div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">DFS</span>(G)
+<span class="ln">2</span>    <span class="kw">for</span> each vertex u ∈ G.V
+<span class="ln">3</span>        u.color = WHITE
+<span class="ln">4</span>        u.π = NIL
+<span class="ln">5</span>    time = 0
+<span class="ln">6</span>    <span class="kw">for</span> each vertex u ∈ G.V
+<span class="ln">7</span>        <span class="kw">if</span> u.color == WHITE
+<span class="ln">8</span>            DFS-VISIT(G, u)</pre></div>
+<p class="cap">Paint every vertex white, then start a new search from each vertex that is <b>still white</b>.</p></div>
+<div><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">DFS-VISIT</span>(G, u)
+<span class="ln">2</span>    time = time + 1     <span class="cm">// u is discovered</span>
+<span class="ln">3</span>    u.d = time
+<span class="ln">4</span>    u.color = GRAY
+<span class="ln">5</span>    <span class="kw">for</span> each v ∈ G.Adj[u]  <span class="cm">// explore (u, v)</span>
+<span class="ln">6</span>        <span class="kw">if</span> v.color == WHITE
+<span class="ln">7</span>            v.π = u
+<span class="ln">8</span>            DFS-VISIT(G, v)
+<span class="ln">9</span>    u.color = BLACK     <span class="cm">// u is finished</span>
+<span class="ln">10</span>    time = time + 1
+<span class="ln">11</span>    u.f = time</pre></div>
+<p class="cap">Discover <var>u</var>, go <b>deeper</b> into each white neighbor, then finish <var>u</var>. Returning from line 8 is the <b>backtrack</b>.</p></div></div>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

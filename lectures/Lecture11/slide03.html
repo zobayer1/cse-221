@@ -1,31 +1,22 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Where we left off</title>
+<title>Another way to traverse a graph?</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.rw { display:grid; grid-template-columns:1fr 470px; gap:48px; align-items:center; }
-.k3 { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid var(--ink); }
-.st { display:grid; grid-template-columns:104px 1fr; gap:4px 14px; padding:12px 0; border-bottom:1px solid var(--rule); align-items:baseline; }
-.st .lb { font-size:15px; font-weight:700; color:var(--blue); letter-spacing:0.04em; text-transform:uppercase; grid-row:span 2; }
-.st h3 { font-size:21px; font-weight:700; }
-.st p { font-size:18px; color:var(--muted); line-height:1.4; }
-.st .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; }
-.td { background:var(--tint); border-left:5px solid var(--blue); padding:20px 26px 22px; }
-.td .k3 { border-bottom:none; padding-bottom:0; margin-bottom:12px; }
-.td p { font-size:21px; line-height:1.45; }
-.td .rq { font-family:var(--serif); font-size:34px; text-align:center; margin:20px 0 6px; }
-.td .rq .h { color:var(--blue); font-weight:700; }
-.td .nt { font-size:15px; color:var(--muted); text-align:center; }
-.td b { color:var(--blue); }
+.rw { display:grid; grid-template-columns:auto minmax(0,1fr); gap:48px; align-items:center; }
+.key { font-size:19px; color:var(--muted); text-align:center; margin-top:4px; }
+.lead { font-size:26px; line-height:1.4; }
+.q { margin-top:30px; font-size:32px; font-weight:700; color:var(--blue); line-height:1.25; }
+.q b { color:var(--ink); }
+.hint { margin-top:30px; font-size:22px; color:var(--muted); line-height:1.4; }
+.hint b { color:var(--ink); }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">Where we left off</div>
+<div class="frametitle">Another way to traverse a graph?<span class="ftag">Think</span></div>
 <div class="frame">
-<div class="rw"><div><div class="k3">From earlier lectures</div>
-  <div class="st"><span class="lb">Lecture 6</span><h3>Loops</h3><p>Cost of a loop = (number of iterations) × (cost of one iteration).</p></div>
-  <div class="st"><span class="lb">Lecture 4</span><h3>Unrolling by hand</h3><p>Merge sort: <span class="m"><i>T</i>(<i>n</i>) = 2<i>T</i>(<i>n</i>/2) + <i>cn</i> = O(<i>n</i> log <i>n</i>)</span>.</p></div>
-  <div class="st"><span class="lb">Lecture 7</span><h3>The pattern</h3><p><span class="m"><i>T</i>(<i>n</i>) = <i>aT</i>(<i>n</i>/<i>b</i>) + <i>D</i>(<i>n</i>) + <i>C</i>(<i>n</i>)</span>: divide, conquer, combine.</p></div>
-  <div class="st"><span class="lb">Lecture 8</span><h3>Counting the leaves</h3><p>Karatsuba: <span class="m"><i>T</i>(<i>n</i>) = 3<i>T</i>(<i>n</i>/2) + Θ(<i>n</i>) = Θ(<i>n</i><sup>1.585</sup>)</span>.</p></div>
-</div>
-<div class="td"><div class="k3">Today</div><p>Recursive code has no loop to count. Its cost is written in terms of <b>itself</b>, on smaller inputs:</p><p class="rq"><span class="h"><i>T</i></span>(<i>n</i>) = 2<span class="h"><i>T</i></span>(<i>n</i>/2) + <i>cn</i></p><p class="nt"><i>T</i> on both sides: a <b>recurrence</b></p></div></div>
+<div class="rw"><div><svg data-figure viewBox="0 0 560 295" width="520" height="274" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><line x1="70" y1="70" x2="210" y2="70" stroke="#2B5BAA" stroke-width="5"/><line x1="70" y1="70" x2="70" y2="222" stroke="#2B5BAA" stroke-width="5"/><line x1="210" y1="70" x2="210" y2="222" stroke="#2B5BAA" stroke-width="5"/><line x1="210" y1="222" x2="350" y2="70" stroke="#2B5BAA" stroke-width="5"/><line x1="210" y1="222" x2="350" y2="222" stroke="#2B5BAA" stroke-width="5"/><line x1="350" y1="70" x2="350" y2="222" stroke="#000" stroke-width="2.4"/><line x1="350" y1="70" x2="490" y2="70" stroke="#2B5BAA" stroke-width="5"/><line x1="350" y1="222" x2="490" y2="222" stroke="#2B5BAA" stroke-width="5"/><line x1="490" y1="70" x2="490" y2="222" stroke="#000" stroke-width="2.4"/><circle cx="70" cy="70" r="26" fill="#8AA8DA" stroke="#2B5BAA" stroke-width="2.2"/><text x="70" y="78.8" text-anchor="middle" font-size="26" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">1</text><text x="70" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">r</tspan></text><circle cx="210" cy="70" r="26" fill="#2B5BAA" stroke="#2B5BAA" stroke-width="2.2"/><text x="210" y="78.8" text-anchor="middle" font-size="26" fill="#fff" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">0</text><text x="210" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">s</tspan></text><circle cx="350" cy="70" r="26" fill="#BFD0EA" stroke="#2B5BAA" stroke-width="2.2"/><text x="350" y="78.8" text-anchor="middle" font-size="26" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">2</text><text x="350" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">t</tspan></text><circle cx="490" cy="70" r="26" fill="#E9EEF7" stroke="#2B5BAA" stroke-width="2.2"/><text x="490" y="78.8" text-anchor="middle" font-size="26" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">3</text><text x="490" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">u</tspan></text><circle cx="70" cy="222" r="26" fill="#BFD0EA" stroke="#2B5BAA" stroke-width="2.2"/><text x="70" y="230.8" text-anchor="middle" font-size="26" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">2</text><text x="70" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">v</tspan></text><circle cx="210" cy="222" r="26" fill="#8AA8DA" stroke="#2B5BAA" stroke-width="2.2"/><text x="210" y="230.8" text-anchor="middle" font-size="26" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">1</text><text x="210" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">w</tspan></text><circle cx="350" cy="222" r="26" fill="#BFD0EA" stroke="#2B5BAA" stroke-width="2.2"/><text x="350" y="230.8" text-anchor="middle" font-size="26" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">2</text><text x="350" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">x</tspan></text><circle cx="490" cy="222" r="26" fill="#E9EEF7" stroke="#2B5BAA" stroke-width="2.2"/><text x="490" y="230.8" text-anchor="middle" font-size="26" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">3</text><text x="490" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">y</tspan></text></svg><div class="key">Last class: BFS from <var>s</var>. Number in a vertex: its distance <var>d</var>.</div></div><div>
+<p class="lead">Last class, <b>breadth-first search</b> visited every vertex reachable from <var>s</var>, <b>layer by layer</b>.</p>
+<p class="q">Is there <b>another way</b><br>to traverse a graph?</p>
+<p class="hint">Hint: BFS always explores next from the vertex it discovered <b>earliest</b>. What else could we choose?</p>
+</div></div>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

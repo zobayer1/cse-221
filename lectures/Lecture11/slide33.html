@@ -1,34 +1,28 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>When the master theorem does not apply</title>
+<title>Topological sort with DFS</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-table.tab { font-size:19px; }
-table.tab th { font-size:17px; }
-table.tab td, table.tab th { padding:9px 11px; }
-table.tab td.m { font-family:var(--serif); font-size:22px; white-space:nowrap; }
-table.tab td.s { font-family:var(--serif); font-size:22px; white-space:nowrap; color:var(--blue); font-weight:700; }
-table.tab td.u { white-space:nowrap; }
-table.tab .x { font-family:var(--serif); white-space:nowrap; font-size:20px; }
-table.tab .d { color:var(--muted); font-size:16px; }
-sup, sub { font-size:0.66em; line-height:0; }
-.dv { margin-top:22px; background:var(--tint); border-left:5px solid var(--blue); padding:12px 22px 14px; }
-.dv .k3 { font-size:14px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:4px; }
-.dv p { font-size:19px; line-height:1.5; }
-.dv .m { font-family:var(--serif); white-space:nowrap; font-size:22px; }
-.dv .m b { color:var(--blue); font-weight:400; }
-.dv .s { color:var(--muted); font-size:16px; }
+.cb { display:flex; justify-content:center; }
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:14px 24px; }
+.codebox pre { font-size:23px; line-height:1.45; }
+.codebox .fn { font-weight:700; }
+.codebox .cm { color:var(--muted); }
+.codebox .hl { background:#F8E6E6; display:inline-block; width:100%; }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">When the master theorem does not apply</div>
+<div class="frametitle">Topological sort with DFS</div>
 <div class="frame">
-<table class="tab">
-<tr><th>Recurrence</th><th>Why not</th><th>Use instead</th><th>Solution</th></tr>
-<tr><td class="m">2<i>T</i>(<i>n</i> − 1) + 1</td><td>The size shrinks by <b>subtracting</b>: there is no <span class="x"><i>n</i>/<i>b</i></span>.</td><td class="u">Iteration method <span class="d">(slide 11)</span></td><td class="s">Θ(2<sup><i>n</i></sup>)</td></tr>
-<tr class="sep"><td class="m"><i>T</i>(<i>n</i>/3) + <i>T</i>(2<i>n</i>/3) + <i>n</i></td><td>Calls of <b>different sizes</b>: no single <var>b</var>.</td><td class="u">Recursion tree</td><td class="s">Θ(<i>n</i> log <i>n</i>)</td></tr>
-<tr class="sep"><td class="m">2<i>T</i>(<i>n</i>/2) + <i>n</i> log <i>n</i></td><td><span class="x"><i>n</i> log <i>n</i></span> beats <span class="x"><i>n</i><sup>log<sub>2</sub> 2</sup> = <i>n</i></span> only by <b>log <var>n</var></b>, not by <span class="x"><i>n</i><sup><i>ε</i></sup></span>: between cases 2 and 3.</td><td class="u">Recursion tree <span class="d">(below)</span></td><td class="s">Θ(<i>n</i> log<sup>2</sup> <i>n</i>)</td></tr>
-</table>
-<div class="dv"><div class="k3">The tree for the third one</div>
-<p>Level <var>i</var>: <span class="m">2<sup><i>i</i></sup></span> calls, each costing <span class="m">(<i>n</i>/2<sup><i>i</i></sup>) log(<i>n</i>/2<sup><i>i</i></sup>)</span>, so the level costs <span class="m"><i>n</i>(log <i>n</i> − <i>i</i>)</span>. Add up the levels:</p>
-<p class="m" style="text-align:center;margin-top:4px"><i>n</i>(log <i>n</i> + (log <i>n</i> − 1) + ⋯ + 1) = <i>n</i> · <span style="white-space:nowrap">log <i>n</i> (log <i>n</i> + 1)/2</span> = <b>Θ(<i>n</i> log<sup>2</sup> <i>n</i>)</b>&ensp;<span class="s" style="font-family:var(--sans)">(CLRS Exercise 4.6-2)</span></p></div>
+<div class="cb"><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">DFS-VISIT</span>(G, u)
+<span class="ln">2</span>    time = time + 1     <span class="cm">// u is discovered</span>
+<span class="ln">3</span>    u.d = time
+<span class="ln">4</span>    u.color = GRAY
+<span class="ln">5</span>    <span class="kw">for</span> each v ∈ G.Adj[u]  <span class="cm">// explore (u, v)</span>
+<span class="ln">6</span>        <span class="kw">if</span> v.color == WHITE
+<span class="ln">7</span>            v.π = u
+<span class="ln">8</span>            DFS-VISIT(G, v)
+<span class="ln">9</span>    u.color = BLACK     <span class="cm">// u is finished</span>
+<span class="ln">10</span>    time = time + 1
+<span class="ln">11</span>    u.f = time
+<span class="hl"><span class="ln">12</span>    insert u onto the front of L</span></pre></div></div>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

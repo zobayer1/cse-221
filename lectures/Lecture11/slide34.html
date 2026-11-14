@@ -1,28 +1,26 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Which tool when?</title>
+<title>Topological sort: the full procedure</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-table.tab { font-size:21px; }
-table.tab th { font-size:19px; }
-table.tab td, table.tab th { padding:13px 14px; }
-table.tab td.t { font-weight:700; white-space:nowrap; }
-table.tab td.t span { display:block; font-weight:400; font-size:16px; color:var(--muted); margin-top:2px; }
-table.tab td.m { font-family:var(--serif); font-size:22px; white-space:nowrap; }
-table.tab td.g { color:var(--muted); }
-sup, sub { font-size:0.66em; line-height:0; }
-.nt { margin-top:24px; text-align:center; font-size:20px; color:var(--muted); line-height:1.5; }
-.nt b { color:var(--ink); }
+.cb { display:flex; justify-content:center; }
+.codebox { background:var(--tint); border-left:5px solid var(--blue); padding:14px 24px; }
+.codebox pre { font-size:22px; line-height:1.45; }
+.codebox .fn { font-weight:700; }
+ul.items { margin-top:30px; }
+ul.items > li { font-size:24px; margin:12px 0; line-height:1.35; }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">Which tool when?</div>
+<div class="frametitle">Topological sort: the full procedure</div>
 <div class="frame">
-<table class="tab">
-<tr><th>Method</th><th>Use it when</th><th>Example</th><th>You get</th></tr>
-<tr><td class="t">Iteration method<span>slides 9–14</span></td><td>One recursive call, on <var>n</var> − 1 or <var>n</var>/2</td><td class="m"><i>T</i>(<i>n</i> − 1) + <i>cn</i></td><td class="g">an exact sum</td></tr>
-<tr class="sep"><td class="t">Recursion tree<span>slides 15–21</span></td><td>Several calls, or calls of different sizes</td><td class="m">4<i>T</i>(<i>n</i>/2) + <i>cn</i></td><td class="g">a picture and a good guess</td></tr>
-<tr class="sep"><td class="t">Substitution<span>slides 22–25</span></td><td>You have a guess and need a proof</td><td class="m"><i>T</i>(<i>n</i>) ≤ <i>cn</i> log <i>n</i>?</td><td class="g">a proof, with <var>c</var> and <var>n</var><sub>0</sub></td></tr>
-<tr class="sep"><td class="t">Master theorem<span>slides 26–33</span></td><td>The form <span style="font-family:var(--serif);white-space:nowrap"><i>aT</i>(<i>n</i>/<i>b</i>) + Θ(<i>n</i><sup><i>k</i></sup>)</span></td><td class="m">3<i>T</i>(<i>n</i>/2) + Θ(<i>n</i>)</td><td class="g">the answer in one line</td></tr>
-</table>
-<p class="nt">In an exam, try the <b>master theorem</b> first. If the recurrence does not fit, <b>draw the tree</b>. If you must be sure, <b>prove</b> it.</p>
+<div class="cb"><div class="codebox"><pre class="code"><span class="ln">1</span><span class="fn">TOPOLOGICAL-SORT</span>(G)
+<span class="ln">2</span>    let L be a new empty linked list
+<span class="ln">3</span>    DFS(G)
+<span class="ln">4</span>    <span class="kw">return</span> L</pre></div></div>
+<ul class="items">
+<li><b>Line 12</b> of DFS-VISIT is the only new step: right after <var>u.f</var> = <var>time</var>, <var>u</var> goes to the front of <var>L</var>.</li>
+<li>So <var>L</var> holds the vertices in <b>decreasing</b> order of <var>f</var>: the last vertex to finish comes first.</li>
+<li>Why? A vertex finishes only after everything it leads to has finished, so everything that must come <b>after</b> it is already in <var>L</var>.</li>
+<li>Time: <b>Θ(<var>V</var> + <var>E</var>)</b>, for DFS plus an <var>O</var>(1) insertion per vertex.</li>
+</ul>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

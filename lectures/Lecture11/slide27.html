@@ -1,46 +1,24 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The master theorem: one ratio</title>
+<title>Application: finding a cycle</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.hd { text-align:center; font-size:21px; color:var(--muted); margin-bottom:20px; }
-.hd .m { font-family:var(--serif); color:var(--ink); font-size:27px; margin-left:8px; }
-.hd sup { font-size:0.66em; line-height:0; }
-.rw { display:grid; grid-template-columns:1fr 420px; gap:34px; align-items:center; }
-.pf { background:var(--tint); border-left:5px solid var(--blue); padding:14px 24px 16px; }
-.k3 { font-size:14px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:6px; }
-.lr { display:grid; grid-template-columns:150px 1fr; gap:12px; padding:7px 0; align-items:baseline; border-bottom:1px solid var(--rule); }
-.lr:last-of-type { border-bottom:none; }
-.lr .w { font-size:17px; color:var(--muted); }
-.lr .m { font-family:var(--serif); font-size:23px; }
-.lr .m b { color:var(--blue); font-weight:400; }
-.pf sup, .pf sub, .ck sup { font-size:0.66em; line-height:0; }
-.fr { display:inline-flex; flex-direction:column; vertical-align:middle; text-align:center; font-size:0.85em; line-height:1.15; margin:0 2px; }
-.fr > span + span { border-top:1.5px solid var(--ink); }
-.rr { margin-top:12px; text-align:center; font-family:var(--serif); font-size:26px; }
-.rr b { color:var(--blue); font-weight:400; }
-.rr .s { font-family:var(--sans); font-size:17px; color:var(--muted); }
-.ck .k3 { color:var(--muted); padding-bottom:8px; border-bottom:2px solid var(--ink); margin-bottom:0; }
-table.tab { font-size:19px; border-top:none; }
-table.tab td { padding:8px 8px; }
-table.tab td.m { font-family:var(--serif); font-size:21px; white-space:nowrap; }
-table.tab td.r { font-family:var(--serif); font-size:21px; color:var(--blue); white-space:nowrap; }
-table.tab td.s { color:var(--muted); font-size:16px; }
+.cy { display:grid; grid-template-columns:auto minmax(0,1fr); gap:40px; align-items:center; }
+.key { font-size:19px; color:var(--muted); text-align:center; margin-top:2px; }
+.why { font-size:22px; line-height:1.4; color:var(--muted); }
+.why svg { display:block; margin:8px 0 4px; }
+.why b { color:var(--ink); }
+.cy .block { margin-top:24px; font-size:24px; }
+.nt { margin-top:24px; font-size:23px; line-height:1.4; }
+.nt b { color:var(--red); }
+.nw { white-space:nowrap; }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">The master theorem: one ratio</div>
+<div class="frametitle">Application: finding a cycle</div>
 <div class="frame">
-<p class="hd">Take the work outside the calls to be a power of <var>n</var>:<span class="m"><i>T</i>(<i>n</i>) = <i>aT</i>(<i>n</i>/<i>b</i>) + <i>cn</i><sup><i>k</i></sup></span></p>
-<div class="rw"><div class="pf"><div class="k3">Level <var style="text-transform:none">i</var> of the recursion tree</div>
-<div class="lr"><span class="w">Calls</span><span class="m"><i>a</i><sup><i>i</i></sup>, each of size <i>n</i>/<i>b</i><sup><i>i</i></sup></span></div>
-<div class="lr"><span class="w">One call costs</span><span class="m"><i>c</i>(<i>n</i>/<i>b</i><sup><i>i</i></sup>)<sup><i>k</i></sup> = <span class="fr"><span><i>cn</i><sup><i>k</i></sup></span><span>(<i>b</i><sup><i>k</i></sup>)<sup><i>i</i></sup></span></span></span></div>
-<div class="lr"><span class="w">The level costs</span><span class="m"><i>a</i><sup><i>i</i></sup> · <span class="fr"><span><i>cn</i><sup><i>k</i></sup></span><span>(<i>b</i><sup><i>k</i></sup>)<sup><i>i</i></sup></span></span> = <i>cn</i><sup><i>k</i></sup> · <b>(<i>a</i>/<i>b</i><sup><i>k</i></sup>)</b><sup><i>i</i></sup></span></div>
-<p class="rr"><span class="s" style="font-size:20px">Each level is</span> <b><i>r</i> = <i>a</i>/<i>b</i><sup><i>k</i></sup></b> <span class="s" style="font-size:20px">times the one above:</span></p>
-<p class="rr"><i>T</i>(<i>n</i>) = <i>cn</i><sup><i>k</i></sup>(1 + <i>r</i> + <i>r</i><sup>2</sup> + ⋯ + <i>r</i><sup><i>L</i></sup>),&ensp;<span class="s"><var>L</var> = log<sub><var>b</var></sub> <var>n</var></span></p></div>
-<div class="ck"><div class="k3">Check against the trees</div><table class="tab">
-<tr><td class="m">2<i>T</i>(<i>n</i>/2) + <i>cn</i></td><td class="r"><i>r</i> = 2/2 = 1</td><td class="s">every level</td></tr>
-<tr class="sep"><td class="m">2<i>T</i>(<i>n</i>/2) + <i>cn</i><sup>2</sup></td><td class="r"><i>r</i> = 2/4 = ½</td><td class="s">the root</td></tr>
-<tr class="sep"><td class="m">4<i>T</i>(<i>n</i>/2) + <i>cn</i></td><td class="r"><i>r</i> = 4/2 = 2</td><td class="s">the leaves</td></tr>
-<tr class="sep"><td class="m">2<i>T</i>(<i>n</i>/2) + <i>c</i></td><td class="r"><i>r</i> = 2/1 = 2</td><td class="s">the leaves</td></tr>
-</table><p style="margin-top:8px;font-size:16px;color:var(--muted)">A constant <var>c</var> is <var>cn</var><sup style="font-size:0.66em;line-height:0">0</sup>, so <var>k</var> = 0 and <var>b</var><sup style="font-size:0.66em;line-height:0"><var>k</var></sup> = 1.</p></div></div>
+<div class="cy"><div><svg data-figure viewBox="0 0 450 475" width="414" height="437" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.2" markerHeight="4.2" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="context-stroke"/></marker></defs><polygon points="230,110 380,110 380,250" fill="#F8E6E6" stroke="none"/><path d="M104 110 L205 110" fill="none" stroke="#2B5BAA" stroke-width="4.2" marker-end="url(#ah)"/><path d="M98.9 95.2 C150 22 310 22 361.1 95.2" fill="none" stroke="#000" stroke-width="2" marker-end="url(#ah)"/><path d="M80 134 L80 225" fill="none" stroke="#000" stroke-width="2" marker-end="url(#ah)"/><path d="M254 110 L355 110" fill="none" stroke="#2B5BAA" stroke-width="4.2" marker-end="url(#ah)"/><path d="M380 134 L380 225" fill="none" stroke="#2B5BAA" stroke-width="4.2" marker-end="url(#ah)"/><path d="M362.5 233.6 L248.3 127.1" fill="none" stroke="#C62828" stroke-width="3.4" stroke-dasharray="9 5" marker-end="url(#ah)"/><path d="M104 250 L355 250" fill="none" stroke="#000" stroke-width="2" marker-end="url(#ah)"/><path d="M80 366 L80 275" fill="none" stroke="#000" stroke-width="2" marker-end="url(#ah)"/><path d="M104 390 L205 390" fill="none" stroke="#000" stroke-width="2" marker-end="url(#ah)"/><path d="M247.5 373.6 L361.7 267.1" fill="none" stroke="#000" stroke-width="2" marker-end="url(#ah)"/><path d="M219.9 411.8 C196 468 264 468 240.1 411.8" fill="none" stroke="#000" stroke-width="2" marker-end="url(#ah)"/><circle cx="380" cy="250" r="31" fill="none" stroke="#2B5BAA" stroke-width="3.2"/><circle cx="80" cy="110" r="24" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="80" y="116" text-anchor="middle" font-size="18" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">1/</text><text x="46" y="119" text-anchor="end" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">a</text><circle cx="230" cy="110" r="24" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="230" y="116" text-anchor="middle" font-size="18" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">2/</text><text x="230" y="166" text-anchor="middle" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">b</text><circle cx="380" cy="110" r="24" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="380" y="116" text-anchor="middle" font-size="18" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">3/</text><text x="414" y="119" text-anchor="start" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">c</text><circle cx="380" cy="250" r="24" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="380" y="256" text-anchor="middle" font-size="18" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">4/</text><text x="414" y="259" text-anchor="start" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">d</text><circle cx="80" cy="250" r="24" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="46" y="259" text-anchor="end" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">e</text><circle cx="80" cy="390" r="24" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="46" y="399" text-anchor="end" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">f</text><circle cx="230" cy="390" r="24" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="264" y="399" text-anchor="start" font-size="28" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1" font-style="italic">g</text><text x="325" y="165" text-anchor="middle" font-size="19" font-weight="700" fill="#C62828" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">back</text></svg><div class="key">The homework graph at time 4.</div></div><div>
+<div class="why"><p><b>Why care?</b> To install a package, first install the packages it needs.</p><svg data-figure viewBox="0 0 460 132" width="430" height="123.4" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><defs><marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="context-stroke"/></marker></defs><rect x="10" y="22" width="100" height="44" rx="6" fill="#F4F6FB" stroke="#000" stroke-width="2"/><text x="60" y="51" text-anchor="middle" font-size="22" font-weight="700" fill="#000" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">A</text><rect x="180" y="22" width="100" height="44" rx="6" fill="#F4F6FB" stroke="#000" stroke-width="2"/><text x="230" y="51" text-anchor="middle" font-size="22" font-weight="700" fill="#000" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">B</text><rect x="350" y="22" width="100" height="44" rx="6" fill="#F4F6FB" stroke="#000" stroke-width="2"/><text x="400" y="51" text-anchor="middle" font-size="22" font-weight="700" fill="#000" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">C</text><line x1="112" y1="44" x2="177" y2="44" stroke="#000" stroke-width="2.4" marker-end="url(#ah2)"/><text x="145.0" y="34" text-anchor="middle" font-size="17" fill="#555" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">needs</text><line x1="282" y1="44" x2="347" y2="44" stroke="#000" stroke-width="2.4" marker-end="url(#ah2)"/><text x="315.0" y="34" text-anchor="middle" font-size="17" fill="#555" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">needs</text><path d="M400 68 C400 118 60 118 60 70" fill="none" stroke="#C62828" stroke-width="2.6" stroke-dasharray="8 5" marker-end="url(#ah2)"/><text x="230" y="124" text-anchor="middle" font-size="17" fill="#C62828" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1">needs</text></svg><p>Here <b>no install order works</b>: the dependencies form a cycle.</p></div>
+<div class="block"><div class="bt">The idea</div><div class="bb">A back edge (<var>u</var>, <var>v</var>) leads to an <b>ancestor</b> <var>v</var> of <var>u</var>. The tree path from <var>v</var> down to <var>u</var>, plus (<var>u</var>, <var>v</var>), is a <b>cycle</b>.</div></div>
+<p class="nt">At time 4, <var>d</var> scans <var>b</var> and finds it <b>gray</b>: (<var>d</var>, <var>b</var>) is a back edge. <span class="nw">Cycle: <var>b</var> → <var>c</var> → <var>d</var> → <var>b</var>.</span></p>
+</div></div>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

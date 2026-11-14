@@ -1,30 +1,24 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Answers</title>
+<title>Application: topological sort</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-table.tab { font-size:21px; }
-table.tab th { font-size:18px; }
-table.tab td, table.tab th { padding:10px 12px; }
-table.tab td.lt { font-family:var(--serif); font-weight:700; color:var(--blue); width:36px; }
-table.tab td.m { font-family:var(--serif); font-size:23px; white-space:nowrap; }
-table.tab td.c, table.tab th.c { text-align:center; }
-table.tab td.s { font-family:var(--serif); font-size:23px; white-space:nowrap; color:var(--blue); font-weight:700; }
-sup, sub { font-size:0.66em; line-height:0; }
-.nb { margin-top:26px; display:grid; grid-template-columns:1fr 1fr; gap:28px; }
-.nb p { font-size:19px; color:var(--muted); line-height:1.45; }
-.nb p b { color:var(--ink); }
-.nb .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; font-size:21px; }
+.tp { display:grid; grid-template-columns:auto minmax(0,1fr); gap:36px; align-items:center; }
+.key { font-size:19px; color:var(--muted); text-align:center; margin-top:2px; }
+.key b { color:var(--ink); }
+.lead { font-size:23px; line-height:1.4; }
+.tp .block { margin-top:20px; font-size:23px; }
+.nt { margin-top:18px; font-size:21px; color:var(--muted); line-height:1.4; }
+.nt b { color:var(--ink); }
+.q { margin-top:18px; font-size:24px; font-weight:700; color:var(--blue); }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">Answers</div>
+<div class="frametitle">Application: topological sort<span class="ftag">Think</span></div>
 <div class="frame">
-<table class="tab">
-<tr><th></th><th>Recurrence</th><th class="c"><var>a</var></th><th class="c"><var>b</var></th><th class="c"><var>k</var></th><th class="c">Compare</th><th class="c">Case</th><th>Solution</th></tr>
-<tr><td class="lt">A</td><td class="m">9<i>T</i>(<i>n</i>/3) + <i>n</i></td><td class="m c">9</td><td class="m c">3</td><td class="m c">1</td><td class="m c">9 &gt; 3<sup>1</sup></td><td class="c">1</td><td class="s">Θ(<i>n</i><sup>log<sub>3</sub> 9</sup>) = Θ(<i>n</i><sup>2</sup>)</td></tr>
-<tr class="sep"><td class="lt">B</td><td class="m"><i>T</i>(2<i>n</i>/3) + 1</td><td class="m c">1</td><td class="m c">3/2</td><td class="m c">0</td><td class="m c">1 = (3/2)<sup>0</sup></td><td class="c">2</td><td class="s">Θ(log <i>n</i>)</td></tr>
-<tr class="sep"><td class="lt">C</td><td class="m">3<i>T</i>(<i>n</i>/4) + <i>n</i><sup>2</sup></td><td class="m c">3</td><td class="m c">4</td><td class="m c">2</td><td class="m c">3 &lt; 4<sup>2</sup></td><td class="c">3</td><td class="s">Θ(<i>n</i><sup>2</sup>)</td></tr>
-<tr class="sep"><td class="lt">D</td><td class="m">8<i>T</i>(<i>n</i>/2) + <i>n</i><sup>3</sup></td><td class="m c">8</td><td class="m c">2</td><td class="m c">3</td><td class="m c">8 = 2<sup>3</sup></td><td class="c">2</td><td class="s">Θ(<i>n</i><sup>3</sup> log <i>n</i>)</td></tr>
-</table>
-<div class="nb"><p><b>B has <span class="m"><i>b</i> = 3/2</span>.</b> Each call gets size <span class="m">2<i>n</i>/3 = <i>n</i>/(3/2)</span>. The theorem only needs <span class="m"><i>b</i> &gt; 1</span>, not a whole number.</p><p><b>Only case 1’s answer has <var>a</var> in it.</b> In cases 2 and 3 the answer comes from <span class="m"><i>n</i><sup><i>k</i></sup></span>, the root’s work. In case 1 it is the number of leaves.</p></div>
+<div class="tp"><div><svg data-figure viewBox="20 -8 625 285" width="575" height="262.2" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><defs><marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4.5" markerHeight="4.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="context-stroke"/></marker></defs><line x1="110" y1="139.4" x2="205" y2="90.6" stroke="#000" stroke-width="2.4" marker-end="url(#ah3)"/><line x1="110" y1="157.7" x2="380" y2="142.3" stroke="#000" stroke-width="2.4" marker-end="url(#ah3)"/><line x1="285" y1="86" x2="380" y2="124" stroke="#000" stroke-width="2.4" marker-end="url(#ah3)"/><line x1="108.7" y1="181" x2="206.3" y2="234" stroke="#000" stroke-width="2.4" marker-end="url(#ah3)"/><line x1="460" y1="154.9" x2="555" y2="190.1" stroke="#000" stroke-width="2.4" marker-end="url(#ah3)"/><line x1="285" y1="249.3" x2="555" y2="210.7" stroke="#000" stroke-width="2.4" marker-end="url(#ah3)"/><line x1="285" y1="58.6" x2="380" y2="31.4" stroke="#000" stroke-width="2.4" marker-end="url(#ah3)"/><rect x="32" y="141" width="76" height="38" rx="6" fill="#F4F6FB" stroke="#000" stroke-width="2"/><text x="70" y="167" text-anchor="middle" font-size="21" fill="#000" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">core</text><rect x="207" y="51" width="76" height="38" rx="6" fill="#F4F6FB" stroke="#000" stroke-width="2"/><text x="245" y="77" text-anchor="middle" font-size="21" fill="#000" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">json</text><rect x="207" y="236" width="76" height="38" rx="6" fill="#F4F6FB" stroke="#000" stroke-width="2"/><text x="245" y="262" text-anchor="middle" font-size="21" fill="#000" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">ui</text><rect x="382" y="121" width="76" height="38" rx="6" fill="#F4F6FB" stroke="#000" stroke-width="2"/><text x="420" y="147" text-anchor="middle" font-size="21" fill="#000" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">http</text><rect x="382" y="1" width="76" height="38" rx="6" fill="#F4F6FB" stroke="#000" stroke-width="2"/><text x="420" y="27" text-anchor="middle" font-size="21" fill="#000" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">cli</text><rect x="557" y="186" width="76" height="38" rx="6" fill="#F4F6FB" stroke="#000" stroke-width="2"/><text x="595" y="212" text-anchor="middle" font-size="21" fill="#000" font-family="CMU Typewriter Text, KaTeX_Main, KaTeX_Size1">app</text></svg><div class="key">Arrow <var>u</var> → <var>v</var>: <var>v</var> needs <var>u</var>, so install <var>u</var> <b>first</b>.</div></div><div>
+<p class="lead">Now the dependencies have <b>no cycle</b>. In what order do we install the packages?</p>
+<div class="block"><div class="bt">Topological sort</div><div class="bb">An order of <b>all</b> the vertices such that for every edge (<var>u</var>, <var>v</var>), <var>u</var> comes <b>before</b> <var>v</var>.</div></div>
+<p class="nt">It exists only when <var>G</var> has no cycle: <var>G</var> must be a <b>DAG</b> (Directed Acyclic Graph).</p>
+<p class="q">Find an install order. Is it the only one?</p>
+</div></div>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

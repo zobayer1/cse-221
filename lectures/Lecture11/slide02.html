@@ -2,19 +2,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Today’s agenda</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.ag { display:grid; grid-template-columns:repeat(4,1fr); gap:30px; }
+.ag { display:grid; grid-template-columns:repeat(3,1fr); gap:36px; }
 .ag .c { border-top:2px solid var(--ink); padding-top:14px; }
 .ag .c b { font-family:var(--serif); font-weight:700; font-size:40px; color:var(--blue); line-height:1; }
-.ag .c h3 { font-family:var(--serif); font-weight:700; font-size:28px; margin-top:12px; line-height:1.15; min-height:64px; }
-.ag .c p { font-size:20px; color:var(--muted); margin-top:10px; line-height:1.45; min-height:87px; }
-.ag .c .t { display:inline-block; margin-top:14px; font-family:var(--serif); font-size:18px; color:var(--blue); border:1.5px solid var(--blue); border-radius:999px; padding:2px 12px; white-space:nowrap; }
+.ag .c h3 { font-family:var(--serif); font-weight:700; font-size:32px; margin-top:12px; line-height:1.15; }
+.ag .c p { font-size:22px; color:var(--muted); margin-top:10px; line-height:1.45; }
 .agb { margin-top:44px; font-size:22px; color:var(--muted); line-height:1.5; }
 .agb b { color:var(--ink); font-weight:700; }
 </style></head>
 <body><div class="slide">
 <div class="frametitle">Today’s agenda</div>
 <div class="frame">
-<div class="ag"><div class="c"><b>1</b><h3>Iteration method</h3><p>Expand the recurrence until the base case, then add up.</p><span class="t"><i>T</i>(<i>n</i> − 1), <i>T</i>(<i>n</i>/2)</span></div><div class="c"><b>2</b><h3>Recursion trees</h3><p>Draw every call as a node, then add up the tree level by level.</p><span class="t">many calls</span></div><div class="c"><b>3</b><h3>Substitution method</h3><p>Guess the answer, then prove it by induction.</p><span class="t">a proof</span></div><div class="c"><b>4</b><h3>Master theorem</h3><p>Solve <span class="rm"><i>aT</i>(<i>n</i>/<i>b</i>) + <i>f</i>(<i>n</i>)</span> by comparing the root with the leaves.</p><span class="t">one formula</span></div></div>
-<p class="agb">Lecture 6 counted <b>loops</b>. Today we count <b>recursive calls</b>: first turn the code into a recurrence, then solve it. Practice problems come in a separate handout.</p>
+<div class="ag"><div class="c"><b>1</b><h3>Depth-first search</h3><p>Exploring a graph by going as deep as possible, then backing up.</p></div><div class="c"><b>2</b><h3>DFS step by step</h3><p>The pseudocode, a run on an example, and its time and space.</p></div><div class="c"><b>3</b><h3>Applications of DFS</h3><p>Finding cycles, and putting tasks in order with a topological sort.</p></div></div>
+<p class="agb">Last class, BFS explored a graph <b>layer by layer</b>. Today we explore it <b>as deep as possible</b> first.</p>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

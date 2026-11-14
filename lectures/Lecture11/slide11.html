@@ -1,60 +1,35 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Iteration method: doubling at every step</title>
+<title>DFS step by step (4)</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.hd { text-align:center; font-size:21px; color:var(--muted); margin-bottom:18px; }
-.hd .m { font-family:var(--serif); color:var(--ink); font-size:26px; margin-left:8px; }
-.rw { display:grid; grid-template-columns:1fr 330px; gap:36px; align-items:center; }
-.un { background:var(--tint); border-left:5px solid var(--blue); padding:14px 22px 16px; }
-.k3 { font-size:14px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:6px; }
-.eq { display:grid; grid-template-columns:auto auto 1fr; column-gap:10px; font-family:var(--serif); font-size:23px; line-height:1.72; align-items:baseline; }
-.eq .l { text-align:right; }
-.eq .n { font-family:var(--sans); font-size:15px; color:var(--muted); padding-left:14px; }
-.eq .x { color:var(--blue); }
-.eq b { color:var(--blue); font-weight:700; }
-.eq sup { font-size:0.68em; line-height:0; }
-.eq .rule { grid-column:1 / -1; border-top:1px solid var(--grey); margin:6px 0 2px; }
-.eq .bc { grid-column:1 / -1; font-family:var(--sans); font-size:18px; color:var(--muted); }
-.eq .bc .m { font-family:var(--serif); color:var(--ink); font-size:21px; }
-.bx { border:2px solid var(--ink); border-radius:10px; padding:12px 18px 14px; }
-.bx .k3 { color:var(--muted); }
-.bx .q { font-family:var(--serif); font-size:21px; margin-bottom:8px; }
-.bx sup { font-size:0.68em; line-height:0; }
-.bin { display:grid; grid-template-columns:auto auto auto; column-gap:12px; justify-content:center; font-size:20px; line-height:1.45; }
-.bin .b { font-family:var(--mono); letter-spacing:0.12em; text-align:right; }
-.bin .d { font-family:var(--serif); text-align:right; color:var(--muted); }
-.bin .o { font-family:var(--mono); color:var(--muted); }
-.bin .ln2 { grid-column:1 / -1; border-top:1.5px solid var(--ink); margin:2px 0; }
-.bin .hi { color:var(--blue); font-weight:700; }
-.bx p { font-size:16px; color:var(--muted); line-height:1.4; margin-top:8px; }
-.tv { margin-top:20px; text-align:center; font-size:18px; color:var(--muted); }
-.tv b { color:#B86E00; letter-spacing:0.06em; text-transform:uppercase; font-size:14px; margin-right:8px; }
-.tv .m { font-family:var(--serif); color:var(--ink); }
-.tv sup { font-size:0.68em; line-height:0; }
+.st { display:grid; grid-template-columns:auto minmax(0,1fr); gap:36px; align-items:center; }
+.qr { display:flex; align-items:flex-end; gap:16px; }
+.ql { font-size:24px; font-weight:700; padding-bottom:9px; }
+.qr .cells { --w:56px; --h:46px; --fs:26px; }
+.cells > span.q { background:#C9CCD1; }
+.cells.em > span { border:none; background:none; font-family:var(--serif); }
+.tp { display:flex; height:23px; }
+.tp span { width:56px; margin-left:-1.5px; text-align:center; font-size:16px; color:var(--muted); }
+.tp span:first-child { margin-left:0; }
+.tm { margin-left:auto; font-family:var(--serif); font-size:26px; padding-bottom:8px; }
+table.tab { margin-top:22px; font-size:24px; table-layout:fixed; }
+table.tab th, table.tab td { text-align:center; padding:5px 4px; }
+table.tab th { font-family:var(--serif); font-weight:400; }
+table.tab td { font-family:var(--serif); }
+table.tab td.m { color:#9a9da2; }
+table.tab td.nil { color:#9a9da2; font-size:14px; }
+table.tab td.ch { color:var(--blue); font-weight:700; }
+.key { font-size:19px; color:var(--muted); text-align:center; margin-top:2px; }
+.cp { margin-top:20px; }
+.cp .bb { min-height:60px; display:flex; align-items:center; font-size:25px; line-height:1.3; }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">Iteration method: doubling at every step</div>
+<div class="frametitle">DFS step by step (4)</div>
 <div class="frame">
-<p class="hd">HANOI:<span class="m"><i>T</i>(<i>n</i>) = 2<i>T</i>(<i>n</i> − 1) + <i>c</i>,&ensp;<i>T</i>(0) = <i>c</i></span></p>
-<div class="rw"><div class="un"><div class="k3">Unroll it</div><div class="eq">
-<span class="l"><i>T</i>(<i>n</i>)</span><span>=&ensp;2<span class="x"><i>T</i>(<i>n</i> − 1)</span> + <i>c</i></span><span></span>
-<span class="l"></span><span>=&ensp;2[<span class="x">2<i>T</i>(<i>n</i> − 2) + <i>c</i></span>] + <i>c</i> = 4<i>T</i>(<i>n</i> − 2) + 2<i>c</i> + <i>c</i></span><span></span>
-<span class="l"></span><span>=&ensp;8<i>T</i>(<i>n</i> − 3) + 4<i>c</i> + 2<i>c</i> + <i>c</i></span><span></span>
-<span class="l"></span><span>=&ensp;2<sup><i>k</i></sup><i>T</i>(<i>n</i> − <i>k</i>) + <i>c</i>(2<sup><i>k</i>−1</sup> + ⋯ + 2 + 1)</span><span class="n">after <var>k</var> steps</span>
-<span class="l"></span><span>=&ensp;2<sup><i>k</i></sup><i>T</i>(<i>n</i> − <i>k</i>) + <i>c</i>(2<sup><i>k</i></sup> − 1)</span><span class="n">see the box</span>
-<span class="rule"></span>
-<span class="bc">Base case: <span class="m"><i>n</i> − <i>k</i> = 0, so <i>k</i> = <i>n</i></span></span>
-<span class="l"><i>T</i>(<i>n</i>)</span><span>=&ensp;2<sup><i>n</i></sup><i>c</i> + <i>c</i>(2<sup><i>n</i></sup> − 1) = <i>c</i>(2<sup><i>n</i>+1</sup> − 1) = <b>Θ(2<sup><i>n</i></sup>)</b></span><span></span>
+<div class="st"><div><svg data-figure viewBox="0 0 560 295" width="540" height="284.5" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><line x1="70" y1="70" x2="210" y2="70" stroke="#000" stroke-width="2.4"/><line x1="70" y1="70" x2="70" y2="222" stroke="#000" stroke-width="2.4"/><line x1="210" y1="70" x2="210" y2="222" stroke="#2B5BAA" stroke-width="5"/><line x1="210" y1="222" x2="350" y2="70" stroke="#2B5BAA" stroke-width="5"/><line x1="210" y1="222" x2="350" y2="222" stroke="#000" stroke-width="2.4"/><line x1="350" y1="70" x2="350" y2="222" stroke="#000" stroke-width="2.4"/><line x1="350" y1="70" x2="490" y2="70" stroke="#000" stroke-width="2.4"/><line x1="350" y1="222" x2="490" y2="222" stroke="#000" stroke-width="2.4"/><line x1="490" y1="70" x2="490" y2="222" stroke="#000" stroke-width="2.4"/><circle cx="350" cy="70" r="33" fill="none" stroke="#2B5BAA" stroke-width="3.5"/><circle cx="70" cy="70" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="70" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">r</tspan></text><circle cx="210" cy="70" r="27" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="210" y="76.3" text-anchor="middle" font-size="19" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">1/</text><text x="210" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">s</tspan></text><circle cx="350" cy="70" r="27" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="350" y="76.3" text-anchor="middle" font-size="19" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">3/</text><text x="350" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">t</tspan></text><circle cx="490" cy="70" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="490" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">u</tspan></text><circle cx="70" cy="222" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="70" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">v</tspan></text><circle cx="210" cy="222" r="27" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="210" y="228.3" text-anchor="middle" font-size="19" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">2/</text><text x="210" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">w</tspan></text><circle cx="350" cy="222" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="350" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">x</tspan></text><circle cx="490" cy="222" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="490" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">y</tspan></text></svg><div class="key">In a vertex: <var>d</var>/<var>f</var>. Blue edge: joins a vertex to its <var>π</var>. Ring: the vertex being visited.</div></div><div>
+<div class="qr"><div class="ql">Stack</div><div><div class="tp"><span></span><span></span><span>top</span></div><div class="cells"><span class="q"><var>s</var></span><span class="q"><var>w</var></span><span class="q"><var>t</var></span></div></div><div class="tm"><var>time</var> = 3</div></div>
+<table class="tab"><tr><th></th><th><var>r</var></th><th><var>s</var></th><th><var>t</var></th><th><var>u</var></th><th><var>v</var></th><th><var>w</var></th><th><var>x</var></th><th><var>y</var></th></tr><tr><td><var>d</var></td><td class="m">–</td><td class="v">1</td><td class="v ch">3</td><td class="m">–</td><td class="m">–</td><td class="v">2</td><td class="m">–</td><td class="m">–</td></tr><tr><td><var>f</var></td><td class="m">–</td><td class="m">–</td><td class="m">–</td><td class="m">–</td><td class="m">–</td><td class="m">–</td><td class="m">–</td><td class="m">–</td></tr><tr><td><var>π</var></td><td class="nil">NIL</td><td class="nil">NIL</td><td class="v ch"><var>w</var></td><td class="nil">NIL</td><td class="nil">NIL</td><td class="v"><var>s</var></td><td class="nil">NIL</td><td class="nil">NIL</td></tr></table>
 </div></div>
-<div class="bx"><div class="k3">Why is it 2<sup style="text-transform:none"><var>k</var></sup> − 1?</div><p class="q">1 + 2 + 4 + 8 in binary:</p><div class="bin">
-<span class="o"></span><span class="b">0001</span><span class="d">1</span>
-<span class="o"></span><span class="b">0010</span><span class="d">2</span>
-<span class="o"></span><span class="b">0100</span><span class="d">4</span>
-<span class="o">+</span><span class="b">1000</span><span class="d">8</span>
-<span class="ln2"></span>
-<span class="o"></span><span class="b hi">1111</span><span class="d">15</span>
-<span class="o">+1</span><span class="b">10000</span><span class="d">16</span>
-</div><p>Four ones, plus 1, carry all the way: 2<sup>4</sup>. So 1 + 2 + ⋯ + 2<sup><var>k</var>−1</sup> = 2<sup><var>k</var></sup> − 1.</p></div></div>
-<p class="tv"><b>Trivia</b>64 disks take <span class="m">2<sup>64</sup> − 1</span> moves. At one move per second, that is about 585 billion years.</p>
+<div class="block cp"><div class="bb"><div><b>Discover <var>t</var> at time 3.</b> Scan <var>Adj</var>[<var>t</var>] = <var>w</var>, <var>x</var>, <var>u</var>. <var>w</var> is gray, <var>x</var> is white: go deeper.</div></div></div>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>

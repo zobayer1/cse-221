@@ -99,7 +99,7 @@ All slides follow the same simple theme:
 - Write pseudocode in CLRS style (see the pseudocode rule above).
 - Make the mathematical formulations easy to understand.
 - Where possible, suggest slides that engage students (e.g. "Can you…?" / "Guess…" prompts followed by an answer slide).
-- Lectures share these intro and outro slides: Cover and Agenda at the start; at the end, **Using the simulators** (when the lecture has simulators in `simulations/`, with screenshots in `thumbs/`), **References** (CLRS sections and pages, verified against the PDF), and the **Ending** ("What we learned today": the lecture's key learning points, plus the Questions panel). **Don't add a Next class slide**: what comes next changes too often to keep in sync.
+- Lectures share these intro and outro slides: Cover and Agenda at the start; at the end, in this order, the **Ending** ("What we learned today": the lecture's key learning points, plus the Questions panel), **Using the simulators** (when the lecture has simulators in `simulations/`, with screenshots in `thumbs/`) and **References** (CLRS sections and pages, verified against the PDF), so the deck closes on the reference material. **Don't add a Next class slide**: what comes next changes too often to keep in sync.
 
 ## Workflow
 

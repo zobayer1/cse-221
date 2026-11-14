@@ -115,7 +115,7 @@ kbd{font-family:'IBM Plex Mono',monospace;font-size:13px;border:1px solid var(--
 <body><main>
 <header>
   <div><h1>Topological Sort</h1><p>Step-by-step simulator: run DFS on a directed acyclic graph and put each vertex at the front of a list as it finishes.</p></div>
-  <div class="course"><b>CSE 221</b> Algorithms · Lecture 10</div>
+  <div class="course"><b>CSE 221</b> Algorithms · Lecture 11</div>
 </header>
 <section class="panel">
   <div class="r1">
@@ -174,11 +174,9 @@ const K=s=>`<span class="kw">${s}</span>`, F=s=>`<span class="fn">${s}</span>`, 
 const ln=(n,s)=>`<span class="ln">${n}</span>${s}`;
 const CODE=[
  [['t1',ln(1,F('TOPOLOGICAL-SORT')+'(G)')],
-  ['t2',ln(2,'    call DFS(G) to compute finishing times v.f')],
-  ['t2',ln('','      for each vertex v')],
-  ['t3',ln(3,'    as each vertex is finished, insert it onto')],
-  ['t3',ln('','      the front of a linked list')],
-  ['t4',ln(4,'    '+K('return')+' the linked list of vertices')]],
+  ['t2',ln(2,'    let L be a new empty linked list')],
+  ['t3',ln(3,'    DFS(G)')],
+  ['t4',ln(4,'    '+K('return')+' L')]],
  [['d1',ln(1,F('DFS')+'(G)')],
   ['d2',ln(2,'    '+K('for')+' each vertex u ∈ G.V')],
   ['d3',ln(3,'        u.color = WHITE')],
@@ -197,7 +195,8 @@ const CODE=[
   ['v8',ln(8,'            DFS-VISIT(G, v)')],
   ['v9',ln(9,'    u.color = BLACK     '+C('// u is finished'))],
   ['v10',ln(10,'    time = time + 1')],
-  ['v11',ln(11,'    u.f = time')]]];
+  ['v11',ln(11,'    u.f = time')],
+  ['v12',ln(12,'    insert u onto the front of L')]]];
 const PRESETS={
   packages:{edges:'core->json, core->http, json->http, core->ui, http->app, ui->app, json->cli',order:'alpha',
     pos:{core:[.12,.5,'b'],json:[.34,.2,'t'],ui:[.34,.82,'b'],http:[.6,.45,'b'],cli:[.62,.12,'b'],app:[.87,.62,'b']}},
@@ -213,9 +212,9 @@ function build(G){
   const S=[],color=Object.create(null),d=Object.create(null),f=Object.create(null),pi=Object.create(null),stack=[],L=[];
   let time=0;
   G.V.forEach(v=>{color[v]='W';d[v]=null;f[v]=null;pi[v]=null;});
-  const ctx=()=>['t2','d8'].concat(stack.length>1?['v8']:[]);
+  const ctx=()=>['t3','d8'].concat(stack.length>1?['v8']:[]);
   const push=o=>S.push(Object.assign({color:{...color},d:{...d},f:{...f},pi:{...pi},stack:stack.slice(),L:L.slice(),time,ctx:[]},o));
-  push({hl:['t2','d2','d3','d4','d5'],msg:`<span class="k">Initialize</span>Line 2 of TOPOLOGICAL-SORT calls DFS(G). DFS lines 2–5: every vertex is white with π = NIL, and time = 0. The list starts empty.`});
+  push({hl:['t2','t3','d2','d3','d4','d5'],msg:`<span class="k">Initialize</span>TOPOLOGICAL-SORT starts with an empty list L (line 2) and calls DFS(G) (line 3). DFS lines 2–5: every vertex is white with π = NIL, and time = 0.`});
   let cyc=null;
   function visit(u){
     time++;d[u]=time;color[u]='G';stack.push(u);
@@ -239,20 +238,20 @@ function build(G){
     color[u]='B';time++;f[u]=time;stack.pop();
     push({u,hl:['v9','v10','v11'],ctx:fctx,detail:true,msg:`<span class="k">Finish ${u}</span>Every edge out of ${u} is explored. ${u} turns black; time = ${time}, so ${u}.f = ${time}.`});
     L.unshift(u);
-    push({ins:u,hl:['t3'],ctx:['v11'],msg:`<span class="k">Insert ${u}</span>${u} finished at time ${f[u]}, so it goes onto the <strong>front</strong> of the list: ${L.join(', ')}.`});
+    push({ins:u,hl:['v12'],ctx:['v11'],msg:`<span class="k">Insert ${u}</span>${u} finished at time ${f[u]}, so line 12 puts it onto the <strong>front</strong> of L: ${L.join(', ')}.`});
     return true;
   }
   for(const u of G.V){
     if(color[u]==='W'){
-      push({cand:u,hl:['d6','d7','d8'],ctx:['t2'],detail:true,msg:`<span class="k">Line 6: try ${u}</span>${u} is white, so DFS-VISIT(G, ${u}) starts a new depth-first tree at ${u}.`});
+      push({cand:u,hl:['d6','d7','d8'],ctx:['t3'],detail:true,msg:`<span class="k">Line 6: try ${u}</span>${u} is white, so DFS-VISIT(G, ${u}) starts a new depth-first tree at ${u}.`});
       if(!visit(u))break;
     }else{
-      push({cand:u,hl:['d6','d7'],ctx:['t2'],detail:true,msg:`<span class="k">Line 6: try ${u}</span>${u} is already black. Skip it.`});
+      push({cand:u,hl:['d6','d7'],ctx:['t3'],detail:true,msg:`<span class="k">Line 6: try ${u}</span>${u} is already black. Skip it.`});
     }
   }
   if(!cyc){
     const n=G.E.length;
-    push({hl:['t4'],final:true,done:true,msg:`<span class="k">Done</span>DFS is finished, so return the list: <strong>${L.join(', ')}</strong>. It lists the vertices by decreasing finish time, and all ${n} edge${n===1?'':'s'} point left to right.`});
+    push({hl:['t4'],final:true,done:true,msg:`<span class="k">Done</span>DFS is finished, so line 4 returns L: <strong>${L.join(', ')}</strong>. It lists the vertices by decreasing finish time, and all ${n} edge${n===1?'':'s'} point left to right.`});
     // independent check: every edge (u, v) has u before v in the list
     const at=Object.create(null);L.forEach((v,i)=>{at[v]=i;});
     for(const [a,b] of G.E)if(!(at[a]<at[b]))throw new Error('topological order check failed');

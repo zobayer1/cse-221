@@ -1,58 +1,35 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Iteration method: halving, with a copy</title>
+<title>DFS step by step (6)</title>
 <link rel="stylesheet" href="../theme/theme.css"><style>
-.hd { text-align:center; font-size:21px; color:var(--muted); }
-.hd .m { font-family:var(--serif); color:var(--ink); font-size:26px; margin-left:8px; }
-.sb { text-align:center; font-size:17px; color:var(--muted); margin:4px 0 16px; }
-.sb .m { font-family:var(--serif); color:var(--ink); }
-.rw { display:grid; grid-template-columns:1fr 390px; gap:32px; align-items:center; }
-.un { background:var(--tint); border-left:5px solid var(--blue); padding:12px 22px 14px; }
-.k3 { font-size:14px; font-weight:700; color:var(--blue); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:4px; }
-.eq { display:grid; grid-template-columns:auto auto 1fr; column-gap:10px; font-family:var(--serif); font-size:21px; line-height:1.65; align-items:baseline; }
-.eq .l { text-align:right; }
-.eq .n { font-family:var(--sans); font-size:15px; color:var(--muted); padding-left:12px; }
-.eq .x { color:var(--blue); }
-.eq b { color:var(--blue); font-weight:700; }
-.eq sup { font-size:0.68em; line-height:0; }
-.eq .rule { grid-column:1 / -1; border-top:1px solid var(--grey); margin:5px 0 2px; }
-.eq .bc { grid-column:1 / -1; font-family:var(--sans); font-size:18px; color:var(--muted); }
-.eq .bc .m { font-family:var(--serif); color:var(--ink); font-size:21px; }
-.bx { border:2px solid var(--ink); border-radius:10px; padding:12px 16px 14px; }
-.bx .k3 { color:var(--muted); }
-.bx svg { display:block; margin:10px auto 2px; }
-.bx p { font-size:17px; color:var(--muted); line-height:1.45; margin-top:6px; }
-.bx p .m { font-family:var(--serif); color:var(--ink); white-space:nowrap; font-size:19px; }
-.bx sup { font-size:0.68em; line-height:0; }
-.ft { margin-top:16px; }
-.ft .bb { font-size:18px; line-height:1.45; }
-.ft .m { font-family:var(--serif); white-space:nowrap; font-size:20px; }
+.st { display:grid; grid-template-columns:auto minmax(0,1fr); gap:36px; align-items:center; }
+.qr { display:flex; align-items:flex-end; gap:16px; }
+.ql { font-size:24px; font-weight:700; padding-bottom:9px; }
+.qr .cells { --w:56px; --h:46px; --fs:26px; }
+.cells > span.q { background:#C9CCD1; }
+.cells.em > span { border:none; background:none; font-family:var(--serif); }
+.tp { display:flex; height:23px; }
+.tp span { width:56px; margin-left:-1.5px; text-align:center; font-size:16px; color:var(--muted); }
+.tp span:first-child { margin-left:0; }
+.tm { margin-left:auto; font-family:var(--serif); font-size:26px; padding-bottom:8px; }
+table.tab { margin-top:22px; font-size:24px; table-layout:fixed; }
+table.tab th, table.tab td { text-align:center; padding:5px 4px; }
+table.tab th { font-family:var(--serif); font-weight:400; }
+table.tab td { font-family:var(--serif); }
+table.tab td.m { color:#9a9da2; }
+table.tab td.nil { color:#9a9da2; font-size:14px; }
+table.tab td.ch { color:var(--blue); font-weight:700; }
+.key { font-size:19px; color:var(--muted); text-align:center; margin-top:2px; }
+.cp { margin-top:20px; }
+.cp .bb { min-height:60px; display:flex; align-items:center; font-size:25px; line-height:1.3; }
 </style></head>
 <body><div class="slide">
-<div class="frametitle">Iteration method: halving, with a copy</div>
+<div class="frametitle">DFS step by step (6)</div>
 <div class="frame">
-<p class="hd">Binary search that <b style="color:var(--ink)">copies</b> the half it keeps:<span class="m"><i>T</i>(<i>n</i>) = <i>T</i>(<i>n</i>/2) + <i>cn</i>,&ensp;<i>T</i>(1) = <i>c</i></span></p>
-<p class="sb">Copying the half into a new array, as slicing <span style="font-family:var(--mono);color:var(--ink)">A[lo:mid]</span> does in Python, costs Θ(<var>n</var>) per call.</p>
-<div class="rw"><div class="un"><div class="k3">Unroll it</div><div class="eq">
-<span class="l"><i>T</i>(<i>n</i>)</span><span>=&ensp;<span class="x"><i>T</i>(<i>n</i>/2)</span> + <i>cn</i></span><span></span>
-<span class="l"></span><span>=&ensp;<span class="x"><i>T</i>(<i>n</i>/4) + <i>cn</i>/2</span> + <i>cn</i></span><span class="n">the rule for <var>T</var>(<var>n</var>/2)</span>
-<span class="l"></span><span>=&ensp;<i>T</i>(<i>n</i>/8) + <i>cn</i>/4 + <i>cn</i>/2 + <i>cn</i></span><span></span>
-<span class="l"></span><span>=&ensp;<i>T</i>(<i>n</i>/2<sup><i>k</i></sup>) + <i>cn</i>(1 + ½ + ¼ + ⋯ + 1/2<sup><i>k</i>−1</sup>)</span><span class="n">after <var>k</var> steps</span>
-<span class="rule"></span>
-<span class="bc">Base case: <span class="m"><i>n</i>/2<sup><i>k</i></sup> = 1, so <i>k</i> = log <i>n</i></span></span>
-<span class="l"><i>T</i>(<i>n</i>)</span><span>=&ensp;<i>c</i> + <i>cn</i>(1 + ½ + ¼ + ⋯ + 2/<i>n</i>)</span><span></span>
-<span class="l"></span><span>&lt;&ensp;<i>c</i> + 2<i>cn</i></span><span class="n">see the box</span>
-<span class="bc">The first copy alone costs <span class="m"><i>cn</i></span>, so <span class="m"><i>cn</i> ≤ <i>T</i>(<i>n</i>) &lt; <i>c</i> + 2<i>cn</i></span>: <span class="m" style="color:var(--blue);font-weight:700"><i>T</i>(<i>n</i>) = Θ(<i>n</i>)</span></span>
+<div class="st"><div><svg data-figure viewBox="0 0 560 295" width="540" height="284.5" font-family="CMU Sans Serif, KaTeX_Main, KaTeX_Size1"><line x1="70" y1="70" x2="210" y2="70" stroke="#000" stroke-width="2.4"/><line x1="70" y1="70" x2="70" y2="222" stroke="#000" stroke-width="2.4"/><line x1="210" y1="70" x2="210" y2="222" stroke="#2B5BAA" stroke-width="5"/><line x1="210" y1="222" x2="350" y2="70" stroke="#2B5BAA" stroke-width="5"/><line x1="210" y1="222" x2="350" y2="222" stroke="#000" stroke-width="2.4"/><line x1="350" y1="70" x2="350" y2="222" stroke="#2B5BAA" stroke-width="5"/><line x1="350" y1="70" x2="490" y2="70" stroke="#000" stroke-width="2.4"/><line x1="350" y1="222" x2="490" y2="222" stroke="#2B5BAA" stroke-width="5"/><line x1="490" y1="70" x2="490" y2="222" stroke="#000" stroke-width="2.4"/><circle cx="490" cy="222" r="33" fill="none" stroke="#2B5BAA" stroke-width="3.5"/><circle cx="70" cy="70" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="70" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">r</tspan></text><circle cx="210" cy="70" r="27" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="210" y="76.3" text-anchor="middle" font-size="19" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">1/</text><text x="210" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">s</tspan></text><circle cx="350" cy="70" r="27" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="350" y="76.3" text-anchor="middle" font-size="19" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">3/</text><text x="350" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">t</tspan></text><circle cx="490" cy="70" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="490" y="28" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">u</tspan></text><circle cx="70" cy="222" r="27" fill="#fff" stroke="#000" stroke-width="2.2"/><text x="70" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">v</tspan></text><circle cx="210" cy="222" r="27" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="210" y="228.3" text-anchor="middle" font-size="19" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">2/</text><text x="210" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">w</tspan></text><circle cx="350" cy="222" r="27" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="350" y="228.3" text-anchor="middle" font-size="19" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">4/</text><text x="350" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">x</tspan></text><circle cx="490" cy="222" r="27" fill="#A7A9AC" stroke="#000" stroke-width="2.2"/><text x="490" y="228.3" text-anchor="middle" font-size="19" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">5/</text><text x="490" y="280" text-anchor="middle" font-size="27" fill="#000" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1"><tspan font-style="italic">y</tspan></text></svg><div class="key">In a vertex: <var>d</var>/<var>f</var>. Blue edge: joins a vertex to its <var>π</var>. Ring: the vertex being visited.</div></div><div>
+<div class="qr"><div class="ql">Stack</div><div><div class="tp"><span></span><span></span><span></span><span></span><span>top</span></div><div class="cells"><span class="q"><var>s</var></span><span class="q"><var>w</var></span><span class="q"><var>t</var></span><span class="q"><var>x</var></span><span class="q"><var>y</var></span></div></div><div class="tm"><var>time</var> = 5</div></div>
+<table class="tab"><tr><th></th><th><var>r</var></th><th><var>s</var></th><th><var>t</var></th><th><var>u</var></th><th><var>v</var></th><th><var>w</var></th><th><var>x</var></th><th><var>y</var></th></tr><tr><td><var>d</var></td><td class="m">–</td><td class="v">1</td><td class="v">3</td><td class="m">–</td><td class="m">–</td><td class="v">2</td><td class="v">4</td><td class="v ch">5</td></tr><tr><td><var>f</var></td><td class="m">–</td><td class="m">–</td><td class="m">–</td><td class="m">–</td><td class="m">–</td><td class="m">–</td><td class="m">–</td><td class="m">–</td></tr><tr><td><var>π</var></td><td class="nil">NIL</td><td class="nil">NIL</td><td class="v"><var>w</var></td><td class="nil">NIL</td><td class="nil">NIL</td><td class="v"><var>s</var></td><td class="v"><var>t</var></td><td class="v ch"><var>x</var></td></tr></table>
 </div></div>
-<div class="bx"><div class="k3">Why is the sum less than 2?</div>
-<svg data-figure viewBox="0 0 360 58" width="356" height="58" font-family="CMU Serif, KaTeX_Main, KaTeX_Size1">
-<rect x="4" y="6" width="340" height="28" fill="#fff" stroke="#555" stroke-width="1.5" stroke-dasharray="5 4"/>
-<rect x="4" y="6" width="170" height="28" fill="#2B5BAA"/><rect x="174" y="6" width="85" height="28" fill="#5A80C0"/><rect x="259" y="6" width="42.5" height="28" fill="#8AA8DA"/><rect x="301.5" y="6" width="21.25" height="28" fill="#B4C7E7"/><rect x="322.75" y="6" width="10.6" height="28" fill="#D3DEF0"/><rect x="333.4" y="6" width="5.3" height="28" fill="#E9EEF7"/>
-<g font-size="18" text-anchor="middle"><text x="89" y="26" fill="#fff">1</text><text x="216.5" y="26" fill="#fff">½</text><text x="280" y="26" fill="#000">¼</text></g>
-<text x="4" y="53" font-size="16" fill="#555">0</text><text x="344" y="53" font-size="16" text-anchor="end" fill="#555">2</text>
-</svg>
-<p>Each piece fills <b style="color:var(--ink)">half of the gap</b> that is left, so the pieces never reach 2.</p>
-<p>Exactly: <span class="m">1 + ½ + ⋯ + 1/2<sup><i>k</i>−1</sup> = 2 − 1/2<sup><i>k</i>−1</sup></span> (CLRS A.5).</p></div></div>
-<div class="block alert ft"><div class="bt">The copy costs more than the search</div><div class="bb">Copying turns binary search from <span class="m">Θ(log <i>n</i>)</span> into <span class="m">Θ(<i>n</i>)</span>, no faster than linear search. Pass <var>lo</var> and <var>hi</var> instead (BINARY-SEARCH-REC, Lecture 2).</div></div>
+<div class="block cp"><div class="bb"><div><b>Discover <var>y</var> at time 5.</b> Scan <var>Adj</var>[<var>y</var>] = <var>x</var>, <var>u</var>. <var>x</var> is gray, <var>u</var> is white: go deeper.</div></div></div>
 </div>
 </div><script src="deck.js"></script><script src="../theme/theme.js"></script></body></html>
