@@ -43,7 +43,8 @@
   ],
 
   "quizzes": [
-    { "dir": "quiz1", "title": "Quiz 1", "topics": "Searching, growth of functions", "paper": "quiz1.html", "answers": "quiz1_answers.html", "released": true, "answersReleased": true }
+    { "dir": "quiz1", "title": "Quiz 1", "topics": "Searching, growth of functions", "paper": "quiz1.html", "answers": "quiz1_answers.html", "released": true, "answersReleased": true },
+    { "dir": "quiz3", "title": "Quiz 3", "topics": "Divide and conquer, maximum subarray, Karatsuba multiplication, overlapping subproblems", "paper": "quiz3.html", "answers": "quiz3_answers.html", "released": false, "answersReleased": false }
   ],
 
   "assignments": [
